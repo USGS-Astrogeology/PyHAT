@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>581</width>
+    <height>843</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PYSAT</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_9">
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>561</width>
+         <height>721</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+  border: 2px solid gray;
+  border-radius: 6px;
+  margin-top: 0.5em;
+}
+
+QGroupBox::title {
+
+  padding-top: -14px;
+  padding-left: 8px;
+}
+</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QGroupBox" name="get_mask">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="title">
+           <string>Mask File</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="get_mask_label">
+             <property name="text">
+              <string>File Name</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="get_mask_line_edit">
+             <property name="text">
+              <string extracomment="Make this change whenever a new file is selected">*.csv</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="get_mask_button">
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="OK">
+      <layout class="QHBoxLayout" name="ok">
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="okButton">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>OK</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>581</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_Refence_Data"/>
+    <addaction name="actionLoad_Unknown_Data"/>
+    <addaction name="actionSet_output_location"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_Current_Plots"/>
+    <addaction name="actionSave_Current_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionCreate_New_Workflow"/>
+    <addaction name="actionSave_Current_Workflow"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuPreprocessing">
+    <property name="title">
+     <string>Preprocessing</string>
+    </property>
+    <widget class="QMenu" name="menuBaseline_Removal">
+     <property name="title">
+      <string>Baseline Removal</string>
+     </property>
+     <addaction name="actionALS"/>
+     <addaction name="actionDietrich"/>
+     <addaction name="actionPolyFit"/>
+     <addaction name="actionAirPLS"/>
+     <addaction name="actionFABC"/>
+     <addaction name="actionKK"/>
+     <addaction name="actionMario"/>
+     <addaction name="actionMedian"/>
+     <addaction name="actionRubberband"/>
+     <addaction name="actionUndecimated_Wavelet"/>
+    </widget>
+    <widget class="QMenu" name="menuCalibration_Transfer">
+     <property name="title">
+      <string>Calibration Transfer</string>
+     </property>
+     <addaction name="actionRatio"/>
+     <addaction name="actionTommy_s_Methgod"/>
+     <addaction name="actionPiecewise_Direct_Standardization"/>
+     <addaction name="actionOthers_3"/>
+    </widget>
+    <addaction name="actionNormalization"/>
+    <addaction name="actionNoise_Reduction"/>
+    <addaction name="actionApply_Mask"/>
+    <addaction name="actionInterpolate"/>
+    <addaction name="actionInstrument_Response"/>
+    <addaction name="menuBaseline_Removal"/>
+    <addaction name="menuCalibration_Transfer"/>
+    <addaction name="actionICA_2"/>
+    <addaction name="actionPCA_2"/>
+   </widget>
+   <widget class="QMenu" name="menuRegression">
+    <property name="title">
+     <string>Regression</string>
+    </property>
+    <addaction name="actionCross_Validation"/>
+    <addaction name="actionTrain"/>
+    <addaction name="actionPredict"/>
+    <addaction name="actionCreate_N_Folds"/>
+    <addaction name="actionCreate_Test_Folds"/>
+    <addaction name="actionSubmodel_Ranges"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionIndex"/>
+    <addaction name="actionContent_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_QtCreator"/>
+   </widget>
+   <widget class="QMenu" name="menuClassification">
+    <property name="title">
+     <string>Classification</string>
+    </property>
+    <widget class="QMenu" name="menuSupervised">
+     <property name="title">
+      <string>Supervised</string>
+     </property>
+     <addaction name="actionPLS_DA"/>
+     <addaction name="actionSIMCA"/>
+    </widget>
+    <widget class="QMenu" name="menuClustering">
+     <property name="title">
+      <string>Clustering</string>
+     </property>
+     <addaction name="actionK_means"/>
+     <addaction name="actionHierarchical_2"/>
+    </widget>
+    <addaction name="menuSupervised"/>
+    <addaction name="menuClustering"/>
+   </widget>
+   <widget class="QMenu" name="menuVisualization">
+    <property name="title">
+     <string>Visualization</string>
+    </property>
+    <addaction name="actionLine_Plot"/>
+    <addaction name="action1_to_1_Plot"/>
+    <addaction name="actionScatter_Plot"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuPreprocessing"/>
+   <addaction name="menuClassification"/>
+   <addaction name="menuRegression"/>
+   <addaction name="menuVisualization"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionLoad_Refence_Data">
+   <property name="text">
+    <string>Load Refence Data</string>
+   </property>
+  </action>
+  <action name="actionLoad_Unknown_Data">
+   <property name="text">
+    <string>Load Unknown Data</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Workflow">
+   <property name="text">
+    <string>Save Current Workflow</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Plots">
+   <property name="text">
+    <string>Save Current Plots</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Data">
+   <property name="text">
+    <string>Save Current Data</string>
+   </property>
+  </action>
+  <action name="actionCreate_New_Workflow">
+   <property name="text">
+    <string>Create New Workflow</string>
+   </property>
+  </action>
+  <action name="actionNoise_Reduction">
+   <property name="text">
+    <string>Noise Reduction</string>
+   </property>
+  </action>
+  <action name="actionApply_Mask">
+   <property name="text">
+    <string>Apply Mask</string>
+   </property>
+  </action>
+  <action name="actionInterpolate">
+   <property name="text">
+    <string>Interpolate (unknown to known)</string>
+   </property>
+  </action>
+  <action name="actionInstrument_Response">
+   <property name="text">
+    <string>Instrument Response</string>
+   </property>
+  </action>
+  <action name="actionALS">
+   <property name="text">
+    <string>ALS</string>
+   </property>
+  </action>
+  <action name="actionDietrich">
+   <property name="text">
+    <string>Dietrich</string>
+   </property>
+  </action>
+  <action name="actionPolyFit">
+   <property name="text">
+    <string>PolyFit</string>
+   </property>
+  </action>
+  <action name="actionAirPLS">
+   <property name="text">
+    <string>AirPLS</string>
+   </property>
+  </action>
+  <action name="actionFABC">
+   <property name="text">
+    <string>FABC</string>
+   </property>
+  </action>
+  <action name="actionKK">
+   <property name="text">
+    <string>KK</string>
+   </property>
+  </action>
+  <action name="actionMario">
+   <property name="text">
+    <string>Mario</string>
+   </property>
+  </action>
+  <action name="actionMedian">
+   <property name="text">
+    <string>Median</string>
+   </property>
+  </action>
+  <action name="actionRubberband">
+   <property name="text">
+    <string>Rubberband</string>
+   </property>
+  </action>
+  <action name="actionUndecimated_Wavelet">
+   <property name="text">
+    <string>Undecimated Wavelet</string>
+   </property>
+  </action>
+  <action name="actionRatio">
+   <property name="text">
+    <string>Ratio</string>
+   </property>
+  </action>
+  <action name="actionTommy_s_Methgod">
+   <property name="text">
+    <string>Tommy's Method</string>
+   </property>
+  </action>
+  <action name="actionPiecewise_Direct_Standardization">
+   <property name="text">
+    <string>Piecewise Direct Standardization</string>
+   </property>
+  </action>
+  <action name="actionPCA">
+   <property name="text">
+    <string>PCA</string>
+   </property>
+  </action>
+  <action name="actionICA">
+   <property name="text">
+    <string>ICA</string>
+   </property>
+  </action>
+  <action name="actionK_Means">
+   <property name="text">
+    <string>K-Means</string>
+   </property>
+  </action>
+  <action name="actionHierarchical">
+   <property name="text">
+    <string>Hierarchical</string>
+   </property>
+  </action>
+  <action name="actionOthers">
+   <property name="text">
+    <string>Others...</string>
+   </property>
+  </action>
+  <action name="actionOthers_2">
+   <property name="text">
+    <string>Others...</string>
+   </property>
+  </action>
+  <action name="actionOthers_3">
+   <property name="text">
+    <string>Others...</string>
+   </property>
+  </action>
+  <action name="actionPLS">
+   <property name="text">
+    <string>PLS</string>
+   </property>
+  </action>
+  <action name="actionSM_PLS">
+   <property name="text">
+    <string>SM-PLS</string>
+   </property>
+  </action>
+  <action name="actionICA_Regression">
+   <property name="text">
+    <string>ICA Regression</string>
+   </property>
+  </action>
+  <action name="actionGaussian_Process">
+   <property name="text">
+    <string>Gaussian Process</string>
+   </property>
+  </action>
+  <action name="actionMLP">
+   <property name="text">
+    <string>MLP</string>
+   </property>
+  </action>
+  <action name="actionSVM">
+   <property name="text">
+    <string>SVM</string>
+   </property>
+  </action>
+  <action name="actionOthers_4">
+   <property name="text">
+    <string>Others...</string>
+   </property>
+  </action>
+  <action name="actionOthers_5">
+   <property name="text">
+    <string>Others...</string>
+   </property>
+  </action>
+  <action name="actionIndex">
+   <property name="text">
+    <string>Index</string>
+   </property>
+  </action>
+  <action name="actionContent_2">
+   <property name="text">
+    <string>Content</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+  <action name="actionAbout_QtCreator">
+   <property name="text">
+    <string>About Qt...</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionNormalization">
+   <property name="text">
+    <string>Normalization</string>
+   </property>
+  </action>
+  <action name="actionICA_2">
+   <property name="text">
+    <string>ICA</string>
+   </property>
+  </action>
+  <action name="actionPCA_2">
+   <property name="text">
+    <string>PCA</string>
+   </property>
+  </action>
+  <action name="actionPLS_DA">
+   <property name="text">
+    <string>PLS-DA</string>
+   </property>
+  </action>
+  <action name="actionSIMCA">
+   <property name="text">
+    <string>SIMCA</string>
+   </property>
+  </action>
+  <action name="actionK_means">
+   <property name="text">
+    <string>K-means</string>
+   </property>
+  </action>
+  <action name="actionHierarchical_2">
+   <property name="text">
+    <string>Hierarchical</string>
+   </property>
+  </action>
+  <action name="actionCross_Validation">
+   <property name="text">
+    <string>Cross Validation</string>
+   </property>
+  </action>
+  <action name="actionTrain">
+   <property name="text">
+    <string>Train</string>
+   </property>
+  </action>
+  <action name="actionPredict">
+   <property name="text">
+    <string>Predict</string>
+   </property>
+  </action>
+  <action name="actionLine_Plot">
+   <property name="text">
+    <string>Line Plot</string>
+   </property>
+  </action>
+  <action name="action1_to_1_Plot">
+   <property name="text">
+    <string>1 to 1 Plot</string>
+   </property>
+  </action>
+  <action name="actionScatter_Plot">
+   <property name="text">
+    <string>Scatter Plot</string>
+   </property>
+  </action>
+  <action name="actionSet_output_location">
+   <property name="text">
+    <string>Output Location</string>
+   </property>
+  </action>
+  <action name="actionCreate_N_Folds">
+   <property name="text">
+    <string>Create N Folds</string>
+   </property>
+  </action>
+  <action name="actionCreate_Test_Folds">
+   <property name="text">
+    <string>Create Test Folds</string>
+   </property>
+  </action>
+  <action name="actionSubmodel_Ranges">
+   <property name="text">
+    <string>Submodel Ranges</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

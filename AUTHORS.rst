@@ -7,4 +7,4 @@ Credits
 
 Contributors
 ------------
-
+* Nicholas Finch <ngf4@nau.edu>

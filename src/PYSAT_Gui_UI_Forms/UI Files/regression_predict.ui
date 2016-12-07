@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>regression</class>
+ <widget class="QGroupBox" name="regression">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>438</width>
+    <height>244</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>150</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>999999</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Regression</string>
+  </property>
+  <property name="title">
+   <string>Regression - Predict</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="regression_vlayout">
+     <item>
+      <layout class="QHBoxLayout" name="regression_choosedata_hlayout">
+       <item>
+        <widget class="QLabel" name="regression_choosedata_label">
+         <property name="text">
+          <string>Choose data: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="regression_choosedata">
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>20</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Populate this list from the available data frames</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="regression_choosedata_spacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="regression_choosealg_hlayout">
+       <item>
+        <widget class="QLabel" name="regression_choosealg_label">
+         <property name="text">
+          <string>Choose Model: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="regression_choosealg">
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>20</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Populate this list from the list of models</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="regression_choosealg_spacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
