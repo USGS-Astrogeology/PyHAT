@@ -4,13 +4,13 @@ Created on Fri Oct 28 10:40:30 2016
 
 @author: rbanderson
 """
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 
 
 def make_combobox(choices):
-    combo=QtGui.QComboBox()
+    combo=QtWidgets.QComboBox()
     combo.setMaximumWidth(200)
-    font = QtGui.QFont()
+    font = QtWidgets.QFont()
     font.setPointSize(10)
     combo.setFont(font)
     for i,choice in enumerate(choices):
@@ -21,9 +21,9 @@ def make_combobox(choices):
 
     
 def make_listwidget(choices):
-    listwidget=QtGui.QListWidget()
+    listwidget=QtWidgets.QListWidget()
     listwidget.setItemDelegate
     for item in choices:
-        item = QtGui.QListWidgetItem(item)
+        item = QtWidgets.QListWidgetItem(item)
         listwidget.addItem(item)
     return listwidget

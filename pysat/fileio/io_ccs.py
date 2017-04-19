@@ -10,7 +10,7 @@ from pysat.fileio.utils import file_search
 from pysat.fileio.lookup import lookup
 from pysat.spectral.spectral_data import spectral_data
 import time
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtWidgets
 
 def CCS(input_data):
     t=time.time()
@@ -164,7 +164,7 @@ def ccs_batch(directory,searchstring='*CCS*.csv',to_csv=None,lookupfile=None,ave
     filelist=filelist_new
     #Should add a progress bar for importing large numbers of files    
     dt=[]
-    progressbar=QtGui.QProgressDialog("Loading "+str(filelist.size)+' files',"Cancel",0,filelist.size)
+    progressbar=QtWidgets.QProgressDialog("Loading "+str(filelist.size)+' files',"Cancel",0,filelist.size)
     progressbar.setWindowTitle('ChemCam data progress')
     progressbar.setRange(0,filelist.size)
     progressbar.show()
