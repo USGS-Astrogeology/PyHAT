@@ -4,13 +4,13 @@ Created on Fri Oct 28 10:40:30 2016
 
 @author: rbanderson
 """
-from PyQt5 import QtWidgets
+from PyQt5 import QtGui, QtWidgets
 
 
 def make_combobox(choices):
     combo=QtWidgets.QComboBox()
     combo.setMaximumWidth(200)
-    font = QtWidgets.QFont()
+    font = QtGui.QFont()
     font.setPointSize(10)
     combo.setFont(font)
     for i,choice in enumerate(choices):
