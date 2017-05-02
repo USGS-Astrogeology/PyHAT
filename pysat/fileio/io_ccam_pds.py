@@ -10,7 +10,7 @@ from pysat.fileio.utils import file_search
 from pysat.fileio.lookup import lookup
 from pysat.spectral.spectral_data import spectral_data
 import time
-from PyQt5 import QtCore, QtGui
+
 
 def CCAM_CSV(input_data,ave=True):
 
@@ -164,10 +164,11 @@ def ccam_batch(directory,searchstring='*.csv',to_csv=None,lookupfile=None,ave=Tr
     filelist=filelist_new
     #Should add a progress bar for importing large numbers of files    
     dt=[]
-    # if progressbar:
-    #     progressbar.setWindowTitle('ChemCam data progress')
-    #     progressbar.setRange(0,filelist.size)
-    #     progressbar.show()
+    if progressbar:
+        from PyQt5 import QtCore  #only rely on PyQt5 if a progressbar object has been passed
+        progressbar.setWindowTitle('ChemCam data progress')
+        progressbar.setRange(0,filelist.size)
+        progressbar.show()
     filecount=0
     for i,file in enumerate(filelist):
         filecount=filecount+1
@@ -189,9 +190,9 @@ def ccam_batch(directory,searchstring='*.csv',to_csv=None,lookupfile=None,ave=Tr
                     print("Wavelengths don't match!")
         except:
             pass
-        # if progressbar:
-        #     progressbar.setValue(filecount)
-        #     QtCore.QCoreApplication.processEvents()
+        if progressbar:
+            progressbar.setValue(filecount)
+            QtCore.QCoreApplication.processEvents()
         pass
 
     combined.loc[:,('meta','sclock')]=pd.to_numeric(combined.loc[:,('meta','sclock')])
