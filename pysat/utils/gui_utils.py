@@ -4,8 +4,7 @@ Created on Fri Oct 28 10:40:30 2016
 
 @author: rbanderson
 """
-from PyQt5 import QtGui, QtWidgets
-
+from PyQt5 import QtGui,QtWidgets
 
 def make_combobox(choices):
     combo=QtWidgets.QComboBox()
