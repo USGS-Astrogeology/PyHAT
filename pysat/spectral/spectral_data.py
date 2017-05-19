@@ -89,6 +89,16 @@ class spectral_data(object):
         df_spectra.columns=pd.MultiIndex.from_tuples(spectcols) #assign the multiindex columns based on the new tuples
         self.df=pd.concat([df_spectra,metadata],axis=1) #merge the masked spectra back with the metadata
 
+    def multiply_vector(self,vectorfile):
+        df_spectra=self.df['wvl']
+        # TODO: check to make sure wavelengths match before multiplying
+
+        vector=np.array(pd.read_csv(vectorfile,sep=',',header=None))[:,1]
+        if df_spectra.shape[1]==vector.shape[0]:
+            self.df['wvl']=df_spectra.multiply(vector,axis=1)
+        else:
+            print('Vector is not the same size as the spectra!')
+
     #This function divides the data up into a specified number of random folds    
     def random_folds(self,nfolds=5,seed=10,groupby=None):
         self.df[('meta','Folds')]=np.nan #Create an entry in the data frame that holds the folds
