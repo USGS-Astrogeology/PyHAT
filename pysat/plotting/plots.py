@@ -17,8 +17,8 @@ def cmaps():
     
 
 def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference (wt.%)',ytitle='Prediction (wt.%)',title=None,
-                lbl='',one_to_one=False,rmse=True,dpi=1000,
-                color=None,annot_mask=None,cmap=None,colortitle='',loadfig=None,masklabel='',marker='o',linestyle='None'):
+                lbl='',one_to_one=False,rmse=True,dpi=1000,color=None,annot_mask=None,cmap=None,colortitle='',
+              loadfig=None,masklabel='',marker='o',linestyle='None',hline=None,hlinelabel=None,hlinestyle='--',yzero=False,linewidth=1.0):
     if loadfig is not None:
         fig=loadfig
         axes=fig.gca()
@@ -34,8 +34,14 @@ def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference
             axes.set_ylabel(ytitle)
         if xrange:
             axes.set_xlim(xrange)
+            xind=np.where((x>xrange[0])&(x<xrange[1]))
         if yrange:
             axes.set_ylim(yrange)
+        else:
+            yrange=[min(np.array(y)[xind]),max(np.array(y)[xind])]
+            axes.set_ylim(yrange)
+    if hline:
+        axes.axhline(hline,color='k',label=hlinelabel,linestyle=hlinestyle)
    #don't know why this suddenly is causing problems, but remove it until I can fix it later
     if one_to_one:
         axes.plot([0, 100], [0, 100],color='k')
@@ -48,12 +54,14 @@ def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference
         axes.plot(x,y,c=color,cmap=cmap,marker=marker)  
         axes.colorbar(label=colortitle)
     else:
-        axes.plot(x,y,color=color,label=lbl,marker=marker,ls=linestyle)
+        axes.plot(x,y,color=color,label=lbl,marker=marker,ls=linestyle,linewidth=linewidth)
         
         if annot_mask is not None:
-            axes.plot(x[annot_mask],y[annot_mask],facecolors='none',linewidth=1.0,label=masklabel,marker=marker)
+            axes.plot(x[annot_mask],y[annot_mask],facecolors='none',linewidth=linewidth,label=masklabel,marker=marker)
        
-    
+    if yzero:
+        axes.set_ylim(bottom=0)
+
     axes.legend(loc='best',fontsize=8,scatterpoints=1,numpoints=1)
     if figpath and figfile:
         fig.savefig(figpath+'/'+figfile,dpi=dpi)
