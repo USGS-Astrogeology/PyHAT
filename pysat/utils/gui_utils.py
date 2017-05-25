@@ -9,7 +9,7 @@ from PyQt5 import QtGui,QtWidgets
 
 def make_combobox(choices):
     combo=QtWidgets.QComboBox()
-    combo.setMaximumWidth(200)
+    #combo.setMaximumWidth(200)
     font = QtGui.QFont()
     font.setPointSize(10)
     combo.setFont(font)
