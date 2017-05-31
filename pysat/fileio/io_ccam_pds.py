@@ -21,14 +21,21 @@ def CCAM_CSV(input_data,ave=True):
         df.set_index(['wave'],inplace=True) #use wavelengths as indices
         #read the file header and put information into the dataframe as new columns
         metadata=pd.read_csv(input_data,sep='=',nrows=14,comment=',',engine='c',index_col=0,header=None)
-    
-    except: #handle files with an extra header row containing temperature and target name
-        df = pd.read_csv(input_data, header=16,engine='c')
-        cols=list(df.columns.values)
-        df.columns=[i.strip().replace('# ','') for i in cols] #strip whitespace from column names
-        df.set_index(['wave'],inplace=True) #use wavelengths as indices
-        #read the file header and put information into the dataframe as new columns
-        metadata=pd.read_csv(input_data,sep='=',nrows=16,comment=',',engine='c',index_col=0,header=None)
+    except:
+        try: #handle files with an extra header row containing temperature
+            df = pd.read_csv(input_data, header=15,engine='c')
+            cols=list(df.columns.values)
+            df.columns=[i.strip().replace('# ','') for i in cols] #strip whitespace from column names
+            df.set_index(['wave'],inplace=True) #use wavelengths as indices
+            #read the file header and put information into the dataframe as new columns
+            metadata=pd.read_csv(input_data,sep='=',nrows=15,comment=',',engine='c',index_col=0,header=None)
+        except: #handle files with an extra header row containing temperature and target name
+            df = pd.read_csv(input_data, header=16,engine='c')
+            cols=list(df.columns.values)
+            df.columns=[i.strip().replace('# ','') for i in cols] #strip whitespace from column names
+            df.set_index(['wave'],inplace=True) #use wavelengths as indices
+            #read the file header and put information into the dataframe as new columns
+            metadata=pd.read_csv(input_data,sep='=',nrows=16,comment=',',engine='c',index_col=0,header=None)
 
     if ave:
         df=pd.DataFrame(df['mean'])
@@ -173,23 +180,20 @@ def ccam_batch(directory,searchstring='*.csv',to_csv=None,lookupfile=None,ave=Tr
     for i,file in enumerate(filelist):
         filecount=filecount+1
         print(file)
-        try:
-            if is_sav:
-                tmp=CCAM_SAV(file,ave=ave)
+        if is_sav:
+            tmp=CCAM_SAV(file,ave=ave)
+        else:
+            tmp=CCAM_CSV(file,ave=ave)
+        if i==0:
+            combined=tmp
+        else:
+            #This ensures that rounding errors are not causing mismatches in columns
+            cols1=list(combined['wvl'].columns)
+            cols2=list(tmp['wvl'].columns)
+            if set(cols1)==set(cols2):
+                combined=pd.concat([combined,tmp])
             else:
-                tmp=CCAM_CSV(file,ave=ave)
-            if i==0:
-                combined=tmp
-            else:
-                #This ensures that rounding errors are not causing mismatches in columns
-                cols1=list(combined['wvl'].columns)
-                cols2=list(tmp['wvl'].columns)
-                if set(cols1)==set(cols2):
-                    combined=pd.concat([combined,tmp])
-                else:
-                    print("Wavelengths don't match!")
-        except:
-            pass
+                print("Wavelengths don't match!")
         if progressbar:
             progressbar.setValue(filecount)
             QtCore.QCoreApplication.processEvents()
