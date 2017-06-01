@@ -50,13 +50,13 @@ def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference
 
     
     if cmap is not None:
-        axes.plot(x,y,c=color,cmap=cmap,marker=marker)  
+        axes.plot(x,y,c=color,cmap=cmap,marker=marker,markeredgecolor='Black',markeredgewidth=0.25)
         axes.colorbar(label=colortitle)
     else:
-        axes.plot(x,y,color=color,label=lbl,marker=marker,ls=linestyle,linewidth=linewidth)
+        axes.plot(x,y,color=color,label=lbl,marker=marker,ls=linestyle,linewidth=linewidth,markeredgecolor='Black',markeredgewidth=0.25)
         
         if annot_mask is not None:
-            axes.plot(x[annot_mask],y[annot_mask],facecolors='none',linewidth=linewidth,label=masklabel,marker=marker)
+            axes.plot(x[annot_mask],y[annot_mask],facecolors='none',linewidth=linewidth,label=masklabel,marker=marker,markeredgecolor='Black',markeredgewidth=2)
        
     if yzero:
         axes.set_ylim(bottom=0)
@@ -98,11 +98,11 @@ def pca_ica_plot(data,x_component,y_component,colorvar=None,cmap='viridis',metho
     ax1.set_ylabel(y_label)
     
     if colorvar:
-        mappable=ax1.scatter(x,y,c=data.df[colorvar],cmap=cmap,linewidth=0.2) 
+        mappable=ax1.scatter(x,y,c=data.df[colorvar],cmap=cmap,linewidth=0.2,edgecolor='Black')
         fig.colorbar(mappable,label=colorvar[1],ax=ax1)    
     else:
-        mappable=ax1.scatter(x,y,linewidth=0.2) 
-    
+        ax1.scatter(x,y,linewidth=0.2,edgecolor='Black')
+
     #plot the loadings
     wvls=data.df['wvl'].columns.values
     ax2.plot(wvls,x_loading)
