@@ -73,19 +73,19 @@ def pca_ica_plot(data,x_component,y_component,colorvar=None,cmap='viridis',metho
     x=[data.df[(method,x_component)]]
     y=[data.df[(method,y_component)]]
     if method=='PCA':
-        x_loading=data.do_dim_red.components_[x_component,:]
-        y_loading=data.do_dim_red.components_[y_component,:]
+        x_loading=data.do_dim_red.components_[int(x_component)-1,:]
+        y_loading=data.do_dim_red.components_[int(y_component)-1,:]
         
-        x_variance=data.do_dim_red.explained_variance_ratio_[x_component]*100
-        y_variance=data.do_dim_red.explained_variance_ratio_[y_component]*100
-        x_label='PC '+str(x_component)+' ('+str(round(x_variance,1))+r'%)'       
-        y_label='PC '+str(y_component)+' ('+str(round(y_variance,1))+r'%)'       
+        x_variance=data.do_dim_red.explained_variance_ratio_[int(x_component)-1]*100
+        y_variance=data.do_dim_red.explained_variance_ratio_[int(y_component)-1]*100
+        x_label='PC '+x_component+' ('+str(round(x_variance,1))+r'%)'
+        y_label='PC '+y_component+' ('+str(round(y_variance,1))+r'%)'
         
-    if method=='ICA_JADE':
-        x_loading=data.ica_jade_loadings[x_component,:].T
-        y_loading=data.ica_jade_loadings[y_component,:].T
-        x_label='Source '+str(x_component)  
-        y_label='Source '+str(y_component)       
+    if method=='ICA-JADE':
+        x_loading=data.do_dim_red.ica_jade_loadings[int(x_component)-1,:].T
+        y_loading=data.ica_jade_loadings[int(y_component)-1,:].T
+        x_label='Source '+x_component
+        y_label='Source '+y_component
         
     #set up the subplots
     fig=plot.figure()

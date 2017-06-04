@@ -196,25 +196,25 @@ class spectral_data(object):
         
        
         #set baseline removal object (br) to the specified method
-        if method is 'als':
+        if method is 'ALS':
             br=ALS()
-        if method is 'dietrich':
+        if method is 'Dietrich':
             br=Dietrich()
-        if method is 'polyfit':
+        if method is 'Polyfit':
             br=PolyFit()
-        if method is 'airpls':
+        if method is 'AirPLS':
             br=AirPLS()
-        if method is 'fabc':
+        if method is 'FABC':
             br=FABC()
-        if method is 'kk':
+        if method is 'KK':
             br=KK()
-        if method is 'mario':
+        if method is 'Mario':
             br=Mario()
-        if method is 'median':
+        if method is 'Median':
             br=MedianFilter()
-        if method is 'rubberband':
+        if method is 'Rubberband':
             br=Rubberband()
-        if method is 'ccam':
+        if method is 'CCAM':
             br=ccam_br()
         #if method is 'wavelet':
          #   br=Wavelet()
@@ -272,6 +272,7 @@ class spectral_data(object):
             self.do_dim_red=PCA(*params,**kws)
         if method=='ICA':
             self.do_dim_red=FastICA(*params,**kws)
+        #TODO: Add ICA-JADE here
         if load_fit:
             self.do_dim_red=load_fit
         else:
@@ -318,16 +319,16 @@ class spectral_data(object):
             if np.abs(np.max(loadings[i-1,:]))<np.abs(np.min(loadings[i-1,:])): #flip the sign if necessary to look nicer
                 loadings[i-1,:]=loadings[i-1,:]*-1
                 scores[i-1,:]=scores[i-1,:]*-1
-            icacols.append(('ICA_JADE',i))
-            self.df[('ICA_JADE',i)]=scores[i-1,:].T
+            icacols.append(('ICA-JADE',i))
+            self.df[('ICA-JADE',i)]=scores[i-1,:].T
         self.ica_jade_loadings=loadings
         
         if corrcols:
             combined_cols=corrcols+icacols
             corrdf=self.df[combined_cols].corr().drop(icacols,1).drop(corrcols,0)
             ica_jade_ids=[]
-            for i in corrdf.loc['ICA_JADE'].index:
-                tmp=corrdf.loc[('ICA_JADE',i)]
+            for i in corrdf.loc['ICA-JADE'].index:
+                tmp=corrdf.loc[('ICA-JADE',i)]
                 match=tmp.values==np.max(tmp)
                 ica_jade_ids.append(corrcols[np.where(match)[0]][1]+' (r='+str(np.round(np.max(tmp),1))+')')
                 pass
