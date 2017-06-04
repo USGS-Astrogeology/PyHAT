@@ -190,34 +190,36 @@ class spectral_data(object):
 
 
     #This function applies baseline removal to the data    
-    def remove_baseline(self,method='als',segment=True,params=None):
+    def remove_baseline(self,method='ALS',segment=True,params=None):
         wvls=np.array(self.df['wvl'].columns.values,dtype='float')
         spectra=np.array(self.df['wvl'],dtype='float')
         
        
         #set baseline removal object (br) to the specified method
-        if method is 'ALS':
+        if method == 'ALS':
             br=ALS()
-        if method is 'Dietrich':
+        elif method == 'Dietrich':
             br=Dietrich()
-        if method is 'Polyfit':
+        elif method == 'Polyfit':
             br=PolyFit()
-        if method is 'AirPLS':
+        elif method == 'AirPLS':
             br=AirPLS()
-        if method is 'FABC':
+        elif method == 'FABC':
             br=FABC()
-        if method is 'KK':
+        elif method == 'KK':
             br=KK()
-        if method is 'Mario':
+        elif method == 'Mario':
             br=Mario()
-        if method is 'Median':
+        elif method == 'Median':
             br=MedianFilter()
-        if method is 'Rubberband':
+        elif method == 'Rubberband':
             br=Rubberband()
-        if method is 'CCAM':
+        elif method == 'CCAM':
             br=ccam_br()
-        #if method is 'wavelet':
+        #if method == 'wavelet':
          #   br=Wavelet()
+        else:
+            print(method+' is not recognized!')
             
             
         #if parameters are provided, use them to set the parameters of br
