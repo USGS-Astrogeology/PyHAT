@@ -18,7 +18,7 @@ def cmaps():
 
 def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference (wt.%)',ytitle='Prediction (wt.%)',title=None,
                 lbl='',one_to_one=False,rmse=True,dpi=1000,color=None,annot_mask=None,cmap=None,colortitle='',
-              loadfig=None,masklabel='',marker='o',linestyle='None',hline=None,hlinelabel=None,hlinestyle='--',yzero=False,linewidth=1.0):
+              loadfig=None,masklabel='',marker='o',linestyle='None',hline=None,hlinelabel=None,hlinestyle='--',yzero=False,linewidth=1.0,vlines=None):
     if loadfig is not None:
         fig=loadfig
         axes=fig.gca()
@@ -42,6 +42,9 @@ def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference
             axes.set_ylim(yrange)
     if hline:
         axes.axhline(hline,color='k',label=hlinelabel,linestyle=hlinestyle)
+    if vlines:
+        for x in vlines:
+            axes.axvline(x,color='k',linestyle='--')
     if one_to_one:
         axes.plot([0, 100], [0, 100],color='k')
         if rmse:

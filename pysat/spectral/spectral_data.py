@@ -21,7 +21,7 @@ from pysat.spectral.baseline_code.median import MedianFilter
 from pysat.spectral.baseline_code.rubberband import Rubberband
 from pysat.spectral.jade import jadeR as jade
 from pysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
-
+from matplotlib import pyplot as plot
 def norm_total(df):
     df=df.div(df.sum(axis=1),axis=0)
     return df
@@ -148,7 +148,21 @@ class spectral_data(object):
                     
         #sort by index to return the df to its original order
         self.df.sort_index(inplace=True)
-        
+        self.folds_hist(sortby,50)
+
+    def folds_hist(self,col_to_plot,nbins,xlabel='wt.%',ylabel='# of spectra'):
+        folds_uniq=np.unique(self.df[('meta','Folds')])
+        for f in folds_uniq:
+            temp=self.rows_match(('meta','Folds'),[f])
+            vals=np.array(temp.df[col_to_plot])
+            bins=np.linspace(0,np.max(vals),nbins)
+            plot.hist(vals,linewidth=0.5,edgecolor='k')
+            plot.xlabel(xlabel)
+            plot.ylabel(ylabel)
+            plot.title(str(col_to_plot[1])+'- Fold '+str(f))
+            fig=plot.gcf()
+            fig.savefig('hist_fold_'+str(f)+'_'+col_to_plot[1]+'.png')
+            plot.close()
     #This function normalizes specified ranges of the data by their respective sums  
         #TODO: Fix this function so that it doesn't have to split the data frame apart and then put it back together, avoid hard-coded column names
     def norm(self,ranges):
