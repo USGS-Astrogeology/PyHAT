@@ -101,15 +101,19 @@ def pca_ica_plot(data,x_component,y_component,colorvar=None,cmap='viridis',metho
     ax1.set_ylabel(y_label)
     
     if colorvar:
-        mappable=ax1.scatter(x,y,c=data.df[colorvar],cmap=cmap,linewidth=0.2,edgecolor='Black')
-        fig.colorbar(mappable,label=colorvar[1],ax=ax1)    
+        try:
+            mappable=ax1.scatter(x,y,c=data.df[('comp',colorvar)],cmap=cmap,linewidth=0.2,edgecolor='Black')
+        except:
+            mappable = ax1.scatter(x, y, c=data.df[('meta', colorvar)], cmap=cmap, linewidth=0.2, edgecolor='Black')
+            #TODO: handle any top-level label for colorval, not just comp or meta
+        fig.colorbar(mappable,label=colorvar,ax=ax1)
     else:
         ax1.scatter(x,y,linewidth=0.2,edgecolor='Black')
 
     #plot the loadings
     wvls=data.df['wvl'].columns.values
-    ax2.plot(wvls,x_loading)
-    ax3.plot(wvls,y_loading)
+    ax2.plot(wvls,x_loading,linewidth=0.5)
+    ax3.plot(wvls,y_loading,linewidth=0.5)
     
     ax2.set_yticklabels([])
     ax2.set_xticklabels([])
