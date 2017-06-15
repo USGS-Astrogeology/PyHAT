@@ -1,4 +1,4 @@
-# This code is used to read individual ChemCam CCS files
+# This code is used to read individual ChemCam files
 # Header data is stored as attributes of the data frame
 # White space is stripped from the column names
 import os
@@ -10,9 +10,9 @@ from pysat.fileio.utils import file_search
 from pysat.fileio.lookup import lookup
 from pysat.spectral.spectral_data import spectral_data
 import time
-from PyQt5 import QtCore, QtGui
 
-def CCAM_CSV(input_data):
+
+def CCAM_CSV(input_data,ave=True):
 
     try:
         df = pd.read_csv(input_data, header=14,engine='c')
@@ -21,19 +21,30 @@ def CCAM_CSV(input_data):
         df.set_index(['wave'],inplace=True) #use wavelengths as indices
         #read the file header and put information into the dataframe as new columns
         metadata=pd.read_csv(input_data,sep='=',nrows=14,comment=',',engine='c',index_col=0,header=None)
-    
-    except: #handle files with an extra header row containing temperature
-        df = pd.read_csv(input_data, header=15,engine='c')
-        cols=list(df.columns.values)
-        df.columns=[i.strip().replace('# ','') for i in cols] #strip whitespace from column names
-        df.set_index(['wave'],inplace=True) #use wavelengths as indices
-        #read the file header and put information into the dataframe as new columns
-        metadata=pd.read_csv(input_data,sep='=',nrows=15,comment=',',engine='c',index_col=0,header=None)
-    
+    except:
+        try: #handle files with an extra header row containing temperature
+            df = pd.read_csv(input_data, header=15,engine='c')
+            cols=list(df.columns.values)
+            df.columns=[i.strip().replace('# ','') for i in cols] #strip whitespace from column names
+            df.set_index(['wave'],inplace=True) #use wavelengths as indices
+            #read the file header and put information into the dataframe as new columns
+            metadata=pd.read_csv(input_data,sep='=',nrows=15,comment=',',engine='c',index_col=0,header=None)
+        except: #handle files with an extra header row containing temperature and target name
+            df = pd.read_csv(input_data, header=16,engine='c')
+            cols=list(df.columns.values)
+            df.columns=[i.strip().replace('# ','') for i in cols] #strip whitespace from column names
+            df.set_index(['wave'],inplace=True) #use wavelengths as indices
+            #read the file header and put information into the dataframe as new columns
+            metadata=pd.read_csv(input_data,sep='=',nrows=16,comment=',',engine='c',index_col=0,header=None)
+
+    if ave:
+        df=pd.DataFrame(df['mean'])
+    else:
+        df=df.drop(['mean','median'],axis=1)
     df.index=[['wvl']*len(df.index),df.index.values.round(4)]  #create multiindex so spectra can be easily extracted with a single key
     df=df.T   #transpose so that each spectrum is a row
-           
-    #remove extraneous stuff from the metadataindices    
+
+    #remove extraneous stuff from the metadataindices
     metadata.index=[i.strip().strip('# ').replace(' FLOAT','').lower() for i in metadata.index.values]
     metadata=metadata.T
     
@@ -44,7 +55,8 @@ def CCAM_CSV(input_data):
     metadata['Pversion']=fname[34:36]   
     
     #duplicate the metadata for each row in the df
-    metadata=metadata.append([metadata]*(len(df.index)-1),ignore_index=True)    
+    if not ave:
+        metadata=metadata.append([metadata]*(len(df.index)-1),ignore_index=True)
     metadata.index=df.index #make the indices match
     metadata.columns=[['meta']*len(metadata.columns),metadata.columns.values] #make the columns into multiindex
     df=pd.concat([metadata,df],axis=1) #combine the spectra with the metadata
@@ -160,36 +172,28 @@ def ccam_batch(directory,searchstring='*.csv',to_csv=None,lookupfile=None,ave=Tr
     #Should add a progress bar for importing large numbers of files    
     dt=[]
     if progressbar:
+        from PyQt5 import QtCore  #only rely on PyQt5 if a progressbar object has been passed
         progressbar.setWindowTitle('ChemCam data progress')
         progressbar.setRange(0,filelist.size)
         progressbar.show()
     filecount=0
-    for i in filelist:
+    for i,file in enumerate(filelist):
         filecount=filecount+1
-        print(i)
-        try:
-            if is_sav:
-                t=time.time()
-                tmp=CCAM_SAV(i,ave=ave)
-                dt.append(time.time()-t)
+        print(file)
+        if is_sav:
+            tmp=CCAM_SAV(file,ave=ave)
+        else:
+            tmp=CCAM_CSV(file,ave=ave)
+        if i==0:
+            combined=tmp
+        else:
+            #This ensures that rounding errors are not causing mismatches in columns
+            cols1=list(combined['wvl'].columns)
+            cols2=list(tmp['wvl'].columns)
+            if set(cols1)==set(cols2):
+                combined=pd.concat([combined,tmp])
             else:
-                t=time.time()
-                tmp=CCAM_CSV(i)
-
-                dt.append(time.time()-t)
-            if i==filelist[0]:
-                combined=tmp
-
-            else:
-                #This ensures that rounding errors are not causing mismatches in columns
-                cols1=list(combined['wvl'].columns)
-                cols2=list(tmp['wvl'].columns)
-                if set(cols1)==set(cols2):
-                    combined=pd.concat([combined,tmp])
-                else:
-                    print("Wavelengths don't match!")
-        except:
-            pass
+                print("Wavelengths don't match!")
         if progressbar:
             progressbar.setValue(filecount)
             QtCore.QCoreApplication.processEvents()
