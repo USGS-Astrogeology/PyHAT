@@ -166,9 +166,16 @@ class spectral_data(object):
     #This function normalizes specified ranges of the data by their respective sums  
         #TODO: Fix this function so that it doesn't have to split the data frame apart and then put it back together, avoid hard-coded column names
     def norm(self,ranges):
+        #TODO: Handle any top-level column names. Currently have a bunch of hacky try-excepts to handle the case where certain col names are missing
         df_spect=self.df['wvl']
-        df_meta=self.df['meta']
-        df_comp=self.df['comp']
+        try:
+            df_meta=self.df['meta']
+        except:
+            df_meta=None
+        try:
+            df_comp=self.df['comp']
+        except:
+            df_comp=None
         wvls=df_spect.columns.values
         df_sub_norm=[]
         allind=[]    
@@ -194,12 +201,19 @@ class spectral_data(object):
         
         #make the columns into multiindex
         df_excluded.columns=[['masked']*len(df_excluded.columns),df_excluded.columns]    
-        df_norm.columns=[['wvl']*len(df_norm.columns),df_norm.columns.values] 
-        df_meta.columns=[['meta']*len(df_meta.columns),df_meta.columns.values]
-        df_comp.columns=[['comp']*len(df_comp.columns),df_comp.columns.values]
-        
+        df_norm.columns=[['wvl']*len(df_norm.columns),df_norm.columns.values]
+        if df_meta is not None:
+            df_meta.columns=[['meta']*len(df_meta.columns),df_meta.columns.values]
+        if df_comp is not None:
+            df_comp.columns=[['comp']*len(df_comp.columns),df_comp.columns.values]
+
         #combine the normalized data frames, the excluded columns, and the metadata into a single data frame
-        df_new=pd.concat([df_meta,df_comp,df_norm,df_excluded],axis=1)
+        if df_meta is not None and df_comp is not None:
+            df_new=pd.concat([df_meta,df_comp,df_norm,df_excluded],axis=1)
+        elif df_meta is not None:
+            df_new=pd.concat([df_meta,df_norm,df_excluded],axis=1)
+        elif df_comp is not None:
+            df_new=pd.concat([df_meta,df_comp,df_excluded])
         self.df=df_new
 
 
