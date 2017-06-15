@@ -21,7 +21,7 @@ from pysat.spectral.baseline_code.median import MedianFilter
 from pysat.spectral.baseline_code.rubberband import Rubberband
 from pysat.spectral.jade import jadeR as jade
 from pysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
-
+from matplotlib import pyplot as plot
 def norm_total(df):
     df=df.div(df.sum(axis=1),axis=0)
     return df
@@ -89,6 +89,16 @@ class spectral_data(object):
         df_spectra.columns=pd.MultiIndex.from_tuples(spectcols) #assign the multiindex columns based on the new tuples
         self.df=pd.concat([df_spectra,metadata],axis=1) #merge the masked spectra back with the metadata
 
+    def multiply_vector(self,vectorfile):
+        df_spectra=self.df['wvl']
+        # TODO: check to make sure wavelengths match before multiplying
+
+        vector=np.array(pd.read_csv(vectorfile,sep=',',header=None))[:,1]
+        if df_spectra.shape[1]==vector.shape[0]:
+            self.df['wvl']=df_spectra.multiply(vector,axis=1)
+        else:
+            print('Vector is not the same size as the spectra!')
+
     #This function divides the data up into a specified number of random folds    
     def random_folds(self,nfolds=5,seed=10,groupby=None):
         self.df[('meta','Folds')]=np.nan #Create an entry in the data frame that holds the folds
@@ -138,7 +148,21 @@ class spectral_data(object):
                     
         #sort by index to return the df to its original order
         self.df.sort_index(inplace=True)
-        
+        self.folds_hist(sortby,50)
+
+    def folds_hist(self,col_to_plot,nbins,xlabel='wt.%',ylabel='# of spectra'):
+        folds_uniq=np.unique(self.df[('meta','Folds')])
+        for f in folds_uniq:
+            temp=self.rows_match(('meta','Folds'),[f])
+            vals=np.array(temp.df[col_to_plot])
+            bins=np.linspace(0,np.max(vals),nbins)
+            plot.hist(vals,linewidth=0.5,edgecolor='k')
+            plot.xlabel(xlabel)
+            plot.ylabel(ylabel)
+            plot.title(str(col_to_plot[1])+'- Fold '+str(f))
+            fig=plot.gcf()
+            fig.savefig('hist_fold_'+str(f)+'_'+col_to_plot[1]+'.png')
+            plot.close()
     #This function normalizes specified ranges of the data by their respective sums  
         #TODO: Fix this function so that it doesn't have to split the data frame apart and then put it back together, avoid hard-coded column names
     def norm(self,ranges):
@@ -180,34 +204,36 @@ class spectral_data(object):
 
 
     #This function applies baseline removal to the data    
-    def remove_baseline(self,method='als',segment=True,params=None):
+    def remove_baseline(self,method='ALS',segment=True,params=None):
         wvls=np.array(self.df['wvl'].columns.values,dtype='float')
         spectra=np.array(self.df['wvl'],dtype='float')
         
        
         #set baseline removal object (br) to the specified method
-        if method is 'als':
+        if method == 'ALS':
             br=ALS()
-        if method is 'dietrich':
+        elif method == 'Dietrich':
             br=Dietrich()
-        if method is 'polyfit':
+        elif method == 'Polyfit':
             br=PolyFit()
-        if method is 'airpls':
+        elif method == 'AirPLS':
             br=AirPLS()
-        if method is 'fabc':
+        elif method == 'FABC':
             br=FABC()
-        if method is 'kk':
+        elif method == 'KK':
             br=KK()
-        if method is 'mario':
+        elif method == 'Mario':
             br=Mario()
-        if method is 'median':
+        elif method == 'Median':
             br=MedianFilter()
-        if method is 'rubberband':
+        elif method == 'Rubberband':
             br=Rubberband()
-        if method is 'ccam':
+        elif method == 'CCAM':
             br=ccam_br()
-        #if method is 'wavelet':
+        #if method == 'wavelet':
          #   br=Wavelet()
+        else:
+            print(method+' is not recognized!')
             
             
         #if parameters are provided, use them to set the parameters of br
@@ -262,6 +288,7 @@ class spectral_data(object):
             self.do_dim_red=PCA(*params,**kws)
         if method=='ICA':
             self.do_dim_red=FastICA(*params,**kws)
+        #TODO: Add ICA-JADE here
         if load_fit:
             self.do_dim_red=load_fit
         else:
@@ -308,16 +335,16 @@ class spectral_data(object):
             if np.abs(np.max(loadings[i-1,:]))<np.abs(np.min(loadings[i-1,:])): #flip the sign if necessary to look nicer
                 loadings[i-1,:]=loadings[i-1,:]*-1
                 scores[i-1,:]=scores[i-1,:]*-1
-            icacols.append(('ICA_JADE',i))
-            self.df[('ICA_JADE',i)]=scores[i-1,:].T
+            icacols.append(('ICA-JADE',i))
+            self.df[('ICA-JADE',i)]=scores[i-1,:].T
         self.ica_jade_loadings=loadings
         
         if corrcols:
             combined_cols=corrcols+icacols
             corrdf=self.df[combined_cols].corr().drop(icacols,1).drop(corrcols,0)
             ica_jade_ids=[]
-            for i in corrdf.loc['ICA_JADE'].index:
-                tmp=corrdf.loc[('ICA_JADE',i)]
+            for i in corrdf.loc['ICA-JADE'].index:
+                tmp=corrdf.loc[('ICA-JADE',i)]
                 match=tmp.values==np.max(tmp)
                 ica_jade_ids.append(corrcols[np.where(match)[0]][1]+' (r='+str(np.round(np.max(tmp),1))+')')
                 pass

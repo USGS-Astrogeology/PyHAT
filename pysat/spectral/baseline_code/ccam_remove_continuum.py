@@ -53,9 +53,9 @@ Translation to Python begun on Tue Nov 04 16:31:33 2014 by Ryan Anderson
 """
 import numpy
 import scipy
-import pysat.spectral.baseline_code.watrous
-import pysat.spectral.baseline_code.spl_init
-import pysat.spectral.baseline_code.spl_interp 
+import pysat.spectral.baseline_code.watrous as watrous
+import pysat.spectral.baseline_code.spl_init as spl_init
+import pysat.spectral.baseline_code.spl_interp as spl_interp
 from pysat.spectral.baseline_code.common import Baseline
 # import pywt <- this needs to be fixed, it doesn't exist in and outside pysat
      
@@ -64,7 +64,7 @@ def chemcam_continuum(x,sp,int_flag,lvmin=-9999):
     lv=int(numpy.log(n-1)/numpy.log(2))
     sp1=sp
     #sp1=scipy.signal.medfilt(sp1,kernel_size=9)
-    w=baseline_code.watrous.watrous(sp1,lv)
+    w=watrous.watrous(sp1,lv)
     lvmn=lv-1
     if lvmin != -9999:
         if lvmin<lv:
@@ -127,8 +127,8 @@ def chemcam_continuum(x,sp,int_flag,lvmin=-9999):
         #TODO: There are probably python spline interpolation functions that would give the same result
         #But for now, use the translated functions from IDL
         
-        y=baseline_code.spl_init.spl_init(x[i0],yi)
-        yf=baseline_code.spl_interp.spl_interp(x[i0],yi,y,x)
+        y=spl_init.spl_init(x[i0],yi)
+        yf=spl_interp.spl_interp(x[i0],yi,y,x)
         
         
         
