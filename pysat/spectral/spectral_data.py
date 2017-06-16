@@ -370,3 +370,18 @@ class spectral_data(object):
     def col_within_range(self,rangevals,col):
         mask=(self.df[('meta',col)]>rangevals[0])&(self.df[('meta',col)]<rangevals[1])
         return self.df.loc[mask]
+
+    def enumerate_duplicates(self,col):
+        rows = self.df[('meta', col)]
+        rows = rows.fillna('-')
+        rows = [str(x) for x in rows]
+        rows = np.array(rows)
+        unique_rows = np.unique(rows)
+        for i in unique_rows:
+            if i is not '-':
+                matchindex = np.where(rows == i)[0]
+                if len(matchindex) > 1:
+                    for n, ind in enumerate(rows[matchindex]):
+                        rows[matchindex[n]] = str(rows[matchindex[n]]) + '-' + str(n + 1)
+
+        self.df[('meta', col)] = rows
