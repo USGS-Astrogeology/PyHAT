@@ -1,14 +1,13 @@
+import numpy as np
 import pandas as pd
 import pvl
-import numpy as np
 
-from pysat.utils.utils import find_in_dict
 from pysat.spectral.spectra import Spectra
+from pysat.utils.utils import find_in_dict
 
 
-#TODO: The spectra should inhert from a SpectraABC, monkey patch smoothing in.
+# TODO: The spectra should inhert from a SpectraABC, monkey patch smoothing in.
 class Spectral_Profiler(object):
-
     """
     Attributes
     ----------
@@ -38,9 +37,9 @@ class Spectral_Profiler(object):
                   If True, mask the data based on the QA array.
         """
 
-        label_dtype_map = {'IEEE_REAL':'f',
-                        'MSB_INTEGER':'i',
-                        'MSB_UNSIGNED_INTEGER':'u'}
+        label_dtype_map = {'IEEE_REAL': 'f',
+                           'MSB_INTEGER': 'i',
+                           'MSB_UNSIGNED_INTEGER': 'u'}
 
         label = pvl.load(input_data)
         self.label = label
@@ -73,7 +72,7 @@ class Spectral_Profiler(object):
             self.ancillary_data = pd.DataFrame(d, columns=columns,
                                                index=np.arange(nrows))
 
-            assert(ncols == len(columns))
+            assert (ncols == len(columns))
 
             keys = []
             array_offsets = []
@@ -95,8 +94,8 @@ class Spectral_Profiler(object):
                 unit = d['UNIT']
                 lines = d['LINES']
                 scaling_factor = d['SCALING_FACTOR']
-                
-                arr = np.fromstring(indata.read(lines * 296*2), dtype='>H').astype(np.float64)
+
+                arr = np.fromstring(indata.read(lines * 296 * 2), dtype='>H').astype(np.float64)
                 arr = arr.reshape(lines, -1)
 
                 # If the data is scaled, apply the scaling factor
@@ -117,7 +116,7 @@ class Spectral_Profiler(object):
 
                 if cleaned:
                     self.spectra[i] = self.spectra[i][self.spectra[i]['QA'] < qa_threshold]
-            
+
                 self.spectra[i] = Spectra(self.spectra[i])
 
 

@@ -28,11 +28,11 @@ separation of real signals. Hopefully more ICA algorithms will be added in the
 future.
 """
 
-from sys import stdout 
-from numpy import abs, append, arange, arctan2, argsort, array, concatenate, \
-    cos, diag, dot, eye, float32, float64, matrix, multiply, ndarray, newaxis, \
-    sign, sin, sqrt, zeros
+from sys import stdout
+
 import numpy
+from numpy import abs, append, arange, arctan2, argsort, array, concatenate, \
+    cos, diag, dot, eye, float64, matrix, multiply, ndarray, sign, sin, sqrt, zeros
 from numpy.linalg import eig, pinv
 
 
@@ -99,52 +99,52 @@ def jadeR(X, m=None, verbose=True):
     Copyright original Matlab code : Jean-Francois Cardoso <cardoso@sig.enst.fr>
     Copyright Numpy translation : Gabriel Beckers <gabriel@gbeckers.nl>
     """
-    
+
     # GB: we do some checking of the input arguments and copy data to new
     # variables to avoid messing with the original input. We also require double
     # precision (float64) and a numpy matrix type for X.
-    
-    assert isinstance(X, ndarray),\
+
+    assert isinstance(X, ndarray), \
         "X (input data matrix) is of the wrong type (%s)" % type(X)
-    origtype = X.dtype # remember to return matrix B of the same type
+    origtype = X.dtype  # remember to return matrix B of the same type
     X = matrix(X.astype(float64))
     assert X.ndim == 2, "X has %d dimensions, should be 2" % X.ndim
     assert (verbose == True) or (verbose == False), \
         "verbose parameter should be either True or False"
 
-    [n,T] = X.shape # GB: n is number of input signals, T is number of samples
-    
-    if m==None:
-        m=n 	# Number of sources defaults to # of sensors
-    assert m<=n,\
-        "jade -> Do not ask more sources (%d) than sensors (%d )here!!!" % (m,n)
+    [n, T] = X.shape  # GB: n is number of input signals, T is number of samples
+
+    if m == None:
+        m = n  # Number of sources defaults to # of sensors
+    assert m <= n, \
+        "jade -> Do not ask more sources (%d) than sensors (%d )here!!!" % (m, n)
 
     if verbose:
-        print("jade -> Looking for "+str(m)+" sources")
+        print("jade -> Looking for " + str(m) + " sources")
         print("jade -> Removing the mean value")
     X -= X.mean(1)
-    
+
     # whitening & projection onto signal subspace
     # ===========================================
     if verbose:
         print("jade -> Whitening the data")
-    [D,U] = eig((X * X.T) / float(T)) # An eigen basis for the sample covariance matrix
+    [D, U] = eig((X * X.T) / float(T))  # An eigen basis for the sample covariance matrix
     k = D.argsort()
-    Ds = D[k] # Sort by increasing variances
-    PCs = arange(n-1, n-m-1, -1)    # The m most significant princip. comp. by decreasing variance
+    Ds = D[k]  # Sort by increasing variances
+    PCs = arange(n - 1, n - m - 1, -1)  # The m most significant princip. comp. by decreasing variance
 
     # --- PCA  ----------------------------------------------------------
-    B = U[:,k[PCs]].T    # % At this stage, B does the PCA on m components
-    
+    B = U[:, k[PCs]].T  # % At this stage, B does the PCA on m components
+
     # --- Scaling  ------------------------------------------------------
-    scales = sqrt(Ds[PCs]) # The scales of the principal components .
-    B = diag(1./scales) * B  # Now, B does PCA followed by a rescaling = sphering
-    #B[-1,:] = -B[-1,:] # GB: to make it compatible with octave
+    scales = sqrt(Ds[PCs])  # The scales of the principal components .
+    B = diag(1. / scales) * B  # Now, B does PCA followed by a rescaling = sphering
+    # B[-1,:] = -B[-1,:] # GB: to make it compatible with octave
     # --- Sphering ------------------------------------------------------
-    X = B * X # %% We have done the easy part: B is a whitening matrix and X is white.
-    
-    del U, D, Ds, k, PCs, scales 
-    
+    X = B * X  # %% We have done the easy part: B is a whitening matrix and X is white.
+
+    del U, D, Ds, k, PCs, scales
+
     # NOTE: At this stage, X is a PCA analysis in m components of the real data, except that
     # all its entries now have unit variance.  Any further rotation of X will preserve the
     # property that X is a vector of uncorrelated components.  It remains to find the
@@ -156,156 +156,155 @@ def jadeR(X, m=None, verbose=True):
     # This measure of independence also corresponds to the `diagonality" of a set of
     # cumulant matrices.  The code below finds the `missing rotation " as the matrix which
     # best diagonalizes a particular set of cumulant matrices.
-    
-    
+
+
     # Estimation of the cumulant matrices.
     # ====================================
     if verbose:
         print("jade -> Estimating cumulant matrices")
-    
+
     # Reshaping of the data, hoping to speed up things a little bit...
     X = X.T
-    dimsymm = (m * ( m + 1)) / 2	# Dim. of the space of real symm matrices
+    dimsymm = (m * (m + 1)) / 2  # Dim. of the space of real symm matrices
     nbcm = dimsymm  # number of cumulant matrices
-    CM = matrix(zeros([m,m*nbcm], dtype=float64)) # Storage for cumulant matrices
+    CM = matrix(zeros([m, m * nbcm], dtype=float64))  # Storage for cumulant matrices
     R = matrix(eye(m, dtype=float64))
-    Qij = matrix(zeros([m,m], dtype=float64)) # Temp for a cum. matrix
-    Xim	= zeros(m, dtype=float64) # Temp
-    Xijm = zeros(m, dtype=float64) # Temp
-    #Uns = numpy.ones([1,m], dtype=numpy.uint32)    # for convenience
+    Qij = matrix(zeros([m, m], dtype=float64))  # Temp for a cum. matrix
+    Xim = zeros(m, dtype=float64)  # Temp
+    Xijm = zeros(m, dtype=float64)  # Temp
+    # Uns = numpy.ones([1,m], dtype=numpy.uint32)    # for convenience
     # GB: we don't translate that one because NumPy doesn't need Tony's rule
-    
+
     # I am using a symmetry trick to save storage.  I should write a short note one of these
     # days explaining what is going on here.
-    Range = arange(m) # will index the columns of CM where to store the cum. mats.
-    
+    Range = arange(m)  # will index the columns of CM where to store the cum. mats.
+
     for im in range(m):
-        Xim = X[:,im]
+        Xim = X[:, im]
         Xijm = multiply(Xim, Xim)
         # Note to myself: the -R on next line can be removed: it does not affect
         # the joint diagonalization criterion
-        Qij = multiply(Xijm, X).T * X / float(T)\
-            - R - 2 * dot(R[:,im], R[:,im].T)
-        CM[:,Range] = Qij 
-        Range = Range  + m 
+        Qij = multiply(Xijm, X).T * X / float(T) \
+              - R - 2 * dot(R[:, im], R[:, im].T)
+        CM[:, Range] = Qij
+        Range = Range + m
         for jm in range(im):
-            Xijm = multiply(Xim, X[:,jm])
+            Xijm = multiply(Xim, X[:, jm])
             Qij = sqrt(2) * multiply(Xijm, X).T * X / float(T) \
-                - R[:,im] * R[:,jm].T - R[:,jm] * R[:,im].T
-            CM[:,Range]	= Qij
+                  - R[:, im] * R[:, jm].T - R[:, jm] * R[:, im].T
+            CM[:, Range] = Qij
             Range = Range + m
 
     # Now we have nbcm = m(m+1)/2 cumulants matrices stored in a big m x m*nbcm array.
-   
+
     V = matrix(eye(m, dtype=float64))
-        
+
     Diag = zeros(m, dtype=float64)
     On = 0.0
     Range = arange(m)
     for im in list(range(int(nbcm))):
-        Diag = diag(CM[:,Range])
-        On = On + (Diag*Diag).sum(axis=0)
+        Diag = diag(CM[:, Range])
+        On = On + (Diag * Diag).sum(axis=0)
         Range = Range + m
-    Off = (multiply(CM,CM).sum(axis=0)).sum(axis=0) - On
-    
-    seuil = 1.0e-6 / sqrt(T) # % A statistically scaled threshold on `small" angles
+    Off = (multiply(CM, CM).sum(axis=0)).sum(axis=0) - On
+
+    seuil = 1.0e-6 / sqrt(T)  # % A statistically scaled threshold on `small" angles
     encore = True
-    sweep = 0 # % sweep number
-    updates = 0 # % Total number of rotations
-    upds = 0 # % Number of rotations in a given seep
-    g = zeros([2,nbcm], dtype=float64)
-    gg = zeros([2,2], dtype=float64)
-    G = zeros([2,2], dtype=float64)
+    sweep = 0  # % sweep number
+    updates = 0  # % Total number of rotations
+    upds = 0  # % Number of rotations in a given seep
+    g = zeros([2, nbcm], dtype=float64)
+    gg = zeros([2, 2], dtype=float64)
+    G = zeros([2, 2], dtype=float64)
     c = 0
     s = 0
-    ton	= 0
+    ton = 0
     toff = 0
     theta = 0
     Gain = 0
-    
+
     # Joint diagonalization proper
-    
+
     if verbose:
         print("jade -> Contrast optimization by joint diagonalization")
-    
+
     while encore:
         encore = False
         if verbose:
             pass
         sweep = sweep + 1
-        upds  = 0
+        upds = 0
         Vkeep = V
-      
-        for p in range(m-1):
-            for q in range(p+1, m):
-                
-                Ip = numpy.array(arange(p, m*nbcm, m),dtype='int')
-                Iq = numpy.array(arange(q, m*nbcm, m),dtype='int')
-                
+
+        for p in range(m - 1):
+            for q in range(p + 1, m):
+
+                Ip = numpy.array(arange(p, m * nbcm, m), dtype='int')
+                Iq = numpy.array(arange(q, m * nbcm, m), dtype='int')
+
                 # computation of Givens angle
-                g = concatenate([CM[p,Ip] - CM[q,Iq], CM[p,Iq] + CM[q,Ip]])
+                g = concatenate([CM[p, Ip] - CM[q, Iq], CM[p, Iq] + CM[q, Ip]])
                 gg = dot(g, g.T)
-                ton = gg[0,0] - gg[1,1] 
-                toff = gg[0,1] + gg[1,0]
+                ton = gg[0, 0] - gg[1, 1]
+                toff = gg[0, 1] + gg[1, 0]
                 theta = 0.5 * arctan2(toff, ton + sqrt(ton * ton + toff * toff))
                 Gain = (sqrt(ton * ton + toff * toff) - ton) / 4.0
-                
+
                 # Givens update
                 if abs(theta) > seuil:
                     encore = True
                     upds = upds + 1
-                    c = cos(theta) 
+                    c = cos(theta)
                     s = sin(theta)
-                    G = matrix([[c, -s] , [s, c] ])
-                    pair = array([p,q])
-                    V[:,pair] = V[:,pair] * G
-                    CM[pair,:] = G.T * CM[pair,:]
-                    CM[:,concatenate([Ip,Iq])] = \
-                        append( c*CM[:,Ip]+s*CM[:,Iq], -s*CM[:,Ip]+c*CM[:,Iq], \
+                    G = matrix([[c, -s], [s, c]])
+                    pair = array([p, q])
+                    V[:, pair] = V[:, pair] * G
+                    CM[pair, :] = G.T * CM[pair, :]
+                    CM[:, concatenate([Ip, Iq])] = \
+                        append(c * CM[:, Ip] + s * CM[:, Iq], -s * CM[:, Ip] + c * CM[:, Iq], \
                                axis=1)
                     On = On + Gain
                     Off = Off - Gain
-                    
+
         if verbose:
             print >> stdout, "completed in %d rotations" % upds
         updates = updates + upds
     if verbose:
         print >> stdout, "jade -> Total of %d Givens rotations" % updates
-    
+
     # A separating matrix
     # ===================
-    
+
     B = V.T * B
-    
+
     # Permute the rows of the separating matrix B to get the most energetic components first.
     # Here the **signals** are normalized to unit variance.  Therefore, the sort is
     # according to the norm of the columns of A = pinv(B)
 
     if verbose:
         print >> stdout, "jade -> Sorting the components"
-    
+
     A = pinv(B)
-    keys =  array(argsort(multiply(A,A).sum(axis=0)[0]))[0]
-    B = B[keys,:]
-    B = B[::-1,:]     # % Is this smart ?
-    
-    
+    keys = array(argsort(multiply(A, A).sum(axis=0)[0]))[0]
+    B = B[keys, :]
+    B = B[::-1, :]  # % Is this smart ?
+
     if verbose:
         print >> stdout, "jade -> Fixing the signs"
-    b	= B[:,0]
-    signs = array(sign(sign(b)+0.1).T)[0] # just a trick to deal with sign=0
+    b = B[:, 0]
+    signs = array(sign(sign(b) + 0.1).T)[0]  # just a trick to deal with sign=0
     B = diag(signs) * B
-    
+
     return B.astype(origtype)
-    
-    
+
+
     # Revision history of MATLAB code:
     #
-    #- V1.8, May 2005
+    # - V1.8, May 2005
     #  - Added some commented code to explain the cumulant computation tricks.
     #  - Added reference to the Neural Comp. paper.
     #
-    #-  V1.7, Nov. 16, 2002
+    # -  V1.7, Nov. 16, 2002
     #   - Reverted the mean removal code to an earlier version (not using 
     #     repmat) to keep the code octave-compatible.  Now less efficient,
     #     but does not make any significant difference wrt the total 
@@ -314,35 +313,35 @@ def jadeR(X, m=None, verbose=True):
     #     was this stuff doing there???)
     #
     #
-    #-  V1.6, Feb. 24, 1997 
+    # -  V1.6, Feb. 24, 1997
     #   - Mean removal is better implemented.
     #   - Transposing X before computing the cumulants: small speed-up
     #   - Still more comments to emphasize the relationship to PCA
     #
-    #-  V1.5, Dec. 24 1997 
+    # -  V1.5, Dec. 24 1997
     #   - The sign of each row of B is determined by letting the first element be positive.
     #
-    #-  V1.4, Dec. 23 1997 
+    # -  V1.4, Dec. 23 1997
     #   - Minor clean up.
     #   - Added a verbose switch
     #   - Added the sorting of the rows of B in order to fix in some reasonable way the
     #     permutation indetermination.  See note 2) below.
     #
-    #-  V1.3, Nov.  2 1997 
+    # -  V1.3, Nov.  2 1997
     #   - Some clean up.  Released in the public domain.
     #
-    #-  V1.2, Oct.  5 1997 
+    # -  V1.2, Oct.  5 1997
     #   - Changed random picking of the cumulant matrix used for initialization to a
     #     deterministic choice.  This is not because of a better rationale but to make the
     #     ouput (almost surely) deterministic.
     #   - Rewrote the joint diag. to take more advantage of Matlab"s tricks.
     #   - Created more dummy variables to combat Matlab"s loose memory management.
     #
-    #-  V1.1, Oct. 29 1997.
+    # -  V1.1, Oct. 29 1997.
     #    Made the estimation of the cumulant matrices more regular. This also corrects a
     #    buglet...
     #
-    #-  V1.0, Sept. 9 1997. Created.
+    # -  V1.0, Sept. 9 1997. Created.
     #
     # Main references:
     # @article{CS-iee-94,
@@ -353,7 +352,7 @@ def jadeR(X, m=None, verbose=True):
     #  month = dec, number = 6, pages = {362-370}, volume = 140, year = 1993}
     #
     #
-    #@article{JADE:NC,
+    # @article{JADE:NC,
     #  author  = "Jean-Fran\c{c}ois Cardoso",
     #  journal = "Neural Computation",
     #  title   = "High-order contrasts for independent component analysis",
@@ -411,7 +410,7 @@ def jadeR(X, m=None, verbose=True):
     #  Here `large' depends mainly on the available memory and could be something like 40 or
     #  so.  One of these days, I will prepare a version of JADE taking the `data' option
     #  rather than the `statistic' option.
-    
+
     # Notes on translation (GB):
     # =========================
     #
