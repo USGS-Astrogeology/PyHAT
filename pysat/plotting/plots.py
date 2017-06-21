@@ -18,7 +18,7 @@ def cmaps():
 
 def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference (wt.%)',ytitle='Prediction (wt.%)',title=None,
                 lbl='',one_to_one=False,rmse=True,dpi=1000,color=None,annot_mask=None,cmap=None,colortitle='',
-              loadfig=None,masklabel='',marker='o',linestyle='None',hline=None,hlinelabel=None,hlinestyle='--',yzero=False,linewidth=1.0):
+              loadfig=None,masklabel='',marker='o',linestyle='None',hline=None,hlinelabel=None,hlinestyle='--',yzero=False,linewidth=1.0,vlines=None):
     if loadfig is not None:
         fig=loadfig
         axes=fig.gca()
@@ -42,6 +42,9 @@ def make_plot(x,y,figpath,figfile=None,xrange=None,yrange=None,xtitle='Reference
             axes.set_ylim(yrange)
     if hline:
         axes.axhline(hline,color='k',label=hlinelabel,linestyle=hlinestyle)
+    if vlines:
+        for x in vlines:
+            axes.axvline(x,color='k',linestyle='--')
     if one_to_one:
         axes.plot([0, 100], [0, 100],color='k')
         if rmse:
@@ -73,19 +76,19 @@ def pca_ica_plot(data,x_component,y_component,colorvar=None,cmap='viridis',metho
     x=[data.df[(method,x_component)]]
     y=[data.df[(method,y_component)]]
     if method=='PCA':
-        x_loading=data.do_dim_red.components_[x_component,:]
-        y_loading=data.do_dim_red.components_[y_component,:]
+        x_loading=data.do_dim_red.components_[int(x_component)-1,:]
+        y_loading=data.do_dim_red.components_[int(y_component)-1,:]
         
-        x_variance=data.do_dim_red.explained_variance_ratio_[x_component]*100
-        y_variance=data.do_dim_red.explained_variance_ratio_[y_component]*100
-        x_label='PC '+str(x_component)+' ('+str(round(x_variance,1))+r'%)'       
-        y_label='PC '+str(y_component)+' ('+str(round(y_variance,1))+r'%)'       
+        x_variance=data.do_dim_red.explained_variance_ratio_[int(x_component)-1]*100
+        y_variance=data.do_dim_red.explained_variance_ratio_[int(y_component)-1]*100
+        x_label='PC '+x_component+' ('+str(round(x_variance,1))+r'%)'
+        y_label='PC '+y_component+' ('+str(round(y_variance,1))+r'%)'
         
-    if method=='ICA_JADE':
-        x_loading=data.ica_jade_loadings[x_component,:].T
-        y_loading=data.ica_jade_loadings[y_component,:].T
-        x_label='Source '+str(x_component)  
-        y_label='Source '+str(y_component)       
+    if method=='ICA-JADE':
+        x_loading=data.do_dim_red.ica_jade_loadings[int(x_component)-1,:].T
+        y_loading=data.ica_jade_loadings[int(y_component)-1,:].T
+        x_label='Source '+x_component
+        y_label='Source '+y_component
         
     #set up the subplots
     fig=plot.figure()
@@ -98,15 +101,19 @@ def pca_ica_plot(data,x_component,y_component,colorvar=None,cmap='viridis',metho
     ax1.set_ylabel(y_label)
     
     if colorvar:
-        mappable=ax1.scatter(x,y,c=data.df[colorvar],cmap=cmap,linewidth=0.2,edgecolor='Black')
-        fig.colorbar(mappable,label=colorvar[1],ax=ax1)    
+        try:
+            mappable=ax1.scatter(x,y,c=data.df[('comp',colorvar)],cmap=cmap,linewidth=0.2,edgecolor='Black')
+        except:
+            mappable = ax1.scatter(x, y, c=data.df[('meta', colorvar)], cmap=cmap, linewidth=0.2, edgecolor='Black')
+            #TODO: handle any top-level label for colorval, not just comp or meta
+        fig.colorbar(mappable,label=colorvar,ax=ax1)
     else:
         ax1.scatter(x,y,linewidth=0.2,edgecolor='Black')
 
     #plot the loadings
     wvls=data.df['wvl'].columns.values
-    ax2.plot(wvls,x_loading)
-    ax3.plot(wvls,y_loading)
+    ax2.plot(wvls,x_loading,linewidth=0.5)
+    ax3.plot(wvls,y_loading,linewidth=0.5)
     
     ax2.set_yticklabels([])
     ax2.set_xticklabels([])
