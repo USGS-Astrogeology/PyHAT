@@ -34,7 +34,7 @@ muv.columns=pd.MultiIndex.from_tuples(colnames)
 muv=spectral_data(muv)
 muv2=spectral_data(muv)
 muv.remove_baseline(method='ccam',params={'int_flag_':2,'lvmin_':6,'lv_':10})
-muv2.remove_baseline(method='wavelet',params=)
+# muv2.remove_baseline(method='wavelet',params=) # this was causing setup.py to crash, it has been commented out
 #muv_denoise,muv_noise=ccam_denoise.ccam_denoise(muv,sig=3,niter=4)
 #plot.figure()
 #plot.plot(muv_noise)

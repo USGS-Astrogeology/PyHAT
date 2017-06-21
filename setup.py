@@ -32,7 +32,7 @@ setup(
         'pandas',
         'pickle',
         'pvl',
-        'PyQt4',
+        'PyQt5',
         'pysat',
         'pywt',
         'scipy',
