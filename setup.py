@@ -67,5 +67,5 @@ setup(
         'pysat.spectral.tests',
         'pysat.utils',
         'pysat.utils.tests'
-    ),
+    ), install_requires=['pandas', 'numpy', 'scipy', 'pvl', 'matplotlib', 'sklearn']
 )

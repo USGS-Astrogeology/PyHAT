@@ -31,8 +31,7 @@ future.
 from sys import stdout
 
 import numpy
-from numpy import abs, append, arange, arctan2, argsort, array, concatenate, \
-    cos, diag, dot, eye, float64, matrix, multiply, ndarray, sign, sin, sqrt, zeros
+from numpy import *
 from numpy.linalg import eig, pinv
 
 
