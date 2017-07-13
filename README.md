@@ -1,8 +1,9 @@
 [![Build Status](https://travis-ci.org/USGS-Astrogeology/PySAT.svg?branch=master)](https://travis-ci.org/USGS-Astrogeology/PySAT)
 [![Coverage Status](https://coveralls.io/repos/github/USGS-Astrogeology/PySAT/badge.svg?branch=master)](https://coveralls.io/github/USGS-Astrogeology/PySAT?branch=master)
+[![Join the chat at https://gitter.im/USGS-Astrogeology/PySAT](https://badges.gitter.im/USGS-Astrogeology/PySAT.svg)](https://gitter.im/USGS-Astrogeology/PySAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 # Installation
 
-[![Join the chat at https://gitter.im/USGS-Astrogeology/PySAT](https://badges.gitter.im/USGS-Astrogeology/PySAT.svg)](https://gitter.im/USGS-Astrogeology/PySAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
   - Install [Anaconda Python](https://www.continuum.io/downloads).  Be sure to get Python 3.x
   - Download or clone this repository
@@ -12,4 +13,5 @@
 # Demo
 
   - Execute the `jupyter notebook` that will open a new browser tab with the Jupyter homepage.
-  - Launch (click) the `Kaguya_Spectral_Profiler.ipynb` notebook.
+  - Launch (click) the `Kaguya_Spectral_Profiler.ipynb` notebook.
+
