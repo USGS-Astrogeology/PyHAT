@@ -99,6 +99,49 @@ class spectral_data(object):
         else:
             print('Vector is not the same size as the spectra!')
 
+    def peak_area(self,peaks_mins_file=None):
+        df=self.df #create a copy of the data
+        wvls = df['wvl'].columns.values  # get the wavelengths
+
+        if peaks_mins_file is not None:
+            peaks_mins = pd.read_csv(peaks_mins_file, sep=',')
+            peaks = peaks_mins['peaks']
+            mins = peaks_mins['mins']
+
+        else:
+            ave_spect=np.average(np.array(df['wvl']),axis=0)  #find the average of the spectra in the data frame
+            peaks = wvls[sp.signal.argrelextrema(ave_spect, np.greater_equal)[0]]  #find the maxima in the average spectrum
+            mins = wvls[sp.signal.argrelextrema(ave_spect, np.less_equal)[0]]  #find the maxima in the average spectrum
+            foo=pd.DataFrame(peaks)
+            foo.to_csv('peaks.csv')
+            foo=pd.DataFrame(mins)
+            foo.to_csv('mins.csv')
+
+        wvls=df['wvl'].columns.values  #get the wavelengths
+
+        import time
+        spectra=np.array(df['wvl'])
+        for i in range(len(peaks)):
+
+            # get the wavelengths between two minima
+            try:
+                low=mins[np.where(mins < peaks[i])[0][-1]]
+            except:
+                low=mins[0]
+
+            try:
+                high = mins[np.where(mins > peaks[i])[0][0]]
+            except:
+                high=mins[-1]
+
+            peak_indices = np.all((wvls>low,wvls<high),axis=0)
+            #plot.plot(wvls,ave_spect)
+            #plot.plot(wvls[peak_indices],ave_spect[peak_indices])
+            #plot.show()
+            df[('peak_area',peaks[i])]=spectra[:,peak_indices].sum(axis=1)
+
+        self.df=df
+
     #This function divides the data up into a specified number of random folds    
     def random_folds(self,nfolds=5,seed=10,groupby=None):
         self.df[('meta','Folds')]=np.nan #Create an entry in the data frame that holds the folds
