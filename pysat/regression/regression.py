@@ -151,6 +151,8 @@ class regression:
             params_temp.pop('n_components')
             self.model = GaussianProcess(**params_temp)
             # TODO: Why doesn't this if statement work correctly?
+            # TODO: This if statement doesn't work because ransacparams is empty
+            # < class 'list'>: [{}]
             #        if bool(ransacparams[i]):
             #            print('RANSAC')
             #            self.model=RANSAC(self.model,**ransacparams[i])
