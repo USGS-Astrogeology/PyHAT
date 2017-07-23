@@ -186,8 +186,9 @@ class regression:
             # if self.method[i]=='PLS' and self.ransac==False:
             #    self.calc_Qres_Lev(x)
             self.goodfit = True
-        except:
+        except Exception as e:
             print('There was a problem with training the model!')
+            print(e)
             self.goodfit = False  # This can happen for GP when dimensionality is reduced too much. Use try/except to handle these cases.
 
     def predict(self, x, i=0):
