@@ -204,90 +204,157 @@ class regression:
 
 
 def test_PLS():
-    regress = regression(method={'PLS'}, yrange={}, params={'n_components': 0, 'scale': False}, ransacparams={})
+    regress = regression(method={'PLS'}, yrange={}, params=[{'n_components': 0,
+                                                             'scale': False}], ransacparams={})
 
 
 def test_GP():
     regress = regression(method={'GP'}, yrange={},
-                         params={'reduce_dim': 'PCA', 'n_components': 0, 'random_start': 1, 'theta0': 1.0,
-                                 'thetaL': 0.1, 'thetaU': 100.0}, ransacparams={})
+                         params=[{'reduce_dim': 'PCA',
+                                  'n_components': 0,
+                                  'random_start': 1,
+                                  'theta0': 1.0,
+                                  'thetaL': 0.1,
+                                  'thetaU': 100.0}], ransacparams={})
 
 
 def test_OLS():
-    regress = regression(method={'OLS'}, yrange={}, params={'fit_intercept': True}, ransacparams={})
+    regress = regression(method={'OLS'}, yrange={}, params=[{'fit_intercept': True}], ransacparams={})
 
 
 def test_OMP():
-    regress = regression(method={'OMP'}, yrange={}, params={'fit_intercept': True, 'n_nonzero_coefs': 615, 'CV': True},
+    regress = regression(method={'OMP'}, yrange={}, params=[{'fit_intercept': True,
+                                                             'n_nonzero_coefs': 615,
+                                                             'CV': True}],
                          ransacparams={})
 
 
 def test_Lasso():
     regress = regression(method={'Lasso'}, yrange={},
-                         params={'alpha': 1.0, 'fit_intercept': True, 'max_iter': 1000, 'tol': 0.0001,
-                                 'positive': False, 'selection': 'random', 'CV': True}, ransacparams={})
+                         params=[{'alpha': 1.0,
+                                  'fit_intercept': True,
+                                  'max_iter': 1000,
+                                  'tol': 0.0001,
+                                  'positive': False,
+                                  'selection': 'random',
+                                  'CV': True}], ransacparams={})
 
 
 def test_Elastic_Net():
     regress = regression(method={'Elastic Net'}, yrange={},
-                         params={'alpha': 1.0, 'l1_ratio': 0.5, 'fit_intercept': True, 'normalize': False,
-                                 'precompute': 'False', 'max_iter': 1000, 'copy_X': True, 'tol': 0.0001,
-                                 'warm_start': False, 'positive': False, 'selection': 'cyclic', 'random_state': 'None'},
+                         params=[{'alpha': 1.0,
+                                  'l1_ratio': 0.5,
+                                  'fit_intercept': True,
+                                  'normalize': False,
+                                  'precompute': 'False',
+                                  'max_iter': 1000,
+                                  'copy_X': True,
+                                  'tol': 0.0001,
+                                  'warm_start': False,
+                                  'positive': False,
+                                  'selection': 'cyclic',
+                                  'random_state': 'None'}],
                          ransacparams={})
 
 
 def test_Ridge():
     regress = regression(method={'Ridge'}, yrange={},
-                         params={'alpha': 1.0, 'copy_X': True, 'fit_intercept': True, 'max_iter': 'None',
-                                 'normalize': False, 'solver': 'auto', 'tol': 0.0, 'random_state': ''}, ransacparams={})
+                         params=[{'alpha': 1.0,
+                                  'copy_X': True,
+                                  'fit_intercept': True,
+                                  'max_iter': 'None',
+                                  'normalize': False,
+                                  'solver': 'auto',
+                                  'tol': 0.0,
+                                  'random_state': ''}],
+                         ransacparams={})
 
 
 def test_Bayesian_Ridge():
     regress = regression(method={'Bayesian Ridge'}, yrange={},
-                         params={'n_iter': 300, 'tol': 0.001, 'alpha_1': 0.001, 'alpha_2': 1e-06, 'lambda_1': 1e-06,
-                                 'lambda_2': 1e-06, 'compute_score': False, 'fit_intercept': True, 'normalize': False,
-                                 'copy_X': True, 'verbose': False}, ransacparams={})
+                         params=[{'n_iter': 300,
+                                  'tol': 0.001,
+                                  'alpha_1': 0.001,
+                                  'alpha_2': 1e-06,
+                                  'lambda_1': 1e-06,
+                                  'lambda_2': 1e-06,
+                                  'compute_score': False,
+                                  'fit_intercept': True,
+                                  'normalize': False,
+                                  'copy_X': True,
+                                  'verbose': False}], ransacparams={})
 
 
 def test_ARD():
     regress = regression(method={'ARD'}, yrange={},
-                         params={'n_iter': 300, 'tol': 0.001, 'alpha_1': 0.001, 'alpha_2': 1e-06, 'lambda_1': 1e-06,
-                                 'lambda_2': 1e-06, 'compute_score': False, 'threshold_lambda': 100000,
-                                 'fit_intercept': True, 'normalize': False, 'copy_X': True, 'verbose': False},
+                         params=[{'n_iter': 300,
+                                  'tol': 0.001,
+                                  'alpha_1': 0.001,
+                                  'alpha_2': 1e-06,
+                                  'lambda_1': 1e-06,
+                                  'lambda_2': 1e-06,
+                                  'compute_score': False,
+                                  'threshold_lambda': 100000,
+                                  'fit_intercept': True,
+                                  'normalize': False,
+                                  'copy_X': True,
+                                  'verbose': False}],
                          ransacparams={})
 
 
 def test_LARS():
     regress = regression(method={'LARS'}, yrange={},
-                         params={'n_nonzero_coefs': 500, 'fit_intercept': True, 'positive': False, 'verbose': False,
-                                 'normalize': False, 'precompute': True, 'copy_X': True, 'eps': 2.220445,
-                                 'fit_path': True}, ransacparams={})
+                         params=[{'n_nonzero_coefs': 500,
+                                  'fit_intercept': True,
+                                  'positive': False,
+                                  'verbose': False,
+                                  'normalize': False,
+                                  'precompute': True,
+                                  'copy_X': True,
+                                  'eps': 2.220445,
+                                  'fit_path': True}], ransacparams={})
 
 
 def test_Lasso_LARS():
     regress = regression(method={'Lasso LARS'}, yrange={},
-                         params={'alpha': 0.0, 'fit_intercept': True, 'positive': False, 'verbose': False,
-                                 'normalize': True, 'copy_X': True, 'precompute': 'Auto', 'max_iter': 500,
-                                 'eps': 2.220446, 'fit_path': True}, ransacparams={})
+                         params=[{'alpha': 0.0,
+                                  'fit_intercept': True,
+                                  'positive': False,
+                                  'verbose': False,
+                                  'normalize': True,
+                                  'copy_X': True,
+                                  'precompute': 'Auto',
+                                  'max_iter': 500,
+                                  'eps': 2.220446,
+                                  'fit_path': True}], ransacparams={})
 
 
 def test_SVR():
-    regress = regression(method={'SVR'}, yrange={}, params={
-        'regression_choosealg_values': ['Choose an algorithm', 'PLS', 'GP', 'OLS', 'OMP', 'Lasso', 'Elastic Net',
+    regress = regression(method={'SVR'}, yrange={}, params=[{
+        'regression_choosealg_values': ['Choose an algorithm', 'PLS', 'GP', 'OLS', 'OMP', 'Lasso',
+                                        'Elastic Net',
                                         'Ridge', 'Bayesian Ridge', 'ARD', 'LARS', 'Lasso LARS', 'SVR', 'KRR',
                                         'More to come...'], 'regression_choosealg_index': 12,
-        'regression_choosealg_label': '', 'regression_choosedata_values': ['asdf'], 'regression_choosedata_index': 0,
-        'regression_train_choosedata_label': 'Choose data:', 'regression_train_choosex_values': ['comp', 'meta', 'wvl'],
+        'regression_choosealg_label': '', 'regression_choosedata_values': ['asdf'],
+        'regression_choosedata_index': 0,
+        'regression_train_choosedata_label': 'Choose data:',
+        'regression_train_choosex_values': ['comp', 'meta', 'wvl'],
         'regression_train_choosex_index': ['wvl'], 'regression_train_choosex_label': 'X variable:',
-        'regression_train_choosey_values': ['SiO2', 'TiO2', 'Al2O3', 'FeOT', 'MnO', 'MgO', 'CaO', 'Na2O', 'K2O'],
+        'regression_train_choosey_values': ['SiO2', 'TiO2', 'Al2O3', 'FeOT', 'MnO', 'MgO', 'CaO', 'Na2O',
+                                            'K2O'],
         'regression_train_choosey_index': ['SiO2'], 'regression_train_choosey_label': 'Y variable:',
-        'yvarmax_label': 'Max:', 'yvarmax_spin': 100.0, 'yvarmin_label': 'Min:', 'yvarmin_spin': 0.0}, ransacparams={})
+        'yvarmax_label': 'Max:', 'yvarmax_spin': 100.0, 'yvarmin_label': 'Min:',
+        'yvarmin_spin': 0.0}], ransacparams={})
 
 
 def test_KRR():
     regress = regression(method={'KRR'}, yrange={},
-                         params={'alpha': 0, 'kernel': 'linear', 'gamma': 'None', 'degree': 3.0, 'coef0': 1.0,
-                                 'kernel_params': 'None'}, ransacparams={})
+                         params=[{'alpha': 0,
+                                  'kernel': 'linear',
+                                  'gamma': 'None',
+                                  'degree': 3.0,
+                                  'coef0': 1.0,
+                                  'kernel_params': 'None'}], ransacparams={})
 
 
 test_PLS()
