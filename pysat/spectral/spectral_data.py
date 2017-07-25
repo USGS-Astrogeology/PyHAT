@@ -112,10 +112,7 @@ class spectral_data(object):
             ave_spect=np.average(np.array(df['wvl']),axis=0)  #find the average of the spectra in the data frame
             peaks = wvls[sp.signal.argrelextrema(ave_spect, np.greater_equal)[0]]  #find the maxima in the average spectrum
             mins = wvls[sp.signal.argrelextrema(ave_spect, np.less_equal)[0]]  #find the maxima in the average spectrum
-            tmp=pd.DataFrame(peaks)
-            tmp.to_csv('peaks.csv')
-            tmp=pd.DataFrame(mins)
-            tmp.to_csv('mins.csv')
+
 
         wvls=df['wvl'].columns.values  #get the wavelengths
 
@@ -141,6 +138,7 @@ class spectral_data(object):
             df[('peak_area',peaks[i])]=spectra[:,peak_indices].sum(axis=1)
 
         self.df=df
+        return peaks,mins
 
     #This function divides the data up into a specified number of random folds    
     def random_folds(self,nfolds=5,seed=10,groupby=None):
