@@ -68,15 +68,15 @@ class spectral_data(object):
         self.df=new_df
         
     #This function masks out specified ranges of the data
-    def mask(self,maskfile):
-        df_spectra=self.df['wvl'] #extract just the spectra from the data frame
-        metadata_cols=self.df.columns.levels[0]!='wvl'  #extract just the metadata
+    def mask(self,maskfile,maskvar='wvl'):
+        df_spectra=self.df[maskvar] #extract just the spectra from the data frame
+        metadata_cols=self.df.columns.levels[0]!=maskvar  #extract just the metadata
         metadata=self.df[self.df.columns.levels[0][metadata_cols]]
         
         mask = pd.read_csv(maskfile, sep=',')  #read the mask file
         tmp=[]
         for i in mask.index:
-            tmp.append((np.array(self.df['wvl'].columns,dtype='float')>=mask.ix[i,'min_wvl'])&(np.array(self.df['wvl'].columns,dtype='float')<=mask.ix[i,'max_wvl']))
+            tmp.append((np.array(self.df[maskvar].columns,dtype='float')>=mask.ix[i,'min_wvl'])&(np.array(self.df[maskvar].columns,dtype='float')<=mask.ix[i,'max_wvl']))
     
         #combine the indexes for each range in the mask file into a single masking vector and use that to mask the spectra
         masked=np.any(np.array(tmp),axis=0)
@@ -85,7 +85,7 @@ class spectral_data(object):
             if j==True:
                 spectcols[i]=('masked',spectcols[i])
             else:
-                spectcols[i]=('wvl',spectcols[i])
+                spectcols[i]=(maskvar,spectcols[i])
         df_spectra.columns=pd.MultiIndex.from_tuples(spectcols) #assign the multiindex columns based on the new tuples
         self.df=pd.concat([df_spectra,metadata],axis=1) #merge the masked spectra back with the metadata
 
