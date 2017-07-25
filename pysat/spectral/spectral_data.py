@@ -68,15 +68,15 @@ class spectral_data(object):
         self.df=new_df
         
     #This function masks out specified ranges of the data
-    def mask(self,maskfile):
-        df_spectra=self.df['wvl'] #extract just the spectra from the data frame
-        metadata_cols=self.df.columns.levels[0]!='wvl'  #extract just the metadata
+    def mask(self,maskfile,maskvar='wvl'):
+        df_spectra=self.df[maskvar] #extract just the spectra from the data frame
+        metadata_cols=self.df.columns.levels[0]!=maskvar  #extract just the metadata
         metadata=self.df[self.df.columns.levels[0][metadata_cols]]
         
         mask = pd.read_csv(maskfile, sep=',')  #read the mask file
         tmp=[]
         for i in mask.index:
-            tmp.append((np.array(self.df['wvl'].columns,dtype='float')>=mask.ix[i,'min_wvl'])&(np.array(self.df['wvl'].columns,dtype='float')<=mask.ix[i,'max_wvl']))
+            tmp.append((np.array(self.df[maskvar].columns,dtype='float')>=mask.ix[i,'min_wvl'])&(np.array(self.df[maskvar].columns,dtype='float')<=mask.ix[i,'max_wvl']))
     
         #combine the indexes for each range in the mask file into a single masking vector and use that to mask the spectra
         masked=np.any(np.array(tmp),axis=0)
@@ -85,7 +85,7 @@ class spectral_data(object):
             if j==True:
                 spectcols[i]=('masked',spectcols[i])
             else:
-                spectcols[i]=('wvl',spectcols[i])
+                spectcols[i]=(maskvar,spectcols[i])
         df_spectra.columns=pd.MultiIndex.from_tuples(spectcols) #assign the multiindex columns based on the new tuples
         self.df=pd.concat([df_spectra,metadata],axis=1) #merge the masked spectra back with the metadata
 
@@ -98,6 +98,49 @@ class spectral_data(object):
             self.df['wvl']=df_spectra.multiply(vector,axis=1)
         else:
             print('Vector is not the same size as the spectra!')
+
+    def peak_area(self,peaks_mins_file=None):
+        df=self.df #create a copy of the data
+        wvls = df['wvl'].columns.values  # get the wavelengths
+
+        if peaks_mins_file is not None:
+            peaks_mins = pd.read_csv(peaks_mins_file, sep=',')
+            peaks = peaks_mins['peaks']
+            mins = peaks_mins['mins']
+            pass
+        else:
+            ave_spect=np.average(np.array(df['wvl']),axis=0)  #find the average of the spectra in the data frame
+            peaks = wvls[sp.signal.argrelextrema(ave_spect, np.greater_equal)[0]]  #find the maxima in the average spectrum
+            mins = wvls[sp.signal.argrelextrema(ave_spect, np.less_equal)[0]]  #find the maxima in the average spectrum
+            tmp=pd.DataFrame(peaks)
+            tmp.to_csv('peaks.csv')
+            tmp=pd.DataFrame(mins)
+            tmp.to_csv('mins.csv')
+
+        wvls=df['wvl'].columns.values  #get the wavelengths
+
+        import time
+        spectra=np.array(df['wvl'])
+        for i in range(len(peaks)):
+
+            # get the wavelengths between two minima
+            try:
+                low=mins[np.where(mins < peaks[i])[0][-1]]
+            except:
+                low=mins[0]
+
+            try:
+                high = mins[np.where(mins > peaks[i])[0][0]]
+            except:
+                high=mins[-1]
+
+            peak_indices = np.all((wvls>low,wvls<high),axis=0)
+            #plot.plot(wvls,ave_spect)
+            #plot.plot(wvls[peak_indices],ave_spect[peak_indices])
+            #plot.show()
+            df[('peak_area',peaks[i])]=spectra[:,peak_indices].sum(axis=1)
+
+        self.df=df
 
     #This function divides the data up into a specified number of random folds    
     def random_folds(self,nfolds=5,seed=10,groupby=None):
@@ -148,7 +191,7 @@ class spectral_data(object):
                     
         #sort by index to return the df to its original order
         self.df.sort_index(inplace=True)
-        self.folds_hist(sortby,50)
+        #self.folds_hist(sortby,50)
 
     def folds_hist(self,col_to_plot,nbins,xlabel='wt.%',ylabel='# of spectra'):
         folds_uniq=np.unique(self.df[('meta','Folds')])
@@ -164,56 +207,40 @@ class spectral_data(object):
             fig.savefig('hist_fold_'+str(f)+'_'+col_to_plot[1]+'.png')
             plot.close()
     #This function normalizes specified ranges of the data by their respective sums  
-        #TODO: Fix this function so that it doesn't have to split the data frame apart and then put it back together, avoid hard-coded column names
-    def norm(self,ranges):
-        #TODO: Handle any top-level column names. Currently have a bunch of hacky try-excepts to handle the case where certain col names are missing
-        df_spect=self.df['wvl']
-        try:
-            df_meta=self.df['meta']
-        except:
-            df_meta=None
-        try:
-            df_comp=self.df['comp']
-        except:
-            df_comp=None
-        wvls=df_spect.columns.values
+    def norm(self,ranges,col_var='wvl'):
+        df_tonorm=self.df[col_var]
+        top_level_cols=self.df.columns.levels[0]
+        top_level_cols=top_level_cols[top_level_cols!=col_var]
+        df_other=self.df[top_level_cols]
+        cols=df_tonorm.columns.values
+
         df_sub_norm=[]
         allind=[]    
         for i in ranges:
             #Find the indices for the range
-            ind=(np.array(wvls,dtype='float')>=i[0])&(np.array(wvls,dtype='float')<=i[1])
+            ind=(np.array(cols,dtype='float')>=i[0])&(np.array(cols,dtype='float')<=i[1])
             #find the columns for the range
-            cols=wvls[ind]
+            normcols=cols[ind]
             #keep track of the indices used for all ranges
             allind.append(ind)
-            #add the subset of the full df to a list of dfs to normalize
-            df_sub_norm.append(norm_total(df_spect[cols]))
-        
+            #normalize over the current range
+            df_sub_norm.append(norm_total(df_tonorm[normcols]))
+
         #collapse the list of indices used to a single array
         allind=np.sum(allind,axis=0)
-        #identify wavelengths that were not used by where the allind array is less than 1
-        wvls_excluded=wvls[np.where(allind<1)]
+        #identify columns that were not used by where the allind array is less than 1
+        cols_excluded=cols[np.where(allind<1)]
         #create a separate data frame containing the un-normalized columns
-        df_excluded=df_spect[wvls_excluded]
-        
+        df_masked=df_tonorm[cols_excluded]
         #combine the normalized data frames into one
         df_norm=pd.concat(df_sub_norm,axis=1)
         
         #make the columns into multiindex
-        df_excluded.columns=[['masked']*len(df_excluded.columns),df_excluded.columns]    
-        df_norm.columns=[['wvl']*len(df_norm.columns),df_norm.columns.values]
-        if df_meta is not None:
-            df_meta.columns=[['meta']*len(df_meta.columns),df_meta.columns.values]
-        if df_comp is not None:
-            df_comp.columns=[['comp']*len(df_comp.columns),df_comp.columns.values]
+        df_masked.columns=[['masked']*len(df_masked.columns),df_masked.columns]
+        df_norm.columns=[[col_var]*len(df_norm.columns),df_norm.columns.values]
 
         #combine the normalized data frames, the excluded columns, and the metadata into a single data frame
-        if df_meta is not None and df_comp is not None:
-            df_new=pd.concat([df_meta,df_comp,df_norm,df_excluded],axis=1)
-        elif df_meta is not None:
-            df_new=pd.concat([df_meta,df_norm,df_excluded],axis=1)
-        elif df_comp is not None:
-            df_new=pd.concat([df_meta,df_comp,df_excluded])
+        df_new=pd.concat([df_other,df_norm,df_masked],axis=1)
         self.df=df_new
 
 
