@@ -31,6 +31,7 @@ class sm:
             
         #If the true compositions are provided, then optimize the ranges over which the results are blended to minimize the RMSEC
         # get the ranges that are not the reference model (assumed to be the last model)
+        catchall=self.blendranges[-1]
         ranges_sub = self.blendranges[:-1]
         blendranges = np.array(ranges_sub).flatten()  # squash them to be a 1d array
         blendranges.sort()  # sort the entries. These will be used by submodels_blend to decide how to combine the predictions
@@ -39,12 +40,14 @@ class sm:
 
         if truevals is not None:
             print('Optimizing blending ranges')
-
+            truevals=np.squeeze(np.array(truevals))
             result=opt.minimize(self.get_rmse,blendranges,(predictions,truevals))
             self.blendranges=result.x
+        else:
+            self.blendranges=blendranges
 
         #calculate the blended results
-        blended=self.submodels_blend(predictions,self.blendranges,overwrite=False,noneg=False)
+        blended=self.submodels_blend(predictions,self.blendranges,overwrite=False)
         return blended
         
     def get_rmse(self,blendranges,predictions,truevals):
@@ -53,20 +56,21 @@ class sm:
         blendranges.sort() #ensure range boundaries stay in order
 
         print('Blend ranges: '+str(blendranges))  #show the blendranges being used for the current calculation
-        blended=self.submodels_blend(predictions,blendranges,overwrite=False,noneg=False)
-        RMSE=np.sqrt(np.mean((blended-np.array(truevals))**2))  #calculate the RMSE
+        blended=self.submodels_blend(predictions,blendranges,overwrite=False)
+        RMSE=np.sqrt(np.mean((blended-truevals)**2))  #calculate the RMSE
         print('RMSE='+str(RMSE))
         return RMSE
         
-    def submodels_blend(self,predictions,blendranges,overwrite=False,noneg=False):
+    def submodels_blend(self,predictions,blendranges,overwrite=False):
         blended=np.squeeze(np.zeros_like(predictions[0]))
         
         #format the blending ranges
         blendranges=np.hstack((blendranges,blendranges[1:-1])) #duplicate the middle entries
         blendranges.sort() #re-sort them
-        blendranges=np.reshape(blendranges,(len(blendranges)/2,2))  #turn the vector into a 2d array (one pair of values for each submodel)
-        
-        
+        blendranges=np.reshape(blendranges,(int(len(blendranges)/2),int(2)))  #turn the vector into a 2d array (one pair of values for each submodel)
+        self.toblend.append([3,3])
+        blendranges=np.vstack((blendranges,[-9999999,999999]))
+
         for i in range(len(blendranges)): #loop over each composition range
             for j in range(len(predictions[0])): #loop over each spectrum
                 ref_tmp=predictions[-1][j]   #get the reference model predicted value
@@ -86,9 +90,7 @@ class sm:
                     else:
                         if blended[j]==0:  #If overwrite is false, only write the blended result if there is not already a result there
                             blended[j]=blendval                
-        #Set any negative results to zero if noneg is true
-        if np.min(blended)<0 and noneg==True:
-            blended[blended<0]=0
+
     
         return blended
     

@@ -51,6 +51,7 @@ class regression:
             params_temp = copy.copy(params[i])
             # Remove CV parameter
             params_temp.pop('CV')
+
             if self.do_cv is False:
                 self.model = linear.Lasso(**params_temp)
             else:
@@ -69,6 +70,7 @@ class regression:
                 self.model = linear.ElasticNet(**params_temp)
             else:
                 params_temp.pop('alpha')
+                params_temp['l1_ratio']=[.1,.5,.7,.9,.95,.99,1] #these values recommended by the scikit documentation: http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV
                 self.model = linear.ElasticNetCV(**params_temp)
 
         if self.method[i]=='Ridge':
@@ -81,7 +83,10 @@ class regression:
             if self.do_cv is False:
                 self.model = linear.Ridge(**params_temp)
             else:
-                #Ridge requires a specific set of alphas to be provided... this needs more work to be implemented correctly
+                params_temp['alphas']=[0.1,0.5,1.0,5.0,10.0]
+                params_temp.pop('alpha')
+                params_temp.pop('max_iter')
+                params_temp.pop('tol')
                 self.model = linear.RidgeCV(**params_temp)
 
         if self.method[i]=='Bayesian Ridge':
