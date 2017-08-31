@@ -21,6 +21,7 @@ from pysat.spectral.baseline_code.median import MedianFilter
 from pysat.spectral.baseline_code.rubberband import Rubberband
 from pysat.spectral.jade import jadeR as jade
 from pysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
+from pysat.spectral.lra import low_rank_align as LRA
 from matplotlib import pyplot as plot
 def norm_total(df):
     df=df.div(df.sum(axis=1),axis=0)
@@ -66,7 +67,29 @@ class spectral_data(object):
         new_df=pd.concat([new_df,metadata],axis=1)
         
         self.df=new_df
-        
+
+    def cal_tran(self,refdata,matchcol_ref,matchcol_transform,method,methodparams):
+        C_matrix = []
+        col = np.array([j.upper() for j in self.df[('meta',matchcol_transform)]])
+        col_ref = np.array([j.upper() for j in refdata[('meta',matchcol_ref)]])
+        for i in col:
+            matches = np.where(col_ref==i,1,0)
+            C_matrix.append(matches)
+
+        C_matrix=np.transpose(np.array(C_matrix))
+
+        if method == 'LRA - Low Rank Alignment':
+            refdata_trans,transdata_trans = LRA(np.array(refdata['wvl']),np.array(self.df['wvl']),C_matrix,methodparams['d'])
+            refdata_trans=pd.DataFrame(refdata_trans)
+            transdata_trans=pd.DataFrame(transdata_trans)
+            pass
+        if method == 'PDS Piecewise Direct Standardization':
+            print('PDS not implemented yet!!')
+
+
+
+        pass
+
     #This function masks out specified ranges of the data
     def mask(self,maskfile,maskvar='wvl'):
         df_spectra=self.df[maskvar] #extract just the spectra from the data frame
