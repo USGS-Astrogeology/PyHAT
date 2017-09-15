@@ -162,7 +162,7 @@ class regression:
             print('Training model...') 
             
             self.model.fit(x,y)
-        
+            print(self.model)
             if self.ransac:
                 self.outliers=np.logical_not(self.model.inlier_mask_)
                 print(str(np.sum(self.outliers))+' outliers removed with RANSAC')
