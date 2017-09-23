@@ -52,7 +52,7 @@ class regression:
             if self.do_cv is False:
                 self.model = linear.OrthogonalMatchingPursuit(**params_temp)
             else:
-                params_temp.pop('n_nonzero_coefs')
+                params_temp.pop('precompute')
                 self.model = linear.OrthogonalMatchingPursuitCV(**params_temp)
 
         if self.method[i] == 'Lasso':
