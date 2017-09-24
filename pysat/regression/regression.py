@@ -71,32 +71,30 @@ class regression:
 
         if self.method[i] == 'Elastic Net':
             # TODO add CV to this function
-            # # check whether to do CV or not
-            # self.do_cv = params[i]['CV']
-            # # create a temporary set of parameters
+            # check whether to do CV or not
+            # create a temporary set of parameters
+            # Remove CV parameter
+            self.do_cv = params[i]['CV']
             params_temp = copy.copy(params[i])
-            # # Remove CV parameter
-            # params_temp.pop('CV')
-            # if self.do_cv is False:
-            self.model = linear.ElasticNet(**params_temp)
-            # else:
-            #     params_temp.pop('alpha')
-            #     # these values recommended by the scikit documentation: http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV
-            #     params_temp['l1_ratio'] = [.1, .5, .7, .9, .95, .99, 1]
-            #     self.model = linear.ElasticNetCV(**params_temp)
+            params_temp.pop('CV')
+            if self.do_cv is False:
+                self.model = linear.ElasticNet(**params_temp)
+            else:
+                params_temp['l1_ratio'] = [.1, .5, .7, .9, .95, .99, 1]
+                self.model = linear.ElasticNetCV(**params_temp)
 
         if self.method[i] == 'Ridge':
             # TODO add CV to this function
-            # # check whether to do CV or not
-            # self.do_cv = params[i]['CV']
-            # # create a temporary set of parameters
+            # check whether to do CV or not
+            self.do_cv = params[i]['CV']
+            # create a temporary set of parameters
             params_temp = copy.copy(params[i])
-            # # Remove CV parameter
-            # params_temp.pop('CV')
-            # if self.do_cv is False:
-            self.model = linear.Ridge(**params_temp)
-            # else:
-            #     self.model = linear.RidgeCV(**params_temp)
+            # Remove CV parameter
+            params_temp.pop('CV')
+            if self.do_cv:
+                self.model = linear.RidgeCV(**params_temp)
+            else:
+                self.model = linear.Ridge(**params_temp)
 
         if self.method[i] == 'Bayesian Ridge':
             self.model = linear.BayesianRidge(**params[i])
@@ -106,36 +104,31 @@ class regression:
 
         if self.method[i] == 'LARS':
             # TODO add CV to this function
-            # # check whether to do CV or not
-            # self.do_cv = params[i]['CV']
-            # # create a temporary set of parameters
+            # check whether to do CV or not
+            self.do_cv = params[i]['CV']
+            # create a temporary set of parameters
             params_temp = copy.copy(params[i])
             # # Remove CV parameter
-            # params_temp.pop('CV')
-            # if self.do_cv is False:
-            self.model = linear.Lars(**params_temp)
-            # else:
-            #     self.model = linear.LarsCV(**params_temp)
+            params_temp.pop('CV')
+            if self.do_cv is False:
+                self.model = linear.Lars(**params_temp)
+            else:
+                self.model = linear.LarsCV(**params_temp)
 
         if self.method[i] == 'Lasso LARS':
             # TODO add in a combobox for IC and CV this should also eliminate the problem of the user selecting one too many criterions
-            # # check whether to do CV or not
-            # self.do_cv = params[i]['CV']
-            # # check whether to do IC or not
-            # self.do_ic = params[i]['IC']
-            # # create a temporary set of parameters
-            # params_temp = copy.copy(params[i])
-            # # Remove CV and IC parameter
-            # params_temp.pop('CV')
-            # params_temp.pop('IC')
-            # if self.do_cv is False and self.do_ic is False:
-            self.model = linear.LassoLars(**params[i])
-            # if self.do_cv is True and self.do_ic is False:
-            #     self.model = linear.LassoLarsCV(**params[i])
-            # if self.do_cv is False and self.do_ic is True:
-            #     self.model = linear.LassoLarsIC(**params[i])
-            # if self.do_cv is True and self.do_ic is True:
-            #     print("Can't use both cross validation AND information criterion to optimize!")
+            model = params[i]['model']
+            params_temp = copy.copy(params[i])
+            params_temp.pop('model')
+
+            if model == 0:
+                self.model = linear.LassoLars(**params_temp)
+            elif model == 1:
+                self.model = linear.LassoLarsCV(**params_temp)
+            elif model == 2:
+                self.model = linear.LassoLarsIC(**params_temp)
+            else:
+                print("Something went wrong, \'model\' should output a number")
 
         if self.method[i] == 'SVR':
             self.model = svm.SVR(**params[i])
