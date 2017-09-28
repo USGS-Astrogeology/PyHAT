@@ -68,8 +68,8 @@ class sm:
         blendranges=np.hstack((blendranges,blendranges[1:-1])) #duplicate the middle entries
         blendranges.sort() #re-sort them
         blendranges=np.reshape(blendranges,(int(len(blendranges)/2),int(2)))  #turn the vector into a 2d array (one pair of values for each submodel)
-        #self.toblend.append([3,3])
-        #blendranges=np.vstack((blendranges,[-9999999,999999]))
+        self.toblend.append([len(predictions)-1,len(predictions)-1])
+        blendranges=np.vstack((blendranges,[-9999999,999999]))
 
         for i in range(len(blendranges)): #loop over each composition range
             for j in range(len(predictions[0])): #loop over each spectrum

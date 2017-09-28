@@ -145,7 +145,7 @@ def CCAM_SAV(input_data,ave=True):
 
 def ccam_batch(directory,searchstring='*.csv',to_csv=None,lookupfile=None,ave=True,progressbar=None):
     #Determine if the file is a .csv or .SAV
-    if '.sav' in searchstring.lower():
+    if 'sav' in searchstring.lower():
         is_sav=True
     else:
         is_sav=False
