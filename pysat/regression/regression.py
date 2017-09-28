@@ -16,7 +16,7 @@ from sklearn.gaussian_process import GaussianProcess
 
 
 class regression:
-    def __init__(self, method, params, i=0):
+    def __init__(self, method, yrange, params, i=0):
         self.algorithm_list = ['PLS',
                                'GP',
                                'OLS',
