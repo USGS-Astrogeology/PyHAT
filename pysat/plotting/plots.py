@@ -77,7 +77,8 @@ def make_plot(x, y, figpath, figfile=None, xrange=None, yrange=None, xtitle='Ref
 def pca_ica_plot(data, x_component, y_component, colorvar=None, cmap='viridis', method='PCA', figpath=None,
                  figfile=None):
     cmaps()
-
+    x_label = ''
+    y_label = ''
     x = [data.df[(method, x_component)]]
     y = [data.df[(method, y_component)]]
     if method == 'PCA':
