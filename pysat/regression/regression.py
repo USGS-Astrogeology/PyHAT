@@ -170,7 +170,7 @@ class regression:
             print('Training model...')
 
             self.model.fit(x, y)
-
+            print(self.model)
             if self.ransac:
                 self.outliers = np.logical_not(self.model.inlier_mask_)
                 print(str(np.sum(self.outliers)) + ' outliers removed with RANSAC')
@@ -198,5 +198,3 @@ class regression:
         leverage = np.diag(T @ np.linalg.inv(T.transpose() @ T) @ T.transpose())
         self.leverage = leverage
         self.Q_res = Q_res
-
-

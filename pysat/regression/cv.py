@@ -84,4 +84,7 @@ class cv:
         for i in list(range(len(rmsecv_folds[0, :]))):
             label = 'Fold' + str(i)
             output[label] = rmsecv_folds[:, i]
+        cols = output.columns.values
+        cols = [('cv', i) for i in cols]
+        output.columns = pd.MultiIndex.from_tuples(cols)
         return Train, output
