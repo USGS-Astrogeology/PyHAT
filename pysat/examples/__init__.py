@@ -1,4 +1,5 @@
 import os
+
 import pysat
 
 __all__ = ['get_path']
@@ -18,7 +19,7 @@ for d in dirs:
         file_2_dir[f] = tmp
 
 
-def get_path(example_name): # pragma: no cover
+def get_path(example_name):  # pragma: no cover
     """
     Get the path of the example file
 
@@ -43,7 +44,7 @@ def get_path(example_name): # pragma: no cover
         raise KeyError(example_name + ' not found in built-in examples')
 
 
-def available(directory='', verbose=False): # pragma: no cover
+def available(directory='', verbose=False):  # pragma: no cover
     """
     List available datasets in autocnet.examples
 
@@ -61,8 +62,8 @@ def available(directory='', verbose=False): # pragma: no cover
         examples = [d for d in examples if '__' not in d]
     else:
         examples = [d for d in examples if os.path.isdir(d) and '__' not in d]
-    #if not verbose:
+    # if not verbose:
     return [os.path.split(d)[-1] for d in examples]
-    #examples = [os.path.join(dty, 'README.md') for dty in examples]
-    #descs = [_read_example(path) for path in examples]
-    #return [{desc['name']:desc['description'] for desc in descs}]
+    # examples = [os.path.join(dty, 'README.md') for dty in examples]
+    # descs = [_read_example(path) for path in examples]
+    # return [{desc['name']:desc['description'] for desc in descs}]

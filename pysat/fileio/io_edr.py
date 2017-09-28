@@ -1,5 +1,8 @@
+import csv
 
+import numpy as np
 import pandas as pd
+
 from pysat.fileio.header_parser import header_parser
 import numpy as np
 import os
@@ -77,6 +80,3 @@ def EDR(input_file):
     sp.to_csv('test.csv')
     return sp
 
-          
-          
-                    
