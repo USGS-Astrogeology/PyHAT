@@ -16,7 +16,7 @@ from sklearn.gaussian_process import GaussianProcess
 
 
 class regression:
-    def __init__(self, method, params, i=0):
+    def __init__(self, method, yrange, params, i=0):
         self.algorithm_list = ['PLS',
                                'GP',
                                'OLS',
@@ -84,7 +84,6 @@ class regression:
                 self.model = linear.ElasticNetCV(**params_temp)
 
         if self.method[i] == 'Ridge':
-            # TODO add CV to this function
             # check whether to do CV or not
             self.do_cv = params[i]['CV']
             # create a temporary set of parameters
@@ -103,12 +102,11 @@ class regression:
             self.model = linear.ARDRegression(**params[i])
 
         if self.method[i] == 'LARS':
-            # TODO add CV to this function
             # check whether to do CV or not
             self.do_cv = params[i]['CV']
             # create a temporary set of parameters
             params_temp = copy.copy(params[i])
-            # # Remove CV parameter
+            # Remove CV parameter
             params_temp.pop('CV')
             if self.do_cv is False:
                 self.model = linear.Lars(**params_temp)
@@ -198,5 +196,3 @@ class regression:
         leverage = np.diag(T @ np.linalg.inv(T.transpose() @ T) @ T.transpose())
         self.leverage = leverage
         self.Q_res = Q_res
-
-

@@ -1,6 +1,5 @@
-from scipy.signal import medfilt
-
 from pysat.spectral.baseline_code.common import Baseline
+from scipy.signal import medfilt
 
 
 def median_baseline(intensities, window_size=501):

@@ -5,9 +5,8 @@ Created on Thu Sep  1 13:09:21 2016
 @author: rbanderson
 """
 import numpy as np
-from matplotlib import pyplot as plot
-
 import pysat.plotting.colormaps as colormaps
+from matplotlib import pyplot as plot
 
 
 def cmaps():
@@ -69,8 +68,8 @@ def make_plot(x, y, figpath, figfile=None, xrange=None, yrange=None, xtitle='Ref
         axes.set_ylim(bottom=0)
 
     axes.legend(loc='best', fontsize=8, scatterpoints=1, numpoints=1)
-    if figfile:
-        fig.savefig(figfile, dpi=dpi)
+    if figpath and figfile:
+        fig.savefig(figpath + '/' + figfile, dpi=dpi)
     return fig
 
 

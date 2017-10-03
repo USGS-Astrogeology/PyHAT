@@ -66,7 +66,8 @@ class sm:
         blendranges = np.hstack((blendranges, blendranges[1:-1]))  # duplicate the middle entries
         blendranges.sort()  # re-sort them
         blendranges = np.reshape(blendranges, (
-        int(len(blendranges) / 2), int(2)))  # turn the vector into a 2d array (one pair of values for each submodel)
+            int(len(blendranges) / 2),
+            int(2)))  # turn the vector into a 2d array (one pair of values for each submodel)
         self.toblend.append([3, 3])
         blendranges = np.vstack((blendranges, [-9999999, 999999]))
 
@@ -77,7 +78,8 @@ class sm:
                 inrangecheck = (ref_tmp > blendranges[i][0]) & (ref_tmp < blendranges[i][1])
 
                 if inrangecheck:
-                    if self.toblend[i][0] == self.toblend[i][1]:  # if the results being blended are identical, no blending necessary!
+                    if self.toblend[i][0] == self.toblend[i][
+                        1]:  # if the results being blended are identical, no blending necessary!
 
                         blendval = predictions[self.toblend[i][0]][j]
 
@@ -92,7 +94,8 @@ class sm:
                     if overwrite:
                         blended[j] = blendval  # If overwrite is true, write the blended result no matter what
                     else:
-                        if blended[j] == 0:  # If overwrite is false, only write the blended result if there is not already a result there
+                        if blended[
+                            j] == 0:  # If overwrite is false, only write the blended result if there is not already a result there
                             blended[j] = blendval
 
         return blended

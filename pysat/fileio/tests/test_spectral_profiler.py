@@ -1,6 +1,7 @@
 import unittest
 
 from pysat.examples import get_path
+
 from .. import io_spectral_profiler as sp
 
 

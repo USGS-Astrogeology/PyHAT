@@ -68,16 +68,16 @@ class spectral_data(object):
         self.df = new_df
 
     # This function masks out specified ranges of the data
-    def mask(self, maskfile):
-        df_spectra = self.df['wvl']  # extract just the spectra from the data frame
-        metadata_cols = self.df.columns.levels[0] != 'wvl'  # extract just the metadata
+    def mask(self, maskfile, maskvar='wvl'):
+        df_spectra = self.df[maskvar]  # extract just the spectra from the data frame
+        metadata_cols = self.df.columns.levels[0] != maskvar  # extract just the metadata
         metadata = self.df[self.df.columns.levels[0][metadata_cols]]
 
         mask = pd.read_csv(maskfile, sep=',')  # read the mask file
         tmp = []
         for i in mask.index:
-            tmp.append((np.array(self.df['wvl'].columns, dtype='float') >= mask.ix[i, 'min_wvl']) & (
-            np.array(self.df['wvl'].columns, dtype='float') <= mask.ix[i, 'max_wvl']))
+            tmp.append((np.array(self.df[maskvar].columns, dtype='float') >= mask.ix[i, 'min_wvl']) & (
+            np.array(self.df[maskvar].columns, dtype='float') <= mask.ix[i, 'max_wvl']))
 
         # combine the indexes for each range in the mask file into a single masking vector and use that to mask the spectra
         masked = np.any(np.array(tmp), axis=0)
@@ -86,7 +86,7 @@ class spectral_data(object):
             if j == True:
                 spectcols[i] = ('masked', spectcols[i])
             else:
-                spectcols[i] = ('wvl', spectcols[i])
+                spectcols[i] = (maskvar, spectcols[i])
         df_spectra.columns = pd.MultiIndex.from_tuples(
             spectcols)  # assign the multiindex columns based on the new tuples
         self.df = pd.concat([df_spectra, metadata], axis=1)  # merge the masked spectra back with the metadata
@@ -100,6 +100,46 @@ class spectral_data(object):
             self.df['wvl'] = df_spectra.multiply(vector, axis=1)
         else:
             print('Vector is not the same size as the spectra!')
+
+    def peak_area(self, peaks_mins_file=None):
+        df = self.df  # create a copy of the data
+        wvls = df['wvl'].columns.values  # get the wavelengths
+
+        if peaks_mins_file is not None:
+            peaks_mins = pd.read_csv(peaks_mins_file, sep=',')
+            peaks = peaks_mins['peaks']
+            mins = peaks_mins['mins']
+            pass
+        else:
+            ave_spect = np.average(np.array(df['wvl']), axis=0)  # find the average of the spectra in the data frame
+            peaks = wvls[
+                sp.signal.argrelextrema(ave_spect, np.greater_equal)[0]]  # find the maxima in the average spectrum
+            mins = wvls[sp.signal.argrelextrema(ave_spect, np.less_equal)[0]]  # find the maxima in the average spectrum
+
+        wvls = df['wvl'].columns.values  # get the wavelengths
+
+        spectra = np.array(df['wvl'])
+        for i in range(len(peaks)):
+
+            # get the wavelengths between two minima
+            try:
+                low = mins[np.where(mins < peaks[i])[0][-1]]
+            except:
+                low = mins[0]
+
+            try:
+                high = mins[np.where(mins > peaks[i])[0][0]]
+            except:
+                high = mins[-1]
+
+            peak_indices = np.all((wvls > low, wvls < high), axis=0)
+            # plot.plot(wvls,ave_spect)
+            # plot.plot(wvls[peak_indices],ave_spect[peak_indices])
+            # plot.show()
+            df[('peak_area', peaks[i])] = spectra[:, peak_indices].sum(axis=1)
+
+        self.df = df
+        return peaks, mins
 
     # This function divides the data up into a specified number of random folds
     def random_folds(self, nfolds=5, seed=10, groupby=None):

@@ -52,11 +52,10 @@ Translation to Python begun on Tue Nov 04 16:31:33 2014 by Ryan Anderson
 
 """
 import numpy
-import scipy
-
 import pysat.spectral.baseline_code.spl_init as spl_init
 import pysat.spectral.baseline_code.spl_interp as spl_interp
 import pysat.spectral.baseline_code.watrous as watrous
+import scipy
 from pysat.spectral.baseline_code.common import Baseline
 
 
