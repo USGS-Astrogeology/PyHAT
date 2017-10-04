@@ -5,9 +5,8 @@ Created on Thu Sep  1 13:09:21 2016
 @author: rbanderson
 """
 import numpy as np
-from matplotlib import pyplot as plot
-
 import pysat.plotting.colormaps as colormaps
+from matplotlib import pyplot as plot
 
 
 def cmaps():

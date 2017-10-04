@@ -1,5 +1,4 @@
 import numpy as np
-
 from pysat.spectral.baseline_code.common import Baseline
 
 

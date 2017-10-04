@@ -71,6 +71,7 @@ class sm:
         # self.toblend.append([3,3])
         # blendranges=np.vstack((blendranges,[-9999999,999999]))
 
+
         for i in range(len(blendranges)):  # loop over each composition range
             for j in range(len(predictions[0])):  # loop over each spectrum
                 ref_tmp = predictions[-1][j]  # get the reference model predicted value
@@ -92,8 +93,8 @@ class sm:
                     if overwrite:
                         blended[j] = blendval  # If overwrite is true, write the blended result no matter what
                     else:
-                        if blended[
-                            j] == 0:  # If overwrite is false, only write the blended result if there is not already a result there
+                        # If overwrite is false, only write the blended result if there is not already a result there
+                        if blended[j] == 0:
                             blended[j] = blendval
 
         return blended
