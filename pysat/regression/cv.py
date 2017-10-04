@@ -12,10 +12,9 @@ import warnings
 import numpy as np
 # from sklearn.linear_model import RANSACRegressor as RANSAC
 import pandas as pd
+from pysat.regression.regression import regression
 from sklearn.cross_validation import LeaveOneLabelOut
 from sklearn.grid_search import ParameterGrid
-
-from pysat.regression.regression import regression
 
 warnings.filterwarnings('ignore')
 

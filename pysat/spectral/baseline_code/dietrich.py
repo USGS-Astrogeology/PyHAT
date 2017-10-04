@@ -1,8 +1,7 @@
 import numpy as np
+from pysat.spectral.baseline_code.common import iterative_threshold, Baseline
 from scipy.ndimage.morphology import binary_erosion
 from scipy.signal import convolve
-
-from pysat.spectral.baseline_code.common import iterative_threshold, Baseline
 
 
 def dietrich_baseline(bands, intensities, half_window=16, num_erosions=10):

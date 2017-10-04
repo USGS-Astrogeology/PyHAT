@@ -1,6 +1,5 @@
 import numpy as np
 from numpy.polynomial.hermite import hermvander
-
 from pysat.spectral.baseline_code.common import Baseline
 
 try:

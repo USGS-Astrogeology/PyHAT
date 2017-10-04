@@ -1,7 +1,6 @@
 import numpy as np
-from scipy.spatial import ConvexHull
-
 from pysat.spectral.baseline_code.common import Baseline
+from scipy.spatial import ConvexHull
 
 
 def rubberband_baseline(bands, intensities, num_iters=8, num_ranges=64):

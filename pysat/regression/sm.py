@@ -78,6 +78,7 @@ class sm:
                 if inrangecheck: 
                     if self.toblend[i][0]==self.toblend[i][1]: #if the results being blended are identical, no blending necessary!
                         blendval=predictions[self.toblend[i][0]][j]
+
                     else:
                         weight1 = 1 - (ref_tmp - blendranges[i][0]) / (
                             blendranges[i][1] - blendranges[i][0])  # define the weight applied to the lower model
@@ -89,8 +90,8 @@ class sm:
                     if overwrite:
                         blended[j] = blendval  # If overwrite is true, write the blended result no matter what
                     else:
-                        if blended[
-                            j] == 0:  # If overwrite is false, only write the blended result if there is not already a result there
+                        # If overwrite is false, only write the blended result if there is not already a result there
+                        if blended[j] == 0:
                             blended[j] = blendval
 
         return blended

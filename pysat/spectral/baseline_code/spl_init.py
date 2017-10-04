@@ -107,7 +107,7 @@ def spl_init(x, y, yp1=None, ypn=None):
     psig = ((x - shift(x, -1))) / (shift(x, 1) - shift(x, -1))
 
     pu = ((shift(y, -1) - y) / (shift(x, -1) - x) - (y - shift(y, 1)) / (x - shift(x, 1))) / (
-    shift(x, -1) - shift(x, 1))
+        shift(x, -1) - shift(x, 1))
 
     for i in range(1, n - 1):
         p = psig[i] * y2[i - 1] + 2.
