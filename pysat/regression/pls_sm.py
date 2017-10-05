@@ -5,12 +5,11 @@ Created on Sat Mar 26 20:15:46 2016
 @author: rbanderson
 """
 import numpy as np
+import pysat.spectral.within_range as within_range
 import scipy.optimize as opt
 from matplotlib import pyplot as plot
-from sklearn.cross_decomposition.pls_ import PLSRegression
-
-import pysat.spectral.within_range as within_range
 from pysat.spectral.meancenter import meancenter
+from sklearn.cross_decomposition.pls_ import PLSRegression
 
 
 class pls_sm:

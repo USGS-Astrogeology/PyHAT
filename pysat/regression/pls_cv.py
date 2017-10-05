@@ -9,10 +9,9 @@ according to a user-specified column
 """
 import matplotlib.pyplot as plot
 import numpy as np
+from pysat.spectral.meancenter import meancenter
 from sklearn.cross_decomposition.pls_ import PLSRegression
 from sklearn.cross_validation import LeaveOneLabelOut
-
-from pysat.spectral.meancenter import meancenter
 
 
 def pls_cv(Train, Test=None, nc=20, nfolds=5, ycol='SiO2', doplot=True, outpath='.', plotfile='pls_cv.png'):

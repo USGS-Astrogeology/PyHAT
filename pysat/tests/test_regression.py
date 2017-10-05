@@ -151,7 +151,6 @@ def test_KRR():
                                   'kernel_params': 'None'}], ransacparams={})
 
 
-
 test_PLS()
 test_GP()
 test_OLS()
@@ -165,5 +164,3 @@ test_LARS()
 test_Lasso_LARS()
 test_SVR()
 test_KRR()
-
-

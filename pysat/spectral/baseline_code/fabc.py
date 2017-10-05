@@ -1,5 +1,4 @@
 import scipy.signal
-
 from pysat.spectral.baseline_code.common import WhittakerSmoother, iterative_threshold, Baseline
 
 

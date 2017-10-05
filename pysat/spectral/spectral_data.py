@@ -8,10 +8,6 @@ import numpy as np
 import pandas as pd
 import scipy as sp
 from matplotlib import pyplot as plot
-from sklearn import cross_validation
-from sklearn.decomposition import PCA, FastICA
-from sklearn.preprocessing import StandardScaler
-
 from pysat.spectral.baseline_code.airpls import AirPLS
 from pysat.spectral.baseline_code.als import ALS
 from pysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
@@ -23,9 +19,10 @@ from pysat.spectral.baseline_code.median import MedianFilter
 from pysat.spectral.baseline_code.polyfit import PolyFit
 from pysat.spectral.baseline_code.rubberband import Rubberband
 from pysat.spectral.jade import jadeR as jade
-from pysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
 from pysat.spectral.lra import low_rank_align as LRA
-from matplotlib import pyplot as plot
+from sklearn import cross_validation
+from sklearn.decomposition import PCA, FastICA
+from sklearn.preprocessing import StandardScaler
 
 
 def norm_total(df):
@@ -101,7 +98,7 @@ class spectral_data(object):
         tmp = []
         for i in mask.index:
             tmp.append((np.array(self.df[maskvar].columns, dtype='float') >= mask.ix[i, 'min_wvl']) & (
-            np.array(self.df[maskvar].columns, dtype='float') <= mask.ix[i, 'max_wvl']))
+                np.array(self.df[maskvar].columns, dtype='float') <= mask.ix[i, 'max_wvl']))
 
         # combine the indexes for each range in the mask file into a single masking vector and use that to mask the spectra
         masked = np.any(np.array(tmp), axis=0)
@@ -142,7 +139,6 @@ class spectral_data(object):
 
         wvls = df['wvl'].columns.values  # get the wavelengths
 
-        import time
         spectra = np.array(df['wvl'])
         for i in range(len(peaks)):
 

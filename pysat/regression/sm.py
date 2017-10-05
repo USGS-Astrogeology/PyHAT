@@ -58,26 +58,31 @@ class sm:
         RMSE = np.sqrt(np.mean((blended - truevals) ** 2))  # calculate the RMSE
         print('RMSE=' + str(RMSE))
         return RMSE
-        
-    def submodels_blend(self,predictions,blendranges,overwrite=False):
-        blended=np.squeeze(np.zeros_like(predictions[0]))
-        
-        #format the blending ranges
-        blendranges=np.hstack((blendranges,blendranges[1:-1])) #duplicate the middle entries
-        blendranges.sort() #re-sort them
-        blendranges=np.reshape(blendranges,(int(len(blendranges)/2),int(2)))  #turn the vector into a 2d array (one pair of values for each submodel)
-        self.toblend.append([len(predictions)-1,len(predictions)-1])
-        blendranges=np.vstack((blendranges,[-9999999,999999]))
 
-        for i in range(len(blendranges)): #loop over each composition range
-            for j in range(len(predictions[0])): #loop over each spectrum
-                ref_tmp=predictions[-1][j]   #get the reference model predicted value
-                #check whether the prediction for the reference spectrum is within the current range            
-                inrangecheck=(ref_tmp>blendranges[i][0])&(ref_tmp<blendranges[i][1])
-     
-                if inrangecheck: 
-                    if self.toblend[i][0]==self.toblend[i][1]: #if the results being blended are identical, no blending necessary!
-                        blendval=predictions[self.toblend[i][0]][j]
+    def submodels_blend(self, predictions, blendranges, overwrite=False):
+        blended = np.squeeze(np.zeros_like(predictions[0]))
+
+        # format the blending ranges
+        blendranges = np.hstack((blendranges, blendranges[1:-1]))  # duplicate the middle entries
+        blendranges.sort()  # re-sort them
+        blendranges = np.reshape(blendranges, (
+            int(len(blendranges) / 2),
+            int(2)))  # turn the vector into a 2d array (one pair of values for each submodel)
+        # self.toblend.append([3,3])
+        # blendranges=np.vstack((blendranges,[-9999999,999999]))
+
+
+        for i in range(len(blendranges)):  # loop over each composition range
+            for j in range(len(predictions[0])):  # loop over each spectrum
+                ref_tmp = predictions[-1][j]  # get the reference model predicted value
+                # check whether the prediction for the reference spectrum is within the current range
+                inrangecheck = (ref_tmp > blendranges[i][0]) & (ref_tmp < blendranges[i][1])
+
+                if inrangecheck:
+                    # if the results being blended are identical, no blending necessary!
+                    if self.toblend[i][0] == self.toblend[i][1]:
+                        blendval = predictions[self.toblend[i][0]][j]
+
                     else:
                         weight1 = 1 - (ref_tmp - blendranges[i][0]) / (
                             blendranges[i][1] - blendranges[i][0])  # define the weight applied to the lower model
@@ -89,8 +94,8 @@ class sm:
                     if overwrite:
                         blended[j] = blendval  # If overwrite is true, write the blended result no matter what
                     else:
-                        if blended[
-                            j] == 0:  # If overwrite is false, only write the blended result if there is not already a result there
+                        # If overwrite is false, only write the blended result if there is not already a result there
+                        if blended[j] == 0:
                             blended[j] = blendval
 
         return blended
