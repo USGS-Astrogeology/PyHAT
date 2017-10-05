@@ -82,6 +82,7 @@ class sm:
                     # if the results being blended are identical, no blending necessary!
                     if self.toblend[i][0] == self.toblend[i][1]:
                         blendval = predictions[self.toblend[i][0]][j]
+
                     else:
                         weight1 = 1 - (ref_tmp - blendranges[i][0]) / (
                             blendranges[i][1] - blendranges[i][0])  # define the weight applied to the lower model

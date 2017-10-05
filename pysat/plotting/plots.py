@@ -68,8 +68,8 @@ def make_plot(x, y, figpath, figfile=None, xrange=None, yrange=None, xtitle='Ref
         axes.set_ylim(bottom=0)
 
     axes.legend(loc='best', fontsize=8, scatterpoints=1, numpoints=1)
-    if figpath:
-        fig.savefig(figpath, dpi=dpi)
+    if figpath and figfile:
+        fig.savefig(figpath + '/' + figfile, dpi=dpi)
     return fig
 
 
