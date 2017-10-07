@@ -14,7 +14,7 @@ def airpls_baseline(intensities, smoothness_param=100, max_iters=10,
     smoother = WhittakerSmoother(intensities, smoothness_param)
     total_intensity = np.abs(intensities).sum()
     w = np.ones(intensities.shape[0])
-    for i in range(1, max_iters + 1):
+    for i in range(1, int(max_iters + 1)):
         baseline = smoother.smooth(w)
         # Compute error (sum of distances below the baseline).
         corrected = intensities - baseline
