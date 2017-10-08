@@ -1,7 +1,6 @@
 import numpy as np
-from scipy import signal
-
 from pandas import Series
+from scipy import signal
 
 
 def boxcar(y, window_size=3):
@@ -44,5 +43,3 @@ def gaussian(y, window_size=3, sigma=2):
     """
     filt = signal.gaussian(window_size, sigma)
     return Series(signal.convolve(y, filt, mode='same'), index=y.index)
-
-

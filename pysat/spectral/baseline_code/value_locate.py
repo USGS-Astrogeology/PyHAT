@@ -125,6 +125,7 @@ Translated to Python by Ryan Anderson
 #-
 """
 import numpy
+
 """
 def is_defined(var): 
     # debug,'V1.0 FH 1998-01-20' 
@@ -136,73 +137,68 @@ def is_defined(var):
 def is_scalar(var):
     # debug,'V1.0 FH 1998-01-23' 
     return var.shape[0]==0 and is_defined(var) 
-""" 
+"""
 
 
 def val_loc_inc(x, u):
-    
+    nx = x.size
+    nu = u.size
+    mm = max(x[-1], max(u)) * 1.01
+    xx = numpy.append([x], [mm])
+    c1 = numpy.append([xx], [u])
 
-    nx  = x.size
-    nu  = u.size
-    mm  = max(x[-1],max(u))*1.01
-    xx  = numpy.append([x],[mm])
-    c1   = numpy.append([xx],[u])
-    
     ord1 = numpy.argsort(c1)
-    d1   = numpy.append([-1],numpy.append(numpy.where(ord1<nx), nx))
-    out=numpy.zeros(nu)
-    
+    d1 = numpy.append([-1], numpy.append(numpy.where(ord1 < nx), nx))
+    out = numpy.zeros(nu)
 
-    j0  = d1+1
-    j1  = d1[1:]-1
-    nouti = j1-j0[:len(j1)]+1
-    oldout=out
-    for i in list(range(0,int(nx)+1)):
+    j0 = d1 + 1
+    j1 = d1[1:] - 1
+    nouti = j1 - j0[:len(j1)] + 1
+    oldout = out
+    for i in list(range(0, int(nx) + 1)):
         if nouti[i] >= 1:
-            tmp=ord1[j0[i]:j1[i]+1]-nx
-            #print(tmp)            
-            out[tmp]= int(i-1)
-    #check boundaries
+            tmp = ord1[j0[i]:j1[i] + 1] - nx
+            # print(tmp)
+            out[tmp] = int(i - 1)
+    # check boundaries
     nlow = 1
     itst = 0
     while nlow >= 1:
-        xxout=[]
-        for i in out+1:
+        xxout = []
+        for i in out + 1:
             xxout.append(xx[i])
-        bound = numpy.where(numpy.all(numpy.array([xxout<= u,xxout==u]),axis=0)==True)[0]
-        nlow=bound.size
-        if nlow>= 1: 
-            out[bound]=out[bound]+1
-    	
+        bound = numpy.where(numpy.all(numpy.array([xxout <= u, xxout == u]), axis=0) == True)[0]
+        nlow = bound.size
+        if nlow >= 1:
+            out[bound] = out[bound] + 1
+
         itst = itst + 1
         if itst > numpy.float32(999999): print('Boundary Check Failed')
-    	
+
     for i in out:
-        i = min(i,(nx-2))
+        i = min(i, (nx - 2))
     if u.shape[0] == 0: out = out[0]
     return out
-    
 
-def value_locate(x,u1,l64=False):
-    
-    #increasing or decreasing
-    #default, l64,0
-    
 
-  #  if is_scalar(u):
-  #      out=0
-  #  else:
+def value_locate(x, u1, l64=False):
+    # increasing or decreasing
+    # default, l64,0
+
+
+    #  if is_scalar(u):
+    #      out=0
+    #  else:
     if l64:
-        arrtype='float64'
+        arrtype = 'float64'
     else:
-        arrtype='float32'
-    out=numpy.zeros(u1.shape,dtype=arrtype)
+        arrtype = 'float32'
+    out = numpy.zeros(u1.shape, dtype=arrtype)
 
     if x[-1] < x[0]:
-        temp=x.size-2-val_loc_inc(x[::-1],u1,l64=l64)
+        temp = x.size - 2 - val_loc_inc(x[::-1], u1, l64=l64)
     else:
         temp = val_loc_inc(x, u1)
-    
+
     out = out + temp
     return out
-    

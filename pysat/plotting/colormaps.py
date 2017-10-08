@@ -1049,7 +1049,6 @@ for (name, data) in (('magma', _magma_data),
                      ('inferno', _inferno_data),
                      ('plasma', _plasma_data),
                      ('viridis', _viridis_data)):
-
     cmaps[name] = ListedColormap(data, name=name)
 
 magma = cmaps['magma']

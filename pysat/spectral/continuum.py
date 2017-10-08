@@ -38,7 +38,7 @@ def continuum_correct(spectrum, nodes=None, method='linear'):
     return_length = len(y)
     corrected = np.empty(return_length)
     continuum = np.empty(return_length)
-    
+
     start = 0
     nlist = list(zip(nodes, nodes[1:]))
     for i, n in enumerate(nlist):
@@ -57,10 +57,10 @@ def continuum_correct(spectrum, nodes=None, method='linear'):
             stop = start + len(ny)
             c = correction_methods[method](nx, ny)
             ey = ny
- 
+
         continuum[start:stop] = c
         corrected[start:stop] = ey / c
-        
+
         start = stop
 
     return pd.Series(corrected, index=x), pd.Series(continuum, index=x)
@@ -100,17 +100,18 @@ def linear(nx, ny, ex=None):
     wv2 = nx[-1]
     if not isinstance(ex, np.ndarray):
         ex = nx
-    m = (y2-y1) / (wv2-wv1)
+    m = (y2 - y1) / (wv2 - wv1)
     b = y1 - (m * wv1)
-    
+
     c = m * ex + b
 
-    return c 
+    return c
 
 
 def cubic(spectrum, nodes):
-    raise(NotImplemented)
+    raise (NotImplemented)
 
-correction_methods = {'linear':linear,
-                      'regression':regression,
+
+correction_methods = {'linear': linear,
+                      'regression': regression,
                       'cubic': cubic}

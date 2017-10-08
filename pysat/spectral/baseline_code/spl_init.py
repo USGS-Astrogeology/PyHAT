@@ -63,10 +63,13 @@ Translated from IDL to Python by Ryan Anderson
 #function PSPLINF, x, y, YP0=yp1, YPN_1=ypn, DOUBLE=double
 """
 import numpy
-def shift(array,amount):
-    return numpy.append([array[-amount:]],[array[:-amount]])
 
-def spl_init( x, y, yp1=None, ypn=None):
+
+def shift(array, amount):
+    return numpy.append([array[-amount:]], [array[:-amount]])
+
+
+def spl_init(x, y, yp1=None, ypn=None):
     import numpy
     n = len(x)
 
@@ -83,60 +86,56 @@ def spl_init( x, y, yp1=None, ypn=None):
     ##
     if yp1 != None:
         y2[0] = -0.5
-        u[0] = (3./(x[1]-x[0]))*((y[1]-y[0])/(x[1]-x[0])-yp1)
-    
-    
-    # I suppose we can also take advantage here of the TRISOL function
-    # from IDL... we can remove the for loops
-    #
-    # This is the decomposition loop of the tridiagonal algorithm.  Y2 and
-    # U are used for temporary storage of the decomposed factors.
-    #
-    
- #   x_neg1=numpy.append([x[1:]],[x[0]])
-  #  x_pos1=numpy.append([x[-1]],[x[1:]])
-   # y_neg1=numpy.append([y[1:]],[y[0]])
-    #y_pos1=numpy.append([y[-1]],[y[1:]])
-   # print x_neg1.shape
-   # print x_pos1.shape
-   # print x.shape
-    
-    psig = ((x - shift(x,-1))) / (shift(x,1) - shift(x,-1))
-    
-    pu = ((shift(y,-1) - y) / (shift(x,-1) - x) - (y - shift(y,1)) / (x - shift(x,1))) / (shift(x,-1)- shift(x,1))
-    
-    for i in range(1,n-1):
-        p = psig[i] * y2[i-1] + 2.
-        y2[i] = ( psig[i]-1. ) / p
-        u[i]=( 6. * pu[i] - psig[i]*u[i-1] ) / p
-    
-    
+        u[0] = (3. / (x[1] - x[0])) * ((y[1] - y[0]) / (x[1] - x[0]) - yp1)
+
+
+        # I suppose we can also take advantage here of the TRISOL function
+        # from IDL... we can remove the for loops
+        #
+        # This is the decomposition loop of the tridiagonal algorithm.  Y2 and
+        # U are used for temporary storage of the decomposed factors.
+        #
+
+        #   x_neg1=numpy.append([x[1:]],[x[0]])
+        #  x_pos1=numpy.append([x[-1]],[x[1:]])
+        # y_neg1=numpy.append([y[1:]],[y[0]])
+        # y_pos1=numpy.append([y[-1]],[y[1:]])
+        # print x_neg1.shape
+        # print x_pos1.shape
+        # print x.shape
+
+    psig = ((x - shift(x, -1))) / (shift(x, 1) - shift(x, -1))
+
+    pu = ((shift(y, -1) - y) / (shift(x, -1) - x) - (y - shift(y, 1)) / (x - shift(x, 1))) / (
+        shift(x, -1) - shift(x, 1))
+
+    for i in range(1, n - 1):
+        p = psig[i] * y2[i - 1] + 2.
+        y2[i] = (psig[i] - 1.) / p
+        u[i] = (6. * pu[i] - psig[i] * u[i - 1]) / p
+
     #
     # The upper boundary condition is set either to be "natural"
     #
-    if ypn==None: 
-        qn=0.
-        un=0.
+    if ypn == None:
+        qn = 0.
+        un = 0.
     #
     # or else to have a specified first deriviative
     #
-    if ypn !=None:
-        qn=0.5
-        dx=x[n-1]-x[n-2]
-        un=(3./dx)*(ypn-(y[n-1]-y[n-2])/dx)
-    
+    if ypn != None:
+        qn = 0.5
+        dx = x[n - 1] - x[n - 2]
+        un = (3. / dx) * (ypn - (y[n - 1] - y[n - 2]) / dx)
+
     #
-    y2[n-1] = ( un - qn * u[n-2] ) / ( qn * y2[n-2] + 1. )
-    
+    y2[n - 1] = (un - qn * u[n - 2]) / (qn * y2[n - 2] + 1.)
+
     #
     # This is the backsubstitution loop of the tridiagonal algorithm
     #
-    
-    for k in range(n-2,-1,-1):
-        y2[k] = y2[k] * y2[k+1] + u[k]
-    
-    
-    
-    return y2
 
-    
+    for k in range(n - 2, -1, -1):
+        y2[k] = y2[k] * y2[k + 1] + u[k]
+
+    return y2

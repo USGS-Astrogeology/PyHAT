@@ -1,39 +1,39 @@
 {
   "loggers": {
     "my_module": {
-      "level": "DEBUG", 
-      "propagate": false, 
+      "level": "DEBUG",
+      "propagate": false,
       "handlers": [
         "console"
       ]
     }
-  }, 
-  "version": 1, 
-  "disable_existing_loggers": false, 
+  },
+  "version": 1,
+  "disable_existing_loggers": false,
   "handlers": {
     "console": {
-      "formatter": "simple", 
-      "class": "logging.StreamHandler", 
-      "stream": "ext://sys.stdout", 
+      "formatter": "simple",
+      "class": "logging.StreamHandler",
+      "stream": "ext://sys.stdout",
       "level": "DEBUG"
-    }, 
+    },
     "info_file_handler": {
-      "formatter": "simple", 
-      "backupCount": 10, 
-      "level": "INFO", 
-      "encoding": "utf8", 
-      "class": "logging.handlers.RotatingFileHandler", 
-      "maxBytes": 10485760, 
+      "formatter": "simple",
+      "backupCount": 10,
+      "level": "INFO",
+      "encoding": "utf8",
+      "class": "logging.handlers.RotatingFileHandler",
+      "maxBytes": 10485760,
       "filename": "info.log"
     }
-  }, 
+  },
   "root": {
-    "level": "DEBUG", 
+    "level": "DEBUG",
     "handlers": [
-      "console", 
+      "console",
       "info_file_handler"
     ]
-  }, 
+  },
   "formatters": {
     "simple": {
       "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
