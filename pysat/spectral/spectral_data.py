@@ -307,8 +307,7 @@ class spectral_data(object):
         br.fit(wvls, spectra, segment=segment)
         self.df_baseline = self.df.copy()
         self.df_baseline['wvl'] = br.baseline
-        self.df['wvl'] = br.fit_transform(wvls, spectra)
-
+        self.df['wvl'] = self.df['wvl']-self.df_baseline['wvl']
     # This function finds rows of the data frame where a specified column has
     # values matching a specified set of values
     # (Useful for extracting folds)
@@ -343,7 +342,7 @@ class spectral_data(object):
     def dim_red(self, col, method, params, kws, load_fit=None):
         if method == 'PCA':
             self.do_dim_red = PCA(*params, **kws)
-        if method == 'ICA':
+        if method == 'FastICA':
             self.do_dim_red = FastICA(*params, **kws)
         # TODO: Add ICA-JADE here
         if load_fit:

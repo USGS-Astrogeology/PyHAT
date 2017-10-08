@@ -88,6 +88,11 @@ def pca_ica_plot(data, x_component, y_component, colorvar=None, cmap='viridis', 
         y_variance = data.do_dim_red.explained_variance_ratio_[int(y_component) - 1] * 100
         x_label = 'PC ' + x_component + ' (' + str(round(x_variance, 1)) + r'%)'
         y_label = 'PC ' + y_component + ' (' + str(round(y_variance, 1)) + r'%)'
+    if method == 'FastICA':
+        x_loading = data.do_dim_red.components_[int(x_component) - 1, :]
+        y_loading = data.do_dim_red.components_[int(y_component) - 1, :]
+        x_label = 'Source ' + x_component
+        y_label = 'Source ' + y_component
 
     if method == 'ICA-JADE':
         x_loading = data.do_dim_red.ica_jade_loadings[int(x_component) - 1, :].T
