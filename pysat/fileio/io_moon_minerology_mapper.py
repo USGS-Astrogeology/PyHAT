@@ -1,10 +1,10 @@
-from osgeo import gdal
 import numpy as np
+from osgeo import gdal
 
 
 def openm3(input_data):
     if input_data.split('.')[-1] == 'hdr':
-        #GDAL wants the img, but many users aim at the .hdr
+        # GDAL wants the img, but many users aim at the .hdr
         input_data = input_data.split('.')[0] + '.img'
     ds = gdal.Open(input_data)
     ref_array = ds.GetRasterBand(1).ReadAsArray()
@@ -23,4 +23,3 @@ def metadatatoband(metadata):
             wv2band.append(float(v))
     wv2band.sort(key=int)
     return np.asarray(wv2band)
-

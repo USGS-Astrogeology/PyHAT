@@ -1,4 +1,5 @@
 from functools import reduce
+
 import numpy as np
 import pandas as pd
 
@@ -46,9 +47,9 @@ def normalize_vector(line):
     if isinstance(line, pd.DataFrame):
         line = line.values
     try:
-        n = np.sqrt(line[:, 0]**2 + line[:, 1]**2).reshape(-1, 1)
+        n = np.sqrt(line[:, 0] ** 2 + line[:, 1] ** 2).reshape(-1, 1)
     except:
-        n = np.sqrt(line[0]**2 + line[1]**2)
+        n = np.sqrt(line[0] ** 2 + line[1] ** 2)
     line = line / n
     return line
 
@@ -112,7 +113,7 @@ def checkdeplaid(incidence):
     """
     if incidence >= 95 and incidence <= 180:
         return 'night'
-    elif incidence >=90 and incidence < 95:
+    elif incidence >= 90 and incidence < 95:
         return 'night'
     elif incidence >= 85 and incidence < 90:
         return 'day'
@@ -167,7 +168,7 @@ def find_in_dict(obj, key):
     if key in obj:
         return obj[key]
     for k, v in obj.items():
-        if isinstance(v,dict):
+        if isinstance(v, dict):
             item = find_in_dict(v, key)
             if item is not None:
                 return item

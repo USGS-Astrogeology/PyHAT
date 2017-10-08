@@ -55,32 +55,33 @@ Translated to Python by Ryan Anderson Nov 2014 and Oct 2016
 """
 
 import numpy
-#function PSPLINT, xa, ya, y2a, x, DOUBLE=double
+
+
+# function PSPLINT, xa, ya, y2a, x, DOUBLE=double
 def spl_interp(xa, ya, y2a, x):
-    
     n = xa.size
 
-#    valloc=baseline_code.value_locate.value_locate(xa, x)
-    valloc=numpy.digitize(x,xa)-1 #The numpy routine digitize appears to basically do what value_locate does in IDL
-    klo=[]
+    #    valloc=baseline_code.value_locate.value_locate(xa, x)
+    valloc = numpy.digitize(x,
+                            xa) - 1  # The numpy routine digitize appears to basically do what value_locate does in IDL
+    klo = []
     for i in valloc:
-        klo.append(min(max(i,0),(n-2)))
-    klo=numpy.array(klo)
+        klo.append(min(max(i, 0), (n - 2)))
+    klo = numpy.array(klo)
     khi = klo + 1
     #
     # KLO and KHI now bracket the input value of X
     #
-    
-    if min(xa[khi]-xa[klo])==0: print('SPLINT - XA inputs must be distinct')
+
+    if min(xa[khi] - xa[klo]) == 0: print('SPLINT - XA inputs must be distinct')
     #
     # Cubic spline polynomial is now evaluated
     #
     h = xa[khi] - xa[klo]
-    
-    a = ( xa[khi] - x ) / h
-    b = ( x - xa[klo] ) / h
-    output=a*ya[klo]+b*ya[khi]+((a**3.-a)*y2a[klo]+(b**3.-b)*y2a[khi])*(h**2.)/6.
-    return output
-    
-    	# spl_interp.pro
 
+    a = (xa[khi] - x) / h
+    b = (x - xa[klo]) / h
+    output = a * ya[klo] + b * ya[khi] + ((a ** 3. - a) * y2a[klo] + (b ** 3. - b) * y2a[khi]) * (h ** 2.) / 6.
+    return output
+
+# spl_interp.pro

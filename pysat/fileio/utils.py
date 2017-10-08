@@ -1,7 +1,8 @@
+import fnmatch
+import os
 import shutil
 import tempfile
-import os
-import fnmatch
+
 import numpy as np
 
 
@@ -29,12 +30,11 @@ def delete_dir(dir):
     shutil.rmtree(dir)
 
 
-def file_search(searchdir,searchstring):
-#Recursively search for files in the specified directory
+def file_search(searchdir, searchstring):
+    # Recursively search for files in the specified directory
     filelist = []
     for root, dirnames, filenames in os.walk(searchdir):
         for filename in fnmatch.filter(filenames, searchstring):
             filelist.append(os.path.join(root, filename))
-    filelist=np.array(filelist)
-    return filelist    
-
+    filelist = np.array(filelist)
+    return filelist
