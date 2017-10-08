@@ -187,7 +187,7 @@ def ccam_remove_continuum(x, y, lv, lvmin=2, int_flag=2):
 
 
 class ccam_br(Baseline):
-    def __init__(self, lv=10, lvmin=2, int_flag=2):
+    def __init__(self, lv=7, lvmin=2, int_flag=2):
         self.lv_ = lv
         self.lvmin_ = lvmin
         self.int_flag_ = int_flag
