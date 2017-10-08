@@ -24,7 +24,7 @@ def watrous(z, scale, kernel=numpy.array([1., 4., 6., 4., 1.]) / 16.):
         w[s[0] + n:, 0] = temp
         for i in range(0, scale - 1):
             # print i
-            k1 = numpy.zeros((sk - 1) * 2. ** i + 1, dtype=numpy.float)
+            k1 = numpy.zeros((sk - 1) * 2 ** i + 1, dtype=numpy.float)
             i1 = numpy.array((numpy.arange(sk)) * 2. ** i, dtype=numpy.int)
             k1[i1] = kernel
 

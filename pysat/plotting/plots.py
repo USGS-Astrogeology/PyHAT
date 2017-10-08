@@ -40,7 +40,7 @@ def make_plot(x, y, figpath, figfile=None, xrange=None, yrange=None, xtitle='Ref
         if yrange:
             axes.set_ylim(yrange)
         else:
-            yrange = [min(np.array(y)[xind]), max(np.array(y)[xind])]
+            yrange = [np.min(np.array(y)[xind]), np.max(np.array(y)[xind])]
             axes.set_ylim(yrange)
     if hline:
         axes.axhline(hline, color='k', label=hlinelabel, linestyle=hlinestyle)
