@@ -10,7 +10,7 @@ here = path.abspath(path.dirname(__file__))
 #     long_description = f.read()
 
 setup(
-    name="PYSAT",
+    name="libpysat",
     version=VERSION,
     author="Jay Laura",
     author_email="jlaura@usgs.gov",
