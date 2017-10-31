@@ -29,14 +29,14 @@ install:
   # Create a virtual env and install dependencies
   - conda env create
   # Activate the env
-  - source activate pysat
+  - source activate libpysat
 
   # Dev packages
   - pip install coverage
   - pip install coveralls
 
 script:
-  - nosetests --with-coverage --cover-package=pysat
+  - nosetests --with-coverage --cover-package=libpysat
 
 after_success:
   - coveralls

@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 from os import path
-import pysat
+import libpysat
 
-VERSION = pysat.__version__
+VERSION = libpysat.__version__
 here = path.abspath(path.dirname(__file__))
 
 # TODO PyPi requires a README.rst file, not a README.md
@@ -33,7 +33,7 @@ setup(
         'pickle',
         'pvl',
         'PyQt5',
-        'pysat',
+        'libpysat',
         'pywt',
         'scipy',
         'shutil',
@@ -56,16 +56,16 @@ setup(
     ],
     keywords="planetary io",
     packages=(
-        'pysat',
-        'pysat.examples',
-        'pysat.fileio',
-        'pysat.fileio.tests',
-        'pysat.plotting',
-        'pysat.regression',
-        'pysat.spectral',
-        'pysat.spectral.baseline_code',
-        'pysat.spectral.tests',
-        'pysat.utils',
-        'pysat.utils.tests'
+        'libpysat',
+        'libpysat.examples',
+        'libpysat.fileio',
+        'libpysat.fileio.tests',
+        'libpysat.plotting',
+        'libpysat.regression',
+        'libpysat.spectral',
+        'libpysat.spectral.baseline_code',
+        'libpysat.spectral.tests',
+        'libpysat.utils',
+        'libpysat.utils.tests'
     ), install_requires=['pandas', 'numpy', 'scipy', 'pvl', 'matplotlib', 'sklearn']
 )
