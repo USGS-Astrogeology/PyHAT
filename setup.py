@@ -14,7 +14,7 @@ setup(
     version=VERSION,
     author="Jay Laura",
     author_email="jlaura@usgs.gov",
-    description="TODO Add description...",
+    description="A tool to extract Spectral Profiler data and visualize the resultant spectra",
     # long_description=long_description,
     url="https://github.com/USGS-Astrogeology/PySAT",
     license="Public Domain",
