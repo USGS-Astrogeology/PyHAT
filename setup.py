@@ -21,7 +21,7 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-        "Topic :: Spectral Analysis",
+        "Topic :: Scientific/Engineering :: Information Analysis",
         "License :: Public Domain",
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
