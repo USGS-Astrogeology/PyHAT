@@ -5,7 +5,7 @@ Created on Fri Sep  2 11:31:46 2016
 @author: rbanderson
 """
 import copy
-
+import traceback
 import numpy as np
 import sklearn.kernel_ridge as kernel_ridge
 import sklearn.linear_model as linear
@@ -55,13 +55,18 @@ class regression:
                 params_temp.pop('precompute')
                 self.model = linear.OrthogonalMatchingPursuitCV(**params_temp)
 
-        if self.method[i] == 'Lasso':
-            # check whether to do CV or not
-            self.do_cv = params[i]['CV']
+        if self.method[i] == 'LASSO':
             # create a temporary set of parameters
             params_temp = copy.copy(params[i])
-            # Remove CV parameter
-            params_temp.pop('CV')
+            # check whether to do CV or not
+            try:
+                self.do_cv = params[i]['CV']
+                # Remove CV parameter
+                params_temp.pop('CV')
+            except:
+                self.do_cv = False
+
+
 
             if self.do_cv is False:
                 self.model = linear.Lasso(**params_temp)
@@ -70,13 +75,13 @@ class regression:
                 self.model = linear.LassoCV(**params_temp)
 
         if self.method[i] == 'Elastic Net':
-            # TODO add CV to this function
-            # check whether to do CV or not
-            # create a temporary set of parameters
-            # Remove CV parameter
-            self.do_cv = params[i]['CV']
             params_temp = copy.copy(params[i])
-            params_temp.pop('CV')
+            try:
+                self.do_cv = params[i]['CV']
+                params_temp.pop('CV')
+            except:
+                self.do_cv = False
+
             if self.do_cv is False:
                 self.model = linear.ElasticNet(**params_temp)
             else:
@@ -84,12 +89,17 @@ class regression:
                 self.model = linear.ElasticNetCV(**params_temp)
 
         if self.method[i] == 'Ridge':
-            # check whether to do CV or not
-            self.do_cv = params[i]['CV']
             # create a temporary set of parameters
             params_temp = copy.copy(params[i])
-            # Remove CV parameter
-            params_temp.pop('CV')
+            try:
+                # check whether to do CV or not
+                self.do_cv = params[i]['CV']
+
+                # Remove CV parameter
+                params_temp.pop('CV')
+            except:
+                self.do_cv = False
+
             if self.do_cv:
                 self.model = linear.RidgeCV(**params_temp)
             else:
@@ -102,19 +112,23 @@ class regression:
             self.model = linear.ARDRegression(**params[i])
 
         if self.method[i] == 'LARS':
-            # check whether to do CV or not
-            self.do_cv = params[i]['CV']
             # create a temporary set of parameters
             params_temp = copy.copy(params[i])
-            # Remove CV parameter
-            params_temp.pop('CV')
+            try:
+                # check whether to do CV or not
+                self.do_cv = params[i]['CV']
+
+                # Remove CV parameter
+                params_temp.pop('CV')
+            except:
+                self.do_cv = False
+
             if self.do_cv is False:
                 self.model = linear.Lars(**params_temp)
             else:
                 self.model = linear.LarsCV(**params_temp)
 
         if self.method[i] == 'Lasso LARS':
-            # TODO add in a combobox for IC and CV this should also eliminate the problem of the user selecting one too many criterions
             model = params[i]['model']
             params_temp = copy.copy(params[i])
             params_temp.pop('model')
@@ -144,13 +158,7 @@ class regression:
             params_temp.pop('reduce_dim')
             params_temp.pop('n_components')
             self.model = GaussianProcess(**params_temp)
-            # TODO: Why doesn't this if statement work correctly?
-            # TODO: This if statement doesn't work because ransacparams is empty
-            # < class 'list'>: [{}]
-            #        if bool(ransacparams[i]):
-            #            print('RANSAC')
-            #            self.model=RANSAC(self.model,**ransacparams[i])
-            #            self.ransac=True
+
 
     def fit(self, x, y, i=0):
         # if gaussian processes are being used, data dimensionality needs to be reduced before fitting
@@ -164,22 +172,24 @@ class regression:
                 do_pca = PCA(n_components=self.n_components)
                 self.do_reduce_dim = do_pca.fit(x)
             x = self.do_reduce_dim.transform(x)
-        try:
+        #try:
             print('Training model...')
-
+        try:
             self.model.fit(x, y)
-            print(self.model)
-            if self.ransac:
-                self.outliers = np.logical_not(self.model.inlier_mask_)
-                print(str(np.sum(self.outliers)) + ' outliers removed with RANSAC')
-
-            # if self.method[i]=='PLS' and self.ransac==False:
-            #    self.calc_Qres_Lev(x)
             self.goodfit = True
-        except Exception as e:
-            print('There was a problem with training the model!')
-            print(e)
-            self.goodfit = False  # This can happen for GP when dimensionality is reduced too much. Use try/except to handle these cases.
+        except:
+            self.goodfit = False
+            if self.method[i] == 'GP':
+                pass
+            else:
+                print('Model failed to train!')
+                traceback.print_stack()
+        print(self.model)
+        if self.ransac:
+            self.outliers = np.logical_not(self.model.inlier_mask_)
+            print(str(np.sum(self.outliers)) + ' outliers removed with RANSAC')
+
+
 
     def predict(self, x, i=0):
         if self.method[i] == 'GP':
