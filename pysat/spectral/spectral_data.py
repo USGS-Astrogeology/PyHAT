@@ -18,11 +18,14 @@ from pysat.spectral.baseline_code.mario import Mario
 from pysat.spectral.baseline_code.median import MedianFilter
 from pysat.spectral.baseline_code.polyfit import PolyFit
 from pysat.spectral.baseline_code.rubberband import Rubberband
-from pysat.spectral.jade import jadeR as jade
+from pysat.spectral.jade import JADE
 from pysat.spectral.lra import low_rank_align as LRA
 from sklearn import cross_validation
 from sklearn.decomposition import PCA, FastICA
 from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import IsolationForest
+from sklearn.manifold.t_sne import TSNE
+from sklearn.manifold.locally_linear import LocallyLinearEmbedding
 
 
 def norm_total(df):
@@ -338,23 +341,50 @@ class spectral_data(object):
     def standard_scale(self, col):
         self.df[col] = StandardScaler().fit_transform(self.df[col])
 
-    # create an all-purpose dimensionality reduction option to replace the individual PCA, ICA, etc. functions
+    def deriv(self):
+        new_df=self.df.copy()
+        wvls=self.df['wvl'].columns.values
+        new_df['wvl'] = self.df['wvl'].diff(axis=1)/wvls
+        foo=new_df['wvl'].columns.values
+        new_df=new_df.drop(('wvl',self.df['wvl'].columns.values[0]),axis=1)
+        foo2=new_df['wvl'].columns.values
+        return spectral_data(new_df)
+
     def dim_red(self, col, method, params, kws, load_fit=None):
         if method == 'PCA':
             self.do_dim_red = PCA(*params, **kws)
         if method == 'FastICA':
             self.do_dim_red = FastICA(*params, **kws)
+        if method == 't-SNE':
+            self.do_dim_red = TSNE(*params, **kws)
+        if method == 'LLE':
+            self.do_dim_red = LocallyLinearEmbedding(*params, **kws)
+        if method == 'JADE-ICA':
+            self.do_dim_red = JADE(*params, **kws)
         # TODO: Add ICA-JADE here
         if load_fit:
             self.do_dim_red = load_fit
         else:
-            self.do_dim_red.fit(self.df[col])
-        dim_red_result = self.do_dim_red.transform(self.df[col])
-        for i in list(range(1, dim_red_result[0].shape[
-            0] + 1)):  # will need to revisit this for other methods that don't use n_components to make sure column names still mamke sense
+            if method != 't-SNE':
+                self.do_dim_red.fit(self.df[col])
+                dim_red_result = self.do_dim_red.transform(self.df[col])
+            else:
+                dim_red_result = self.do_dim_red.fit_transform(self.df[col])
+
+        for i in list(range(1, dim_red_result.shape[1] + 1)):  # will need to revisit this for other methods that don't use n_components to make sure column names still mamke sense
             self.df[(method, str(i))] = dim_red_result[:, i - 1]
 
         return self.do_dim_red
+
+    def outlier_removal(self, col, method, params):
+        if method == 'Isolation Forest':
+            self.do_outlier_removal = IsolationForest(**params)
+        else:
+            method == None
+        self.do_outlier_removal.fit(np.array(self.df[col]))
+        outlier_removal_result = self.do_outlier_removal.predict(np.array(self.df[col]))
+        self.df[('meta','Outliers - '+method+str(params))] = outlier_removal_result
+        return self.do_outlier_removal
 
     def pca(self, col, nc=None, load_fit=None):
         if nc:
@@ -375,6 +405,7 @@ class spectral_data(object):
         ica_result = self.do_ica.transform(self.df[col])
         for i in list(range(1, self.do_ica.n_components + 1)):
             self.df[('ICA', i)] = ica_result[:, i - 1]
+
 
     def ica_jade(self, col, nc=None, load_fit=None, corrcols=None):
         if load_fit is not None:  # use this to load a previous fit rather than fit the current data

@@ -94,9 +94,9 @@ def pca_ica_plot(data, x_component, y_component, colorvar=None, cmap='viridis', 
         x_label = 'Source ' + x_component
         y_label = 'Source ' + y_component
 
-    if method == 'ICA-JADE':
+    if method == 'JADE-ICA':
         x_loading = data.do_dim_red.ica_jade_loadings[int(x_component) - 1, :].T
-        y_loading = data.ica_jade_loadings[int(y_component) - 1, :].T
+        y_loading = data.do_dim_red.ica_jade_loadings[int(y_component) - 1, :].T
         x_label = 'Source ' + x_component
         y_label = 'Source ' + y_component
 

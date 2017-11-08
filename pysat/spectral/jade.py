@@ -20,20 +20,44 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #######################################################################
 
-"""
-jade
-
-This module contains only one function, jadeR, which does blind source
-separation of real signals. Hopefully more ICA algorithms will be added in the
-future.
-"""
-
 from sys import stdout
 
-import numpy
+import numpy as np
 from numpy import *
 from numpy.linalg import eig, pinv
 
+#JADE class created for compatibility with PySAT
+class JADE():
+    def __init__(self,n_components=4):
+        self.n_components = n_components
+
+    def fit(self,X, corrdata = None):
+        X = np.array(X)
+        scores = jadeR(X,m = self.n_components)
+        loadings = np.dot(scores, X)
+
+        for i in list(range(1, len(scores[:, 0]) + 1)):
+            if np.abs(np.max(loadings[i - 1, :])) < np.abs(
+                    np.min(loadings[i - 1, :])):  # flip the sign if necessary to look nicer
+                loadings[i - 1, :] = loadings[i - 1, :] * -1
+                scores[i - 1, :] = scores[i - 1, :] * -1
+        self.ica_jade_loadings = loadings
+        return scores.T
+
+    def transform(self, X):
+        return np.dot(self.ica_jade_loadings, X.T).T
+
+    #this is a function that finds the correlation between loadings and a set of columns
+    #The idea is to somewhat automate identifying which element the loading corresponds to.
+    def correlate_loadings(self, df, corrcols):
+        corrdf = self.df.corr().drop(icacols, 1).drop(corrcols, 0)
+        ica_jade_ids = []
+        for i in corrdf.loc['ICA-JADE'].index:
+            tmp = corrdf.loc[('ICA-JADE', i)]
+            match = tmp.values == np.max(tmp)
+            ica_jade_ids.append(corrcols[np.where(match)[0]][1] + ' (r=' + str(np.round(np.max(tmp), 1)) + ')')
+        self.ica_jade_corr = corrdf
+        self.ica_jade_ids = ica_jade_ids
 
 def jadeR(X, m=None, verbose=True):
     """
@@ -238,8 +262,8 @@ def jadeR(X, m=None, verbose=True):
         for p in range(m - 1):
             for q in range(p + 1, m):
 
-                Ip = numpy.array(arange(p, m * nbcm, m), dtype='int')
-                Iq = numpy.array(arange(q, m * nbcm, m), dtype='int')
+                Ip = np.array(arange(p, m * nbcm, m), dtype='int')
+                Iq = np.array(arange(q, m * nbcm, m), dtype='int')
 
                 # computation of Givens angle
                 g = concatenate([CM[p, Ip] - CM[q, Iq], CM[p, Iq] + CM[q, Ip]])
@@ -266,10 +290,11 @@ def jadeR(X, m=None, verbose=True):
                     Off = Off - Gain
 
         if verbose:
-            print >> stdout, "completed in %d rotations" % upds
+            pass
+            print("completed in %d rotations" % upds)
         updates = updates + upds
     if verbose:
-        print >> stdout, "jade -> Total of %d Givens rotations" % updates
+        print("jade -> Total of %d Givens rotations" % updates)
 
     # A separating matrix
     # ===================
@@ -281,7 +306,7 @@ def jadeR(X, m=None, verbose=True):
     # according to the norm of the columns of A = pinv(B)
 
     if verbose:
-        print >> stdout, "jade -> Sorting the components"
+        print("jade -> Sorting the components")
 
     A = pinv(B)
     keys = array(argsort(multiply(A, A).sum(axis=0)[0]))[0]
@@ -289,7 +314,7 @@ def jadeR(X, m=None, verbose=True):
     B = B[::-1, :]  # % Is this smart ?
 
     if verbose:
-        print >> stdout, "jade -> Fixing the signs"
+        print("jade -> Fixing the signs")
     b = B[:, 0]
     signs = array(sign(sign(b) + 0.1).T)[0]  # just a trick to deal with sign=0
     B = diag(signs) * B
