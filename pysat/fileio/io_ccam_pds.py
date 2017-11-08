@@ -205,7 +205,8 @@ def ccam_batch(directory, searchstring='*.csv', to_csv=None, lookupfile=None, av
     combined.loc[:, ('meta', 'sclock')] = pd.to_numeric(combined.loc[:, ('meta', 'sclock')])
 
     if lookupfile is not None:
-        combined = lookup(combined, lookupfile=lookupfile)
+
+        combined = lookup(combined, lookupfile=lookupfile.replace('[','').replace(']','').replace("'",'').replace(' ','').split(','))
     if to_csv is not None:
         combined.to_csv(to_csv)
     return spectral_data(combined)
