@@ -15,7 +15,6 @@ import pandas as pd
 from libpysat.regression.regression import regression
 from sklearn.cross_validation import LeaveOneLabelOut
 from sklearn.grid_search import ParameterGrid
-
 warnings.filterwarnings('ignore')
 
 
@@ -33,8 +32,12 @@ class cv:
               yrange=[0, 100]):
 
 
-        cv_iterator = LeaveOneLabelOut(
+        try:
+            cv_iterator = LeaveOneLabelOut(
             Train[('meta', 'Folds')])  # create an iterator for cross validation based on the predefined folds
+        except:
+            print('***No folds found! Did you remember to define folds before running cross validation?***')
+
         rmsecv_folds = []
         rmsec = []
         rmsecv = []
