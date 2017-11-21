@@ -382,8 +382,11 @@ class spectral_data(object):
         else:
             method == None
         self.do_outlier_removal.fit(np.array(self.df[col]))
-        outlier_removal_result = self.do_outlier_removal.predict(np.array(self.df[col]))
-        self.df[('meta','Outliers - '+method+str(params))] = outlier_removal_result
+        outlier_scores = self.do_outlier_removal.decision_function(np.array(self.df[col]))
+        self.df[('meta','Outlier Scores - '+method+str(params))] = outlier_scores
+        #is_outlier = self.do_outlier_removal.predict(np.array(self.df[col]))
+        #self.df[('meta', 'Outliers - ' + method + str(params))] = is_outlier
+
         return self.do_outlier_removal
 
     def pca(self, col, nc=None, load_fit=None):
