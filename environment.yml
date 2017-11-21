@@ -1,4 +1,4 @@
-name: pysat
+name: libpysat
 dependencies:
   - python=3
   - jupyter

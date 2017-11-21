@@ -1,42 +1,21 @@
 language: python
-sudo: false
-
-branches:
-only:
-  - master
-
-python:
-  - "3.5"
-
-before_install:
-
+cache:
+- pip
 install:
-  # We do this conditionally because it saves us some downloading if the
-  # version is the same.
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    fi
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  # Useful for debugging any issues with conda
-  - conda info -a
-
-  # Create a virtual env and install dependencies
-  - conda env create
-  # Activate the env
-  - source activate pysat
-
-  # Dev packages
-  - pip install coverage
-  - pip install coveralls
-
+- wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
 script:
-  - nosetests --with-coverage --cover-package=pysat
-
-after_success:
-  - coveralls
+- bash build.sh
+- python setup.py sdist
+deploy:
+  provider: pypi
+  user: tisaconundrum
+  password:
+    secure: VGcyz86C0/6UAp2SLGRCepAWCzQ+eBkqkmJKOsSfTZA9K5L5sTYJt0exqSoFLkymvAHnrNP55E3YhznjSYh2IAfGVVWb9QGeNDmwIjHmPWM77CRceTJ7cHxQTFvCR5M6uP+mtaK8B5YuY/2y8t5ikjzL2/6GqjrIBuj1kAMYb29gdVQqZAIWhbJ3FZLVAv2Dn60FGU4QJ+HYsapSaXzlX2V6R96Lq1J7xt3foDCVHPrrjT6TI/aAlUGPIhs0gZDevBsQOaLjUdZjtnVz1BVqFql+yUPl6nd1M+cVw2lcnjLB1hOQbLuTql9S/lViParDeuPsQvW5hc5syKzeAcZjHfl7bpaVHYZagyvbrzDjgvQBGGwzcE16NkaVCCnW8w9jTzDjZQ42a66oFTGB6pr81x/MngoM1YHSPIsJsOgJvmYu+psLAgzwopw5YojMhyq+TEamIIxXyjoZfjUqozbPZqqhpBWe4oRJI15ehnNIp6709TGf9l3hGjkwUfxfkPxNTK2MuVnb5g2OyZItxE0Z5D/T7HIbWFcFdnmhRX3YkeXZILl0o3K9QIz0XUtNp9fMm4iHv5YjA/pi5gD2EsL4T1iEYFoGdqgSfh1135N1ESlGDiiO7S94X9Imhg/AQl+Q2b34NRqnwhkadB331QZsMd712giyz/9kAf8EuAsId+o=
+  distributions: sdist bdist_wheel
+  on:
+    branch: dev
+after_deploy:
+- pip install libpysat
