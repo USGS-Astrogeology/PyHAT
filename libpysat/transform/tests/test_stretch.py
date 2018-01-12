@@ -1,4 +1,4 @@
-from libpysat.spectral import stretch
+from libpysat.transform import stretch
 
 def test_linear_stretch(one_dim, expected = 1):
     res = stretch.linear_stretch(one_dim)
