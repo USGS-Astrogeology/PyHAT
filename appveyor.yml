@@ -53,8 +53,7 @@ install:
     # Now install the pacakge dependencies
     - cmd: conda config --add channels conda-forge
     - cmd: conda config --add channels usgs-astrogeology
-    - cmd: conda install --yes -c conda-forge numpy scipy gdal scikit-learn multipledispatch
-    - cmd: conda install --yes pandas sqlalchemy pyyaml networkx affine scipy
+    - cmd: conda install --yes -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch
     - cmd: conda install --yes -c usgs-astrogeology plio
 
     # Development installation
