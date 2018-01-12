@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from libpysat.spectral import utils
+from libpysat.transform import utils
 
 
 class Test_Analytics(unittest.TestCase):

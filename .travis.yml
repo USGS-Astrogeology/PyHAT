@@ -34,11 +34,11 @@ install:
   # Install dependencies
   - conda config --add channels usgs-astrogeology
   - conda config --add channels conda-forge
-  - conda install -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch
-  - conda install -c usgs-astrogeology plio
+  - conda install --quiet -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch
+  - conda install --quiet -c usgs-astrogeology plio
 
   # Development installation
-  - conda install pytest pytest-cov
+  - conda install --quiet pytest pytest-cov
   - pip install coveralls
 
 script:
@@ -54,7 +54,7 @@ after_success:
 
 before_deploy:
   - source activate test_env  # Reactivate the env to have all deps installed.
-  - conda install -c conda-forge pip nbsphinx
+  - conda install --quiet -c conda-forge pip nbsphinx
   - pip install travis-sphinx
   - travis-sphinx build --source=docs --nowarn # The sphinx build script
 

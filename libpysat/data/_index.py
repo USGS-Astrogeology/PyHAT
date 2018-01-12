@@ -10,8 +10,9 @@ from numbers import Number
 
 from functools import reduce
 
-from . import spectra as sp
-
+from . import spectra
+from . import spectrum
+from . import hcube
 
 @dispatch(Real, pd.Float64Index)
 def _get_subindices(scalar, indices, tolerance=0):
@@ -218,35 +219,35 @@ class _SpectrumLocIndexer(pd.core.indexing._LocIndexer):
                 subindices = tuple([x[0], columns])
 
 
-            subframe = super(SpectrumLocIndexer, self).__getitem__(subindices)
+            subframe = super(_SpectrumLocIndexer, self).__getitem__(subindices)
 
         except Exception as e:
-            subframe = super(SpectrumLocIndexer, self).__getitem__(key)
+            subframe = super(_SpectrumLocIndexer, self).__getitem__(key)
 
-        if isinstance(subframe, sp.Spectrum):
-            subframe.wavelengths = self.obj.wavelengths
+        if isinstance(subframe, spectrum.Spectrum):
+            subframe.wavelengths = self.obj.wavelengths.intersection(subframe.index)
             subframe.metadata = self.obj.metadata
-        elif isinstance(subframe, sp._SpectraDataFrame):
-            subframe = sp.Spectra(subframe, wavelengths=self.obj.wavelengths, tolerance=self.tolerance)
+        elif isinstance(subframe, spectra.Spectra):
+            subframe = spectra.Spectra(subframe, wavelengths=self.obj.wavelengths, tolerance=self.tolerance)
         else :  # most likely a scalar
-            subframe = sp.Spectrum(subframe, index=key, wavelengths=self.obj.wavelengths, tolerance=self.tolerance)
+            subframe = spectrum.Spectrum(subframe, index=key, wavelengths=self.obj.wavelengths, tolerance=self.tolerance)
 
 
         return subframe
 
 
-class SpectrumiLocIndexer(pd.core.indexing._iLocIndexer):
+class _SpectrumiLocIndexer(pd.core.indexing._iLocIndexer):
     """
     """
 
     def __getitem__(self, key):
-        subframe = super(SpectrumiLocIndexer, self).__getitem__(key)
+        subframe = super(_SpectrumiLocIndexer, self).__getitem__(key)
 
-        if isinstance(subframe, sp.Spectrum):
+        if isinstance(subframe, spectrum.Spectrum):
             subframe.wavelengths = self.obj.wavelengths
             subframe.metadata = self.obj.metadata
         else:
-            subframe = sp.Spectra(subframe, wavelengths=self.obj.wavelengths, tolerance = self.obj._get.tolerance)
+            subframe = spectra.Spectra(subframe, wavelengths=self.obj.wavelengths, tolerance = self.obj._get.tolerance)
         return subframe
 
 
@@ -318,5 +319,5 @@ class _ArrayLocIndexer(object):
         except TypeError:  # indexes[sekf.waxis] returned scalar
             idx = self.wave_table[indexes[self.waxis]]
             return self.obj[idx]
-        except IndexError: # wavelength axis was not accessed, nothing fanc need to be done
+        except IndexError: # wavelength axis was not accessed, nothing fancy needs to be done
             return self.obj[indexes]

@@ -264,69 +264,7 @@ def remove_field_name(a, name):
     b = a[names]
     return b
 
-def linear(data, wv_array):
-    y1 = data[0]
-    y2 = data[-1]
-    wv1 = wv_array[0]
-    wv2 = wv_array[-1]
-    m = (y2 - y1) / ( wv2 - wv1)
-    b = y1 - (m * wv1)
-    mx = np.expand_dims(m, -1) * wv_array
-    y = (mx.swapaxes(0, -1).swapaxes(1, -1) + b)
-    return y
 
-def regression(data, wv_array):
-    m,b,_,_,_ =  ss.linregress(wv_array, data)
-    regressed_continuum = m * wv_array + b
-    return  data / regressed_continuum
-
-def horgan(data, wv_array, points, window):
-    #Define the search windows
-    windows = np.empty(len(points), dtype=list)
-    for i, point in enumerate(points):
-        windows[i] = ((np.where((wv_array > point - window) & (wv_array < point + window))[0]))
-
-    #Get the maximum within the window
-    maxima = np.empty(len(points), dtype = int)
-    for i, t_window in enumerate(windows):
-        maxima[i] = data[t_window.argmax() + t_window[0]]
-
-    x = np.asarray([wv_array[i-1] for i in maxima])
-    y = np.asarray([data[i-1] for i in maxima])
-
-    fit = np.polyfit(x,y,2)
-    continuum = np.polyval(fit,wv_array)
-    continuum_corrected =  data / continuum
-
-    return continuum_corrected
-
-def continuum_correction(data, wv, nodes, correction_nodes=[], correction=linear, **kwargs):
-    if not correction_nodes:
-        correction_nodes = nodes
-
-    correction_idx = []
-    for start, stop in zip(correction_nodes, correction_nodes[1:]):
-        start = get_band_numbers(wv, [start], tolerance = .01)
-        stop = get_band_numbers(wv, [stop], tolerance = .01)
-        correction_idx.append((start, stop + 1))
-    # Make a copy of the input data that will house the corrected spectra
-    corrected = np.copy(data)
-    denom = np.zeros(data.shape)
-
-    for i, (start, stop) in enumerate(zip(nodes, nodes[1:])):
-        # Get the start and stop indices into the wavelength array. These define the correction nodes
-        start_idx = get_band_numbers(wv, [start], tolerance = .01)
-        stop_idx = get_band_numbers(wv, [stop], tolerance = .01)
-
-        # Grab the correction indices.  These define the length of the line to be corrected
-        cor_idx = correction_idx[i]
-        # Compute an arbitrary correction
-        y = correction(data[start_idx:stop_idx + 1], wv[cor_idx[0]:cor_idx[1]], **kwargs)
-
-        # Apply the correction to a copy of the input data and then step to the next subset
-        corrected[cor_idx[0]:cor_idx[1]] = data[cor_idx[0]:cor_idx[1]] / y
-        denom[cor_idx[0]:cor_idx[1]] = y
-    return corrected, denom
 
 def generic_func(data, wv_array, wavelengths, func = None):
     """

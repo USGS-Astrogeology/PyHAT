@@ -8,14 +8,10 @@ import numpy as np
 from pandas import Series
 from scipy import signal
 
-
-import libpysat.spectral.baseline_code.watrous as watrous
+import libpysat.transform.baseline_code.watrous as watrous
 import numpy
 import scipy.signal
 
-# def within_range(x,y,rangevals):
-# mask=(y>rangevals[0])&(y<rangevals[1])
-# return x.loc[mask],y.loc[mask]
 
 def within_range(data, rangevals, col):
     mask = (data[('meta', col)] > rangevals[0]) & (data[('meta', col)] < rangevals[1])
