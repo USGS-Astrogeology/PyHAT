@@ -112,9 +112,11 @@ def pca_ica_plot(data, x_component, y_component, colorvar=None, cmap='viridis', 
 
     if colorvar:
         try:
-            mappable = ax1.scatter(x, y, c=data.df[('comp', colorvar)], cmap=cmap, linewidth=0.2, edgecolor='Black')
+            c = data.df[('comp', colorvar)]
+            mappable = ax1.scatter(np.squeeze(x), np.squeeze(y), c=c, cmap=cmap, linewidth=0.2, edgecolor='Black')
         except:
-            mappable = ax1.scatter(x, y, c=data.df[('meta', colorvar)], cmap=cmap, linewidth=0.2, edgecolor='Black')
+            c = data.df[('meta', colorvar)]
+            mappable = ax1.scatter(np.squeeze(x), np.squeeze(y), c=c, cmap=cmap, linewidth=0.2, edgecolor='Black')
             # TODO: handle any top-level label for colorval, not just comp or meta
         fig.colorbar(mappable, label=colorvar, ax=ax1)
     else:

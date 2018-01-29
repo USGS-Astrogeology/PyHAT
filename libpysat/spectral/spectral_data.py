@@ -18,7 +18,7 @@ from libpysat.spectral.baseline_code.mario import Mario
 from libpysat.spectral.baseline_code.median import MedianFilter
 from libpysat.spectral.baseline_code.polyfit import PolyFit
 from libpysat.spectral.baseline_code.rubberband import Rubberband
-from libpysat.spectral.jade import jadeR as jade
+from libpysat.spectral.jade import JADE
 from libpysat.spectral.lra import low_rank_align as LRA
 from sklearn import cross_validation
 from sklearn.decomposition import PCA, FastICA
@@ -369,7 +369,6 @@ class spectral_data(object):
             self.do_dim_red = LocallyLinearEmbedding(*params, **kws)
         if method == 'JADE-ICA':
             self.do_dim_red = JADE(*params, **kws)
-        # TODO: Add ICA-JADE here
         if load_fit:
             self.do_dim_red = load_fit
         else:

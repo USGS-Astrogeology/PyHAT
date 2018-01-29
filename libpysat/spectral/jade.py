@@ -189,7 +189,7 @@ def jadeR(X, m=None, verbose=True):
     # Reshaping of the data, hoping to speed up things a little bit...
     X = X.T
     dimsymm = (m * (m + 1)) / 2  # Dim. of the space of real symm matrices
-    nbcm = dimsymm  # number of cumulant matrices
+    nbcm = int(dimsymm)  # number of cumulant matrices
     CM = matrix(zeros([m, m * nbcm], dtype=float64))  # Storage for cumulant matrices
     R = matrix(eye(m, dtype=float64))
     Qij = matrix(zeros([m, m], dtype=float64))  # Temp for a cum. matrix
