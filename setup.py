@@ -30,7 +30,7 @@ setup(
         #   5 - Production/Stable
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: Unlicense',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
