@@ -56,7 +56,7 @@ def rbr(data, **kwargs):
                770:5}
     return(generic_func(data, wv, kernels=kernels, func=cf.rockdust2_func, **kwargs))
 
-'''def bd530(data, **kwargs):
+def bd530(data, **kwargs):
     """
     NAME: BD530
     PARAMETER: 0.53 micron band depth
@@ -76,8 +76,34 @@ def rbr(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [440,530,709]
+    wv = [440, 530, 716]
     return(generic_func(data, wv, func = cf.bd530_func, **kwargs))
+
+def bd530_2(data, **kwargs):
+    """
+    NAME: BD530_2
+    PARAMETER: 0.53 micron band depth
+    FORMULATION *: 1 - (R530/(a*R709+b*R440))
+    RATIONALE: Crystalline ferric minerals
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [440, 530, 614]
+    kernels = {440: 5,
+                      530: 5,
+                      614: 5}
+    return(generic_func(data, wv, kernels = kernels, func = cf.bd530_func, **kwargs))
 
 def sh600(data, **kwargs):
     """
@@ -99,9 +125,54 @@ def sh600(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [533,600,710]
+    wv = [530, 600, 709]
     return(generic_func(data, wv, func=cf.sh600_func, **kwargs))
 
+def sh600_2(data, **kwargs):
+    """
+    NAME: SH600_2
+    PARAMETER: 0.60 micron shoulder height
+    FORMULATION *: R600/(a*R530+b*R709)
+    RATIONALE: select ferric minerals
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [533, 600, 710]
+    kernels = {533: 5,
+                      600: 5,
+                      716: 3}
+    return(generic_func(data, wv, kernels = kernels, func=cf.sh600_func, **kwargs))
+
+def sh770(data, **kwargs):
+    """
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [716, 775, 860]
+    kernels  = {716: 3,
+                       775: 5,
+                       860: 5}
+    return (generic_func(data, wv, kernels = kernels, func = cf.sh770_func, **kwargs))
 
 def bd640(data, **kwargs):
     """
@@ -125,6 +196,33 @@ def bd640(data, **kwargs):
     """
     wv = [600,648,709]
     return(generic_func(data, wv, func = cf.bd640_func, **kwargs))
+
+
+def bd640_2(data, **kwargs):
+    """
+    NAME: BD640_2
+    PARAMETER: 0.64 micron band depth
+    FORMULATION *: 1 - (R648/(a*R600+b*R709))
+    RATIONALE: select ferric minerals, especially maghemite
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [600,648,709]
+    kernels = {600: 5,
+                      624: 3,
+                      760: 5}
+    return(generic_func(data, wv, kernels = kernels, func = cf.bd640_func, **kwargs))
 
 def bd860(data, **kwargs):
     """
@@ -387,7 +485,7 @@ def bd1500(data, **kwargs):
     PARAMETER: 1.5 micron band depth
     FORMULATION *: 1.0 - ((R1558 + R1505)/(R1808 + R1367))
     RATIONALE: H2O surface ice
-    Algorithm differs from published - coded as per CAT (reduced instrument noise)    
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
     Parameters
     ----------
@@ -460,7 +558,7 @@ def bd1900(data, **kwargs):
     PARAMETER: 1.9 micron band depth
     FORMULATION *: 1.0 - ((R1972 + R1927)/(R2006 + R1874))
     RATIONALE: H2O, chemically bound or adsorbed
-    Algorithm differs from published - coded as per CAT (reduced instrument noise)    
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
     Parameters
     ----------
@@ -780,4 +878,4 @@ def cindex(data, **kwargs):
     Algorithm differs from published - coded as per CAT
     """
     wv = [3630,3750,3950]
-    return(generic_func(data, wv, func = cf.cindex_func, **kwargs))'''
+    return(generic_func(data, wv, func = cf.cindex_func, **kwargs))

@@ -1,28 +1,49 @@
 from numpy import sqrt
 
 
-
 def rockdust1_func(bands):
     b770, = bands
     return b770
 
 def rockdust2_func(bands):
-    b440,b770 = bands
+    b440, b770 = bands
     return b770 / b440
 
-'''def bd530_func(bands, _):
+def bd530_func(bands, thing):
+    print(thing)
     b440, b530, b709 = bands
 
-    b = (530 - 440) / (709 - 440)
+    b = (530 - 440) / (716 - 440)
     a = 1.0 - b
     return 1.0 - (b530/((a*b709)+(b*b440)))
 
-def sh600_func(bands, _):
-    b533, b600, b710 = bands
+def bd530_2_func(bands, _):
+    b440, b530, b614 = bands
 
-    a = (600 - 533) / (710 - 533)
-    b = 1.0 - a
-    return 1.0 - (((b * b533)+(a*b710))/b600)
+    b = (530 - 440) / (614 - 440)
+    a = 1.0 - b
+    return 1.0 - (b530 / ((a * b614) + (b * b440)))
+
+def sh600_func(bands, _):
+    b530, b600, b709 = bands
+
+    b = (600 - 530) / (709 - 530)
+    a = 1.0 - b
+    return 1.0 - (((a * b530) + (b * b709)) / b600)
+
+def sh600_2_func(bands, _):
+    b533, b600, b716 = bands
+
+    b = (600 - 533) / (716 - 533)
+    a = 1.0 - b
+    return 1.0 - (((a * b533) + (b * b716)) / b600)
+
+def sh770_func(bands, _):
+    b716, b775, b860 = bands
+
+    b = (600 - 530) / (709 - 530)
+    a = 1.0 - b
+    return 1.0 - (((a * b716) + (b * b860)) / b775)
 
 def bd640_func(bands, _):
     b600, b648, b709 = bands
@@ -187,4 +208,4 @@ def bd3400_func(bands, _ ):
 
 def cindex_func(bands, _):
     b3630, b3750,b3950 = bands
-    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)'''
+    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)
