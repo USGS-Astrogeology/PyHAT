@@ -1123,9 +1123,10 @@ def icer2(data, **kwargs):
        the processed ndarray
     """
     wv = [2530, 2600]
+
     return generic_func(data, wv, func = cf.rockdust2_inverse_func, **kwargs)
 
-'''def bdcarb(data, **kwargs):
+def bdcarb(data, **kwargs):
     """
     NAME: BDCARB
     PARAMETER: overtone band depth
@@ -1146,10 +1147,15 @@ def icer2(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [2230,2330,2390,2530,2600]
-    return(generic_func(data, wv, func = cf.bdcarb_func, **kwargs))
+    wv_set1 = [2230, 2330, 2390]
+    wv_set2 = [2390, 2530, 2600]
 
-def bd3000(data, **kwargs):
+    bd_1 = generic_func(data, wv_set1, func = cf.bd_func2, **kwargs)
+    bd_2 = generic_func(data, wv_set2, func = cf.bd_func2, **kwargs)
+
+    return 1 - np.sqrt((bd_1 * bd_2))
+    
+'''def bd3000(data, **kwargs):
     """
     NAME: BD3000
     PARAMETER: 3 micron band depth

@@ -19,10 +19,6 @@ def bd_func2(bands, wv):
     b, a = compute_b_a(wv)
     return 1.0 - (bands[1] / ((a * bands[0]) + (b * bands[2])))
 
-def avg_bd_func(bands, wv):
-    b, a = compute_b_a(wv)
-    return 1.0 - (bands[1] / ((a * bands[0]) + (b * bands[2])))
-
 def sh_func(bands, wv):
     b, a = compute_b_a(wv)
     return 1.0 - (((a * bands[0]) + (b * bands[2])) / bands[1])
@@ -108,15 +104,7 @@ def sindex_func(bands, _):
     b2100, b2400, b2290 = bands
     return (1.0 - ((b2100 + b2400) / (2 * b2290)))
 
-'''def bdcarb_func(bands, _ ):
-    b2230, b2330, b2390, b2530, b2600 = bands
-    a = (((2330 + 2120)*.5) - 2230 / (2390-2230))
-    b = 1.0 - a
-    c = (((2530 + 2120)*.5 - 2390) / (2600 - 2390))
-    d = 1.0 - c
-    return (1 - sqrt(b2330 / ((b * b2330) + (a*b2390)))*(b2530/((d*b2230)+(c*b2600))))
-
-def bd3000_func(bands, _ ) :
+'''def bd3000_func(bands, _ ) :
     b2210, b2530, b3000 = bands
     return ( 1 - (b3000 / (b2530 * (b2530 / b2210))))
 
