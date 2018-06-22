@@ -8,9 +8,17 @@ def rockdust1_func(bands, _):
 def rockdust2_func(bands, _):
     return bands[1] / bands[0]
 
-def bd_func(bands, wv):
+def bd_func1(bands, wv):
     b, a = compute_b_a(wv)
     return 1.0 - (bands[1] / ((a * bands[2]) + (b * bands[0])))
+
+def bd_func2(bands, wv):
+    b, a = compute_b_a(wv)
+    return 1.0 - (bands[1] / ((a * bands[0]) + (b * bands[2])))
+
+def avg_bd_func(bands, wv):
+    b, a = compute_b_a(wv)
+    return 1.0 - (bands[1] / ((a * bands[0]) + (b * bands[2])))
 
 def sh_func(bands, wv):
     b, a = compute_b_a(wv)
@@ -35,7 +43,6 @@ def hcp_index_func(bands,_):
     return (100 * ((b1470 - b1080) / (b1470+b1080)) * ((b1470 - b2067)/(b1470+b2067)))
 
 def index1_func(bands, _):
-    print(bands)
     return (100 * ((bands[1] - bands[0]) / (bands[1] + bands[0])) * \
                   ((bands[1] - bands[2]) / (bands[1] + bands[2])))
 
@@ -51,9 +58,10 @@ def bd1500_func(bands, _):
 
 def bd1900_func(bands, _):
     b1875, b1930, b1985, b2067 = bands
-    # How are a and b calculated here?
-    a = 1
-    b = 1
+    # Is this the correct calculation for a, and b here?
+    # Going off of the code present in the bd2100_func
+    b = (((1985 + 1930) / 2) - 1875) / (2067 - 1875)
+    a = 1 - b
     return (1.0 - (((b1985 + b1930) / 2) / (b * 2067 + a * 1875)))
 
 def bd1900r_func(bands, _):
@@ -67,29 +75,25 @@ def bd1900r_func(bands, _):
 
 #@@TODO bdi2000
 
-def bd2100_func(bands, _):
-    b1930, b2120, b2140, b2250 = bands
+def bd2100_func(bands, wv):
+    b1930, b2120, b2130, b2250 = bands
+    wv = [wv[0], ((wv[1] + wv[2] )/2), wv[3]]
+    bands = [bands[0], ((bands[1] + bands[2]) * .5), bands[3]]
 
-    a = (((2120 + 2140 / 2) - 1930) / (2250 - 1930))
-    b = 1.0 - a
-    return (1.0 -(((b2120 + b2140)*.5)/((b*b1930)+(a*b2250))))
+    return bd_func2(bands, wv)
 
+def doub2200h_func(bands, _):
+    b2172, b2205, b2258, b2311 = bands
 
-def bd2210_func(bands, _):
-    b2140,b2210,b2250 = bands
-    a = (2210 - 2140) / (2250 - 2140)
-    b = 1.0 - a
-    return (1.0 - ((b2210)/((b*b2140)+(a*b2250))))
+    return (1 - ((b2205 + b2258) / (b2172 + b2311)))
 
-
-def bd2290_func(bands, _):
+'''def bd2290_func(bands, _):
     b2250, b2290, b2350 = bands
 
     a = (2290 - 2250) / (2350 - 2250)
     b = 1.0 - a
 
     return (1.0 - ((b2290)/((b*b2250)+(a*b2350))))
-
 
 def d2300_func(bands, _):
     b1815, b2120, b2170, b2210, b2290, b2320, b2330, b2530 = bands
@@ -147,4 +151,4 @@ def bd3400_func(bands, _ ):
 
 def cindex_func(bands, _):
     b3630, b3750,b3950 = bands
-    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)
+    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)'''

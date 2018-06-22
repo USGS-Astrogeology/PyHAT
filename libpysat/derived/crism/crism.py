@@ -84,7 +84,7 @@ def bd530(data, use_kernels = True, **kwargs):
         kernels[530] = 5
         kernels[614] = 5
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func1, kernels = kernels, **kwargs)
 
 
 def sh600(data, use_kernels = True, **kwargs):
@@ -169,7 +169,7 @@ def bd640(data, use_kernels = True, **kwargs):
         kernels[624] = 3
         kernels[760] = 5
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 def bd860(data, use_kernels = True, **kwargs):
@@ -199,7 +199,7 @@ def bd860(data, use_kernels = True, **kwargs):
         kernels[860] = 5
         kernels[977] = 5
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 def bd920(data, use_kernels = True, **kwargs):
@@ -230,7 +230,7 @@ def bd920(data, use_kernels = True, **kwargs):
         kernels[920] = 5
         kernels[984] = 5
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 # TODO: rpeak1
@@ -316,7 +316,7 @@ def bd1300(data, **kwargs):
                1432: 15,
                1470: 5}
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 '''def ira(data, **kwargs):
@@ -548,7 +548,7 @@ def bd1400(data, **kwargs):
     kernels = {1370: 5,
                1432: 3,
                1470: 5}
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 def bd1435(data, **kwargs):
@@ -573,14 +573,15 @@ def bd1435(data, **kwargs):
                1432: 1,
                1470: 3}
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
-def bd1500(data, **kwargs):
+def bd1500(data, use_kernels = True, **kwargs):
     """
     NAME: BD1500
     PARAMETER: 1.5 micron H2O ice band depth
     FORMULATION *: 1.0 - ((R1505 + R1558) / (R1808 + R1367))
+    FORMULATION (with kernels) *: 1.0 - (R1525 / (b * R1808 + a * R1367))
     RATIONALE: H2O surface ice
     Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
@@ -594,6 +595,14 @@ def bd1500(data, **kwargs):
      : ndarray
        the processed ndarray
     """
+    if use_kernels:
+        wv = [1367, 1525, 1808]
+        kernels = {1367: 5,
+                          1525: 11,
+                          1808: 5}
+
+        return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
     wv = [1367, 1505, 1558, 1808]
     return generic_func(data, wv, func = cf.bd1500_func, **kwargs)
 
@@ -640,7 +649,7 @@ def icer1_2(data, **kwargs):
        the processed ndarray
     """
     bd1435_val = bd1435(data)
-    bd1500_val = bd1500(data)
+    bd1500_val = bd1500(data, use_kernels = False)
 
     return 1 - ((1 - bd1435_val) / (1 - bd1500_val))
 
@@ -675,7 +684,7 @@ def bd1750(data, use_kernels = True, **kwargs):
         kernels[1750] = 3
         kernels[1815] = 5
 
-    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 def bd1900(data, **kwargs):
@@ -729,8 +738,8 @@ def bd1900_2(data, **kwargs):
                    1985: 5,
                    2046: 5}
 
-    bd_1 = generic_func(data, wv_set1, func = cf.bd_func, kernels = kernel_set1, **kwargs)
-    bd_2 = generic_func(data, wv_set2, func = cf.bd_func, kernels = kernel_set2, **kwargs)
+    bd_1 = generic_func(data, wv_set1, func = cf.bd_func2, kernels = kernel_set1, **kwargs)
+    bd_2 = generic_func(data, wv_set2, func = cf.bd_func2, kernels = kernel_set2, **kwargs)
 
     return .5 * (1 - bd_1) + .5 * (1 - bd_2)
 
@@ -758,7 +767,32 @@ def bd1900r(data, **kwargs):
 
     return generic_func(data, wv, func = cf.bd1900r_func, **kwargs)
 
-'''#@@TODO bdi2000
+def bd1900r2(data, **kwargs):
+    """
+    NAME: BD1900r2
+    PARAMETER: 1.9 micron band depth
+    FORMULATION *:
+1 - ((R1908 / RC1908 + R1914 / RC1914 + R1921 / RC1921 + R1928 / RC1928 + R1934 / RC1934 + R1941 / RC1941) /
+      (R1862 / RC1862 + R1869 / RC1869 + R1875 / RC1875 + R2112 / RC2112 + R2120 / RC2120 + R2126 / RC2126))
+    RATIONALE: H2O, chemically bound or adsorbed
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [1908, 1914, 1921, 1928, 1934, 1941,
+          1862, 1869, 1875, 2112, 2120, 2126]
+
+    raise NotImplementedError
+
+# TODO:  bdi2000
 def bdi2000(data, **kwargs):
     """
     NAME: BDI2000
@@ -772,31 +806,122 @@ def bdi2000(data, **kwargs):
     raise NotImplementedError
 
 
-def bd2100(data, **kwargs):
+def bd2100(data, use_kernels = True, **kwargs):
     """
     NAME: BD2100
     PARAMETER: 2.1 micron band depth
-    FORMULATION *: 1 - ( ((R2120+R2140)*0.5) / (a*R1930+b*R2250) )
+    FORMULATION *: 1 - ( ((R2120 + R2140) * 0.5) / (a * R1930 + b * R2250) )
+    FORMULATION (with kernels) *: 1 - ( R2132 / (a * R1930 + b * R2250) )
     RATIONALE: monohydrated minerals
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [1930,2120,2140,2250]
-    return(generic_func(data, wv, func = cf.bd2100_func, **kwargs))
+    if use_kernels:
+        wv = [1930, 2132, 2250]
+        kernels = {1930: 3,
+                          2132: 5,
+                          2250: 3}
 
+        return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
-def bd2210(data, **kwargs):
+    wv = [1930, 2120, 2130, 2250]
+    return generic_func(data, wv, func = cf.bd2100_func, **kwargs)
+
+def bd2165(data, **kwargs):
+    """
+    NAME: BD2165
+    PARAMETER: 2.165 micron Al-OH band depth
+    FORMULATION (with kernels) *: 1 - ( R2165 / (a * R2120 + b * R2230) )
+    RATIONALE: Pyrophyllite Kaolinite group
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [2120, 2165, 2230]
+    kernels = {2120: 5,
+                      2165: 3,
+                      2230: 3}
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
+def bd2190(data, **kwargs):
+    """
+    NAME: BD2190
+    PARAMETER: 2.190 micron Al-OH band depth
+    FORMULATION (with kernels) *: 1 - ( R2185 / (a * R2120 + b * R2250) )
+    RATIONALE: Beidellite Allophane Imogolite
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [2120, 2185, 2250]
+    kernels = {2120: 5,
+                      2185: 3,
+                      2250: 3}
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
+def doub2200h(data, **kwargs):
+    """
+    NAME: DOUB2200H
+    PARAMETER: 2.16 micron Si-OH band depth and 2.21 micron H-bound Si-OH band
+        depth (doublet)
+    FORMULATION (with kernels) *: 1 - ((R2205 + R2258) / (R2172 + R2311))
+    RATIONALE: Opal and other Al-OH minerals
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [2172, 2205, 2258, 2311]
+    kernels = {2172: 5,
+                      2205: 3,
+                      2258: 3,
+                      2311: 5}
+
+    return generic_func(data, wv, func = cf.doub2200h_func, kernels = kernels, **kwargs)
+
+def min2200(data, **kwargs):
+    wv_set1 = [2120, 2165, 2350]
+    kernel_set1 = {2120: 5, 2165: 3, 2350: 5}
+
+    wv_set2 = [2120, 2210, 2350]
+    kernel_set2 = {2120: 5, 2210: 3, 2350: 5}
+
+    bd_1 = generic_func(data, wv_set1, func = cf.bd_func2, kernels = kernel_set1, **kwargs)
+    bd_2 = generic_func(data, wv_set2, func = cf.bd_func2, kernels = kernel_set2, **kwargs)
+
+    return np.minimum(bd_1, bd_2)
+
+def bd2210(data, use_kernels = True, **kwargs):
     """
     NAME: BD2210
     PARAMETER: 2.21 micron band depth
@@ -807,19 +932,47 @@ def bd2210(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [2140,2210,2250]
-    return(generic_func(data, wv, func = cf.bd2210_func, **kwargs))
+    wv = [2120, 2210, 2250]
+    kernels = {}
 
-def bd2290(data, **kwargs):
+    if use_kernels:
+        wv = [2165, 2210, 2250]
+        kernels[2165] = 5
+        kernels[2210] = 5
+        kernels[2250] = 5
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
+def d2200(data, **kwargs):
+    """
+    NAME: D2200
+    PARAMETER: 2.2 micron dropoff
+    FORMULATION (with kernels) *: 1 - (((R2210 / RC2210) + (R2230 / RC2230)) / (2 * (R2165 / RC2165)))
+        Slope for RC#### anchored at R1815 and R2430.
+    RATIONALE: Al-OH minerals
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [1815, 2210, 2230, 2165, 2430]
+    kernels = {1815: 7, 2165: 5, 2210: 7, 2230: 7, 2430: 7}
+
+    raise NotImplementedError
+
+'''def bd2290(data, **kwargs):
     """
     NAME: BD2290
     PARAMETER: 2.29 micron band depth

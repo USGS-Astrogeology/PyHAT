@@ -42,12 +42,12 @@ def test_sh770(crism_img):
     np.testing.assert_array_almost_equal(res, expected)
 
 @pytest.mark.parametrize("use_kernels, expected", [
-        (True, [[ 0.473684, 0.45, 0.428571],
-                [ 0.409091, 0.391304, 0.375],
-                [ 0.36, 0.346154, 0.333333]]),
-        (False, [[0.096935, 0.088906, 0.082105],
-                 [0.076271, 0.071211, 0.066781],
-                 [0.062869, 0.059391, 0.056277]])
+        (True, [[0.473684, 0.45, 0.428571],
+                [0.409091, 0.391304, 0.375],
+                [0.36, 0.346154, 0.333333]]),
+        (False, [[-0.120247, -0.108133, -0.098237],
+                [-0.09, -0.083038, -0.077075],
+                [-0.071911, -0.067396, -0.063415]])
 ])
 def test_bd640(crism_img, use_kernels, expected):
     res = crism.bd640(crism_img, use_kernels)
@@ -55,9 +55,9 @@ def test_bd640(crism_img, use_kernels, expected):
 
 @pytest.mark.parametrize("use_kernels, expected", [
         (True, np.zeros((3,3))),
-        (False, [[0.2384106, 0.22153846, 0.20689655],
-                 [0.19407008, 0.18274112, 0.17266187],
-                 [0.16363636, 0.15550756, 0.14814815]])
+        (False, [[-0.455696, -0.39779, -0.352941],
+                    [-0.317181, -0.288, -0.263736],
+                    [-0.243243, -0.225705, -0.210526]])
 ])
 def test_bd860(crism_img, use_kernels, expected):
     res = crism.bd860(crism_img, use_kernels)
@@ -65,9 +65,9 @@ def test_bd860(crism_img, use_kernels, expected):
 
 @pytest.mark.parametrize("use_kernels, expected", [
         (True, np.zeros((3,3))),
-        (False, [[-0.37724551, -0.33157895, -0.29577465],
-                 [-0.26694915, -0.24324324, -0.22340426],
-                 [-0.20655738, -0.19207317, -0.17948718]])
+        (False, [[0.215017, 0.199367, 0.185841],
+                [0.174033, 0.163636, 0.154412],
+                [0.146172, 0.138767, 0.132075]])
 ])
 def test_bd920(crism_img, use_kernels, expected):
     res = crism.bd920(crism_img, use_kernels)
@@ -156,7 +156,9 @@ def test_bd1435(crism_img):
 
 def test_bd1500(crism_img):
     res = crism.bd1500(crism_img)
-    expected = np.zeros((3, 3))
+    expected = [[-1.421053, -1.35, -1.285714],
+                [-1.227273, -1.173913, -1.125],
+                [-1.08, -1.038462, -1.]]
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_icer1(crism_img):
@@ -186,9 +188,9 @@ def test_bd1750(crism_img, use_kernels, expected):
 
 def test_bd1900(crism_img):
     res = crism.bd1900(crism_img)
-    expected = [[0.996322, 0.996068, 0.995814],
-                [0.995561, 0.995307, 0.995053],
-                [0.9948, 0.994546, 0.994292]]
+    expected = [[0.992593, 0.992082, 0.991571],
+                [0.99106, 0.990549, 0.990038],
+                [0.989527, 0.989017, 0.988506]]
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_bd1900_2(crism_img):
@@ -203,20 +205,69 @@ def test_bd1900r(crism_img):
                 [0.646707, 0.639053, 0.631579]]
     np.testing.assert_array_almost_equal(res, expected)
 
-'''def test_bdi2000(crism_img):
+def test_bd1900r2(crism_img):
+    with pytest.raises(NotImplementedError):
+        crism.bd1900r2(crism_img)
+
+def test_bdi2000(crism_img):
     with pytest.raises(NotImplementedError):
         crism.bdi2000(crism_img)
 
-def test_bd2100(crism_img):
-    res = crism.bd2100(crism_img)
-    eq = np.full(res.shape, expected)
-    assert np.allclose(res,eq)
+@pytest.mark.parametrize("use_kernels, expected", [
+        (True, [[-0.9, -0.81818182, -0.75],
+                [-0.69230769, -0.64285714, -0.6],
+                [-0.5625, -0.52941176, -0.5]]),
+        (False, [[0.169203, 0.160034, 0.151807],
+                 [0.144385, 0.137655, 0.131524],
+                 [0.125916, 0.120767, 0.116022]])
+])
+def test_bd2100(crism_img, use_kernels, expected):
+    res = crism.bd2100(crism_img, use_kernels)
+    np.testing.assert_array_almost_equal(res, expected)
 
-def test_bd2210(crism_img):
-    res = crism.bd2210(crism_img)
-    assert False
+def test_bd2165(crism_img):
+    res = crism.bd2165(crism_img)
+    expected = [[0.347181, 0.325905, 0.307087],
+                [0.290323, 0.275294, 0.261745],
+                [0.249467, 0.238289, 0.22807 ]]
+    np.testing.assert_array_almost_equal(res, expected)
 
-def test_bd2290(crism_img):
+def test_bd2190(crism_img):
+    res = crism.bd2190(crism_img)
+    expected = [[0.310345, 0.290323, 0.272727],
+                [0.257143, 0.243243, 0.230769],
+                [0.219512, 0.209302, 0.2]]
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_doub2200h(crism_img):
+    res = crism.doub2200h(crism_img)
+    expected = [[0.473684, 0.45, 0.428571],
+                [0.409091, 0.391304, 0.375],
+                [0.36, 0.346154, 0.333333]]
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_min2200(crism_img):
+    res = crism.min2200(crism_img)
+    expected =  [[0.473684, 0.45, 0.428571],
+                [0.409091, 0.391304, 0.375],
+                [0.36, 0.346154, 0.333333]]
+    np.testing.assert_array_almost_equal(res, expected)
+
+@pytest.mark.parametrize("use_kernels, expected", [
+        (True, np.zeros((3, 3))),
+        (False, [[0.257143, 0.239362, 0.223881],
+                    [0.21028, 0.198238, 0.1875],
+                    [0.177866, 0.169173, 0.16129 ]])
+])
+def test_bd2210(crism_img, use_kernels, expected):
+    res = crism.bd2210(crism_img, use_kernels)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_d2200(crism_img):
+    with pytest.raises(NotImplementedError):
+        crism.d2200(crism_img)
+
+'''def test_bd2290(crism_img):
     res = crism.bd2290(crism_img)
     assert False
 
