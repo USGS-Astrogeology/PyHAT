@@ -217,7 +217,8 @@ def bd920(data, use_kernels = True, **kwargs):
     """
     NAME: BD920
     PARAMETER: 0.92 micron band depth
-    FORMULATION *: 1 - ( R920 / (a*R800+b*R984) )
+    FORMULATION *: 1 - ( R920 / (a * R800 + b * R984) )
+    FORMULATION (with kernels) *: 1 - ( R920 / (a * R807 + b * R984) )
     RATIONALE: select ferric minerals ('Pseudo BDI1000 VIS')
 
     Parameters
@@ -267,32 +268,64 @@ def bdi1000VIS(data, **kwargs):
     """
     raise NotImplementedError
 
-#@@TODO bdi1000IR
-'''def bdi1000IR(data, **kwargs):
+# TODO: bdi1000IR
+def bdi1000IR(data, **kwargs):
    """
    NAME: BDI1000IR
-     PARAMETER: 1 micron integrated band depth; IR wavelengths
-     FORMULATION *: divide R1030, R1050, R1080, R1150
-       by linear fit from peak R  between 1.3 - 1.87 microns to R2530
-       extrapolated backwards, then integrate over (1 -  normalized
-       radiances)
-     RATIONALE: crystalline Fe+2 minerals; corrected for overlying
-       aerosol induced slope
+   PARAMETER: 1 micron integrated band depth; IR wavelengths
+   FORMULATION *: divide R1030, R1050, R1080, R1150
+     by linear fit from peak R  between 1.3 - 1.87 microns to R2530
+     extrapolated backwards, then integrate over (1 -  normalized
+     radiances)
+   RATIONALE: crystalline Fe+2 minerals; corrected for overlying
+   aerosol induced slope
    """
-   raise NotImplementedError'''
+   raise NotImplementedError
 
 
 def r1330(data, **kwargs):
-    """
-    """
-    wv = [1330]
-    kernels = {1330: 11}
+   """
+   NAME: R1330
+   PARAMETER: IR albedo
+   FORMULATION *: R1330
+   RATIONALE: IR albedo (ices > dust > unaltered mafics)
 
-    return generic_func(data, wv, func = (lambda x, y : x[0]), kernels = kernels, **kwargs)
+   Parameters
+   ----------
+   data : ndarray
+          (n,m,p) array
+   wv_array : ndarray
+              (n,1) array of wavelengths that correspond to the p
+              dimension of the data array
+   Returns
+   -------
+    : ndarray
+      the processed ndarray
+   """
+   wv = [1330]
+   kernels = {1330: 11}
+
+   return generic_func(data, wv, func = (lambda x, y : x[0]), kernels = kernels, **kwargs)
 
 
 def bd1300(data, **kwargs):
     """
+    NAME: BD1330
+    PARAMETER: IR albedo
+    FORMULATION *: R1330
+    RATIONALE: IR albedo (ices > dust > unaltered mafics)
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
     """
     wv = [1080, 1320, 1750]
     kernels = {1370: 5,
