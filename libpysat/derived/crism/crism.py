@@ -18,6 +18,7 @@ def r770(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
+
     Returns
     -------
      : ndarray
@@ -44,9 +45,7 @@ def rbr(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -70,9 +69,7 @@ def bd530(data, use_kernels = True, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -102,9 +99,7 @@ def sh600(data, use_kernels = True, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -133,9 +128,7 @@ def sh770(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -161,9 +154,7 @@ def bd640(data, use_kernels = True, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -193,9 +184,7 @@ def bd860(data, use_kernels = True, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -225,9 +214,7 @@ def bd920(data, use_kernels = True, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -270,47 +257,22 @@ def bdi1000VIS(data, **kwargs):
 
 # TODO: bdi1000IR
 def bdi1000IR(data, **kwargs):
-   """
-   NAME: BDI1000IR
-   PARAMETER: 1 micron integrated band depth; IR wavelengths
-   FORMULATION *: divide R1030, R1050, R1080, R1150
+    """
+    NAME: BDI1000IR
+    PARAMETER: 1 micron integrated band depth; IR wavelengths
+    FORMULATION *: divide R1030, R1050, R1080, R1150
      by linear fit from peak R  between 1.3 - 1.87 microns to R2530
      extrapolated backwards, then integrate over (1 -  normalized
      radiances)
-   RATIONALE: crystalline Fe+2 minerals; corrected for overlying
-   aerosol induced slope
-   """
-   raise NotImplementedError
+    RATIONALE: crystalline Fe+2 minerals; corrected for overlying
+    aerosol induced slope
+    """
+    raise NotImplementedError
 
 
 def r1330(data, **kwargs):
-   """
-   NAME: R1330
-   PARAMETER: IR albedo
-   FORMULATION *: R1330
-   RATIONALE: IR albedo (ices > dust > unaltered mafics)
-
-   Parameters
-   ----------
-   data : ndarray
-          (n,m,p) array
-   wv_array : ndarray
-              (n,1) array of wavelengths that correspond to the p
-              dimension of the data array
-   Returns
-   -------
-    : ndarray
-      the processed ndarray
-   """
-   wv = [1330]
-   kernels = {1330: 11}
-
-   return generic_func(data, wv, func = (lambda x, y : x[0]), kernels = kernels, **kwargs)
-
-
-def bd1300(data, **kwargs):
     """
-    NAME: BD1330
+    NAME: R1330
     PARAMETER: IR albedo
     FORMULATION *: R1330
     RATIONALE: IR albedo (ices > dust > unaltered mafics)
@@ -319,9 +281,31 @@ def bd1300(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [1330]
+    kernels = {1330: 11}
+
+    return generic_func(data, wv, func = (lambda x, y : x[0]), kernels = kernels, **kwargs)
+
+
+def bd1300(data, **kwargs):
+    """
+    NAME: BD1300
+    PARAMETER: 1.3 μm absorption associated with Fe2+ substitution in
+        plagioclase
+    FORMULATION (with kernels) *: 1 - ( R1320 / (a * R1080 + b * R1750) )
+    RATIONALE: Plagioclase with Fe2+ substitution
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
     Returns
     -------
      : ndarray
@@ -399,50 +383,45 @@ def olivine_index2(data, **kwargs):
 def lcp_index(data, **kwargs):
     """
     NAME: LCPINDEX
-    PARAMETER: pyroxene index
+    PARAMETER: LCP index
     FORMULATION *: ((R1330 - R1050)/(R1330 + R1050)) *
                    ((R1330 - R1815)/(R1330 + R1815))
-    RATIONALE: pyroxene is strongly +; favors low-Ca pyroxene
-    Algorithm differs from published - coded as per CAT
+    RATIONALE: Pyroxene is strongly +; favors LCP
+    Algorithm differs from published - coded as per CAT <--- What?
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1080, 1330, 1815]
     return generic_func(data, wv, func = cf.index1_func, **kwargs)
 
 
-def lcp_index_2(data, **kwargs):
+def lcp_index2(data, **kwargs):
     """
     NAME: LCPINDEX2
-    PARAMETER: pyroxene index
-    FORMULATION *: ((R1330 - R1050)/(R1330 + R1050)) *
-                   ((R1330 - R1815)/(R1330 + R1815))
-    RATIONALE: pyroxene is strongly +; favors low-Ca pyroxene
-    Algorithm differs from published - coded as per CAT
+    PARAMETER: Detect broad absorption centered at 1.81 μm
+    FORMULATION (with kernels) *:
+        RB1690 * 0.20 + RB1750 * 0.20 + RB1810 * 0.30 + RB1870 * 0.30
+        Anchored at R1560 and R2450
+    RATIONALE: Pyroxene is strongly +; favors LCP
+    Algorithm differs from published - coded as per CAT <--- What?
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1690, 1750, 1810, 1870]
     kernels = {1560: 7,
@@ -461,46 +440,40 @@ def hcp_index(data, **kwargs):
     FORMULATION *: 100 * ((R1470 - R1050) / (R1470 + R1050)) *
                          ((R1470 - R2067) / (R1470 + R2067))
     RATIONALE: pyroxene is strongly +; favors high-Ca pyroxene
-    Algorithm differs from published - coded as per CAT
+    Algorithm differs from published - coded as per CAT <--- What?
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1050, 1470, 2067]
     return generic_func(data, wv, func = cf.index1_func, **kwargs)
 
 
-def hcp_index_2(data, **kwargs):
+def hcp_index2(data, **kwargs):
     """
     NAME: HCPXINDEX
     PARAMETER: pyroxene index
     FORMULATION *: 100 * ((R1470 - R1050) / (R1470 + R1050)) *
                          ((R1470 - R2067) / (R1470 + R2067))
     RATIONALE: pyroxene is strongly +; favors high-Ca pyroxene
-    Algorithm differs from published - coded as per CAT
+    Algorithm differs from published - coded as per CAT <--- What?
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [2120, 2140, 2230, 2250, 2430, 2460]
     kernels = {1810: 7,
@@ -538,14 +511,11 @@ def islope1(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1815, 2530]
     kernels = {1815: 5,
@@ -556,10 +526,10 @@ def islope1(data, **kwargs):
 
 def bd1400(data, **kwargs):
     """
-    NAME: BD1435
-    PARAMETER: 1.435 micron band depth
-    FORMULATION *: 1 - ( R1430 / (a*R1370+b*R1470) )
-    RATIONALE: CO2 surface ice
+    NAME: BD1400
+    PARAMETER: 1.4 micron H2O and OH band depth
+    FORMULATION *: 1 - ( R1395 / (a * R1330 + b * R1467) )
+    RATIONALE: Hydrated or hydroxylated minerals
 
     Parameters
     ----------
@@ -585,21 +555,18 @@ def bd1435(data, **kwargs):
     """
     NAME: BD1435
     PARAMETER: 1.435 micron band depth
-    FORMULATION *: 1 - ( R1430 / (a*R1370+b*R1470) )
-    RATIONALE: CO2 surface ice
+    FORMULATION *: 1 - ( R1435 / (a * R1370 + b * R1470) )
+    RATIONALE: CO2 ice, some hydrated minerals
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1370, 1435, 1470]
     kernels = {1370: 3,
@@ -612,8 +579,8 @@ def bd1435(data, **kwargs):
 def bd1500(data, **kwargs):
     """
     NAME: BD1500
-    PARAMETER: 1.5 micron band depth
-    FORMULATION *: 1.0 - ((R1558 + R1505)/(R1808 + R1367))
+    PARAMETER: 1.5 micron H2O ice band depth
+    FORMULATION *: 1.0 - ((R1505 + R1558) / (R1808 + R1367))
     RATIONALE: H2O surface ice
     Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
@@ -621,14 +588,11 @@ def bd1500(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1367, 1505, 1558, 1808]
     return generic_func(data, wv, func = cf.bd1500_func, **kwargs)
@@ -638,48 +602,42 @@ def icer1(data, **kwargs):
     """
     NAME: ICER1
     PARAMETER: 1.5 micron and 1.43 micron band ratio
-    FORMULATION *: R1510 / R1430
+    FORMULATION (with kernels) *: R1510 / R1430
     RATIONALE: CO2, H20 ice mixtures
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1430, 1510]
     kernels = {1430: 5,
                1510: 5}
 
-    return generic_func(data, wv, func = cf.icer1_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.rockdust2_func, kernels = kernels, **kwargs)
 
 
 def icer1_2(data, **kwargs):
     """
-    NAME: ICER1
+    NAME: ICER1_2
     PARAMETER: 1.5 micron and 1.43 micron band ratio
-    FORMULATION *: R1510 / R1430
+    FORMULATION *: 1 - ((1 - bd1435) / (1 - bd1500))
     RATIONALE: CO2, H20 ice mixtures
 
     Parameters
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     bd1435_val = bd1435(data)
     bd1500_val = bd1500(data)
@@ -690,8 +648,9 @@ def icer1_2(data, **kwargs):
 def bd1750(data, use_kernels = True, **kwargs):
     """
     NAME: BD1750
-    PARAMETER: 1.75 micron band depth
-    FORMULATION *: 1 - ( R1750 / (a*R1660+b*R1815) )
+    PARAMETER: 1.7 micron band depth
+    FORMULATION *: 1 - ( R1750 / (a * R1550 + b * R1815) )
+    FORMULATION (with kernels) *: 1 - ( R1750 / (a * R1690 + b * R1815) )
     RATIONALE: gypsum
 
     Parameters
@@ -723,7 +682,7 @@ def bd1900(data, **kwargs):
     """
     NAME: BD1900
     PARAMETER: 1.9 micron band depth
-    FORMULATION *: 1.0 - ((R1972 + R1927)/(R2006 + R1874))
+    FORMULATION *: 1.0 - ((R1985 + R1930)/(R2067 + R1875))
     RATIONALE: H2O, chemically bound or adsorbed
     Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
@@ -731,14 +690,11 @@ def bd1900(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [1875, 1930, 1985, 2067]
     return generic_func(data, wv, func = cf.bd1900_func, **kwargs)
@@ -747,7 +703,9 @@ def bd1900_2(data, **kwargs):
     """
     NAME: BD1900_2
     PARAMETER: 1.9 micron band depth
-    FORMULATION *: 1.0 - ((R1972 + R1927)/(R2006 + R1874))
+    FORMULATION (with kernels) *:
+        .5 * (1 - (R1930 / (a * R1850 + b * R2067))) +
+        .5 * (1 - (R1985 / (a * R1850 + b * R2067)))
     RATIONALE: H2O, chemically bound or adsorbed
     Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
@@ -755,14 +713,11 @@ def bd1900_2(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv_set1 = [1850, 1930, 2067]
     kernel_set1 = {1850: 5,
@@ -780,7 +735,24 @@ def bd1900_2(data, **kwargs):
     return .5 * (1 - bd_1) + .5 * (1 - bd_2)
 
 def bd1900r(data, **kwargs):
+    """
+    NAME: BD1900r
+    PARAMETER: 1.9 micron band depth
+    FORMULATION *: 1.0 - ((R1908 + R1914 + R1921 + R1928 + R1934 + R1941) /
+                          (R1862 + R1869 + R1875 + R2112 + R2120 + R2126))
+    RATIONALE: H2O, chemically bound or adsorbed
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [1908, 1914, 1921, 1928, 1934, 1941,
           1862, 1869, 1875, 2112, 2120, 2126]
 

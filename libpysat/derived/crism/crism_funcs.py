@@ -49,10 +49,6 @@ def bd1500_func(bands, _):
     b1367, b1505, b1558, b1808 = bands
     return 1.0 - ((b1558 + b1505) / (b1808 + b1367))
 
-def icer1_func(bands, _):
-    b1430,b1510 = bands
-    return b1510 / b1430
-
 def bd1900_func(bands, _):
     b1875, b1930, b1985, b2067 = bands
     # How are a and b calculated here?
