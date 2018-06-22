@@ -25,7 +25,7 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
     if kernels:
         subset = []
         wvs = data.wavelengths
-        
+
         for k, v in kernels.items():
             s = sorted(np.abs(wvs-k).argsort()[:v])
             subset.append(np.median(data.iloc[s, :, :], axis=axis))
@@ -33,4 +33,12 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
             subset = subset[0]
     else:
         subset = data.loc[wavelengths, :, :]
-    return func(subset, **kwargs)
+    return func(subset, wavelengths, **kwargs)
+
+def compute_b_a(wavelengths):
+    wavelengths.sort()
+    lambda_s, lambda_c, lambda_l = wavelengths
+
+    b = (lambda_c - lambda_s) / (lambda_l - lambda_s)
+    a = 1.0 - b
+    return b, a
