@@ -1,50 +1,20 @@
 from numpy import sqrt
+from ..utils import compute_b_a
 
+def rockdust1_func(bands, _):
+    R770, = bands
+    return R770
 
+def rockdust2_func(bands, _):
+    return bands[1] / bands[0]
 
-def rockdust1_func(bands):
-    b770, = bands
-    return b770
+def bd_func(bands, wv):
+    b, a = compute_b_a(wv)
+    return 1.0 - (bands[1] / ((a * bands[2]) + (b * bands[0])))
 
-def rockdust2_func(bands):
-    b440,b770 = bands
-    return b770 / b440
-
-'''def bd530_func(bands, _):
-    b440, b530, b709 = bands
-
-    b = (530 - 440) / (709 - 440)
-    a = 1.0 - b
-    return 1.0 - (b530/((a*b709)+(b*b440)))
-
-def sh600_func(bands, _):
-    b533, b600, b710 = bands
-
-    a = (600 - 533) / (710 - 533)
-    b = 1.0 - a
-    return 1.0 - (((b * b533)+(a*b710))/b600)
-
-def bd640_func(bands, _):
-    b600, b648, b709 = bands
-
-    a = (648 - 600) / (709 - 600)
-    b = 1.0 - a
-    return (1.0 - (b648/((b*b600)+(a*b709))))
-
-def bd860_func(bands, _):
-    b800, b860, b984 = bands
-
-    a = (860 - 800) / (984 - 800)
-    b = 1.0 - a
-
-    return (1.0 - (b860/((b*b800)+(a*b984))))
-
-def bd920_func(bands, _):
-    b800,b920,b984 = bands
-
-    a = (920 - 800) / (984 - 800)
-    b = 1.0 - a
-    return (1.0 - b920/((b*b800)+(a*b984)))
+def sh_func(bands, wv):
+    b, a = compute_b_a(wv)
+    return 1.0 - (((a * bands[0]) + (b * bands[2])) / bands[1])
 
 #@@TODO rpeak1
 #@@TODO bdi1000vis
@@ -64,46 +34,40 @@ def hcp_index_func(bands,_):
 
     return (100 * ((b1470 - b1080) / (b1470+b1080)) * ((b1470 - b2067)/(b1470+b2067)))
 
-def lcp_index_func(bands, _):
-    b1080, b1330, b1815 = bands
-
-    return (100 * ((b1330 - b1080)/(b1330 + b1080)) * ((b1330 - b1815)/(b1330+b1815)))
+def index1_func(bands, _):
+    print(bands)
+    return (100 * ((bands[1] - bands[0]) / (bands[1] + bands[0])) * \
+                  ((bands[1] - bands[2]) / (bands[1] + bands[2])))
 
 #@@TODO var
 
-def islope1_func(bands, _):
-    b1815, b2530 = bands
+def islope1_func(bands, wv):
 
-    #715 = 2530-1815
-    return (b1815 - b2530)/(715)
-
-
-def bd1435_func(bands, _):
-    b1370, b1430, b1470 = bands
-    #.6 = (1430 - 1370) / (1470 - 1370)
-    a = .6
-    #.4 = 1.0 - .6
-    b = .4
-    return (1.0 - (b1430/((b*b1370)+(a*b1470))))
+    return (bands[0] - bands[1])/(wv[1] - wv[0])
 
 def bd1500_func(bands, _):
     b1367, b1505, b1558, b1808 = bands
-    return (1.0 - ((b1558 + b1505)/(b1808 + b1367)))
+    return 1.0 - ((b1558 + b1505) / (b1808 + b1367))
 
 def icer1_func(bands, _):
     b1430,b1510 = bands
-    return b1430/b1510
-
-def bd1750_func(bands, _):
-    b1557, b1750, b1815 = bands
-    a = (1750 - 1557) / (1815 - 1557)
-    b = 1.0 - a
-    return (1.0 - (b1750/((b*b1557)+(a*b1815))))
-
+    return b1510 / b1430
 
 def bd1900_func(bands, _):
-    b1874,b1927,b1972,b2006 = bands
-    return (1.0 - ((b1972 + b1927)/(b2006 + b1874)))
+    b1875, b1930, b1985, b2067 = bands
+    # How are a and b calculated here?
+    a = 1
+    b = 1
+    return (1.0 - (((b1985 + b1930) / 2) / (b * 2067 + a * 1875)))
+
+def bd1900r_func(bands, _):
+    R1908, R1914, R1921, R1928, R1934, R1941, \
+    R1862, R1869, R1875, R2112, R2120, R2126 = bands
+
+    numerator = (R1908 + R1914 + R1921 + R1928 + R1934 + R1941)
+    denominator = (R1862 + R1869 + R1875 + R2112 + R2120 + R2126)
+
+    return 1 - (numerator / denominator)
 
 #@@TODO bdi2000
 
@@ -187,4 +151,4 @@ def bd3400_func(bands, _ ):
 
 def cindex_func(bands, _):
     b3630, b3750,b3950 = bands
-    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)'''
+    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)

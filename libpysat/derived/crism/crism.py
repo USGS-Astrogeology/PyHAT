@@ -25,8 +25,9 @@ def r770(data, **kwargs):
     """
     wv = [770]
     kernels = {770:5}
-    res = generic_func(data, wv, kernels=kernels, func = cf.rockdust1_func, **kwargs)
-    return res
+
+    return generic_func(data, wv, kernels=kernels, func = cf.rockdust1_func, **kwargs)
+
 
 def rbr(data, **kwargs):
     """
@@ -54,9 +55,11 @@ def rbr(data, **kwargs):
     wv = [440, 770]
     kernels = {440:5,
                770:5}
-    return(generic_func(data, wv, kernels=kernels, func=cf.rockdust2_func, **kwargs))
 
-'''def bd530(data, **kwargs):
+    return generic_func(data, wv, kernels=kernels, func=cf.rockdust2_func, **kwargs)
+
+
+def bd530(data, use_kernels = True, **kwargs):
     """
     NAME: BD530
     PARAMETER: 0.53 micron band depth
@@ -74,16 +77,25 @@ def rbr(data, **kwargs):
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [440,530,709]
-    return(generic_func(data, wv, func = cf.bd530_func, **kwargs))
+    wv = [440, 530, 716]
+    kernels = {}
 
-def sh600(data, **kwargs):
+    if use_kernels:
+        wv = [440, 530, 614]
+        kernels[440] = 5
+        kernels[530] = 5
+        kernels[614] = 5
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+
+
+def sh600(data, use_kernels = True, **kwargs):
     """
     NAME: SH600
     PARAMETER: 0.60 micron shoulder height
-    FORMULATION *: R600/(a*R530+b*R709)
+    FORMULATION *: 1 - (a * R530 + b * R709) / R600
+    FORMULATION (with kernels) *: 1 - (a * R533 + b * R716) / R600
     RATIONALE: select ferric minerals
 
     Parameters
@@ -97,17 +109,52 @@ def sh600(data, **kwargs):
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [533,600,710]
-    return(generic_func(data, wv, func=cf.sh600_func, **kwargs))
+    wv = [530, 600, 709]
+    kernels = {}
+
+    if use_kernels:
+        wv = [533, 600, 716]
+        kernels[533] = 5
+        kernels[600] = 5
+        kernels[716] = 3
+
+    return generic_func(data, wv, func=cf.sh_func, kernels = kernels, **kwargs)
 
 
-def bd640(data, **kwargs):
+def sh770(data, **kwargs):
+    """
+    NAME: SH770
+    PARAMETER: 0.77 micron shoulder height
+    FORMULATION (with kernels) *: 1 - (a * R716 + b * R860) / R775
+    RATIONALE: select ferric minerals
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
+    wv = [716, 775, 860]
+    kernels = {716: 3,
+               775: 5,
+               860: 5}
+
+    return generic_func(data, wv, func=cf.sh_func, kernels = kernels, **kwargs)
+
+
+def bd640(data, use_kernels = True, **kwargs):
     """
     NAME: BD640
     PARAMETER: 0.64 micron band depth
-    FORMULATION *: 1 - (R648/(a*R600+b*R709))
+    FORMULATION *: 1 - (R648 / (a * R600 + b * R709))
+    FORMULATION (with kernels) *: 1 - (R624 / (a * R600 + b * R760))
     RATIONALE: select ferric minerals, especially maghemite
 
     Parameters
@@ -121,16 +168,25 @@ def bd640(data, **kwargs):
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [600,648,709]
-    return(generic_func(data, wv, func = cf.bd640_func, **kwargs))
+    wv = [600, 648, 709]
+    kernels = {}
 
-def bd860(data, **kwargs):
+    if use_kernels:
+        wv = [600, 624, 760]
+        kernels[600] = 5
+        kernels[624] = 3
+        kernels[760] = 5
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+
+
+def bd860(data, use_kernels = True, **kwargs):
     """
     NAME: BD860
     PARAMETER: 0.86 micron band depth
-    FORMULATION *: 1 - (R860/(a*R800+b*R984))
+    FORMULATION *: 1 - (R860 / (a * R800 + b * R984))
+    FORMULATION (with kernels) *: 1 - (R860 / (a * R755 + b * R977))
     RATIONALE: select ferric minerals ('hematite band')
 
     Parameters
@@ -144,12 +200,20 @@ def bd860(data, **kwargs):
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [800,860,984]
-    return(generic_func(data, wv, func = cf.bd860_func, **kwargs))
+    wv = [800, 860, 984]
+    kernels = {}
 
-def bd920(data, **kwargs):
+    if use_kernels:
+        wv = [755, 860, 977]
+        kernels[755] = 5
+        kernels[860] = 5
+        kernels[977] = 5
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+
+
+def bd920(data, use_kernels = True, **kwargs):
     """
     NAME: BD920
     PARAMETER: 0.92 micron band depth
@@ -170,10 +234,18 @@ def bd920(data, **kwargs):
 
     """
     wv = [800,920,984]
-    return(generic_func(data, wv, func = cf.bd920_func, **kwargs))
+    kernels = {}
+
+    if use_kernels:
+        wv = [807, 920, 984]
+        kernels[807] = 5
+        kernels[920] = 5
+        kernels[984] = 5
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
 
 
-#@@TODO rpeak1
+# TODO: rpeak1
 def rpeak1(data, **kwargs):
     """
     NAME: BDI1000VIS
@@ -184,7 +256,7 @@ def rpeak1(data, **kwargs):
     """
     raise NotImplementedError
 
-#@@TODO bdi1000VIS
+# TODO: bdi1000VIS
 def bdi1000VIS(data, **kwargs):
     """
     NAME: BDI1000VIS
@@ -196,7 +268,7 @@ def bdi1000VIS(data, **kwargs):
     raise NotImplementedError
 
 #@@TODO bdi1000IR
-def bdi1000IR(data, **kwargs):
+'''def bdi1000IR(data, **kwargs):
    """
    NAME: BDI1000IR
      PARAMETER: 1 micron integrated band depth; IR wavelengths
@@ -207,9 +279,30 @@ def bdi1000IR(data, **kwargs):
      RATIONALE: crystalline Fe+2 minerals; corrected for overlying
        aerosol induced slope
    """
-   raise NotImplementedError
+   raise NotImplementedError'''
 
-def ira(data, **kwargs):
+
+def r1330(data, **kwargs):
+    """
+    """
+    wv = [1330]
+    kernels = {1330: 11}
+
+    return generic_func(data, wv, func = (lambda x, y : x[0]), kernels = kernels, **kwargs)
+
+
+def bd1300(data, **kwargs):
+    """
+    """
+    wv = [1080, 1320, 1750]
+    kernels = {1370: 5,
+               1432: 15,
+               1470: 5}
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+
+
+'''def ira(data, **kwargs):
     """
     NAME: IRA
     PARAMETER: 1.3 micron reflectance
@@ -267,41 +360,15 @@ def olivine_index2(data, **kwargs):
       + (((RC1474 ? R1474)/RC1474) * 0.4)
     RATIONALE: olivine will be strongly positive
     """
-    raise NotImplementedError
-
-
-def hcp_index(data, **kwargs):
-    """
-    NAME: HCPXINDEX
-    PARAMETER: pyroxene index
-    FORMULATION *: 100 * ((R1470 - R1080)/(R1470 + R1080)) *
-                          ((R1470 - R2067)/(R1470+R2067))
-    RATIONALE: pyroxene is strongly +; favors high-Ca pyroxene
-    Algorithm differs from published - coded as per CAT
-
-    Parameters
-    ----------
-    data : ndarray
-           (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
-    Returns
-    -------
-     : ndarray
-       the processed ndarray
-
-    """
-    wv = [1080,1470,2067]
-    return(generic_func(data, wv, func = cf.hcp_index_func, **kwargs))
+    raise NotImplementedError'''
 
 
 def lcp_index(data, **kwargs):
     """
-     NAME: LCPINDEX
+    NAME: LCPINDEX
     PARAMETER: pyroxene index
-    FORMULATION *: 100 * ((R1330 - R1080)/(R1330 + R1080)) *
-                          ((R1330 - R1815)/(R1330+R1815))
+    FORMULATION *: ((R1330 - R1050)/(R1330 + R1050)) *
+                   ((R1330 - R1815)/(R1330 + R1815))
     RATIONALE: pyroxene is strongly +; favors low-Ca pyroxene
     Algorithm differs from published - coded as per CAT
 
@@ -318,11 +385,103 @@ def lcp_index(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1080,1330,1815]
-    return(generic_func(data, wv, func = cf.lcp_index_func, **kwargs))
+    wv = [1080, 1330, 1815]
+    return generic_func(data, wv, func = cf.index1_func, **kwargs)
 
 
-#@@TODO var
+def lcp_index_2(data, **kwargs):
+    """
+    NAME: LCPINDEX2
+    PARAMETER: pyroxene index
+    FORMULATION *: ((R1330 - R1050)/(R1330 + R1050)) *
+                   ((R1330 - R1815)/(R1330 + R1815))
+    RATIONALE: pyroxene is strongly +; favors low-Ca pyroxene
+    Algorithm differs from published - coded as per CAT
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [1690, 1750, 1810, 1870]
+    kernels = {1560: 7,
+               1690: 7,
+               1750: 7,
+               1810: 7,
+               1870: 7,
+               2450: 7}
+    raise NotImplementedError
+
+
+def hcp_index(data, **kwargs):
+    """
+    NAME: HCPXINDEX
+    PARAMETER: pyroxene index
+    FORMULATION *: 100 * ((R1470 - R1050) / (R1470 + R1050)) *
+                         ((R1470 - R2067) / (R1470 + R2067))
+    RATIONALE: pyroxene is strongly +; favors high-Ca pyroxene
+    Algorithm differs from published - coded as per CAT
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [1050, 1470, 2067]
+    return generic_func(data, wv, func = cf.index1_func, **kwargs)
+
+
+def hcp_index_2(data, **kwargs):
+    """
+    NAME: HCPXINDEX
+    PARAMETER: pyroxene index
+    FORMULATION *: 100 * ((R1470 - R1050) / (R1470 + R1050)) *
+                         ((R1470 - R2067) / (R1470 + R2067))
+    RATIONALE: pyroxene is strongly +; favors high-Ca pyroxene
+    Algorithm differs from published - coded as per CAT
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [2120, 2140, 2230, 2250, 2430, 2460]
+    kernels = {1810: 7,
+               2120: 5,
+               2140: 7,
+               2230: 7,
+               2250: 7,
+               2430: 7,
+               2460: 7,
+               2530: 7}
+    raise NotImplementedError
+
+
+'''#@@TODO var
 def var(data, **kwargs):
     """
     NAME: VAR
@@ -332,7 +491,8 @@ def var(data, **kwargs):
     RATIONALE: Ol & Px will have high values; Type 2 areas will have
       low values
     """
-    raise NotImplementedError
+    raise NotImplementedError'''
+
 
 def islope1(data, **kwargs):
     """
@@ -354,8 +514,39 @@ def islope1(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1815,2530]
-    return(generic_func(data, wv, func = cf.islope1_func, **kwargs))
+    wv = [1815, 2530]
+    kernels = {1815: 5,
+               2530: 5}
+
+    return generic_func(data, wv, func = cf.islope1_func, kernels = kernels, **kwargs)
+
+
+def bd1400(data, **kwargs):
+    """
+    NAME: BD1435
+    PARAMETER: 1.435 micron band depth
+    FORMULATION *: 1 - ( R1430 / (a*R1370+b*R1470) )
+    RATIONALE: CO2 surface ice
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv = [1330, 1395, 1467]
+    kernels = {1370: 5,
+               1432: 3,
+               1470: 5}
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
+
 
 def bd1435(data, **kwargs):
     """
@@ -377,8 +568,12 @@ def bd1435(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1370,1430,1470]
-    return(generic_func(data, wv, func = cf.bd1435_func, **kwargs))
+    wv = [1370, 1435, 1470]
+    kernels = {1370: 3,
+               1432: 1,
+               1470: 3}
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
 
 
 def bd1500(data, **kwargs):
@@ -387,7 +582,7 @@ def bd1500(data, **kwargs):
     PARAMETER: 1.5 micron band depth
     FORMULATION *: 1.0 - ((R1558 + R1505)/(R1808 + R1367))
     RATIONALE: H2O surface ice
-    Algorithm differs from published - coded as per CAT (reduced instrument noise)    
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
     Parameters
     ----------
@@ -402,8 +597,8 @@ def bd1500(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1367,1505,1558,1808]
-    return(generic_func(data, wv, func = cf.bd1500_func, **kwargs))
+    wv = [1367, 1505, 1558, 1808]
+    return generic_func(data, wv, func = cf.bd1500_func, **kwargs)
 
 
 def icer1(data, **kwargs):
@@ -426,11 +621,40 @@ def icer1(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1430,1510]
-    return(generic_func(data, wv, func = cf.icer1_func, **kwargs))
+    wv = [1430, 1510]
+    kernels = {1430: 5,
+               1510: 5}
+
+    return generic_func(data, wv, func = cf.icer1_func, kernels = kernels, **kwargs)
 
 
-def bd1750(data, **kwargs):
+def icer1_2(data, **kwargs):
+    """
+    NAME: ICER1
+    PARAMETER: 1.5 micron and 1.43 micron band ratio
+    FORMULATION *: R1510 / R1430
+    RATIONALE: CO2, H20 ice mixtures
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    bd1435_val = bd1435(data)
+    bd1500_val = bd1500(data)
+
+    return 1 - ((1 - bd1435_val) / (1 - bd1500_val))
+
+
+def bd1750(data, use_kernels = True, **kwargs):
     """
     NAME: BD1750
     PARAMETER: 1.75 micron band depth
@@ -450,8 +674,16 @@ def bd1750(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1557,1750,1815]
-    return(generic_func(data, wv, func = cf.bd1750_func, **kwargs))
+    wv = [1550, 1750, 1815]
+    kernels = {}
+
+    if use_kernels:
+        wv = [1690, 1750, 1815]
+        kernels[1690] = 5
+        kernels[1750] = 3
+        kernels[1815] = 5
+
+    return generic_func(data, wv, func = cf.bd_func, kernels = kernels, **kwargs)
 
 
 def bd1900(data, **kwargs):
@@ -460,7 +692,7 @@ def bd1900(data, **kwargs):
     PARAMETER: 1.9 micron band depth
     FORMULATION *: 1.0 - ((R1972 + R1927)/(R2006 + R1874))
     RATIONALE: H2O, chemically bound or adsorbed
-    Algorithm differs from published - coded as per CAT (reduced instrument noise)    
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
 
     Parameters
     ----------
@@ -475,10 +707,53 @@ def bd1900(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1874,1927,1973,2006]
-    return(generic_func(data, wv, func = cf.bd1900_func, **kwargs))
+    wv = [1875, 1930, 1985, 2067]
+    return generic_func(data, wv, func = cf.bd1900_func, **kwargs)
 
-#@@TODO bdi2000
+def bd1900_2(data, **kwargs):
+    """
+    NAME: BD1900_2
+    PARAMETER: 1.9 micron band depth
+    FORMULATION *: 1.0 - ((R1972 + R1927)/(R2006 + R1874))
+    RATIONALE: H2O, chemically bound or adsorbed
+    Algorithm differs from published - coded as per CAT (reduced instrument noise)
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    """
+    wv_set1 = [1850, 1930, 2067]
+    kernel_set1 = {1850: 5,
+                   1930: 5,
+                   2046: 5}
+
+    wv_set2 = [1850, 1985, 2067]
+    kernel_set2 = {1850: 5,
+                   1985: 5,
+                   2046: 5}
+
+    bd_1 = generic_func(data, wv_set1, func = cf.bd_func, kernels = kernel_set1, **kwargs)
+    bd_2 = generic_func(data, wv_set2, func = cf.bd_func, kernels = kernel_set2, **kwargs)
+
+    return .5 * (1 - bd_1) + .5 * (1 - bd_2)
+
+def bd1900r(data, **kwargs):
+
+    wv = [1908, 1914, 1921, 1928, 1934, 1941,
+          1862, 1869, 1875, 2112, 2120, 2126]
+
+    return generic_func(data, wv, func = cf.bd1900r_func, **kwargs)
+
+'''#@@TODO bdi2000
 def bdi2000(data, **kwargs):
     """
     NAME: BDI2000
