@@ -972,7 +972,41 @@ def d2200(data, **kwargs):
 
     raise NotImplementedError
 
-'''def bd2290(data, **kwargs):
+def bd2230(data, **kwargs):
+    wv = [2210, 2235, 2252]
+    kernels = {2210: 3,
+                      2235: 3,
+                      2252: 3}
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
+def bd2250(data, **kwargs):
+    wv = [2120, 2245, 2340]
+    kernels = {2120: 5,
+                      2245: 7,
+                      2340: 3}
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
+def min2250(data, **kwargs):
+    wv_set1 = [2165, 2210, 2350]
+    kernel_set1 = {2165: 5, 2210: 3, 2350: 5}
+
+    wv_set2 = [2165, 2265, 2350]
+    kernel_set2 = {2165: 5, 2265: 5, 2350: 5}
+
+    bd_1 = generic_func(data, wv_set1, func = cf.bd_func2, kernels = kernel_set1, **kwargs)
+    bd_2 = generic_func(data, wv_set2, func = cf.bd_func2, kernels = kernel_set2, **kwargs)
+
+    return np.minimum(bd_1, bd_2)
+
+def bd2265(data, **kwargs):
+    wv = [2210, 2265, 2340]
+    kernels = {2210: 5, 2265: 3, 2340: 5}
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
+
+def bd2290(data, **kwargs):
     """
     NAME: BD2290
     PARAMETER: 2.29 micron band depth
@@ -993,8 +1027,12 @@ def d2200(data, **kwargs):
 
       (at 2.292  microns)
     """
-    wv = [2250,2290,2350]
-    return(generic_func(data, wv, func = cf.bd2290_func, **kwargs))
+    wv = [2250, 2290, 2350]
+    kernels = {2250: 5,
+                      2290: 5,
+                      2350: 5}
+
+    return generic_func(data, wv, func = cf.bd2290_func, kernels = kernels, **kwargs)
 
 
 def d2300(data, **kwargs):
@@ -1011,9 +1049,7 @@ def d2300(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
@@ -1021,8 +1057,22 @@ def d2300(data, **kwargs):
 
     """
     wv = [1815, 2120, 2170, 2210, 2290, 2320, 2330, 2530]
-    return(generic_func(data, wv, func = cf.d2300_func, **kwargs))
+    kernels = {1815: 5,
+                      2120: 5,
+                      2170: 5,
+                      2210: 5,
+                      2290: 3,
+                      2320: 3,
+                      2330: 3,
+                      2530: 5}
 
+    return generic_func(data, wv, func = cf.d2300_func, kernels = kernels, **kwargs)
+
+def bd2355(data, **kwargs):
+    wv = [2300, 2355, 2450]
+    kernels = {2300: 5, 2355: 5, 2450: 5}
+
+    return generic_func(data, wv, func = cf.bd_func2, kernels =kernels, **kwargs)
 
 def sindex(data, **kwargs):
     """
@@ -1039,17 +1089,21 @@ def sindex(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [2100,2400,2290]
-    return(generic_func(data, wv, func = cf.sindex_func, **kwargs))
+    wv = [2100, 2400, 2290]
+
+    return generic_func(data, wv, func = cf.sindex_func, **kwargs)
+
+def sindex2(data, **kwargs):
+    wv = [2120, 2290, 2400]
+    kernels = {2120: 5, 2290: 7, 2400: 3}
+
+    return generic_func(data, wv, func =cf.sh_func, kernels = kernels, **kwargs)
 
 def icer2(data, **kwargs):
     """
@@ -1062,19 +1116,16 @@ def icer2(data, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
-    wv = [2530,2600]
-    return(generic_func(data, wv, func = cf.icer2_func, **kwargs))
+    wv = [2530, 2600]
+    return generic_func(data, wv, func = cf.rockdust2_inverse_func, **kwargs)
 
-def bdcarb(data, **kwargs):
+'''def bdcarb(data, **kwargs):
     """
     NAME: BDCARB
     PARAMETER: overtone band depth

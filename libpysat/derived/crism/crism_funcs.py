@@ -8,6 +8,9 @@ def rockdust1_func(bands, _):
 def rockdust2_func(bands, _):
     return bands[1] / bands[0]
 
+def rockdust2_inverse_func(bands, _):
+    return bands[0] / bands[1]
+
 def bd_func1(bands, wv):
     b, a = compute_b_a(wv)
     return 1.0 - (bands[1] / ((a * bands[2]) + (b * bands[0])))
@@ -87,14 +90,6 @@ def doub2200h_func(bands, _):
 
     return (1 - ((b2205 + b2258) / (b2172 + b2311)))
 
-'''def bd2290_func(bands, _):
-    b2250, b2290, b2350 = bands
-
-    a = (2290 - 2250) / (2350 - 2250)
-    b = 1.0 - a
-
-    return (1.0 - ((b2290)/((b*b2250)+(a*b2350))))
-
 def d2300_func(bands, _):
     b1815, b2120, b2170, b2210, b2290, b2320, b2330, b2530 = bands
 
@@ -106,18 +101,14 @@ def d2300_func(bands, _):
     cr2170 = b1815 + slope * (2170 - 1815)
     cr2210 = b1815 + slope * (2210 - 1815)
 
-    return (1.0 - (((b2290/cr2290)+(b2320/cr2320)+(b2330/cr2330))/
-                   ((b2120/cr2120)+(b2170/cr2170)+(b2210/cr2210))))
+    return (1.0 - (((b2290 / cr2290) + (b2320 / cr2320) + (b2330 / cr2330)) /
+                   ((b2120 / cr2120) + (b2170 / cr2170) + (b2210 / cr2210))))
 
 def sindex_func(bands, _):
     b2100, b2400, b2290 = bands
-    return (1.0 - ((b2100 + b2400) / (2*b2290)))
+    return (1.0 - ((b2100 + b2400) / (2 * b2290)))
 
-def icer2_func(bands, _):
-    b2530, b2600 = bands
-    return (b2530 / b2600)
-
-def bdcarb_func(bands, _ ):
+'''def bdcarb_func(bands, _ ):
     b2230, b2330, b2390, b2530, b2600 = bands
     a = (((2330 + 2120)*.5) - 2230 / (2390-2230))
     b = 1.0 - a
