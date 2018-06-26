@@ -55,12 +55,11 @@ def bd1500_func(bands, _):
     b1367, b1505, b1558, b1808 = bands
     return 1.0 - ((b1558 + b1505) / (b1808 + b1367))
 
-def bd1900_func(bands, _):
+def bd1900_func(bands, wv):
     b1875, b1930, b1985, b2067 = bands
-    # Is this the correct calculation for a, and b here?
-    # Going off of the code present in the bd2100_func
-    b = (((1985 + 1930) / 2) - 1875) / (2067 - 1875)
-    a = 1 - b
+    wv = [wv[0], ((wv[1] + wv[2] )/2), wv[3]]
+    b, a = compute_b_a(wv)
+
     return (1.0 - (((b1985 + b1930) / 2) / (b * 2067 + a * 1875)))
 
 def bd1900r_func(bands, _):
@@ -104,16 +103,14 @@ def sindex_func(bands, _):
     b2100, b2400, b2290 = bands
     return (1.0 - ((b2100 + b2400) / (2 * b2290)))
 
-'''def bd3000_func(bands, _ ) :
+def bd2500h_func(bands, _):
+    b2380, b2500, b2510, b2540 = bands
+
+    return 1.0 - ((b2500 + b2510) / (b2540 + b2380))
+
+def bd3000_func(bands, _ ) :
     b2210, b2530, b3000 = bands
     return ( 1 - (b3000 / (b2530 * (b2530 / b2210))))
-
-
-def bd3100_func(bands, _ ) :
-    b3000, b3120, b3250 = bands
-    a = ((3120 - 3000) / (3250 - 3000))
-    b = 1.0 - a
-    return (1.0 - (b3120/((b*b3000)+(a*b3250))))
 
 def bd3200_func(bands, _ ):
     b3250,b3320,b3390 = bands
@@ -121,13 +118,14 @@ def bd3200_func(bands, _ ):
     b = 1.0 - a
     return (1.0 - (b3320/((b*b3250)+(a*b3390))))
 
-def bd3400_func(bands, _ ):
+def bd3400_func(bands, wv):
     b3250, b3390, b3500, b3630 = bands
-    c = (((3390 + 3500)*.5)-3250)/(3630-3250)
-    d = 1.0 - c
-    return ( 1.0 - (((b3390 + b3500)*.5)/((d*b3250)+(c*b3630))))
+    b, a = compute_b_a(wv)
+    d = (((wv[1] + wv[2]) * .5) - wv[0]) / (wv[3] - wv[0])
+    c = 1.0 - d
+    return 1.0 - ((((a * b3390) + (b * b3500)) * .5) / ((c * b3250) + (d * b3630)))
 
 
 def cindex_func(bands, _):
     b3630, b3750,b3950 = bands
-    return (((b3750+((b3750-b3630)/((3750-3630)*(3950-3750)))))/ b3950 -1)'''
+    return (((b3750 + ((b3750 - b3630) / ((3750 - 3630) * (3950 - 3750))))) / b3950 - 1)

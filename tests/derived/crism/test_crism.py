@@ -269,13 +269,13 @@ def test_d2200(crism_img):
 
 '''def test_bd2290(crism_img):
     res = crism.bd2290(crism_img)
-    assert False
+    assert False'''
 
 def test_d2300(crism_img):
     res = crism.d2300(crism_img)
     assert False
 
-def test_sindex(crism_img):
+'''def test_sindex(crism_img):
     res = crism.d2300(crism_img)
     assert False
 
