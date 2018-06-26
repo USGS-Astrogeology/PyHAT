@@ -1,6 +1,6 @@
 import numpy as np
 
-def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
+def generic_func(data, wavelengths, kernels={}, func=None, axis=0, pass_wvs=False, **kwargs):
     """
     Using some form of data and a wavelength array. Get the bands associated
     wtih each wavelength in wavelengths, create a subset of bands based off
@@ -25,7 +25,7 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
     if kernels:
         subset = []
         wvs = data.wavelengths
-        
+
         for k, v in kernels.items():
             s = sorted(np.abs(wvs-k).argsort()[:v])
             subset.append(np.median(data.iloc[s, :, :], axis=axis))
@@ -33,4 +33,6 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
             subset = subset[0]
     else:
         subset = data.loc[wavelengths, :, :]
+    if pass_wvs:
+        return func(subset, wavelengths, **kwargs)
     return func(subset, **kwargs)

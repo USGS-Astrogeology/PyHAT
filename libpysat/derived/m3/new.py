@@ -27,6 +27,6 @@ def mustard(data):
     """
     red = pipe.bdi1000(data)
     green = pipe.bdi2000(data)
-    blue = pipe.reflectance4(data)
+    blue = pipe.r2780(data)
 
     return [red, green, blue]
