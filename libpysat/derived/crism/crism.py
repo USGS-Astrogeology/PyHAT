@@ -1425,14 +1425,11 @@ def bd3400(data, use_kernels = True, **kwargs):
     ----------
     data : ndarray
            (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
+
     Returns
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [3250, 3390, 3500, 3630]
 
@@ -1469,72 +1466,267 @@ def cindex(data, **kwargs):
     return generic_func(data, wv, func = cf.cindex_func, **kwargs)
 
 def cindex2(data, **kwargs):
+    """
+    NAME: CINDEX
+    PARAMETER: Inverse lever rule to detect convexity at 3.6 μm due to 3.4 μm and 3.9 μm
+        absorptions
+    FORMULATION (with kernels) *: 1 - ((a * R3450 +  b * R3875) / 3610)
+    RATIONALE: carbonates
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+
+    Algorithm differs from published - coded as per CAT
+    """
     wv = [3450, 3875, 3610]
     kernels = {3450: 9, 3875: 11, 3610: 7}
 
     return generic_func(data, wv, func = cf.sh_func, kernels = kernels, **kwargs)
 
 def r440(data, **kwargs):
+    """
+    Name: R440
+    Parameter: 0.44 micron reflectance
+    Formulation (with kernels) *: R440
+    Rationale: Clouds/Hazes
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [440]
     kernels = {440: 5}
 
     return generic_func(data, wv, func = (lambda x, y: x[0]), kernels = kernels, **kwargs)
 
 def r530(data, **kwargs):
+    """
+    Name: R530
+    Parameter: 0.53 micron reflectance
+    Formulation (with kernels) *: R530
+    Rationale: TRU browse product component
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [530]
     kernels = {530: 5}
 
     return generic_func(data, wv, func = (lambda x, y: x[0]), kernels = kernels, **kwargs)
 
 def r600(data, **kwargs):
+    """
+    Name: R600
+    Parameter: 0.60 micron reflectance
+    Formulation (with kernels) *: R600
+    Rationale: TRU browse product component
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [600]
     kernels = {600: 5}
 
     return generic_func(data, wv, func = (lambda x, y: x[0]), kernels = kernels, **kwargs)
 
 def irr1(data, **kwargs):
+    """
+    Name: IRR1
+    Parameter: IR ratio 1
+    Formulation (with kernels) *: R800 / R997
+    Rationale: Aphelion ice clouds (>1) versus seasonal or
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [800, 997]
     kernels  = {800: 5, 997: 5}
 
     return generic_func(data, wv, func = cf.rockdust2_inverse_func, kernels = kernels, **kwargs)
 
 def r1080(data, **kwargs):
+    """
+    Name: R1080
+    Parameter: 1.08 micron reflectance
+    Formulation (with kernels) *: R1080
+    Rationale: FAL browse product component
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [1080]
     kernels = {1080: 5}
 
     return generic_func(data, wv, func = (lambda x, y: x[0]), kernels = kernels, **kwargs)
 
 def r1506(data, **kwargs):
+    """
+    Name: R1506
+    Parameter: 1.51 micron reflectance
+    Formulation (with kernels) *: R1506
+    Rationale: TRU browse product component
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [1506]
     kernels = {1506: 5}
 
     return generic_func(data, wv, func = (lambda x, y: x[0]), kernels = kernels, **kwargs)
 
 def r2529(data, **kwargs):
+    """
+    Name: R2529
+    Parameter: 2.53 micron reflectance
+    Formulation: R2529
+    Rationale: TRU browse product component
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [2529]
     kernels = {2529: 5}
 
     return generic_func(data, wv, func = (lambda x, y: x[0]), kernels = kernels, **kwargs)
 
 def bd2600(data, **kwargs):
+    """
+    NAME: BD2600
+    PARAMETER: 2.6 μm H 2 O band depth
+    FORMULATION *: 1 - (R2600 / (a * R2530 + b * R2630))
+    RATIONALE: H 2 O vapor (accounts for spectral slope)
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [2530, 2600, 2630]
     kernels = {2530: 5, 2600: 5, 2630: 5}
 
     return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 def irr2(data, **kwargs):
+    """
+    Name: IRR2
+    Parameter: IR ratio 2
+    Formulation (with kernels) *: R2530 / R2210
+    Rationale: Aphelion ice clouds versus seasonal or dust
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [2210, 2530]
     kernels = {2210: 5, 2350: 5}
 
     return generic_func(data, wv, func = cf.rockdust2_func, kernels = kernels, **kwargs)
 
 def irr3(data, **kwargs):
+    """
+    Name: IRR3
+    Parameter: IR ratio 3
+    Formulation (with kernels) *: R3500 / R3390
+    Rationale: Aphelion ice clouds (higher values) versus seasonal or dust
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [3390, 3500]
     kernels = {3390: 7, 3500: 7}
 
     return generic_func(data, wv, func = cf.rockdust2_func, kernels = kernels, **kwargs)
 
 def r3920(data, **kwargs):
+    """
+    Name: R3920
+    Parameter: 3.92 micron reflectance
+    Formulation: R3920
+    Rationale: IC2 browse product component
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [3920]
     kernels = {3920: 5}
 
