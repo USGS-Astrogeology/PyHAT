@@ -371,8 +371,6 @@ def bdi1000(data, **kwargs):
     """
     return bdi_generic(data, 27, 789, 20)
 
-# TODO: Implment This
-# max( m(R - lower) + lower)
 @warn_m3
 def oneum_min(data, **kwargs):
     """
@@ -401,7 +399,6 @@ def oneum_min(data, **kwargs):
     wavelengths = [890, 1349]
     return generic_func(data, wavelengths, func=pf.oneum_min_func, **kwargs)
 
-# TODO: Implement This
 @warn_m3
 def oneum_fwhm(data, **kwargs):
     """
@@ -429,7 +426,6 @@ def oneum_fwhm(data, **kwargs):
     wavelengths = [890, 1349]
     return generic_func(data, wavelengths, func=pf.oneum_fwhm_func, **kwargs)
 
-# TODO: Implement This
 @warn_m3
 def oneum_sym(data, **kwargs):
     """
@@ -515,7 +511,6 @@ def twoum_ratio(data, **kwargs):
     wavelengths = [1578, 2538]
     return generic_func(data, wavelengths, func = pf.twoum_ratio_func, **kwargs)
 
-# TODO: Check if this works with bdi_generic
 @warn_m3
 def bdi2000(data, **kwargs):
     """
