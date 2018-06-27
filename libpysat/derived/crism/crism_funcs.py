@@ -1,5 +1,6 @@
-from numpy import sqrt
-from ..utils import compute_b_a
+import numpy as np
+from scipy.misc import derivative
+from ..utils import compute_b_a, compute_slope, line_fit
 
 def rockdust1_func(bands, _):
     R770, = bands
@@ -23,16 +24,73 @@ def sh_func(bands, wv):
     b, a = compute_b_a(wv)
     return 1.0 - (((a * bands[0]) + (b * bands[2])) / bands[1])
 
-#@@TODO rpeak1
+def rpeak1_func(data, wv):
+    def func(x):
+        return a * x**5 + b * x**4 + c * x**3 + d * x**2 + e * x + f
+
+    for i, band in enumerate(data):
+        band = band.flatten()
+        wavelength = np.full(len(band), wv[i])
+        a, b, c, d, e, f = np.polyfit(band, wavelength, 5)
+        derivation = derivative(func, 1.0, dx=1e-6, n = 1)
+
+        if derivation == 0:
+            return wv[i]
+
 #@@TODO bdi1000vis
 
-def ira_func(bands,_):
-    return bands
+def olivine_index2_func(bands, _):
+    b1080, b1210, b1330, b1470, b1750, b2400 = bands
 
-def olivine_index_func(bands, _):
-    b1080, b1210, b1330, b1470, b1695 = bands
+    slope = compute_slope(1750, 2400, b1750, b2400)
+    print(slope)
 
-    return ((b1695 / (0.1*b1080 + 0.1*b1210 + .4*b1330 + 0.4*b1470))-1)
+    rc1080 = line_fit(slope, (1080 - 1750), b1750)
+    rc1210 = line_fit(slope, (1210 - 1750), b1750)
+    rc1330 = line_fit(slope, (1330 - 1750), b1750)
+    rc1470 = line_fit(slope, (1470 - 1750), b1750)
+
+    rb1080 = (rc1080 - b1080) / rc1080
+    rb1210 = (rc1210 - b1210) / rc1210
+    rb1330 = (rc1330 - b1330) / rc1330
+    rb1470 = (rc1470 - b1470) / rc1470
+
+    return (rb1080 * .1) + (rb1210 * .1) + (rb1330 * .4) + (rb1470  *.4)
+
+def olivine_index3_func(bands, _):
+    b1080, b1152, b1210, b1250, b1263, b1276, \
+    b1330, b1368, b1395, b1427, b1470, b1750, b2400 = bands
+
+    slope = compute_slope(1750, 2400, b1750, b2400)
+    print(slope)
+
+    rc1080 = line_fit(slope, (1080 - 1750), b1750)
+    rc1152 = line_fit(slope, (1152 - 1750), b1750)
+    rc1210 = line_fit(slope, (1210 - 1750), b1750)
+    rc1250 = line_fit(slope, (1250 - 1750), b1750)
+    rc1263 = line_fit(slope, (1263 - 1750), b1750)
+    rc1276 = line_fit(slope, (1276 - 1750), b1750)
+    rc1330 = line_fit(slope, (1330 - 1750), b1750)
+    rc1368 = line_fit(slope, (1368 - 1750), b1750)
+    rc1395 = line_fit(slope, (1395 - 1750), b1750)
+    rc1427 = line_fit(slope, (1427 - 1750), b1750)
+    rc1470 = line_fit(slope, (1470 - 1750), b1750)
+
+    rb1080 = (rc1080 - b1080) / rc1080
+    rb1152 = (rc1152 - b1152) / rc1152
+    rb1210 = (rc1210 - b1210) / rc1210
+    rb1250 = (rc1250 - b1250) / rc1250
+    rb1263 = (rc1263 - b1263) / rc1263
+    rb1276 = (rc1276 - b1276) / rc1276
+    rb1330 = (rc1330 - b1330) / rc1330
+    rb1368 = (rc1368 - b1368) / rc1368
+    rb1395 = (rc1395 - b1395) / rc1395
+    rb1427 = (rc1427 - b1427) / rc1427
+    rb1470 = (rc1470 - b1470) / rc1470
+
+    return (rb1080 * 0.03 + rb1152 * 0.03 + rb1210 * 0.03 + rb1250 * 0.03 +
+    rb1263 * 0.07 + rb1276 * 0.07 + rb1330 * 0.12 + rb1368 * 0.12 +
+    rb1395 * 0.14 + rb1427 * 0.18 + rb1470 * 0.18)
 
 #@@TODO olivine_index2
 
@@ -75,7 +133,7 @@ def bd1900r_func(bands, _):
 
 def bd2100_func(bands, wv):
     b1930, b2120, b2130, b2250 = bands
-    wv = [wv[0], ((wv[1] + wv[2] )/2), wv[3]]
+    wv = [wv[0], ((wv[1] + wv[2]) / 2), wv[3]]
     bands = [bands[0], ((bands[1] + bands[2]) * .5), bands[3]]
 
     return bd_func2(bands, wv)
@@ -88,13 +146,13 @@ def doub2200h_func(bands, _):
 def d2300_func(bands, _):
     b1815, b2120, b2170, b2210, b2290, b2320, b2330, b2530 = bands
 
-    slope = (b2530 - b1815) / (2530 - 1815)
-    cr2290 = b1815 + slope * (2290 - 1815)
-    cr2320 = b1815 + slope * (2320 - 1815)
-    cr2330 = b1815 + slope * (2330 - 1815)
-    cr2120 = b1815 + slope * (2120 - 1815)
-    cr2170 = b1815 + slope * (2170 - 1815)
-    cr2210 = b1815 + slope * (2210 - 1815)
+    slope = compute_slope(1815, 2530, b1815, b2530)
+    cr2290 = line_fit(slope, (2290 - 1815), b1815)
+    cr2320 = line_fit(slope, (2320 - 1815), b1815)
+    cr2330 = line_fit(slope, (2330 - 1815), b1815)
+    cr2120 = line_fit(slope, (2120 - 1815), b1815)
+    cr2170 = line_fit(slope, (2170 - 1815), b1815)
+    cr2210 = line_fit(slope, (2210 - 1815), b1815)
 
     return (1.0 - (((b2290 / cr2290) + (b2320 / cr2320) + (b2330 / cr2330)) /
                    ((b2120 / cr2120) + (b2170 / cr2170) + (b2210 / cr2210))))
@@ -120,7 +178,7 @@ def bd3200_func(bands, _ ):
 
 def bd3400_func(bands, wv):
     b3250, b3390, b3500, b3630 = bands
-    b, a = compute_b_a(wv)
+    b, a = compute_b_a([wv[0], ((wv[1] + wv[2]) / 2), wv[3]])
     d = (((wv[1] + wv[2]) * .5) - wv[0]) / (wv[3] - wv[0])
     c = 1.0 - d
     return 1.0 - ((((a * b3390) + (b * b3500)) * .5) / ((c * b3250) + (d * b3630)))

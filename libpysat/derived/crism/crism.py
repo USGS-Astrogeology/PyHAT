@@ -219,7 +219,6 @@ def bd920(data, use_kernels = True, **kwargs):
     -------
      : ndarray
        the processed ndarray
-
     """
     wv = [800,920,984]
     kernels = {}
@@ -233,7 +232,6 @@ def bd920(data, use_kernels = True, **kwargs):
     return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
-# TODO: rpeak1
 def rpeak1(data, **kwargs):
     """
     NAME: BDI1000VIS
@@ -241,8 +239,22 @@ def rpeak1(data, **kwargs):
     FORMULATION *: divide R830, R860, R890, R915 by RPEAK1 then
       integrate over (1 -  normalized radiances)
     RATIONALE: crystalline Fe+2 or Fe+3 minerals
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
     """
-    raise NotImplementedError
+    wvs = data.wavelengths
+    vnir_mask = (wvs > 400) * (wvs < 1000)
+    vnir_wvs = wvs[vnir_mask]
+
+    return generic_func(data, wvs, func = cf.rpeak1_func, **kwargs)
 
 # TODO: bdi1000VIS
 def bdi1000VIS(data, **kwargs):
@@ -318,31 +330,7 @@ def bd1300(data, **kwargs):
 
     return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
-
-'''def ira(data, **kwargs):
-    """
-    NAME: IRA
-    PARAMETER: 1.3 micron reflectance
-    FORMULATION *: R1330
-    RATIONALE: IR albedo
-
-    Parameters
-    ----------
-    data : ndarray
-           (n,m,p) array
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
-    Returns
-    -------
-     : ndarray
-       the processed ndarray
-
-    """
-    wv = [1330]
-    return(generic_func(data, wv, func = cf.ira_func, **kwargs))
-
-def olivine_index(data, **kwargs):
+def olivine_index2(data, **kwargs):
     """
     NAME: OLINDEX (prior to TRDR version 3)
     PARAMETER: olivine index
@@ -363,21 +351,25 @@ def olivine_index(data, **kwargs):
        the processed ndarray
 
     """
-    wv = [1080,1210,1330,1470,1695]
-    return(generic_func(data, wv, func = cf.olivine_index_func, **kwargs))
+    wv = [1080, 1210, 1330, 1470, 1750, 2400]
+    return generic_func(data, wv, func = cf.olivine_index2_func, **kwargs)
 
 #@@TODO olivine_index2 (labeled olivine_index3 in JPL doc?
-def olivine_index2(data, **kwargs):
+def olivine_index3(data, **kwargs):
     """
     NAME: OLINDEX2 (beginning with TRDR version 3)
     PARAMETER: olivine index with less sensitivity to illumination
-    FORMULATION *: (((RC1054 ? R1054)/RC1054) * 0.1)
-      + (((RC1211 ? R1211)/(RC1211) * 0.1)
-      + (((RC1329 ? R1329)/RC1329) * 0.4)
-      + (((RC1474 ? R1474)/RC1474) * 0.4)
+    FORMULATION *: RB1080 * 0.03 + RB1152 * 0.03 + RB1210 * 0.03 +
+        RB1250 * 0.03 + RB1263 * 0.07 + RB1276 * 0.07 +
+        RB1330 * 0.12 + RB1368 * 0.12 + RB1395 * 0.14 +
+        RB1427 * 0.18 + RB1470 * 0.18
     RATIONALE: olivine will be strongly positive
     """
-    raise NotImplementedError'''
+    wv = [1080, 1152, 1210, 1250, 1263, 1276, 1330, 1368, 1395, 1427, 1470, 1750, 2400]
+    kernels = {1080: 7, 1152: 7, 1210: 7, 1250: 7, 1263: 7, 1276: 7, 1330: 7, 1368: 7,
+               1395: 7, 1427: 7, 1470: 7, 1750: 7, 2400: 7}
+
+    return generic_func(data, wv, func = cf.olivine_index3_func, kernels = kernels, **kwargs)
 
 
 def lcp_index(data, **kwargs):
@@ -991,6 +983,22 @@ def d2200(data, **kwargs):
     raise NotImplementedError
 
 def bd2230(data, **kwargs):
+    """
+    NAME: BD2230
+    PARAMETER: 2.23 μm band depth
+    FORMULATION (with kernels) *: 1 - (R2235 / (a * R2210 + b * R2252))
+    RATIONALE: Hydroxylated ferric sulfates
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [2210, 2235, 2252]
     kernels = {2210: 3,
                       2235: 3,
@@ -999,6 +1007,22 @@ def bd2230(data, **kwargs):
     return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 def bd2250(data, **kwargs):
+    """
+    NAME: BD2250
+    PARAMETER: 2.25 μm band depth
+    FORMULATION (with kernels) *: 1 - (R2245 / (a * R2120 + b * R2340))
+    RATIONALE: 2.25 μm broad Al-OH and Si-OH band depth
+
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
+
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wv = [2120, 2245, 2340]
     kernels = {2120: 5,
                       2245: 7,
@@ -1080,7 +1104,7 @@ def bd2290(data, **kwargs):
                       2290: 5,
                       2350: 5}
 
-    return generic_func(data, wv, func = cf.bd2290_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd_func2, kernels = kernels, **kwargs)
 
 
 def d2300(data, **kwargs):
@@ -1105,16 +1129,16 @@ def d2300(data, **kwargs):
 
     """
     wv = [1815, 2120, 2170, 2210, 2290, 2320, 2330, 2530]
-    # kernels = {1815: 5,
-    #                   2120: 5,
-    #                   2170: 5,
-    #                   2210: 5,
-    #                   2290: 3,
-    #                   2320: 3,
-    #                   2330: 3,
-    #                   2530: 5}
+    kernels = {1815: 5,
+                      2120: 5,
+                      2170: 5,
+                      2210: 5,
+                      2290: 3,
+                      2320: 3,
+                      2330: 3,
+                      2530: 5}
 
-    return generic_func(data, wv, func = cf.d2300_func, **kwargs)
+    # return generic_func(data, wv, func = cf.d2300_func, **kwargs)
     return generic_func(data, wv, func = cf.d2300_func, kernels = kernels, **kwargs)
 
 def bd2355(data, **kwargs):
@@ -1135,7 +1159,9 @@ def bd2355(data, **kwargs):
        the processed ndarray
     """
     wv = [2300, 2355, 2450]
-    kernels = {2300: 5, 2355: 5, 2450: 5}
+    kernels = {2300: 5,
+                      2355: 5,
+                      2450: 5}
 
     return generic_func(data, wv, func = cf.bd_func2, kernels =kernels, **kwargs)
 
@@ -1265,7 +1291,7 @@ def min2295_2480(data, **kwargs):
     bd2295_val = generic_func(data, wv_set1, func = cf.bd_func2, kernels = kernel_set1, **kwargs)
     bd2480_val = generic_func(data, wv_set2, func = cf.bd_func2, kernels = kernel_set2, **kwargs)
 
-    return np.min(bd2295_val, bd2480_val)
+    return np.minimum(bd2295_val, bd2480_val)
 
 def min2345_2537(data, **kwargs):
     """
@@ -1294,7 +1320,7 @@ def min2345_2537(data, **kwargs):
     bd2345_val = generic_func(data, wv_set1, func = cf.bd_func2, kernels = kernel_set1, **kwargs)
     bd2537_val = generic_func(data, wv_set2, func = cf.bd_func2, kernels = kernel_set2, **kwargs)
 
-    return np.min(bd2345_val, bd2537_val)
+    return np.minimum(bd2345_val, bd2537_val)
 
 def bd2500h(data, use_kernels = True, **kwargs):
     """
@@ -1344,7 +1370,7 @@ def bd3000(data, **kwargs):
     wv = [2210, 2530, 3000]
     kernels = {2210: 5, 2530: 5, 3000: 5}
 
-    return generic_func(data, wv, func = bd3000_func, kernels = kernels, **kwargs)
+    return generic_func(data, wv, func = cf.bd3000_func, kernels = kernels, **kwargs)
 
 def bd3100(data, **kwargs):
     """

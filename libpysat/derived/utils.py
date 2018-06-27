@@ -42,3 +42,9 @@ def compute_b_a(wavelengths):
     b = (lambda_c - lambda_s) / (lambda_l - lambda_s)
     a = 1.0 - b
     return b, a
+
+def compute_slope(x1, x2, y1, y2):
+    return (y2 - y1) / (x2 - x1)
+
+def line_fit(slope, x, b):
+    return (slope * x) + b
