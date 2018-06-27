@@ -167,7 +167,7 @@ def bd620(data, **kwargs):
     wavelengths = [419, 619, 749]
     return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
-@warn_m3
+# @warn_m3
 def bd950(data, **kwargs):
     def bd620(data, **kwargs):
         """
@@ -378,7 +378,7 @@ def oneum_min(data, **kwargs):
     Parameter: 1 um band center
     Formulation:
     Rl = R Lambda
-    1um_Min = Max of [1 - (R_lambda / Rc_lambda)] with wavlenghts between 890-1349 nm
+    1um_Min = Max of [1 - (R_lambda / Rc_lambda)] with wavelenghts between 890-1349 nm
     Rationale: Fe Mineralogy
     Bands: R890 - R1349
 
