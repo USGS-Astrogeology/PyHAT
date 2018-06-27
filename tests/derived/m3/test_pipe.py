@@ -3,6 +3,18 @@ import numpy as np
 
 from libpysat.derived.m3 import pipe
 
+def test_onenum_min(m3_img):
+    res = pipe.oneum_min(m3_img)
+    np.testing.assert_array_almost_equal(res, np.array(0.9988332397044207))
+
+def test_onenum_fwhm(m3_img):
+    res = pipe.oneum_fwhm(m3_img)
+    np.testing.assert_array_almost_equal(res, np.array([ 0.498833,  0.479014]))
+
+def test_onenum_sym(m3_img):
+    res = pipe.oneum_sym(m3_img)
+    np.testing.assert_array_almost_equal(res, np.array(-0.9618723275183169))
+
 def test_bd620(m3_img):
     res = pipe.bd620(m3_img)
     np.testing.assert_array_almost_equal(res, np.array([[0.16030534, 0.14788732, 0.1372549 ],
@@ -148,7 +160,6 @@ def test_bdi2000(m3_img):
 
 def test_bd1umratio(m3_img):
     res = pipe.bd1umratio(m3_img)
-    print(res)
     np.testing.assert_array_almost_equal(res, np.array([[0.26226209, 0.25687621, 0.25256142],
                                                         [0.2490271, 0.24607906, 0.2435826],
                                                         [0.24144133, 0.23958448, 0.23795892]]))
@@ -184,7 +195,6 @@ def test_nbd2850(m3_img):
 
 def test_bd2umratio(m3_img):
     res = pipe.bd2umratio(m3_img)
-    print(res)
     np.testing.assert_array_almost_equal(res, np.array([[-0.53008299, -0.5037594,  -0.48195876],
                                                         [-0.46360759, -0.44794721, -0.43442623],
                                                         [-0.42263427, -0.41225962, -0.40306122]]))

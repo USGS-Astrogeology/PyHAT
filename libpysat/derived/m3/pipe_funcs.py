@@ -1,4 +1,5 @@
 from math import e
+import numpy as np
 
 # Generic Function for all RXXX formulas
 def reflectance_func(bands):
@@ -35,17 +36,32 @@ def bdi_func(bands, wvs=[0,0]):
     return band_array / (((upper_array - lower_array)/ \
            (upper_bound - lower_bound)) * (y - lower_bound) + lower_array)
 
-# TODO: Implment This
+def oneum_min_slope_func(bands):
+    R890, R1349 = np.min(bands), np.max(bands)
+    m = (R1349 - R890) / (1349 - 890)
+    x = np.array(bands) - 890
+    b = 890
+
+    return (m * x) + b
+
 def oneum_min_func(bands):
-    raise NotImplementedError()
+    R890, R1349 = np.min(bands), np.max(bands)
+    max_band = np.max(1 - (bands / oneum_min_slope_func(bands)))
 
-# TODO: Implment This
+    return max_band
+
 def oneum_fwhm_func(bands):
-    raise NotImplementedError()
+    Rc = oneum_min_slope_func(bands)
 
-# TODO: Implment This
+    return np.max(0.5 * 1 - (bands / Rc)), np.min(0.5 * 1 - (bands / Rc))
+
 def oneum_sym_func(bands):
-    raise NotImplementedError()
+    long, short = oneum_fwhm_func(bands)
+    oneum_min = oneum_min_func(bands)
+    a = oneum_min - short
+    b = long - oneum_min
+
+    return b/a
 
 def bd1umratio_func(bands):
     R699, R929, R989, R1579 = bands

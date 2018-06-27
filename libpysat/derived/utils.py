@@ -1,4 +1,5 @@
 import numpy as np
+import warnings
 
 def generic_func(data, wavelengths, kernels={}, func=None, axis=0, pass_wvs=False, **kwargs):
     """
@@ -36,3 +37,9 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, pass_wvs=Fals
     if pass_wvs:
         return func(subset, wavelengths, **kwargs)
     return func(subset, **kwargs)
+
+def warn_m3(m3_func, *args, **kwargs):
+    def call_warn(*args, **kwargs):
+        warnings.warn('Parameters involving some of the visible wavelengths ( < 600 nm) are not recommended for use. Parameters modeled after Clementine data are also not recommended. Original parameter estimates for OH and H2O should NOT be included.')
+        return m3_func(*args, **kwargs)
+    return call_warn

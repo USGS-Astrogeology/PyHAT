@@ -1,6 +1,6 @@
 from . import supplemental_funcs as sp_funcs
 
-from ..utils import generic_func
+from ..utils import generic_func, warn_m3
 
 def tilt(data, **kwargs):
     '''
