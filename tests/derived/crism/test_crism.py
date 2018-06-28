@@ -122,8 +122,9 @@ def test_lcp_index(crism_img):
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_lcp_index2(crism_img):
-    with pytest.raises(NotImplementedError):
-        crism.lcp_index2(crism_img)
+    res = crism.lcp_index2(crism_img)
+    expected = np.zeros((3, 3))
+    np.testing.assert_array_almost_equal(res, expected)
 
 def test_hcp_index(crism_img):
     res = crism.hcp_index(crism_img)
@@ -133,8 +134,11 @@ def test_hcp_index(crism_img):
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_hcp_index2(crism_img):
-    with pytest.raises(NotImplementedError):
-        crism.hcp_index2(crism_img)
+    res = crism.hcp_index2(crism_img)
+    expected = [[0.032143, 0.031034, 0.03],
+                [0.029032, 0.028125, 0.027273],
+                [0.026471, 0.025714, 0.025]]
+    np.testing.assert_array_almost_equal(res, expected)
 
 '''def test_var(crism_img):
     with pytest.raises(NotImplementedError):
@@ -168,7 +172,6 @@ def test_bd1500(crism_img):
 
 def test_icer1(crism_img):
     res = crism.icer1(crism_img)
-    print(res)
     expected = np.ones((3, 3))
     np.testing.assert_array_almost_equal(res, expected)
 
@@ -211,8 +214,11 @@ def test_bd1900r(crism_img):
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_bd1900r2(crism_img):
-    with pytest.raises(NotImplementedError):
-        crism.bd1900r2(crism_img)
+    res = crism.bd1900r2(crism_img)
+    expected = [[-0.199817, -0.22616 , -0.246854],
+                [-0.263207, -0.276156, -0.28639 ],
+                [-0.294437, -0.300702, -0.305506]]
+    np.testing.assert_array_almost_equal(res, expected)
 
 def test_bdi2000(crism_img):
     with pytest.raises(NotImplementedError):
@@ -269,8 +275,11 @@ def test_bd2210(crism_img, use_kernels, expected):
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_d2200(crism_img):
-    with pytest.raises(NotImplementedError):
-        crism.d2200(crism_img)
+    res = crism.d2200(crism_img)
+    expected = [[-0.473684, -0.45, -0.428571],
+                [-0.409091, -0.391304, -0.375],
+                [-0.36, -0.346154, -0.333333]]
+    np.testing.assert_array_almost_equal(res, expected)
 
 def test_bd2230(crism_img):
     res = crism.bd2230(crism_img)
@@ -408,4 +417,67 @@ def test_cindex(crism_img):
                 [-0.409074, -0.391288, -0.374984],
                 [-0.359985, -0.346139, -0.333319]]
 
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_cindex2(crism_img):
+    res = crism.cindex2(crism_img)
+    expected = [[0.269309, 0.263579, 0.258088],
+                [0.252821, 0.247765, 0.242907],
+                [0.238235, 0.23374 , 0.229412]]
+
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r440(crism_img):
+    res = crism.r440(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r530(crism_img):
+    res = crism.r530(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r600(crism_img):
+    res = crism.r600(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_irr1(crism_img):
+    res = crism.irr1(crism_img)
+    expected = np.ones((3, 3))
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r1080(crism_img):
+    res = crism.r1080(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r1506(crism_img):
+    res = crism.r1506(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r2529(crism_img):
+    res = crism.r2529(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_bd2600(crism_img):
+    res = crism.bd2600(crism_img)
+    expected = np.zeros((3, 3))
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_irr2(crism_img):
+    res = crism.irr2(crism_img)
+    expected = np.ones((3, 3))
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_irr3(crism_img):
+    res = crism.irr3(crism_img)
+    expected = np.ones((3, 3))
+    np.testing.assert_array_almost_equal(res, expected)
+
+def test_r3920(crism_img):
+    res = crism.r3920(crism_img)
+    expected = np.arange(19, 28).reshape(3,3)
     np.testing.assert_array_almost_equal(res, expected)

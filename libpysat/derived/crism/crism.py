@@ -422,7 +422,8 @@ def lcp_index2(data, **kwargs):
                1810: 7,
                1870: 7,
                2450: 7}
-    raise NotImplementedError
+
+    return generic_func(data, wv, func = cf.lcp_index2_func, kernels = kernels, **kwargs)
 
 
 def hcp_index(data, **kwargs):
@@ -446,7 +447,6 @@ def hcp_index(data, **kwargs):
     """
     wv = [1050, 1470, 2067]
     return generic_func(data, wv, func = cf.index1_func, **kwargs)
-
 
 def hcp_index2(data, **kwargs):
     """
@@ -476,8 +476,8 @@ def hcp_index2(data, **kwargs):
                2430: 7,
                2460: 7,
                2530: 7}
-    raise NotImplementedError
 
+    return generic_func(data, wv, func = cf.hcp_index2_func, kernels = kernels, **kwargs)
 
 '''#@@TODO var
 def var(data, **kwargs):
@@ -779,10 +779,9 @@ def bd1900r2(data, **kwargs):
      : ndarray
        the processed ndarray
     """
-    wv = [1908, 1914, 1921, 1928, 1934, 1941,
-          1862, 1869, 1875, 2112, 2120, 2126]
+    wv = [1850, 1862, 1869, 1875, 1908, 1914, 1921, 1928, 1934, 1941, 2060, 2112, 2120, 2126]
 
-    raise NotImplementedError
+    return generic_func(data, wv, func = cf.bd1900r2_func, **kwargs)
 
 # TODO:  bdi2000
 def bdi2000(data, **kwargs):
@@ -977,10 +976,14 @@ def d2200(data, **kwargs):
      : ndarray
        the processed ndarray
     """
-    wv = [1815, 2210, 2230, 2165, 2430]
-    kernels = {1815: 7, 2165: 5, 2210: 7, 2230: 7, 2430: 7}
+    wv = [1815, 2165, 2210, 2230, 2430]
+    kernels = {1815: 7,
+                      2165: 5,
+                      2210: 7,
+                      2230: 7,
+                      2430: 7}
 
-    raise NotImplementedError
+    return generic_func(data, wv, func = cf.d2200_func, kernels = kernels, **kwargs)
 
 def bd2230(data, **kwargs):
     """
