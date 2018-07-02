@@ -33,6 +33,10 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
             subset = subset[0]
     else:
         subset = data.loc[wavelengths, :, :]
+
+    for i in subset:
+        i[i == data.no_data_value] = np.NaN
+        
     return func(subset, wavelengths, **kwargs)
 
 def compute_b_a(wavelengths):
