@@ -98,9 +98,24 @@ def band_area(spectrum, low_endmember=None, high_endmember=None):
 
 def band_asymmetry(spectrum, low_endmember=None, high_endmember=None):
     """
-    Compute the symmetry of an absorption feature as
-
+    Compute the asymmetry of an absorption feature as
     (left_area - right_area) / total_area
+
+    Parameters
+    ----------
+    specturm : object
+
+    low_endmember : int
+        Bottom end of wavelengths to be obversed
+
+    high_endmember : int
+        Top end of wavelengths to be obversed
+
+    Returns
+    -------
+    asymmetry : ndarray
+        Array of percentage values of how asymmetrical the two halves of the spectrum are
+        Where 100% is completely asymmetrical and 0 is completely symmetrical
     """
 
     x = specturm.index
@@ -120,9 +135,6 @@ def band_asymmetry(spectrum, low_endmember=None, high_endmember=None):
 
     asymmetry = (area_left - area_right) / (area_left + area_right)
     return asymmetry
-
-
-
 
 
 def get_noise(data, n_iter = 3):
