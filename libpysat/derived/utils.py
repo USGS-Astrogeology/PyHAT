@@ -35,7 +35,7 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
         subset = data.loc[wavelengths, :, :]
 
     for i in subset:
-        i[i == data.no_data_value] = np.NaN
+        i[i == data.no_data_value] = 0
 
     return func(subset, wavelengths, **kwargs)
 
