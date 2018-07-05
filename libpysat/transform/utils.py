@@ -134,7 +134,7 @@ def get_noise(data, n_iter = 3):
     data : ndarray
         IDL array of data
 
-    niter : int
+    n_iter : int
         Number of iterations to attempt in a sigma clip
 
     Returns
@@ -157,12 +157,12 @@ def get_noise(data, n_iter = 3):
         d_cube[:, :, 1:npz - 1] = c1 * (data[:, :, indices - 1] + data[:, :, indices + 1]) + c2 * data[:, :, indices]
         d_cube[:, :, 0] = c2 * (data[:, :, 0] - Data[:, :, 1])
         d_cube[:, :, npz - 1] = c2 * (data[:, :, npz - 1] - data[:, :, npz - 2])
-        sigma = sigma_clip(d_cube, niter=n_iter)
+        sigma = sigma_clip(d_cube, n_iter=n_iter)
     if dim == 2:
         # ;im_smooth, Data, ima_med, winsize=3, method='median'
-        sigma = sigma_clip(data - ima_med, niter=n_iter) / 0.969684
+        sigma = sigma_clip(data - ima_med, n_iter=n_iter) / 0.969684
     if dim == 1:
-        sigma_out, mean = sigma_clip(data - signal.medfilt(data, 3), niter=n_iter)
+        sigma_out, mean = sigma_clip(data - signal.medfilt(data, 3), n_iter=n_iter)
         sigma = sigma_out / 0.893421
 
     return sigma
@@ -254,7 +254,7 @@ def ccam_denoise(sp_in, sig = 3, n_iter = 4):
     ws1 = ws
 
     for i in range(lv - 2):
-        b = get_noise(ws[:, i], niter=niter)
+        b = get_noise(ws[:, i], n_iter=n_iter)
         tmp = ws[:, i]
         ou = numpy.where(abs(tmp) < sig * b)
         nou = len(tmp[ou])
