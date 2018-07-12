@@ -56,7 +56,7 @@ Runtime Requirements
 Optional Requirements
 ---------------------
 
-* `Jupyter Notebook <http://test-jupyter.readthedocs.io/en/rtd-theme/install.html>` To be able to run our notebook examples
+* `Jupyter Notebook <http://test-jupyter.readthedocs.io/en/rtd-theme/install.html>' To be able to run our notebook examples
 * `Matplotlib <https://github.com/conda-forge/matplotlib-feedstock>` To be able to run the visualizations within the notebook examples
 * `nbsphinx <>` For compiling jupyter notebooks in the documentation
 

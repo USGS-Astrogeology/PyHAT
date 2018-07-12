@@ -1,5 +1,5 @@
 :mod:`derived.m3.development` --- M3 Developmental Algorithms
-=============================================================
+============================================================
 
 The :mod:`derived.m3.development` module
 

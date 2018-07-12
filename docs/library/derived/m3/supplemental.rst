@@ -1,5 +1,5 @@
 :mod:`derived.m3.supplemental` --- M3 Supplemental Algorithms
-=============================================================
+============================================================
 
 The :mod:`derived.m3.supplemental` module
 

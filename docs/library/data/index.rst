@@ -9,4 +9,5 @@ The internal data structures used by PySAT to represent 1d, 2d, and n-dimensiona
 
    spectrum
    spectra
+   hcube
    io
