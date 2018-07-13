@@ -39,7 +39,7 @@ def bdi_func(bands, wvs=[0,0]):
 def oneum_min_slope_func(bands):
     R890, R1349 = np.min(bands), np.max(bands)
     m = (R1349 - R890) / (1349 - 890)
-    x = np.array(bands) - 890
+    x = np.array(bands) - R890
     b = 890
 
     return (m * x) + b
@@ -55,7 +55,7 @@ def oneum_fwhm_func(bands):
     Rc = oneum_min_slope_func(bands)
     long = np.max((0.5 * 1 - (bands / Rc)), axis=0)
     short = np.min((0.5 * 1 - (bands / Rc)), axis=0)
-    
+
     return long, short
 
 def oneum_sym_func(bands):

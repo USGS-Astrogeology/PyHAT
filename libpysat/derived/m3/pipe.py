@@ -167,33 +167,32 @@ def bd620(data, **kwargs):
     wavelengths = [419, 619, 749]
     return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
-# @warn_m3
+@warn_m3
 def bd950(data, **kwargs):
-    def bd620(data, **kwargs):
-        """
-        Name: BD950
-        Parameter: Band Depth at 950 nm
-        Formulation:
-        Numerator = R949
-        Denominator = ((R1579 - R749) / (1579 - 749)) * (949 - 749) + R749
-        BD620 = 1 - [Numerator/Denominator]
-        Rationale: OPX Comparison with Kaguya
-        Bands: R749, R949, R1579
+    """
+    Name: BD950
+    Parameter: Band Depth at 950 nm
+    Formulation:
+    Numerator = R949
+    Denominator = ((R1579 - R749) / (1579 - 749)) * (949 - 749) + R749
+    BD620 = 1 - [Numerator/Denominator]
+    Rationale: OPX Comparison with Kaguya
+    Bands: R749, R949, R1579
 
-        Parameters
-        ----------
-        data : ndarray
-               (n,m,p) array
+    Parameters
+    ----------
+    data : ndarray
+           (n,m,p) array
 
-        wv_array : ndarray
-                   (n,1) array of wavelengths that correspond to the p
-                   dimension of the data array
+    wv_array : ndarray
+               (n,1) array of wavelengths that correspond to the p
+               dimension of the data array
 
-        Returns
-        -------
-         : ndarray
-           the processed ndarray
-        """
+    Returns
+    -------
+     : ndarray
+       the processed ndarray
+    """
     wavelengths = [749, 949, 1579]
     return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
