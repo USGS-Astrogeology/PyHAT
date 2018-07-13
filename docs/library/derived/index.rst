@@ -1,4 +1,4 @@
-:mod:`spectral` --- Derived Data Products
+:mod:`derived` --- Derived Data Products
 ==================================================
 
 Brief synopsis here
@@ -8,3 +8,4 @@ Brief synopsis here
 
    m3/index
    crism/index
+   utils

@@ -98,9 +98,24 @@ def band_area(spectrum, low_endmember=None, high_endmember=None):
 
 def band_asymmetry(spectrum, low_endmember=None, high_endmember=None):
     """
-    Compute the symmetry of an absorption feature as
-
+    Compute the asymmetry of an absorption feature as
     (left_area - right_area) / total_area
+
+    Parameters
+    ----------
+    specturm : object
+
+    low_endmember : int
+        Bottom end of wavelengths to be obversed
+
+    high_endmember : int
+        Top end of wavelengths to be obversed
+
+    Returns
+    -------
+    asymmetry : ndarray
+        Array of percentage values of how asymmetrical the two halves of the spectrum are
+        Where 100% is completely asymmetrical and 0 is completely symmetrical
     """
 
     x = specturm.index
@@ -122,40 +137,25 @@ def band_asymmetry(spectrum, low_endmember=None, high_endmember=None):
     return asymmetry
 
 
-
-
-
-def get_noise(Data, niter=3):
+def get_noise(data, n_iter = 3):
     """
-    ;+
-    ; NAME:
-    ;     GET_NOISE
-    ;
-    ; PURPOSE:
-    ;    Find the standard deviation of a white gaussian noise in the data.
-    ;
-    ; CALLING SEQUENCE:
-    ;   output=GET_NOISE(Data)
-    ;
-    ; INPUTS:
-    ;   Data -- IDL array
-    ;
-    ; OPTIONAL INPUT PARAMETERS:
-    ;   none
-    ;
-    ; KEYED INPUTS:
-    ;   Niter --scalar: number of iterations for k-sigma clipping
-    ;                   default is 3.
-    ;
-    ; OUTPUTS:
-    ;    output
-    ;
-    ; MODIFICATION HISTORY:
-    ;    17-Jan-1996 JL Starck written with template_gen
-    ;-  Translated to Python by Ryan Anderson Nov 2014
+    Finds the standard deviation of white gaussian noise in the data
+
+    Parameters
+    ----------
+    data : ndarray
+        IDL array of data
+
+    n_iter : int
+        Number of iterations to attempt in a sigma clip
+
+    Returns
+    -------
+    sigma : float
+        Standard deviation of white guassian noise
     """
 
-    vsize = Data.shape
+    vsize = data.shape
     dim = len(vsize)
     sigma = -1
     if dim == 3:
@@ -163,85 +163,67 @@ def get_noise(Data, niter=3):
         nli = vsize[1]
         npz = vsize[2]
         indices = range(npz - 2) + 1
-        D_cube = numpy.array(nco, nli, npz)
+        d_cube = numpy.array(nco, nli, npz)
         c1 = -1. / numpy.sqrt(6.)
         c2 = 2. / numpy.sqrt(6.)
-        D_cube[:, :, 1:npz - 1] = c1 * (Data[:, :, indices - 1] + Data[:, :, indices + 1]) + c2 * Data[:, :, indices]
-        D_cube[:, :, 0] = c2 * (Data[:, :, 0] - Data[:, :, 1])
-        D_cube[:, :, npz - 1] = c2 * (Data[:, :, npz - 1] - Data[:, :, npz - 2])
-        sigma = sigma_clip(D_cube, niter=niter)
+        d_cube[:, :, 1:npz - 1] = c1 * (data[:, :, indices - 1] + data[:, :, indices + 1]) + c2 * data[:, :, indices]
+        d_cube[:, :, 0] = c2 * (data[:, :, 0] - Data[:, :, 1])
+        d_cube[:, :, npz - 1] = c2 * (data[:, :, npz - 1] - data[:, :, npz - 2])
+        sigma = sigma_clip(d_cube, n_iter=n_iter)
     if dim == 2:
         # ;im_smooth, Data, ima_med, winsize=3, method='median'
-        sigma = sigma_clip(Data - ima_med, niter=niter) / 0.969684
+        sigma = sigma_clip(data - ima_med, n_iter=n_iter) / 0.969684
     if dim == 1:
-        sigma_out, mean = sigma_clip(Data - signal.medfilt(Data, 3), niter=niter)
+        sigma_out, mean = sigma_clip(data - signal.medfilt(data, 3), n_iter=n_iter)
         sigma = sigma_out / 0.893421
 
     return sigma
 
 
-def sigma_clip(Data, sigma_clip=3.0, niter=2.0):
+def sigma_clip(data, sigma_clip=3.0, n_iter=2.0):
     """
-    ;+
-    ; NAME:
-    ;       sigma_clip
-    ;
-    ; PURPOSE:
-    ;       return the sigma obtained by k-sigma. Default sigma_clip value is 3.
-    ;       if mean is set, the mean (taking into account outsiders) is returned.
-    ;
-    ; CALLING SEQUENCE:
-    ;   output=sigma_clip(Data, sigma_clip=sigma_clip, mean=mean)
-    ;
-    ; INPUTS:
-    ;   Data -- IDL array: data
-    ;
-    ; OPTIONAL INPUT PARAMETERS:
-    ;   none
-    ;
-    ; KEYED INPUTS:
-    ;   sigma_clip -- float : sigma_clip value
-    ;
-    ; KEYED OUTPUTS:
-    ;   mean -- float : mean value
-    ;
-    ; OUTPUTS:
-    ;    output
-    ;
-    ; EXAMPLE:
-    ;    output_sigma = sigma_clip(Image, sigma_clip=2.5)
-    ;
-    ; MODIFICATION HISTORY:
-    ;    25-Jan-1995 JL Starck written with template_gen
-    ;-
+    Returns the sigma obtained by k-sigma. If mean is set, the
+    mean (taking into account outsiders) is returned.
+
+    Parameters
+    ----------
+    data : ndarray
+        IDL data array
+
+    sigma_clip : float
+        Sigma clip value
+
+    n_iter : float
+        Number of iterations
+
+    Returns
+    -------
+    sig : float
+        Sigma obtained via k-sigma
+
+    mean : float
+        Mean value
     """
 
     output = ''
 
-    # ;------------------------------------------------------------
-    # ; function body
-    # ;------------------------------------------------------------
+    n_iter = n_iter - 1
+    sig = 0.
+    buff = data
 
-    k = sigma_clip
-    Ni = niter - 1
-    Sig = 0.
-    Buff = Data
+    mean = numpy.sum(buff) / len(buff)
+    sig = numpy.std(buff)
+    index = numpy.where(abs(buff - m) < sigma_clip * sig)
+    count = len(buff[index])
 
-    m = numpy.sum(Buff) / len(Buff)
-    Sig = numpy.std(Buff)
-    index = numpy.where(abs(Buff - m) < k * Sig)
-    count = len(Buff[index])
     for i in range(1, Ni):
         if count > 0:
-            m = numpy.sum(Buff[index]) / len(Buff[index])
-            Sig = numpy.std(Buff[index])
-            index = numpy.where(abs(Buff - m) < k * Sig)
-            count = len(Buff[index])
+            mean = numpy.sum(buff[index]) / len(buff[index])
+            sig = numpy.std(buff[index])
+            index = numpy.where(abs(buff - m) < sigma_clip * sig)
+            count = len(buff[index])
 
-    output = Sig
-    mean = m
-
-    return output, mean
+    return sig, mean
 
 
 """
@@ -254,18 +236,46 @@ spectrum, and the removed noise are returned.
 """
 
 
-def ccam_denoise(sp_in, sig=3, niter=4):
+def ccam_denoise(sp_in, sig = 3, n_iter = 4):
+    """
+    Denoises a chemcam spectrum. Based on the function "denoise_spectrum.pro" in IDL
+
+    Parameters
+    ----------
+    sp_in : ndarray
+        Array of spectrum data
+
+    sig : int
+        Unknown
+
+    n_iter : int
+        Number of iterations to refine the noise removal
+
+    Returns
+    -------
+    : float
+        The denoised spectrum
+
+    : float
+        Removed noise
+    """
+
     s = len(sp_in)
     lv = int(numpy.log(s) / numpy.log(2)) - 1
     ws = watrous.watrous(sp_in, lv)
     ws1 = ws
+
     for i in range(lv - 2):
-        b = get_noise(ws[:, i], niter=niter)
+        b = get_noise(ws[:, i], n_iter=n_iter)
         tmp = ws[:, i]
         ou = numpy.where(abs(tmp) < sig * b)
         nou = len(tmp[ou])
-        if nou > 0: tmp[ou] = 0
+
+        if nou > 0:
+            tmp[ou] = 0
+
         ws1[:, i] = tmp
+
     return numpy.sum(ws1, axis=1), sp_in - numpy.sum(ws1, axis=1)
 
 
@@ -276,9 +286,24 @@ Created on Sun Mar 27 13:07:07 2016
 @author: rbanderson
 """
 
-
-
 def meancenter(df, col, previous_mean=None):
+    """
+    Caution: mystery function
+
+    Parameters
+    ----------
+    df : object
+
+    col : object
+
+    previous_mean : object
+
+    Returns
+    -------
+    df : object
+
+    mean_vect : object
+    """
     if previous_mean is not None:
         mean_vect = previous_mean
     else:
