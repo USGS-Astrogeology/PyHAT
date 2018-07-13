@@ -1,3 +1,5 @@
+import inspect
+
 import numpy as np
 import warnings
 from .m3 import pipe_funcs as pf
@@ -107,3 +109,22 @@ def warn_m3(m3_func, *args, **kwargs):
         warnings.warn('Parameters involving some of the visible wavelengths ( < 600 nm) are not recommended for use. Parameters modeled after Clementine data are also not recommended. Original parameter estimates for OH and H2O should NOT be included.')
         return m3_func(*args, **kwargs)
     return call_warn
+
+def add_derived_funcs(package):
+
+    derived_funcs = {}
+
+    for module in dir(package):
+        if module[0: 2] != "__" and "funcs" not in module:
+            new_module = getattr(__import__(package.__name__, fromlist=[module]), module)
+
+            module_funcs = inspect.getmembers(new_module)
+
+            for func in module_funcs:
+                if callable(func[1]) and not func[0].endswith('__'):
+
+                    function_name, function = func
+                    derived_funcs[function_name] = function
+
+    return derived_funcs
+
