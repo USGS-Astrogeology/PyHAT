@@ -1,6 +1,6 @@
 from . import supplemental_funcs as sp_funcs
 
-from ..utils import generic_func, warn_m3
+from .. import utils
 
 def tilt(data, **kwargs):
     '''
@@ -25,7 +25,7 @@ def tilt(data, **kwargs):
     '''
 
     wavelengths = [930, 1009]
-    return generic_func(data, wavelengths,func = sp_funcs.tilt_func,**kwargs)
+    return utils.generic_func(data, wavelengths,func = sp_funcs.tilt_func,**kwargs)
 
 def curvature(data, **kwargs):
     '''
@@ -50,7 +50,7 @@ def curvature(data, **kwargs):
        the processed ndarray
     '''
     wavelengths = [749, 909, 1109]
-    return generic_func(data, wavelengths, func = sp_funcs.curv_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = sp_funcs.curv_func, **kwargs)
 
 def luceyc_omat(data, **kwargs):
     '''
@@ -75,7 +75,7 @@ def luceyc_omat(data, **kwargs):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wavelengths, func = sp_funcs.luceyc_omat_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = sp_funcs.luceyc_omat_func, **kwargs)
 
 def luceyc_amat(data, **kwargs):
     '''
@@ -100,7 +100,7 @@ def luceyc_amat(data, **kwargs):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wavelengths, func = sp_funcs.luceyc_amat_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = sp_funcs.luceyc_amat_func, **kwargs)
 
 def mare_omat(data, **kwargs):
     '''
@@ -125,7 +125,7 @@ def mare_omat(data, **kwargs):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wavelengths, func = sp_funcs.mare_omat_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = sp_funcs.mare_omat_func, **kwargs)
 
 def fe_est(data, **kwargs):
     '''
@@ -154,7 +154,7 @@ def fe_est(data, **kwargs):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wavelengths, func = sp_funcs.fe_est_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = sp_funcs.fe_est_func, **kwargs)
 
 def fe_mare_est(data, **kwargs):
     '''
@@ -179,4 +179,4 @@ def fe_mare_est(data, **kwargs):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wavelengths, func = sp_funcs.fe_mare_est_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = sp_funcs.fe_mare_est_func, **kwargs)

@@ -1,9 +1,10 @@
 import numpy as np
 import warnings
 from .import pipe_funcs as pf
-from ..utils import generic_func, warn_m3, bdi_generic
 
-@warn_m3
+from .. import utils
+
+@utils.warn_m3
 def r750(data, **kwargs):
     """
     Name: R750
@@ -28,9 +29,9 @@ def r750(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [749]
-    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def uvvis(data, **kwargs):
     """
     Name: UVVIS
@@ -55,9 +56,9 @@ def uvvis(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [419, 749]
-    return generic_func(data, wavelengths, func = pf.uvvis_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.uvvis_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def visuv(data, **kwargs):
     """
     Name: VISUV
@@ -82,9 +83,9 @@ def visuv(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [419, 749]
-    return generic_func(data, wavelengths, func = pf.visuv_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.visuv_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def visnir(data, **kwargs):
     """
     Name: VISNIR
@@ -109,9 +110,9 @@ def visnir(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [699, 1579]
-    return generic_func(data, wavelengths, func = pf.visnir_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.visnir_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def r950_750(data, **kwargs):
     """
     Name: R950_750
@@ -136,9 +137,9 @@ def r950_750(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [749, 950]
-    return generic_func(data, wavelengths, func = pf.r950_750_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.r950_750_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bd620(data, **kwargs):
     """
     Name: BD620
@@ -165,9 +166,9 @@ def bd620(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [419, 619, 749]
-    return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bd950(data, **kwargs):
     """
     Name: BD950
@@ -194,9 +195,9 @@ def bd950(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [749, 949, 1579]
-    return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bd1050(data, **kwargs):
     """
     Name: BD1050
@@ -223,10 +224,11 @@ def bd1050(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [749, 1049, 1579]
-    return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bd1250(data, **kwargs):
+
     """
     Name: BD1250
     Parameter: Band Depth at 1250 nm
@@ -252,9 +254,9 @@ def bd1250(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [749, 1249, 1579]
-    return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def r1580(data, **kwargs):
     """
     Name: R1580
@@ -279,13 +281,13 @@ def r1580(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1579]
-    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
 
 
 
 
-@warn_m3
+@utils.warn_m3
 def bdi1000(data, **kwargs):
     """
     Name: BDI1000
@@ -309,9 +311,9 @@ def bdi1000(data, **kwargs):
      : ndarray
        the processed ndarray
     """
-    return bdi_generic(data, 27, 789, 20)
+    return utils.bdi_generic(data, 27, 789, 20)
 
-@warn_m3
+@utils.warn_m3
 def oneum_min(data, **kwargs):
     """
     Name: 1um_Min
@@ -337,9 +339,9 @@ def oneum_min(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [890, 1349]
-    return generic_func(data, wavelengths, func=pf.oneum_min_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func=pf.oneum_min_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def oneum_sym(data, **kwargs):
     """
     Name: 1um_Sym
@@ -366,9 +368,9 @@ def oneum_sym(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [890, 1349]
-    return generic_func(data, wavelengths, func=pf.oneum_sym_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func=pf.oneum_sym_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bd1umratio(data, **kwargs):
     """
     Name: BD1um Ratio
@@ -395,9 +397,9 @@ def bd1umratio(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [699, 929, 989, 1579]
-    return generic_func(data, wavelengths, func = pf.bd1umratio_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd1umratio_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def twoum_ratio(data, **kwargs):
     """
     Name: 2um_Ratio
@@ -422,9 +424,9 @@ def twoum_ratio(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1578, 2538]
-    return generic_func(data, wavelengths, func = pf.twoum_ratio_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.twoum_ratio_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bdi2000(data, **kwargs):
     """
     Name: BDI2000
@@ -448,9 +450,9 @@ def bdi2000(data, **kwargs):
      : ndarray
        the processed ndarray
     """
-    return bdi_generic(data, 22, 1658, 40)
+    return utils.bdi_generic(data, 22, 1658, 40)
 
-@warn_m3
+@utils.warn_m3
 def bd2umratio(data, **kwargs):
     """
     Name: BD2um Ratio
@@ -477,9 +479,9 @@ def bd2umratio(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1578, 1898, 2298, 2578]
-    return generic_func(data, wavelengths, func = pf.bd2umratio_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd2umratio_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def thermal_ratio(data, **kwargs):
     """
     Name: Thermal_Ratio
@@ -504,9 +506,9 @@ def thermal_ratio(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [2538, 2978]
-    return generic_func(data, wavelengths, func = pf.thermal_ratio_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.thermal_ratio_func, **kwargs)
 
-@warn_m3
+@utils.warn_m3
 def bd3000(data, **kwargs):
     """
     Name: BD3000
@@ -533,7 +535,7 @@ def bd3000(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1578, 2538, 2978]
-    return generic_func(data, wavelengths, func = pf.bd3000_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd3000_func, **kwargs)
 
 def r540(data, **kwargs):
     """
@@ -559,7 +561,7 @@ def r540(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [539]
-    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
 def visslope(data, **kwargs):
     """
@@ -585,7 +587,7 @@ def visslope(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [419, 749]
-    return generic_func(data, wavelengths, func = pf.visslope_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.visslope_func, **kwargs)
 
 def oneum_slope(data, **kwargs):
     """
@@ -611,7 +613,7 @@ def oneum_slope(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [699, 1579]
-    return generic_func(data, wavelengths, func = pf.oneum_slope_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.oneum_slope_func, **kwargs)
 
 def r2780(data, **kwargs):
     """
@@ -637,7 +639,7 @@ def r2780(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [2778]
-    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
 def olindex(data, **kwargs):
     """
@@ -667,7 +669,7 @@ def olindex(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [650, 860, 1047, 1230, 1750]
-    return generic_func(data, wavelengths, func = pf.olindex_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.olindex_func, **kwargs)
 
 def bd1900(data, **kwargs):
     """
@@ -695,7 +697,7 @@ def bd1900(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1408, 1898, 2498]
-    return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
 def bd2300(data, **kwargs):
     """
@@ -723,7 +725,7 @@ def bd2300(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1578, 2298, 2578]
-    return generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.bd_func, pass_wvs=True, **kwargs)
 
 def twoum_slope(data, **kwargs):
     """
@@ -749,7 +751,7 @@ def twoum_slope(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1578, 2538]
-    return generic_func(data, wavelengths, func = pf.twoum_slope_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.twoum_slope_func, **kwargs)
 
 def thermal_slope(data, **kwargs):
     """
@@ -775,7 +777,7 @@ def thermal_slope(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [2538, 2978]
-    return generic_func(data, wavelengths, func = pf.thermal_slope_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.thermal_slope_func, **kwargs)
 
 def nbd1400(data, **kwargs):
     """
@@ -804,7 +806,7 @@ def nbd1400(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1348, 1408, 1428, 1448, 1578]
-    return generic_func(data, wavelengths, func = pf.nbd1400_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.nbd1400_func, **kwargs)
 
 def nbd1480(data, **kwargs):
     """
@@ -833,7 +835,7 @@ def nbd1480(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [1428, 1448, 1488, 1508, 1528]
-    return generic_func(data, wavelengths, func = pf.nbd1480_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.nbd1480_func, **kwargs)
 
 def nbd2300(data, **kwargs):
     """
@@ -862,7 +864,7 @@ def nbd2300(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [2218, 2258, 2378, 2418, 2298, 2338]
-    return generic_func(data, wavelengths, func = pf.nbd2300_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.nbd2300_func, **kwargs)
 
 def nbd2700(data, **kwargs):
     """
@@ -890,7 +892,7 @@ def nbd2700(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [2578, 2618, 2658, 2698, 2738]
-    return generic_func(data, wavelengths, func = pf.nbd2700_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.nbd2700_func, **kwargs)
 
 def nbd2850(data, **kwargs):
     """
@@ -918,7 +920,7 @@ def nbd2850(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [2538, 2578, 2618, 2817, 2857, 2897]
-    return generic_func(data, wavelengths, func = pf.nbd2850_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.nbd2850_func, **kwargs)
 
 def hlnd_isfeo(data, **kwargs):
     """
@@ -944,4 +946,4 @@ def hlnd_isfeo(data, **kwargs):
        the processed ndarray
     """
     wavelengths = [749, 889]
-    return generic_func(data, wavelengths, func = pf.hlnd_isfeo_func, **kwargs)
+    return utils.generic_func(data, wavelengths, func = pf.hlnd_isfeo_func, **kwargs)

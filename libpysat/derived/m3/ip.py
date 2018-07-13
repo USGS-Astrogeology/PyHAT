@@ -1,5 +1,4 @@
 from . import ip_funcs
-from ..utils import generic_func, warn_m3
 
 def lscc_maturity(data, **kwargs):
     """
