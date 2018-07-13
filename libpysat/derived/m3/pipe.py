@@ -1,7 +1,7 @@
 import numpy as np
 import warnings
 from .import pipe_funcs as pf
-from ..utils import generic_func, warn_m3
+from ..utils import generic_func, warn_m3, bdi_generic
 
 @warn_m3
 def r750(data, **kwargs):
@@ -281,68 +281,9 @@ def r1580(data, **kwargs):
     wavelengths = [1579]
     return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
-def calc_bdi_band(data, iteration, initial_band, step, **kwargs):
-    """
-    Parameters
-    ----------
-    data : ndarray
-           (n,m,p) array
 
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
 
-    iteration : int
-                Number of steps to add to the new band calculation
 
-    initial_band : int
-                   Initial band to use to calculate the new band
-
-    step : int
-           Length between bands to calculate
-
-    Returns
-    -------
-     : ndarray
-       the processed ndarray
-    """
-    y = initial_band + (step * iteration)
-    wv_array = data.wavelengths
-    vals = np.abs(data.wavelengths-y)
-    minidx = np.argmin(vals)
-    wavelengths = [wv_array[minidx - 3], y, wv_array[minidx + 3]]
-    wvlims = [wavelengths[0], y, wavelengths[-1]]
-    return generic_func(data, wavelengths, func=pf.bdi_func, pass_wvs=wvlims, **kwargs)
-
-def bdi_generic(data, upper_limit, initial_band, step):
-    """
-    Parameters
-    ----------
-    data : ndarray
-           (n,m,p) array
-
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
-
-    upper_limit : int
-                  Upper limit on the number of wavelengths to be used
-
-    initial_band : int
-                   The band to use as a starting point to extract the other
-                   0 to upper_limit bands
-    step : int
-           The step size inbetween the 0 to upper limit bands
-
-    Returns
-    -------
-     : ndarray
-       the processed ndarray
-    """
-    limit = range(0, upper_limit)
-    band_list = [1 - calc_bdi_band(data, i, initial_band, step) for i in limit]
-
-    return np.sum(band_list, axis = 0)
 
 @warn_m3
 def bdi1000(data, **kwargs):
@@ -397,33 +338,6 @@ def oneum_min(data, **kwargs):
     """
     wavelengths = [890, 1349]
     return generic_func(data, wavelengths, func=pf.oneum_min_func, **kwargs)
-
-@warn_m3
-def oneum_fwhm(data, **kwargs):
-    """
-    Name: 1um_FWHM
-    Parameter: 1 um band width
-    Formulation:
-    1um_FWHM = 0.5 * 1 - [R(1um_Min) / Rc(1um_Min)]
-    Rationale: Fe Mineralogy
-    Bands: 1um_Min Band
-
-    Parameters
-    ----------
-    data : ndarray
-           (n,m,p) array
-
-    wv_array : ndarray
-               (n,1) array of wavelengths that correspond to the p
-               dimension of the data array
-
-    Returns
-    -------
-     : ndarray
-       the processed ndarray
-    """
-    wavelengths = [890, 1349]
-    return generic_func(data, wavelengths, func=pf.oneum_fwhm_func, **kwargs)
 
 @warn_m3
 def oneum_sym(data, **kwargs):

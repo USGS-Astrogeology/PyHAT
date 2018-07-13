@@ -46,22 +46,11 @@ def run_algos(module, img, filepath, crism=False):
         img_tiff = m3_open(img)
 
     not_called = []
+    ignore = ['bdi_generic', 'generic_func', 'warn_m3', 'mustard']
     for function in package_funcs:
         # If a callable function, call it with the img specified above
-        if callable(function[1]) and not function[0].endswith('__'):
-            try:
-                # Converts array to tiff
-                # Writes new img to tiff using the image name and function name
-                array_to_raster(function[1](img_tiff), filepath + str(img).split('/')[-1].split('.')[0] + '_' + str(function[0]) + '.tiff',  bittype='GDT_Float32')
-            except:
-                not_called.append(function[0])
-                continue
-
-    # Keeps track of which functions are and are not called
-    if not_called:
-        print('\nThese functions were not called in {} : {}'.format(module, not_called))
-    else:
-        print('\nAllfunctions were called in {}.'.format(module))
+        if callable(function[1]) and not function[0].endswith('__') and function[0] not in ignore :
+            array_to_raster(function[1](img_tiff), filepath + str(img).split('/')[-1].split('.')[0] + '_' + str(function[0]) + '.tiff',  bittype='GDT_Float32')
 
 def main(args):
     # List of modules (algorithms) you want to run and output tiffs

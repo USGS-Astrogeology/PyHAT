@@ -51,15 +51,16 @@ def oneum_min_func(bands):
 
     return max_band
 
-def oneum_fwhm_func(bands):
-    Rc = oneum_min_slope_func(bands)
-    long = np.max((0.5 * 1 - (bands / Rc)), axis=0)
-    short = np.min((0.5 * 1 - (bands / Rc)), axis=0)
-
-    return long, short
-
 def oneum_sym_func(bands):
-    long, short = oneum_fwhm_func(bands)
+
+    def oneum_fwhm_func():
+        Rc = oneum_min_slope_func(bands)
+        long = np.max((0.5 * 1 - (bands / Rc)), axis=0)
+        short = np.min((0.5 * 1 - (bands / Rc)), axis=0)
+
+        return long, short
+
+    long, short = oneum_fwhm_func()
     oneum_min = oneum_min_func(bands)
     a = oneum_min - short
     b = long - oneum_min
