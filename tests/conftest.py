@@ -4,14 +4,14 @@ import numpy as np
 
 @pytest.fixture
 def m3_functions():
-    return ['bd1umratio', 'bd2umratio', 'generic_func', 'h2o2', 'h2o3', 'h2o4',
-            'h2o5', 'ice', 'mustard', 'bd1900', 'bd2300', 'bd620', 'bdi1000',
-            'bdi2000', 'bdi_generic', 'calc_bdi_band', 'h2o1', 'iralbedo',
-            'mafic_abs', 'olindex', 'omh', 'oneum_min', 'oneum_slope', 'reflectance1',
-            'reflectance2', 'reflectance3', 'reflectance4', 'thermal_ratio',
-            'thermal_slope', 'twoum_ratio', 'twoum_slope', 'uvvis', 'visnir',
-            'visslope', 'visuv', 'curvature', 'fe_est', 'fe_mare_est', 'luceyc_amat',
-            'luceyc_omat', 'mare_omat', 'tilt']
+    return ['bd1900', 'bd1umratio', 'bd2300', 'bd2umratio', 'bd620', 'bdi1000',
+            'bdi2000', 'bdi_generic', 'calc_bdi_band', 'curvature', 'fe_est',
+            'fe_mare_est', 'generic_func', 'h2o1', 'h2o2', 'h2o3', 'h2o4',
+            'h2o5', 'ice', 'iralbedo', 'luceyc_amat', 'luceyc_omat',
+            'mafic_abs', 'mare_omat', 'mustard', 'olindex', 'omh', 'oneum_min',
+            'oneum_slope', 'reflectance1', 'reflectance2', 'reflectance3',
+            'reflectance4', 'thermal_ratio', 'thermal_slope', 'tilt',
+            'twoum_ratio', 'twoum_slope', 'uvvis', 'visnir', 'visslope', 'visuv']
 
 @pytest.fixture
 def crism_functions():
