@@ -37,20 +37,13 @@ def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):
         subset = data.loc[wavelengths, :, :]
     return func(subset, **kwargs)
 
-def add_derived_funcs(package):
-
+def get_derived_funcs(package):
     derived_funcs = {}
 
-    for module in dir(package):
-        if module[0: 2] != "__" and "funcs" not in module:
-            new_module = getattr(__import__(package.__name__, fromlist=[module]), module)
+    modules = inspect.getmembers(package, inspect.ismodule)
 
-            module_funcs = inspect.getmembers(new_module)
-
-            for func in module_funcs:
-                if callable(func[1]) and not func[0].endswith('__'):
-
-                    function_name, function = func
-                    derived_funcs[function_name] = function
+    for module in modules:
+        if "funcs" not in module[0]:
+            derived_funcs = dict(inspect.getmembers(module[1], inspect.isfunction), **derived_funcs)
 
     return derived_funcs
