@@ -6,7 +6,6 @@ import pytest
 
 from .m3_wv import m3_wv
 
-
 @pytest.fixture
 def m3_img():
     m3 = mock.Mock(spec=iomm.M3)

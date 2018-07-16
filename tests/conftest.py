@@ -4,14 +4,13 @@ import numpy as np
 
 @pytest.fixture
 def m3_functions():
-    return ['bd1umratio', 'bd2umratio', 'generic_func', 'h2o2', 'h2o3', 'h2o4',
-            'h2o5', 'ice', 'mustard', 'bd1900', 'bd2300', 'bd620', 'bdi1000',
-            'bdi2000', 'bdi_generic', 'calc_bdi_band', 'h2o1', 'iralbedo',
-            'mafic_abs', 'olindex', 'omh', 'oneum_min', 'oneum_slope', 'reflectance1',
-            'reflectance2', 'reflectance3', 'reflectance4', 'thermal_ratio',
-            'thermal_slope', 'twoum_ratio', 'twoum_slope', 'uvvis', 'visnir',
-            'visslope', 'visuv', 'curvature', 'fe_est', 'fe_mare_est', 'luceyc_amat',
-            'luceyc_omat', 'mare_omat', 'tilt']
+    return ['oneum_sym', 'bd620', 'mustard', 'bd1250', 'luceyc_amat', 'fe_est',
+    'lscc_maturity', 'nbd2850', 'bdi2000', 'bd1umratio', 'oneum_slope', 'bd1050',
+    'luceyc_omat', 'oneum_min', 'curvature', 'r1580', 'nbd1400', 'r2780',
+    'mare_omat', 'thermal_slope', 'visslope', 'tilt', 'bd3000', 'hlnd_isfeo',
+    'uvvis', 'bdi1000', 'nbd1480', 'r950_750', 'r750', 'fe_mare_est', 'bd2umratio',
+    'olindex', 'nbd2700', 'visuv', 'twoum_ratio', 'nbd2300', 'bd950', 'visnir',
+    'bd2300', 'thermal_ratio', 'twoum_slope', 'bd1900', 'r540']
 
 @pytest.fixture
 def crism_functions():

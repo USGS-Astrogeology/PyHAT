@@ -117,14 +117,11 @@ def add_derived_funcs(package):
     for module in dir(package):
         if module[0: 2] != "__" and "funcs" not in module:
             new_module = getattr(__import__(package.__name__, fromlist=[module]), module)
-
-            module_funcs = inspect.getmembers(new_module)
+            print(new_module)
+            module_funcs = inspect.getmembers(new_module, inspect.isfunction)
 
             for func in module_funcs:
-                if callable(func[1]) and not func[0].endswith('__'):
-
-                    function_name, function = func
-                    derived_funcs[function_name] = function
+                function_name, function = func
+                derived_funcs[function_name] = function
 
     return derived_funcs
-

@@ -27,6 +27,7 @@ def mustard(data):
        the processed ndarray
     """
     size = data.raster_size
+    print(size)
     out = np.empty((size[1], size[0], 3))
 
     out[:,:,0] = pipe.bdi1000(data)

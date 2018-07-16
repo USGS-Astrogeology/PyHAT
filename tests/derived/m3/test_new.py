@@ -4,6 +4,7 @@ import numpy as np
 from libpysat.derived.m3 import new
 
 def test_mustard(m3_img):
+    # print(m3_img.__dir__())
     res = new.mustard(m3_img)
 
     np.testing.assert_array_almost_equal(res,

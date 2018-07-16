@@ -5,24 +5,15 @@ from libpysat.derived.m3 import pipe
 
 def test_onenum_min(m3_img):
     res = pipe.oneum_min(m3_img)
-    np.testing.assert_array_almost_equal(res, np.array([[ 0.998833,  0.997667,  0.9965  ],
-                                                        [ 0.995334,  0.994167,  0.993001],
-                                                        [ 0.991835,  0.990669,  0.989503]]))
-
-def test_onenum_fwhm(m3_img):
-    res = pipe.oneum_fwhm(m3_img)
-    np.testing.assert_array_almost_equal(res, np.array([[[ 0.49883324,  0.49766658,  0.49650002],
-                                                         [ 0.49533356,  0.49416721,  0.49300095],
-                                                         [ 0.4918348,   0.49066874,  0.48950279]],
-                                                        [[ 0.48833693,  0.48717118,  0.48600553],
-                                                         [ 0.48483998,  0.48367453,  0.48250918],
-                                                         [ 0.48134393,  0.48017878,  0.47901373]]]))
+    np.testing.assert_array_almost_equal(res, np.array([[ 0.998876,  0.997753,  0.996629],
+                                                        [ 0.995506,  0.994383,  0.99326 ],
+                                                        [ 0.992137,  0.991014,  0.989891]]))
 
 def test_onenum_sym(m3_img):
     res = pipe.oneum_sym(m3_img)
-    np.testing.assert_array_almost_equal(res, np.array([[-0.979439, -0.979441, -0.979442],
-                                                        [-0.979444, -0.979446, -0.979448],
-                                                        [-0.979449, -0.979451, -0.979453]]))
+    np.testing.assert_array_almost_equal(res, np.array([[-0.980184, -0.980186, -0.980188],
+                                                        [-0.980189, -0.980191, -0.980192],
+                                                        [-0.980194, -0.980196, -0.980197]]))
 
 def test_bd620(m3_img):
     res = pipe.bd620(m3_img)
