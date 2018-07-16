@@ -1,7 +1,9 @@
-from libpysat.derived.m3 import development_funcs as dv_funcs
-from libpysat.utils.utils import generic_func
+from . import development_funcs as dv_funcs
 
-def bd1umratio(data, wv_array):
+from ..utils import generic_func
+
+
+def bd1umratio(data, **kwargs):
     """
     Name: BD1um Ratio
     Parameter: BD930 / BD990
@@ -27,9 +29,9 @@ def bd1umratio(data, wv_array):
        the processed ndarray
     """
     wavelengths = [699, 929, 989, 1579]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.bd1umratio_func)
+    return generic_func(data, wavelengths, func = dv_funcs.bd1umratio_func, **kwargs)
 
-def h2o2(data, wv_array):
+def h2o2(data, **kwargs):
     """
     Name: NBD1400
     Parameter:1.4um OH Band
@@ -56,9 +58,9 @@ def h2o2(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1348, 1408, 1428, 1448, 1578]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.h2o2_func)
+    return generic_func(data, wavelengths, func = dv_funcs.h2o2_func, **kwargs)
 
-def h2o3(data, wv_array):
+def h2o3(data, **kwargs):
     """
     Name: NBD1480
     Parameter:1.48um OH Band
@@ -85,9 +87,9 @@ def h2o3(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1428, 1448, 1488, 1508, 1528]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.h2o3_func)
+    return generic_func(data, wavelengths, func = dv_funcs.h2o3_func, **kwargs)
 
-def h2o4(data, wv_array):
+def h2o4(data, **kwargs):
     """
     Name: NBD2300
     Parameter: 2.3um OH Band
@@ -114,9 +116,9 @@ def h2o4(data, wv_array):
        the processed ndarray
     """
     wavelengths = [2218, 2258, 2378, 2418, 2298, 2338]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.h2o4_func)
+    return generic_func(data, wavelengths, func = dv_funcs.h2o4_func, **kwargs)
 
-def h2o5(data, wv_array):
+def h2o5(data, **kwargs):
     """
     Name: HBD2700
     Parameter:2.7um OH Band
@@ -142,9 +144,9 @@ def h2o5(data, wv_array):
        the processed ndarray
     """
     wavelengths = [2578, 2618, 2658, 2698, 2738]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.h2o5_func)
+    return generic_func(data, wavelengths, func = dv_funcs.h2o5_func, **kwargs)
 
-def ice(data, wv_array):
+def ice(data, **kwargs):
     """
     Name: HBD2850
     Parameter:3um Ice Band
@@ -170,9 +172,9 @@ def ice(data, wv_array):
        the processed ndarray
     """
     wavelengths = [2538, 2578, 2618, 2817, 2857, 2897]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.ice_func)
+    return generic_func(data, wavelengths, func = dv_funcs.ice_func, **kwargs)
 
-def bd2umratio(data, wv_array):
+def bd2umratio(data, **kwargs):
     """
     Name: BD2um Ratio
     Parameter:2um band depth ratio
@@ -198,4 +200,4 @@ def bd2umratio(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578, 1898, 2298, 2578]
-    return generic_func(data, wv_array, wavelengths, func = dv_funcs.bd2umratio_func)
+    return generic_func(data, wavelengths, func = dv_funcs.bd2umratio_func, **kwargs)

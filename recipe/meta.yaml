@@ -6,12 +6,12 @@ package:
 
 source:
   git_url: https://github.com/USGS-Astrogeology/PySAT
-  git_rev: master
+  git_rev: dev
 
 build:
-  number: 1
+  number: 2
   skip: True  # [not py3k]
-
+  
 requirements:
   build:
     - python
@@ -29,7 +29,7 @@ requirements:
 
 test:
   imports:
-    - pysat
+    - libpysat
 
 about:
   home: https://github.com/USGS-Astrogeology/PySAT

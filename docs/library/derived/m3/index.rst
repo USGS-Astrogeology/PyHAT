@@ -1,5 +1,5 @@
-:mod:`spectral`` --- Derived Data Products
-==================================================
+:mod:`derived.m3` --- Moone Minerology Mapper Derived Data Products
+===================================================================
 
 Brief synopsis here
 -----------------------------------------
@@ -8,3 +8,6 @@ Brief synopsis here
 
    development
    supplemental
+   new
+   pipe
+   

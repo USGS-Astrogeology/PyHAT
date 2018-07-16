@@ -2,64 +2,49 @@ import pytest
 import numpy as np
 
 from libpysat.derived.m3 import development as dev
-from libpysat import HCube
 
-@pytest.fixture
-def test_params(wavelengths):
-    return (np.array(wavelengths), 1)
 
-@pytest.mark.parametrize('wv_array, expected',
-                          [test_params([699, 929, 989, 1579])])
+def test_bd1umratio(m3_img):
+    res = dev.bd1umratio(m3_img)
+    print(res)
+    np.testing.assert_array_almost_equal(res, np.array([[0.26226209, 0.25687621, 0.25256142],
+                                                        [0.2490271, 0.24607906, 0.2435826],
+                                                        [0.24144133, 0.23958448, 0.23795892]]))
 
-def test_bd1umratio(four_dim, wv_array, expected):
-    data = HCube(four_dim, wv_array, waxis = 0)
-    res = dev.bd1umratio(data, wv_array)
-    assert res.all() == expected
 
-@pytest.mark.parametrize('wv_array, expected',
-                          [test_params([1348, 1408, 1428, 1448, 1578])])
+def test_h2o2(m3_img):
+    res = dev.h2o2(m3_img)
+    print(res)
+    np.testing.assert_array_almost_equal(res, np.array([[0.52941176, 0.50561798, 0.48387097],
+                                                        [0.46391753, 0.44554455, 0.42857143],
+                                                        [0.41284404, 0.39823009, 0.38461538]]))
 
-def test_h2o2(five_dim, wv_array, expected):
-    data = HCube(five_dim, wv_array, waxis = 0)
-    res = dev.h2o2(data, wv_array)
-    assert res.all() == expected
+def test_h2o3(m3_img):
+    res = dev.h2o3(m3_img)
+    np.testing.assert_array_almost_equal(res, np.zeros((3,3)))
 
-@pytest.mark.parametrize('wv_array, expected',
-                          [(np.array([1428, 1448, 1488, 1508, 1528]), 0)])
+def test_h2o4(m3_img):
+    res = dev.h2o4(m3_img)
+    print(res)
+    np.testing.assert_array_almost_equal(res, np.array([[-1.86206897, -1.74193548, -1.63636364],
+                                                        [-1.54285714, -1.45945946, -1.38461538],
+                                                        [-1.31707317, -1.25581395, -1.2]]))
 
-def test_h2o3(five_dim, wv_array, expected):
-    data = HCube(five_dim, wv_array, waxis = 0)
-    res = dev.h2o3(data, wv_array)
-    assert res.all() == expected
+def test_h2o5(m3_img):
+    res = dev.h2o5(m3_img)
+    np.testing.assert_array_almost_equal(res, np.array([[-2.25, -2.04545455, -1.875],
+                                                        [-1.73076923, -1.60714286, -1.5],
+                                                        [-1.40625, -1.32352941, -1.25]]))
 
-@pytest.mark.parametrize('wv_array, expected',
-                          [test_params([2218, 2258, 2378, 2418, 2298, 2338])])
+def test_ice(m3_img):
+    res = dev.ice(m3_img)
+    np.testing.assert_array_almost_equal(res, np.array([[-2.7, -2.45454545, -2.25],
+                                                        [-2.07692308, -1.92857143, -1.8],
+                                                        [-1.6875, -1.58823529, -1.5]]))
 
-def test_h2o4(six_dim, wv_array, expected):
-    data = data = HCube(six_dim, wv_array, waxis = 0)
-    res = dev.h2o4(data, wv_array)
-    assert res.all() == expected
-
-@pytest.mark.parametrize('wv_array, expected',
-                          [test_params([2578, 2618, 2658, 2698, 2738])])
-
-def test_h2o5(five_dim, wv_array, expected):
-    data = HCube(five_dim, wv_array, waxis = 0)
-    res = dev.h2o5(data, wv_array)
-    assert res.all() == expected
-
-@pytest.mark.parametrize('wv_array, expected',
-                          [test_params([2538, 2578, 2618, 2817, 2857, 2897])])
-
-def test_ice(six_dim, wv_array, expected):
-    data = HCube(six_dim, wv_array, waxis = 0)
-    res = dev.ice(data, wv_array)
-    assert res.all() == expected
-
-@pytest.mark.parametrize('wv_array, expected',
-                          [test_params([1578, 1898, 2298, 2578])])
-
-def test_bd2umratio(four_dim, wv_array, expected):
-    data = HCube(four_dim, wv_array, waxis = 0)
-    res = dev.bd2umratio(data, wv_array)
-    assert res.all() == expected
+def test_bd2umratio(m3_img):
+    res = dev.bd2umratio(m3_img)
+    print(res)
+    np.testing.assert_array_almost_equal(res, np.array([[-0.53008299, -0.5037594,  -0.48195876],
+                                                        [-0.46360759, -0.44794721, -0.43442623],
+                                                        [-0.42263427, -0.41225962, -0.40306122]]))

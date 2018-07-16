@@ -1,4 +1,4 @@
-:mod:`regression`` --- Regression
+:mod:`regression` --- Regression
 =================================
 
 Brief synopsis here

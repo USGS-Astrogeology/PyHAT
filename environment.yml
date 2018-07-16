@@ -1,4 +1,7 @@
 name: libpysat
+channels:
+  - usgs-astrogeology
+  - conda-forge
 dependencies:
   - python=3
   - jupyter
@@ -8,6 +11,6 @@ dependencies:
   - scikit-learn
   - multipledispatch
   - yaml
-  - pip
-  - pip:
-    - pvl
+  - pvl
+  - plio
+  - matplotlib

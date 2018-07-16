@@ -8,7 +8,8 @@ Library Reference
 .. toctree::
    :maxdepth: 3
 
+   data/index
    derived/index
    regression/index
-   spectral/index
+   transform/index
    utils/index

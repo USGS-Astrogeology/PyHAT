@@ -1,8 +1,9 @@
-from libpysat.utils.utils import generic_func, continuum_correction, linear
-from libpysat.derived.m3 import supplemental_funcs as sp_funcs
-from libpysat  import Spectra
+from . import supplemental_funcs as sp_funcs
 
-def curvature(data, wv_array):
+from ..utils import generic_func
+
+
+def curvature(data, **kwargs):
     '''
     Name: Curvature
     Parameter:1 um Band Curvature
@@ -25,9 +26,9 @@ def curvature(data, wv_array):
        the processed ndarray
     '''
     wavelengths = [749, 909, 1109]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.curv_func)
+    return generic_func(data, wavelengths, func = sp_funcs.curv_func, **kwargs)
 
-def fe_est(data, wv_array):
+def fe_est(data, **kwargs):
     '''
     Name: FE_est
     Parameter:Iron Estimate
@@ -54,9 +55,9 @@ def fe_est(data, wv_array):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.fe_est_func)
+    return generic_func(data, wavelengths, func = sp_funcs.fe_est_func, **kwargs)
 
-def fe_mare_est(data, wv_array):
+def fe_mare_est(data, **kwargs):
     '''
     Name: FE_est_mare
     Parameter:Iron Estimate Mare
@@ -79,9 +80,9 @@ def fe_mare_est(data, wv_array):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.fe_mare_est_func)
+    return generic_func(data, wavelengths, func = sp_funcs.fe_mare_est_func, **kwargs)
 
-def luceyc_amat(data, wv_array):
+def luceyc_amat(data, **kwargs):
     '''
     Name: Lucey_OMAT
     Parameter:Optimal Maturity - clementine Legacy; Using Adams Constants
@@ -104,9 +105,9 @@ def luceyc_amat(data, wv_array):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.luceyc_amat_func)
+    return generic_func(data, wavelengths, func = sp_funcs.luceyc_amat_func, **kwargs)
 
-def luceyc_omat(data, wv_array):
+def luceyc_omat(data, **kwargs):
     '''
     Name: Lucey_OMAT
     Parameter:Optimal Maturity - clementine Legacy; Using Clementine Constants
@@ -129,9 +130,9 @@ def luceyc_omat(data, wv_array):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.luceyc_omat_func)
+    return generic_func(data, wavelengths, func = sp_funcs.luceyc_omat_func, **kwargs)
 
-def mare_omat(data, wv_array):
+def mare_omat(data, **kwargs):
     '''
     Name: Mare_OMAT
     Parameter:Optical maturity Highlands
@@ -154,9 +155,9 @@ def mare_omat(data, wv_array):
        the processed ndarray
     '''
     wavelengths = [749, 949]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.mare_omat_func)
+    return generic_func(data, wavelengths, func = sp_funcs.mare_omat_func, **kwargs)
 
-def tilt(data, wv_array):
+def tilt(data, **kwargs):
     '''
     Name: Tilt
     Parameter: 1um tilt
@@ -177,5 +178,6 @@ def tilt(data, wv_array):
      : ndarray
        the processed ndarray
     '''
+
     wavelengths = [930, 1009]
-    return generic_func(data, wv_array, wavelengths, func = sp_funcs.tilt_func)
+    return generic_func(data, wavelengths,func = sp_funcs.tilt_func,**kwargs)

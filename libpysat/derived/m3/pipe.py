@@ -1,10 +1,9 @@
 import numpy as np
 
-from libpysat.derived.m3 import pipe_funcs as pf
-from libpysat.utils.utils import generic_func
-from libpysat.utils.utils import get_band_numbers
+from .import pipe_funcs as pf
+from ..utils import generic_func
 
-def bd620(data, wv_array):
+def bd620(data, **kwargs):
     """
     Parameters
     ----------
@@ -21,9 +20,9 @@ def bd620(data, wv_array):
        the processed ndarray
     """
     wavelengths = [419, 619, 749]
-    return generic_func(data, wv_array, wavelengths, func = pf.bd620_func)
+    return generic_func(data, wavelengths, func = pf.bd620_func, **kwargs)
 
-def bd1900(data, wv_array):
+def bd1900(data, **kwargs):
     """
     Parameters
     ----------
@@ -40,9 +39,9 @@ def bd1900(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1408, 1898, 2498]
-    return generic_func(data, wv_array, wavelengths, func = pf.bd1900_func)
+    return generic_func(data, wavelengths, func = pf.bd1900_func, **kwargs)
 
-def bd2300(data, wv_array):
+def bd2300(data, **kwargs):
     """
     Parameters
     ----------
@@ -59,9 +58,9 @@ def bd2300(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578, 2298, 2578]
-    return generic_func(data, wv_array, wavelengths, func = pf.bd2300_func)
+    return generic_func(data, wavelengths, func = pf.bd2300_func, **kwargs)
 
-def h2o1(data, wv_array):
+def h2o1(data, **kwargs):
     """
     Parameters
     ----------
@@ -78,9 +77,9 @@ def h2o1(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578, 2538, 2978]
-    return generic_func(data, wv_array, wavelengths, func = pf.h2o1_func)
+    return generic_func(data, wavelengths, func = pf.h2o1_func, **kwargs)
 
-def iralbedo(data, wv_array):
+def iralbedo(data, **kwargs):
     """
     Parameters
     ----------
@@ -97,9 +96,9 @@ def iralbedo(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578]
-    return generic_func(data, wv_array, wavelengths, func = pf.iralbedo_func)
+    return generic_func(data, wavelengths, func = pf.iralbedo_func, **kwargs)
 
-def mafic_abs(data, wv_array):
+def mafic_abs(data, **kwargs):
     """
     Parameters
     ----------
@@ -116,9 +115,9 @@ def mafic_abs(data, wv_array):
        the processed ndarray
     """
     wavelengths = [749, 950]
-    return generic_func(data, wv_array, wavelengths, func = pf.mafic_abs_func)
+    return generic_func(data, wavelengths, func = pf.mafic_abs_func, **kwargs)
 
-def omh(data, wv_array):
+def omh(data, **kwargs):
     """
     Parameters
     ----------
@@ -135,9 +134,9 @@ def omh(data, wv_array):
        the processed ndarray
     """
     wavelengths = [749, 889]
-    return generic_func(data, wv_array, wavelengths, func = pf.omh_func)
+    return generic_func(data, wavelengths, func = pf.omh_func, **kwargs)
 
-def olindex(data, wv_array):
+def olindex(data, **kwargs):
     """
     Parameters
     ----------
@@ -154,9 +153,9 @@ def olindex(data, wv_array):
        the processed ndarray
     """
     wavelengths = [650, 860, 1047, 1230, 1750]
-    return generic_func(data, wv_array, wavelengths, func = pf.olindex_func)
+    return generic_func(data, wavelengths, func = pf.olindex_func, **kwargs)
 
-def oneum_min(data, wv_array):
+def oneum_min(data, **kwargs):
     """
     Parameters
     ----------
@@ -174,7 +173,7 @@ def oneum_min(data, wv_array):
     """
     raise NotImplementedError()
 
-def oneum_slope(data, wv_array):
+def oneum_slope(data, **kwargs):
     """
     Parameters
     ----------
@@ -191,9 +190,9 @@ def oneum_slope(data, wv_array):
        the processed ndarray
     """
     wavelengths = [699, 1579]
-    return generic_func(data, wv_array, wavelengths, func = pf.oneum_slope_func)
+    return generic_func(data, wavelengths, func = pf.oneum_slope_func, **kwargs)
 
-def reflectance1(data, wv_array):
+def reflectance1(data, **kwargs):
     """
     Parameters
     ----------
@@ -210,9 +209,9 @@ def reflectance1(data, wv_array):
        the processed ndarray
     """
     wavelengths = [540]
-    return generic_func(data, wv_array, wavelengths, func = pf.reflectance_func)
+    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
-def reflectance2(data, wv_array):
+def reflectance2(data, **kwargs):
     """
     Parameters
     ----------
@@ -229,9 +228,9 @@ def reflectance2(data, wv_array):
        the processed ndarray
     """
     wavelengths = [749]
-    return generic_func(data, wv_array, wavelengths, func = pf.reflectance_func)
+    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
-def reflectance3(data, wv_array):
+def reflectance3(data, **kwargs):
     """
     Parameters
     ----------
@@ -248,9 +247,9 @@ def reflectance3(data, wv_array):
        the processed ndarray
     """
     wavelengths = [2778]
-    return generic_func(data, wv_array, wavelengths, func = pf.reflectance_func)
+    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
-def reflectance4(data, wv_array):
+def reflectance4(data, **kwargs):
     """
     Parameters
     ----------
@@ -267,9 +266,9 @@ def reflectance4(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578]
-    return generic_func(data, wv_array, wavelengths, func = pf.reflectance_func)
+    return generic_func(data, wavelengths, func = pf.reflectance_func, **kwargs)
 
-def thermal_ratio(data, wv_array):
+def thermal_ratio(data, **kwargs):
     """
     Parameters
     ----------
@@ -286,9 +285,9 @@ def thermal_ratio(data, wv_array):
        the processed ndarray
     """
     wavelengths = [2538, 2978]
-    return generic_func(data, wv_array, wavelengths, func = pf.thermal_ratio_func)
+    return generic_func(data, wavelengths, func = pf.thermal_ratio_func, **kwargs)
 
-def thermal_slope(data, wv_array):
+def thermal_slope(data, **kwargs):
     """
     Parameters
     ----------
@@ -305,9 +304,9 @@ def thermal_slope(data, wv_array):
        the processed ndarray
     """
     wavelengths = [2538, 2978]
-    return generic_func(data, wv_array, wavelengths, func = pf.thermal_slope_func)
+    return generic_func(data, wavelengths, func = pf.thermal_slope_func, **kwargs)
 
-def twoum_ratio(data, wv_array):
+def twoum_ratio(data, **kwargs):
     """
     Parameters
     ----------
@@ -324,9 +323,9 @@ def twoum_ratio(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578, 2538]
-    return generic_func(data, wv_array, wavelengths, func = pf.twoum_ratio_func)
+    return generic_func(data, wavelengths, func = pf.twoum_ratio_func, **kwargs)
 
-def twoum_slope(data, wv_array):
+def twoum_slope(data, **kwargs):
     """
     Parameters
     ----------
@@ -343,9 +342,9 @@ def twoum_slope(data, wv_array):
        the processed ndarray
     """
     wavelengths = [1578, 2538]
-    return generic_func(data, wv_array, wavelengths, func = pf.twoum_slope_func)
+    return generic_func(data, wavelengths, func = pf.twoum_slope_func, **kwargs)
 
-def uvvis(data, wv_array):
+def uvvis(data, **kwargs):
     """
     Parameters
     ----------
@@ -362,9 +361,9 @@ def uvvis(data, wv_array):
        the processed ndarray
     """
     wavelengths = [419, 749]
-    return generic_func(data, wv_array, wavelengths, func = pf.uvvis_func)
+    return generic_func(data, wavelengths, func = pf.uvvis_func, **kwargs)
 
-def visslope(data, wv_array):
+def visslope(data, **kwargs):
     """
     Parameters
     ----------
@@ -381,9 +380,9 @@ def visslope(data, wv_array):
        the processed ndarray
     """
     wavelengths = [419, 749]
-    return generic_func(data, wv_array, wavelengths, func = pf.visslope_func)
+    return generic_func(data, wavelengths, func = pf.visslope_func, **kwargs)
 
-def visuv(data, wv_array):
+def visuv(data, **kwargs):
     """
     Parameters
     ----------
@@ -400,9 +399,9 @@ def visuv(data, wv_array):
        the processed ndarray
     """
     wavelengths = [419, 749]
-    return generic_func(data, wv_array, wavelengths, func = pf.visuv_func)
+    return generic_func(data, wavelengths, func = pf.visuv_func, **kwargs)
 
-def visnir(data, wv_array):
+def visnir(data, **kwargs):
     """
     Parameters
     ----------
@@ -419,9 +418,9 @@ def visnir(data, wv_array):
        the processed ndarray
     """
     wavelengths = [699, 1579]
-    return generic_func(data, wv_array, wavelengths, func = pf.visnir_func)
+    return generic_func(data, wavelengths, func = pf.visnir_func, **kwargs)
 
-def calc_bdi_band(data, wv_array, iteration, initial_band, step):
+def calc_bdi_band(data,iteration, initial_band, step, **kwargs):
     """
     Parameters
     ----------
@@ -447,11 +446,14 @@ def calc_bdi_band(data, wv_array, iteration, initial_band, step):
        the processed ndarray
     """
     y = initial_band + (step * iteration)
-    y_idx = get_band_numbers(wv_array, [y])
-    wavelengths = [wv_array[y_idx - 3], y, wv_array[y_idx + 3]]
-    return generic_func(data, wv_array, wavelengths, func = pf.bdi_func)
+    wv_array = data.wavelengths
+    vals = np.abs(data.wavelengths-y)
+    minidx = np.argmin(vals) 
+    wavelengths = [wv_array[minidx - 3], y, wv_array[minidx + 3]]
+    wvlims = [wavelengths[0], y, wavelengths[-1]]
+    return generic_func(data, wavelengths, func=pf.bdi_func, wvs=wvlims, **kwargs)
 
-def bdi_generic(data, wv_array, upper_limit, initial_band, step):
+def bdi_generic(data, upper_limit, initial_band, step):
     """
     Parameters
     ----------
@@ -477,10 +479,10 @@ def bdi_generic(data, wv_array, upper_limit, initial_band, step):
        the processed ndarray
     """
     limit = range(0, upper_limit)
-    band_list = [calc_bdi_band(data, wv_array, i, initial_band, step) for i in limit]
+    band_list = [calc_bdi_band(data, i, initial_band, step) for i in limit]
     return 1 - np.sum(band_list, axis = 0)
 
-def bdi1000(data, wv_array):
+def bdi1000(data, **kwargs):
     """
     Parameters
     ----------
@@ -496,9 +498,9 @@ def bdi1000(data, wv_array):
      : ndarray
        the processed ndarray
     """
-    return bdi_generic(data, wv_array, 27, 789, 20)
+    return bdi_generic(data, 27, 789, 20)
 
-def bdi2000(data, wv_array):
+def bdi2000(data, **kwargs):
     """
     Parameters
     ----------
@@ -514,4 +516,4 @@ def bdi2000(data, wv_array):
      : ndarray
        the processed ndarray
     """
-    return bdi_generic(data, wv_array, 22, 1658, 40)
+    return bdi_generic(data, 22, 1658, 40)

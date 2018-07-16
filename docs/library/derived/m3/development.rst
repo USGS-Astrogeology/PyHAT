@@ -1,5 +1,5 @@
-:mod:`spectral.spectra` --- M3 Developmental Algorithms
-====================================================================
+:mod:`derived.m3.development` --- M3 Developmental Algorithms
+=============================================================
 
 The :mod:`derived.m3.development` module
 

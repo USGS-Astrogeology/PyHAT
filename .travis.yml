@@ -34,35 +34,27 @@ install:
   # Install dependencies
   - conda config --add channels usgs-astrogeology
   - conda config --add channels conda-forge
-  - conda install --quiet -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch
+  - conda install --quiet -c conda-forge numpy scipy pandas gdal libgdal scikit-learn multipledispatch
   - conda install --quiet -c usgs-astrogeology plio
+  # https://github.com/GoogleCloudPlatform/google-cloud-python/issues/2990
+  - conda install pip setuptools
 
   # Development installation
-  - conda install --quiet pytest pytest-cov
-  - pip install coveralls
+  - conda install --quiet pytest pytest-cov nbsphinx
+  - pip install coveralls travis-sphinx
 
 script:
-  - python setup.py install
   - pytest --cov=pysat
 
 after_success:
+  # Code Coverage
   - coveralls
+  # Anaconda Upload
   - source deactivate
   - conda install conda-build anaconda-client
   - conda config --set anaconda_upload yes
   - conda build --token $CONDA_UPLOAD_TOKEN --python $PYTHON_VERSION .
-
-before_deploy:
+  # Docs to gh-pages
   - source activate test_env  # Reactivate the env to have all deps installed.
-  - conda install --quiet -c conda-forge pip nbsphinx
-  - pip install travis-sphinx
   - travis-sphinx build --source=docs --nowarn # The sphinx build script
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep-history: true
-  local_dir: build/html
-  on:
-    branch: dev  # To be converted to master when we merge
+  - travis-sphinx deploy --branches=dev
