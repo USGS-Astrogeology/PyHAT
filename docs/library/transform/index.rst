@@ -6,6 +6,7 @@ Transformation functionality for
 * continuum correction
 * spectral smoothing
 * image stretching
+
 -----------------------------------------
 
 .. toctree::

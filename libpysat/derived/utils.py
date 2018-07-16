@@ -1,3 +1,5 @@
+import inspect
+
 import numpy as np
 
 def generic_func(data, wavelengths, kernels={}, func=None, axis=0, **kwargs):

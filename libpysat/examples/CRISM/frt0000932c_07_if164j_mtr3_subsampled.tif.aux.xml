@@ -1,0 +1,3428 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="Band_1">436.130000 Nanometers</MDI>
+    <MDI key="Band_10">494.680000 Nanometers</MDI>
+    <MDI key="Band_100">1184.850000 Nanometers</MDI>
+    <MDI key="Band_101">1191.410000 Nanometers</MDI>
+    <MDI key="Band_102">1197.970000 Nanometers</MDI>
+    <MDI key="Band_103">1204.530000 Nanometers</MDI>
+    <MDI key="Band_104">1211.090000 Nanometers</MDI>
+    <MDI key="Band_105">1217.650000 Nanometers</MDI>
+    <MDI key="Band_106">1224.210000 Nanometers</MDI>
+    <MDI key="Band_107">1230.770000 Nanometers</MDI>
+    <MDI key="Band_108">1237.330000 Nanometers</MDI>
+    <MDI key="Band_109">1243.890000 Nanometers</MDI>
+    <MDI key="Band_11">501.190000 Nanometers</MDI>
+    <MDI key="Band_110">1250.450000 Nanometers</MDI>
+    <MDI key="Band_111">1257.010000 Nanometers</MDI>
+    <MDI key="Band_112">1263.570000 Nanometers</MDI>
+    <MDI key="Band_113">1270.140000 Nanometers</MDI>
+    <MDI key="Band_114">1276.700000 Nanometers</MDI>
+    <MDI key="Band_115">1283.260000 Nanometers</MDI>
+    <MDI key="Band_116">1289.830000 Nanometers</MDI>
+    <MDI key="Band_117">1296.390000 Nanometers</MDI>
+    <MDI key="Band_118">1302.950000 Nanometers</MDI>
+    <MDI key="Band_119">1309.520000 Nanometers</MDI>
+    <MDI key="Band_12">507.700000 Nanometers</MDI>
+    <MDI key="Band_120">1316.080000 Nanometers</MDI>
+    <MDI key="Band_121">1322.650000 Nanometers</MDI>
+    <MDI key="Band_122">1329.210000 Nanometers</MDI>
+    <MDI key="Band_123">1335.780000 Nanometers</MDI>
+    <MDI key="Band_124">1342.340000 Nanometers</MDI>
+    <MDI key="Band_125">1348.910000 Nanometers</MDI>
+    <MDI key="Band_126">1355.480000 Nanometers</MDI>
+    <MDI key="Band_127">1362.050000 Nanometers</MDI>
+    <MDI key="Band_128">1368.610000 Nanometers</MDI>
+    <MDI key="Band_129">1375.180000 Nanometers</MDI>
+    <MDI key="Band_13">514.210000 Nanometers</MDI>
+    <MDI key="Band_130">1381.750000 Nanometers</MDI>
+    <MDI key="Band_131">1388.320000 Nanometers</MDI>
+    <MDI key="Band_132">1394.890000 Nanometers</MDI>
+    <MDI key="Band_133">1401.450000 Nanometers</MDI>
+    <MDI key="Band_134">1408.020000 Nanometers</MDI>
+    <MDI key="Band_135">1414.590000 Nanometers</MDI>
+    <MDI key="Band_136">1421.160000 Nanometers</MDI>
+    <MDI key="Band_137">1427.730000 Nanometers</MDI>
+    <MDI key="Band_138">1434.310000 Nanometers</MDI>
+    <MDI key="Band_139">1440.880000 Nanometers</MDI>
+    <MDI key="Band_14">520.720000 Nanometers</MDI>
+    <MDI key="Band_140">1447.450000 Nanometers</MDI>
+    <MDI key="Band_141">1454.020000 Nanometers</MDI>
+    <MDI key="Band_142">1460.590000 Nanometers</MDI>
+    <MDI key="Band_143">1467.160000 Nanometers</MDI>
+    <MDI key="Band_144">1473.740000 Nanometers</MDI>
+    <MDI key="Band_145">1480.310000 Nanometers</MDI>
+    <MDI key="Band_146">1486.880000 Nanometers</MDI>
+    <MDI key="Band_147">1493.460000 Nanometers</MDI>
+    <MDI key="Band_148">1500.030000 Nanometers</MDI>
+    <MDI key="Band_149">1506.610000 Nanometers</MDI>
+    <MDI key="Band_15">527.230000 Nanometers</MDI>
+    <MDI key="Band_150">1513.180000 Nanometers</MDI>
+    <MDI key="Band_151">1519.760000 Nanometers</MDI>
+    <MDI key="Band_152">1526.330000 Nanometers</MDI>
+    <MDI key="Band_153">1532.910000 Nanometers</MDI>
+    <MDI key="Band_154">1539.480000 Nanometers</MDI>
+    <MDI key="Band_155">1546.060000 Nanometers</MDI>
+    <MDI key="Band_156">1552.640000 Nanometers</MDI>
+    <MDI key="Band_157">1559.210000 Nanometers</MDI>
+    <MDI key="Band_158">1565.790000 Nanometers</MDI>
+    <MDI key="Band_159">1572.370000 Nanometers</MDI>
+    <MDI key="Band_16">533.740000 Nanometers</MDI>
+    <MDI key="Band_160">1578.950000 Nanometers</MDI>
+    <MDI key="Band_161">1585.520000 Nanometers</MDI>
+    <MDI key="Band_162">1592.100000 Nanometers</MDI>
+    <MDI key="Band_163">1598.680000 Nanometers</MDI>
+    <MDI key="Band_164">1605.260000 Nanometers</MDI>
+    <MDI key="Band_165">1611.840000 Nanometers</MDI>
+    <MDI key="Band_166">1618.420000 Nanometers</MDI>
+    <MDI key="Band_167">1625.000000 Nanometers</MDI>
+    <MDI key="Band_168">1631.580000 Nanometers</MDI>
+    <MDI key="Band_169">1638.160000 Nanometers</MDI>
+    <MDI key="Band_17">540.250000 Nanometers</MDI>
+    <MDI key="Band_170">1644.740000 Nanometers</MDI>
+    <MDI key="Band_171">1651.330000 Nanometers</MDI>
+    <MDI key="Band_172">1657.910000 Nanometers</MDI>
+    <MDI key="Band_173">1664.490000 Nanometers</MDI>
+    <MDI key="Band_174">1671.070000 Nanometers</MDI>
+    <MDI key="Band_175">1677.660000 Nanometers</MDI>
+    <MDI key="Band_176">1684.240000 Nanometers</MDI>
+    <MDI key="Band_177">1690.820000 Nanometers</MDI>
+    <MDI key="Band_178">1697.410000 Nanometers</MDI>
+    <MDI key="Band_179">1703.990000 Nanometers</MDI>
+    <MDI key="Band_18">546.760000 Nanometers</MDI>
+    <MDI key="Band_180">1710.580000 Nanometers</MDI>
+    <MDI key="Band_181">1717.160000 Nanometers</MDI>
+    <MDI key="Band_182">1723.750000 Nanometers</MDI>
+    <MDI key="Band_183">1730.330000 Nanometers</MDI>
+    <MDI key="Band_184">1736.920000 Nanometers</MDI>
+    <MDI key="Band_185">1743.510000 Nanometers</MDI>
+    <MDI key="Band_186">1750.090000 Nanometers</MDI>
+    <MDI key="Band_187">1756.680000 Nanometers</MDI>
+    <MDI key="Band_188">1763.270000 Nanometers</MDI>
+    <MDI key="Band_189">1769.850000 Nanometers</MDI>
+    <MDI key="Band_19">553.270000 Nanometers</MDI>
+    <MDI key="Band_190">1776.440000 Nanometers</MDI>
+    <MDI key="Band_191">1783.030000 Nanometers</MDI>
+    <MDI key="Band_192">1789.620000 Nanometers</MDI>
+    <MDI key="Band_193">1796.210000 Nanometers</MDI>
+    <MDI key="Band_194">1802.800000 Nanometers</MDI>
+    <MDI key="Band_195">1809.390000 Nanometers</MDI>
+    <MDI key="Band_196">1815.980000 Nanometers</MDI>
+    <MDI key="Band_197">1822.570000 Nanometers</MDI>
+    <MDI key="Band_198">1829.160000 Nanometers</MDI>
+    <MDI key="Band_199">1835.750000 Nanometers</MDI>
+    <MDI key="Band_2">442.630000 Nanometers</MDI>
+    <MDI key="Band_20">559.780000 Nanometers</MDI>
+    <MDI key="Band_200">1842.340000 Nanometers</MDI>
+    <MDI key="Band_201">1848.930000 Nanometers</MDI>
+    <MDI key="Band_202">1855.520000 Nanometers</MDI>
+    <MDI key="Band_203">1862.120000 Nanometers</MDI>
+    <MDI key="Band_204">1868.710000 Nanometers</MDI>
+    <MDI key="Band_205">1875.300000 Nanometers</MDI>
+    <MDI key="Band_206">1881.900000 Nanometers</MDI>
+    <MDI key="Band_207">1888.490000 Nanometers</MDI>
+    <MDI key="Band_208">1895.080000 Nanometers</MDI>
+    <MDI key="Band_209">1901.680000 Nanometers</MDI>
+    <MDI key="Band_21">566.290000 Nanometers</MDI>
+    <MDI key="Band_210">1908.270000 Nanometers</MDI>
+    <MDI key="Band_211">1914.870000 Nanometers</MDI>
+    <MDI key="Band_212">1921.460000 Nanometers</MDI>
+    <MDI key="Band_213">1928.060000 Nanometers</MDI>
+    <MDI key="Band_214">1934.650000 Nanometers</MDI>
+    <MDI key="Band_215">1941.250000 Nanometers</MDI>
+    <MDI key="Band_216">1947.850000 Nanometers</MDI>
+    <MDI key="Band_217">1954.440000 Nanometers</MDI>
+    <MDI key="Band_218">1961.040000 Nanometers</MDI>
+    <MDI key="Band_219">1967.640000 Nanometers</MDI>
+    <MDI key="Band_22">572.810000 Nanometers</MDI>
+    <MDI key="Band_220">1974.240000 Nanometers</MDI>
+    <MDI key="Band_221">1980.840000 Nanometers</MDI>
+    <MDI key="Band_222">1987.430000 Nanometers</MDI>
+    <MDI key="Band_223">1994.030000 Nanometers</MDI>
+    <MDI key="Band_224">2000.630000 Nanometers</MDI>
+    <MDI key="Band_225">2007.230000 Nanometers</MDI>
+    <MDI key="Band_226">2013.830000 Nanometers</MDI>
+    <MDI key="Band_227">2020.430000 Nanometers</MDI>
+    <MDI key="Band_228">2027.030000 Nanometers</MDI>
+    <MDI key="Band_229">2033.630000 Nanometers</MDI>
+    <MDI key="Band_23">579.320000 Nanometers</MDI>
+    <MDI key="Band_230">2040.240000 Nanometers</MDI>
+    <MDI key="Band_231">2046.840000 Nanometers</MDI>
+    <MDI key="Band_232">2053.440000 Nanometers</MDI>
+    <MDI key="Band_233">2060.040000 Nanometers</MDI>
+    <MDI key="Band_234">2066.640000 Nanometers</MDI>
+    <MDI key="Band_235">2073.250000 Nanometers</MDI>
+    <MDI key="Band_236">2079.850000 Nanometers</MDI>
+    <MDI key="Band_237">2086.450000 Nanometers</MDI>
+    <MDI key="Band_238">2093.060000 Nanometers</MDI>
+    <MDI key="Band_239">2099.660000 Nanometers</MDI>
+    <MDI key="Band_24">585.830000 Nanometers</MDI>
+    <MDI key="Band_240">2106.270000 Nanometers</MDI>
+    <MDI key="Band_241">2112.870000 Nanometers</MDI>
+    <MDI key="Band_242">2119.480000 Nanometers</MDI>
+    <MDI key="Band_243">2126.080000 Nanometers</MDI>
+    <MDI key="Band_244">2132.690000 Nanometers</MDI>
+    <MDI key="Band_245">2139.300000 Nanometers</MDI>
+    <MDI key="Band_246">2145.900000 Nanometers</MDI>
+    <MDI key="Band_247">2152.510000 Nanometers</MDI>
+    <MDI key="Band_248">2159.120000 Nanometers</MDI>
+    <MDI key="Band_249">2165.720000 Nanometers</MDI>
+    <MDI key="Band_25">592.350000 Nanometers</MDI>
+    <MDI key="Band_250">2172.330000 Nanometers</MDI>
+    <MDI key="Band_251">2178.940000 Nanometers</MDI>
+    <MDI key="Band_252">2185.550000 Nanometers</MDI>
+    <MDI key="Band_253">2192.160000 Nanometers</MDI>
+    <MDI key="Band_254">2198.770000 Nanometers</MDI>
+    <MDI key="Band_255">2205.380000 Nanometers</MDI>
+    <MDI key="Band_256">2211.990000 Nanometers</MDI>
+    <MDI key="Band_257">2218.600000 Nanometers</MDI>
+    <MDI key="Band_258">2225.210000 Nanometers</MDI>
+    <MDI key="Band_259">2231.820000 Nanometers</MDI>
+    <MDI key="Band_26">598.860000 Nanometers</MDI>
+    <MDI key="Band_260">2238.430000 Nanometers</MDI>
+    <MDI key="Band_261">2245.040000 Nanometers</MDI>
+    <MDI key="Band_262">2251.650000 Nanometers</MDI>
+    <MDI key="Band_263">2258.270000 Nanometers</MDI>
+    <MDI key="Band_264">2264.880000 Nanometers</MDI>
+    <MDI key="Band_265">2271.490000 Nanometers</MDI>
+    <MDI key="Band_266">2278.100000 Nanometers</MDI>
+    <MDI key="Band_267">2284.720000 Nanometers</MDI>
+    <MDI key="Band_268">2291.330000 Nanometers</MDI>
+    <MDI key="Band_269">2297.950000 Nanometers</MDI>
+    <MDI key="Band_27">605.380000 Nanometers</MDI>
+    <MDI key="Band_270">2304.560000 Nanometers</MDI>
+    <MDI key="Band_271">2311.180000 Nanometers</MDI>
+    <MDI key="Band_272">2317.790000 Nanometers</MDI>
+    <MDI key="Band_273">2324.410000 Nanometers</MDI>
+    <MDI key="Band_274">2331.020000 Nanometers</MDI>
+    <MDI key="Band_275">2337.640000 Nanometers</MDI>
+    <MDI key="Band_276">2344.260000 Nanometers</MDI>
+    <MDI key="Band_277">2350.870000 Nanometers</MDI>
+    <MDI key="Band_278">2357.490000 Nanometers</MDI>
+    <MDI key="Band_279">2364.110000 Nanometers</MDI>
+    <MDI key="Band_28">611.890000 Nanometers</MDI>
+    <MDI key="Band_280">2370.720000 Nanometers</MDI>
+    <MDI key="Band_281">2377.340000 Nanometers</MDI>
+    <MDI key="Band_282">2383.960000 Nanometers</MDI>
+    <MDI key="Band_283">2390.580000 Nanometers</MDI>
+    <MDI key="Band_284">2397.200000 Nanometers</MDI>
+    <MDI key="Band_285">2403.820000 Nanometers</MDI>
+    <MDI key="Band_286">2410.440000 Nanometers</MDI>
+    <MDI key="Band_287">2417.060000 Nanometers</MDI>
+    <MDI key="Band_288">2423.680000 Nanometers</MDI>
+    <MDI key="Band_289">2430.300000 Nanometers</MDI>
+    <MDI key="Band_29">618.410000 Nanometers</MDI>
+    <MDI key="Band_290">2436.920000 Nanometers</MDI>
+    <MDI key="Band_291">2443.540000 Nanometers</MDI>
+    <MDI key="Band_292">2450.170000 Nanometers</MDI>
+    <MDI key="Band_293">2456.790000 Nanometers</MDI>
+    <MDI key="Band_294">2463.410000 Nanometers</MDI>
+    <MDI key="Band_295">2470.030000 Nanometers</MDI>
+    <MDI key="Band_296">2476.660000 Nanometers</MDI>
+    <MDI key="Band_297">2483.280000 Nanometers</MDI>
+    <MDI key="Band_298">2489.900000 Nanometers</MDI>
+    <MDI key="Band_299">2496.530000 Nanometers</MDI>
+    <MDI key="Band_3">449.140000 Nanometers</MDI>
+    <MDI key="Band_30">624.920000 Nanometers</MDI>
+    <MDI key="Band_300">2503.120000 Nanometers</MDI>
+    <MDI key="Band_301">2509.720000 Nanometers</MDI>
+    <MDI key="Band_302">2516.320000 Nanometers</MDI>
+    <MDI key="Band_303">2522.920000 Nanometers</MDI>
+    <MDI key="Band_304">2529.510000 Nanometers</MDI>
+    <MDI key="Band_305">2536.110000 Nanometers</MDI>
+    <MDI key="Band_306">2542.710000 Nanometers</MDI>
+    <MDI key="Band_307">2549.310000 Nanometers</MDI>
+    <MDI key="Band_308">2555.910000 Nanometers</MDI>
+    <MDI key="Band_309">2562.510000 Nanometers</MDI>
+    <MDI key="Band_31">631.440000 Nanometers</MDI>
+    <MDI key="Band_310">2569.110000 Nanometers</MDI>
+    <MDI key="Band_311">2575.710000 Nanometers</MDI>
+    <MDI key="Band_312">2582.310000 Nanometers</MDI>
+    <MDI key="Band_313">2588.910000 Nanometers</MDI>
+    <MDI key="Band_314">2595.510000 Nanometers</MDI>
+    <MDI key="Band_315">2602.120000 Nanometers</MDI>
+    <MDI key="Band_316">2608.720000 Nanometers</MDI>
+    <MDI key="Band_317">2615.320000 Nanometers</MDI>
+    <MDI key="Band_318">2621.920000 Nanometers</MDI>
+    <MDI key="Band_319">2628.530000 Nanometers</MDI>
+    <MDI key="Band_32">709.680000 Nanometers</MDI>
+    <MDI key="Band_320">2635.130000 Nanometers</MDI>
+    <MDI key="Band_321">2641.740000 Nanometers</MDI>
+    <MDI key="Band_322">2648.340000 Nanometers</MDI>
+    <MDI key="Band_323">2654.950000 Nanometers</MDI>
+    <MDI key="Band_324">2800.350000 Nanometers</MDI>
+    <MDI key="Band_325">2806.970000 Nanometers</MDI>
+    <MDI key="Band_326">2813.580000 Nanometers</MDI>
+    <MDI key="Band_327">2820.200000 Nanometers</MDI>
+    <MDI key="Band_328">2826.810000 Nanometers</MDI>
+    <MDI key="Band_329">2833.430000 Nanometers</MDI>
+    <MDI key="Band_33">716.200000 Nanometers</MDI>
+    <MDI key="Band_330">2840.040000 Nanometers</MDI>
+    <MDI key="Band_331">2846.660000 Nanometers</MDI>
+    <MDI key="Band_332">2853.280000 Nanometers</MDI>
+    <MDI key="Band_333">2859.890000 Nanometers</MDI>
+    <MDI key="Band_334">2866.510000 Nanometers</MDI>
+    <MDI key="Band_335">2873.130000 Nanometers</MDI>
+    <MDI key="Band_336">2879.750000 Nanometers</MDI>
+    <MDI key="Band_337">2886.360000 Nanometers</MDI>
+    <MDI key="Band_338">2892.980000 Nanometers</MDI>
+    <MDI key="Band_339">2899.600000 Nanometers</MDI>
+    <MDI key="Band_34">722.720000 Nanometers</MDI>
+    <MDI key="Band_340">2906.220000 Nanometers</MDI>
+    <MDI key="Band_341">2912.840000 Nanometers</MDI>
+    <MDI key="Band_342">2919.460000 Nanometers</MDI>
+    <MDI key="Band_343">2926.080000 Nanometers</MDI>
+    <MDI key="Band_344">2932.700000 Nanometers</MDI>
+    <MDI key="Band_345">2939.320000 Nanometers</MDI>
+    <MDI key="Band_346">2945.950000 Nanometers</MDI>
+    <MDI key="Band_347">2952.570000 Nanometers</MDI>
+    <MDI key="Band_348">2959.190000 Nanometers</MDI>
+    <MDI key="Band_349">2965.810000 Nanometers</MDI>
+    <MDI key="Band_35">729.250000 Nanometers</MDI>
+    <MDI key="Band_350">2972.440000 Nanometers</MDI>
+    <MDI key="Band_351">2979.060000 Nanometers</MDI>
+    <MDI key="Band_352">2985.680000 Nanometers</MDI>
+    <MDI key="Band_353">2992.310000 Nanometers</MDI>
+    <MDI key="Band_354">2998.930000 Nanometers</MDI>
+    <MDI key="Band_355">3005.560000 Nanometers</MDI>
+    <MDI key="Band_356">3012.180000 Nanometers</MDI>
+    <MDI key="Band_357">3018.810000 Nanometers</MDI>
+    <MDI key="Band_358">3025.440000 Nanometers</MDI>
+    <MDI key="Band_359">3032.060000 Nanometers</MDI>
+    <MDI key="Band_36">735.770000 Nanometers</MDI>
+    <MDI key="Band_360">3038.690000 Nanometers</MDI>
+    <MDI key="Band_361">3045.320000 Nanometers</MDI>
+    <MDI key="Band_362">3051.950000 Nanometers</MDI>
+    <MDI key="Band_363">3058.570000 Nanometers</MDI>
+    <MDI key="Band_364">3065.200000 Nanometers</MDI>
+    <MDI key="Band_365">3071.830000 Nanometers</MDI>
+    <MDI key="Band_366">3078.460000 Nanometers</MDI>
+    <MDI key="Band_367">3085.090000 Nanometers</MDI>
+    <MDI key="Band_368">3091.720000 Nanometers</MDI>
+    <MDI key="Band_369">3098.350000 Nanometers</MDI>
+    <MDI key="Band_37">742.300000 Nanometers</MDI>
+    <MDI key="Band_370">3104.980000 Nanometers</MDI>
+    <MDI key="Band_371">3111.610000 Nanometers</MDI>
+    <MDI key="Band_372">3118.250000 Nanometers</MDI>
+    <MDI key="Band_373">3124.880000 Nanometers</MDI>
+    <MDI key="Band_374">3131.510000 Nanometers</MDI>
+    <MDI key="Band_375">3138.140000 Nanometers</MDI>
+    <MDI key="Band_376">3144.780000 Nanometers</MDI>
+    <MDI key="Band_377">3151.410000 Nanometers</MDI>
+    <MDI key="Band_378">3158.040000 Nanometers</MDI>
+    <MDI key="Band_379">3164.680000 Nanometers</MDI>
+    <MDI key="Band_38">748.820000 Nanometers</MDI>
+    <MDI key="Band_380">3171.310000 Nanometers</MDI>
+    <MDI key="Band_381">3177.950000 Nanometers</MDI>
+    <MDI key="Band_382">3184.580000 Nanometers</MDI>
+    <MDI key="Band_383">3191.220000 Nanometers</MDI>
+    <MDI key="Band_384">3197.850000 Nanometers</MDI>
+    <MDI key="Band_385">3204.490000 Nanometers</MDI>
+    <MDI key="Band_386">3211.130000 Nanometers</MDI>
+    <MDI key="Band_387">3217.760000 Nanometers</MDI>
+    <MDI key="Band_388">3224.400000 Nanometers</MDI>
+    <MDI key="Band_389">3231.040000 Nanometers</MDI>
+    <MDI key="Band_39">755.350000 Nanometers</MDI>
+    <MDI key="Band_390">3237.680000 Nanometers</MDI>
+    <MDI key="Band_391">3244.320000 Nanometers</MDI>
+    <MDI key="Band_392">3250.960000 Nanometers</MDI>
+    <MDI key="Band_393">3257.600000 Nanometers</MDI>
+    <MDI key="Band_394">3264.240000 Nanometers</MDI>
+    <MDI key="Band_395">3270.880000 Nanometers</MDI>
+    <MDI key="Band_396">3277.520000 Nanometers</MDI>
+    <MDI key="Band_397">3284.160000 Nanometers</MDI>
+    <MDI key="Band_398">3290.800000 Nanometers</MDI>
+    <MDI key="Band_399">3297.440000 Nanometers</MDI>
+    <MDI key="Band_4">455.640000 Nanometers</MDI>
+    <MDI key="Band_40">761.870000 Nanometers</MDI>
+    <MDI key="Band_400">3304.080000 Nanometers</MDI>
+    <MDI key="Band_401">3310.730000 Nanometers</MDI>
+    <MDI key="Band_402">3317.370000 Nanometers</MDI>
+    <MDI key="Band_403">3324.010000 Nanometers</MDI>
+    <MDI key="Band_404">3330.660000 Nanometers</MDI>
+    <MDI key="Band_405">3337.300000 Nanometers</MDI>
+    <MDI key="Band_406">3343.950000 Nanometers</MDI>
+    <MDI key="Band_407">3350.590000 Nanometers</MDI>
+    <MDI key="Band_408">3357.240000 Nanometers</MDI>
+    <MDI key="Band_409">3363.880000 Nanometers</MDI>
+    <MDI key="Band_41">768.400000 Nanometers</MDI>
+    <MDI key="Band_410">3370.530000 Nanometers</MDI>
+    <MDI key="Band_411">3377.170000 Nanometers</MDI>
+    <MDI key="Band_412">3383.820000 Nanometers</MDI>
+    <MDI key="Band_413">3390.470000 Nanometers</MDI>
+    <MDI key="Band_414">3397.120000 Nanometers</MDI>
+    <MDI key="Band_415">3403.760000 Nanometers</MDI>
+    <MDI key="Band_416">3410.410000 Nanometers</MDI>
+    <MDI key="Band_417">3417.060000 Nanometers</MDI>
+    <MDI key="Band_418">3423.710000 Nanometers</MDI>
+    <MDI key="Band_419">3430.360000 Nanometers</MDI>
+    <MDI key="Band_42">774.920000 Nanometers</MDI>
+    <MDI key="Band_420">3437.010000 Nanometers</MDI>
+    <MDI key="Band_421">3443.660000 Nanometers</MDI>
+    <MDI key="Band_422">3450.310000 Nanometers</MDI>
+    <MDI key="Band_423">3456.960000 Nanometers</MDI>
+    <MDI key="Band_424">3463.610000 Nanometers</MDI>
+    <MDI key="Band_425">3470.260000 Nanometers</MDI>
+    <MDI key="Band_426">3476.920000 Nanometers</MDI>
+    <MDI key="Band_427">3483.570000 Nanometers</MDI>
+    <MDI key="Band_428">3490.220000 Nanometers</MDI>
+    <MDI key="Band_429">3496.870000 Nanometers</MDI>
+    <MDI key="Band_43">781.450000 Nanometers</MDI>
+    <MDI key="Band_430">3503.530000 Nanometers</MDI>
+    <MDI key="Band_431">3510.180000 Nanometers</MDI>
+    <MDI key="Band_432">3516.840000 Nanometers</MDI>
+    <MDI key="Band_433">3523.490000 Nanometers</MDI>
+    <MDI key="Band_434">3530.150000 Nanometers</MDI>
+    <MDI key="Band_435">3536.800000 Nanometers</MDI>
+    <MDI key="Band_436">3543.460000 Nanometers</MDI>
+    <MDI key="Band_437">3550.110000 Nanometers</MDI>
+    <MDI key="Band_438">3556.770000 Nanometers</MDI>
+    <MDI key="Band_439">3563.430000 Nanometers</MDI>
+    <MDI key="Band_44">787.980000 Nanometers</MDI>
+    <MDI key="Band_440">3570.080000 Nanometers</MDI>
+    <MDI key="Band_441">3576.740000 Nanometers</MDI>
+    <MDI key="Band_442">3583.400000 Nanometers</MDI>
+    <MDI key="Band_443">3590.060000 Nanometers</MDI>
+    <MDI key="Band_444">3596.720000 Nanometers</MDI>
+    <MDI key="Band_445">3603.380000 Nanometers</MDI>
+    <MDI key="Band_446">3610.040000 Nanometers</MDI>
+    <MDI key="Band_447">3616.700000 Nanometers</MDI>
+    <MDI key="Band_448">3623.360000 Nanometers</MDI>
+    <MDI key="Band_449">3630.020000 Nanometers</MDI>
+    <MDI key="Band_45">794.510000 Nanometers</MDI>
+    <MDI key="Band_450">3636.680000 Nanometers</MDI>
+    <MDI key="Band_451">3643.340000 Nanometers</MDI>
+    <MDI key="Band_452">3650.000000 Nanometers</MDI>
+    <MDI key="Band_453">3656.670000 Nanometers</MDI>
+    <MDI key="Band_454">3663.330000 Nanometers</MDI>
+    <MDI key="Band_455">3669.990000 Nanometers</MDI>
+    <MDI key="Band_456">3676.650000 Nanometers</MDI>
+    <MDI key="Band_457">3683.320000 Nanometers</MDI>
+    <MDI key="Band_458">3689.980000 Nanometers</MDI>
+    <MDI key="Band_459">3696.650000 Nanometers</MDI>
+    <MDI key="Band_46">801.040000 Nanometers</MDI>
+    <MDI key="Band_460">3703.310000 Nanometers</MDI>
+    <MDI key="Band_461">3709.980000 Nanometers</MDI>
+    <MDI key="Band_462">3716.640000 Nanometers</MDI>
+    <MDI key="Band_463">3723.310000 Nanometers</MDI>
+    <MDI key="Band_464">3729.980000 Nanometers</MDI>
+    <MDI key="Band_465">3736.640000 Nanometers</MDI>
+    <MDI key="Band_466">3743.310000 Nanometers</MDI>
+    <MDI key="Band_467">3749.980000 Nanometers</MDI>
+    <MDI key="Band_468">3756.650000 Nanometers</MDI>
+    <MDI key="Band_469">3763.310000 Nanometers</MDI>
+    <MDI key="Band_47">807.560000 Nanometers</MDI>
+    <MDI key="Band_470">3769.980000 Nanometers</MDI>
+    <MDI key="Band_471">3776.650000 Nanometers</MDI>
+    <MDI key="Band_472">3783.320000 Nanometers</MDI>
+    <MDI key="Band_473">3789.990000 Nanometers</MDI>
+    <MDI key="Band_474">3796.660000 Nanometers</MDI>
+    <MDI key="Band_475">3803.330000 Nanometers</MDI>
+    <MDI key="Band_476">3810.000000 Nanometers</MDI>
+    <MDI key="Band_477">3816.670000 Nanometers</MDI>
+    <MDI key="Band_478">3823.350000 Nanometers</MDI>
+    <MDI key="Band_479">3830.020000 Nanometers</MDI>
+    <MDI key="Band_48">814.090000 Nanometers</MDI>
+    <MDI key="Band_480">3836.690000 Nanometers</MDI>
+    <MDI key="Band_481">3843.360000 Nanometers</MDI>
+    <MDI key="Band_482">3850.040000 Nanometers</MDI>
+    <MDI key="Band_483">3856.710000 Nanometers</MDI>
+    <MDI key="Band_484">3863.390000 Nanometers</MDI>
+    <MDI key="Band_485">3870.060000 Nanometers</MDI>
+    <MDI key="Band_486">3876.730000 Nanometers</MDI>
+    <MDI key="Band_487">3883.410000 Nanometers</MDI>
+    <MDI key="Band_488">3890.080000 Nanometers</MDI>
+    <MDI key="Band_489">3896.760000 Nanometers</MDI>
+    <MDI key="Band_49">820.620000 Nanometers</MDI>
+    <MDI key="Band_5">462.150000 Nanometers</MDI>
+    <MDI key="Band_50">827.150000 Nanometers</MDI>
+    <MDI key="Band_51">833.680000 Nanometers</MDI>
+    <MDI key="Band_52">840.220000 Nanometers</MDI>
+    <MDI key="Band_53">846.750000 Nanometers</MDI>
+    <MDI key="Band_54">853.280000 Nanometers</MDI>
+    <MDI key="Band_55">859.810000 Nanometers</MDI>
+    <MDI key="Band_56">866.340000 Nanometers</MDI>
+    <MDI key="Band_57">872.880000 Nanometers</MDI>
+    <MDI key="Band_58">879.410000 Nanometers</MDI>
+    <MDI key="Band_59">885.950000 Nanometers</MDI>
+    <MDI key="Band_6">468.650000 Nanometers</MDI>
+    <MDI key="Band_60">892.480000 Nanometers</MDI>
+    <MDI key="Band_61">899.020000 Nanometers</MDI>
+    <MDI key="Band_62">905.550000 Nanometers</MDI>
+    <MDI key="Band_63">912.090000 Nanometers</MDI>
+    <MDI key="Band_64">918.620000 Nanometers</MDI>
+    <MDI key="Band_65">925.160000 Nanometers</MDI>
+    <MDI key="Band_66">931.700000 Nanometers</MDI>
+    <MDI key="Band_67">938.240000 Nanometers</MDI>
+    <MDI key="Band_68">944.770000 Nanometers</MDI>
+    <MDI key="Band_69">951.310000 Nanometers</MDI>
+    <MDI key="Band_7">475.160000 Nanometers</MDI>
+    <MDI key="Band_70">957.850000 Nanometers</MDI>
+    <MDI key="Band_71">964.390000 Nanometers</MDI>
+    <MDI key="Band_72">970.930000 Nanometers</MDI>
+    <MDI key="Band_73">977.470000 Nanometers</MDI>
+    <MDI key="Band_74">984.010000 Nanometers</MDI>
+    <MDI key="Band_75">990.550000 Nanometers</MDI>
+    <MDI key="Band_76">997.100000 Nanometers</MDI>
+    <MDI key="Band_77">1003.640000 Nanometers</MDI>
+    <MDI key="Band_78">1010.180000 Nanometers</MDI>
+    <MDI key="Band_79">1047.200000 Nanometers</MDI>
+    <MDI key="Band_8">481.670000 Nanometers</MDI>
+    <MDI key="Band_80">1053.750000 Nanometers</MDI>
+    <MDI key="Band_81">1060.300000 Nanometers</MDI>
+    <MDI key="Band_82">1066.850000 Nanometers</MDI>
+    <MDI key="Band_83">1073.410000 Nanometers</MDI>
+    <MDI key="Band_84">1079.960000 Nanometers</MDI>
+    <MDI key="Band_85">1086.510000 Nanometers</MDI>
+    <MDI key="Band_86">1093.070000 Nanometers</MDI>
+    <MDI key="Band_87">1099.620000 Nanometers</MDI>
+    <MDI key="Band_88">1106.170000 Nanometers</MDI>
+    <MDI key="Band_89">1112.730000 Nanometers</MDI>
+    <MDI key="Band_9">488.170000 Nanometers</MDI>
+    <MDI key="Band_90">1119.280000 Nanometers</MDI>
+    <MDI key="Band_91">1125.840000 Nanometers</MDI>
+    <MDI key="Band_92">1132.390000 Nanometers</MDI>
+    <MDI key="Band_93">1138.950000 Nanometers</MDI>
+    <MDI key="Band_94">1145.510000 Nanometers</MDI>
+    <MDI key="Band_95">1152.060000 Nanometers</MDI>
+    <MDI key="Band_96">1158.620000 Nanometers</MDI>
+    <MDI key="Band_97">1165.180000 Nanometers</MDI>
+    <MDI key="Band_98">1171.730000 Nanometers</MDI>
+    <MDI key="Band_99">1178.290000 Nanometers</MDI>
+    <MDI key="wavelength_units">Nanometers</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Metadata>
+      <MDI key="wavelength">436.130000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Metadata>
+      <MDI key="wavelength">442.630000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="3">
+    <Metadata>
+      <MDI key="wavelength">449.140000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="4">
+    <Metadata>
+      <MDI key="wavelength">455.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="5">
+    <Metadata>
+      <MDI key="wavelength">462.150000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="6">
+    <Metadata>
+      <MDI key="wavelength">468.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="7">
+    <Metadata>
+      <MDI key="wavelength">475.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="8">
+    <Metadata>
+      <MDI key="wavelength">481.670000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="9">
+    <Metadata>
+      <MDI key="wavelength">488.170000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="10">
+    <Metadata>
+      <MDI key="wavelength">494.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="11">
+    <Metadata>
+      <MDI key="wavelength">501.190000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="12">
+    <Metadata>
+      <MDI key="wavelength">507.700000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="13">
+    <Metadata>
+      <MDI key="wavelength">514.210000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="14">
+    <Metadata>
+      <MDI key="wavelength">520.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="15">
+    <Metadata>
+      <MDI key="wavelength">527.230000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="16">
+    <Metadata>
+      <MDI key="wavelength">533.740000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="17">
+    <Metadata>
+      <MDI key="wavelength">540.250000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="18">
+    <Metadata>
+      <MDI key="wavelength">546.760000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="19">
+    <Metadata>
+      <MDI key="wavelength">553.270000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="20">
+    <Metadata>
+      <MDI key="wavelength">559.780000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="21">
+    <Metadata>
+      <MDI key="wavelength">566.290000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="22">
+    <Metadata>
+      <MDI key="wavelength">572.810000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="23">
+    <Metadata>
+      <MDI key="wavelength">579.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="24">
+    <Metadata>
+      <MDI key="wavelength">585.830000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="25">
+    <Metadata>
+      <MDI key="wavelength">592.350000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="26">
+    <Metadata>
+      <MDI key="wavelength">598.860000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="27">
+    <Metadata>
+      <MDI key="wavelength">605.380000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="28">
+    <Metadata>
+      <MDI key="wavelength">611.890000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="29">
+    <Metadata>
+      <MDI key="wavelength">618.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="30">
+    <Metadata>
+      <MDI key="wavelength">624.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="31">
+    <Metadata>
+      <MDI key="wavelength">631.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="32">
+    <Metadata>
+      <MDI key="wavelength">709.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="33">
+    <Metadata>
+      <MDI key="wavelength">716.200000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="34">
+    <Metadata>
+      <MDI key="wavelength">722.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="35">
+    <Metadata>
+      <MDI key="wavelength">729.250000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="36">
+    <Metadata>
+      <MDI key="wavelength">735.770000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="37">
+    <Metadata>
+      <MDI key="wavelength">742.300000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="38">
+    <Metadata>
+      <MDI key="wavelength">748.820000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="39">
+    <Metadata>
+      <MDI key="wavelength">755.350000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="40">
+    <Metadata>
+      <MDI key="wavelength">761.870000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="41">
+    <Metadata>
+      <MDI key="wavelength">768.400000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="42">
+    <Metadata>
+      <MDI key="wavelength">774.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="43">
+    <Metadata>
+      <MDI key="wavelength">781.450000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="44">
+    <Metadata>
+      <MDI key="wavelength">787.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="45">
+    <Metadata>
+      <MDI key="wavelength">794.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="46">
+    <Metadata>
+      <MDI key="wavelength">801.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="47">
+    <Metadata>
+      <MDI key="wavelength">807.560000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="48">
+    <Metadata>
+      <MDI key="wavelength">814.090000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="49">
+    <Metadata>
+      <MDI key="wavelength">820.620000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="50">
+    <Metadata>
+      <MDI key="wavelength">827.150000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="51">
+    <Metadata>
+      <MDI key="wavelength">833.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="52">
+    <Metadata>
+      <MDI key="wavelength">840.220000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="53">
+    <Metadata>
+      <MDI key="wavelength">846.750000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="54">
+    <Metadata>
+      <MDI key="wavelength">853.280000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="55">
+    <Metadata>
+      <MDI key="wavelength">859.810000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="56">
+    <Metadata>
+      <MDI key="wavelength">866.340000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="57">
+    <Metadata>
+      <MDI key="wavelength">872.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="58">
+    <Metadata>
+      <MDI key="wavelength">879.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="59">
+    <Metadata>
+      <MDI key="wavelength">885.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="60">
+    <Metadata>
+      <MDI key="wavelength">892.480000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="61">
+    <Metadata>
+      <MDI key="wavelength">899.020000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="62">
+    <Metadata>
+      <MDI key="wavelength">905.550000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="63">
+    <Metadata>
+      <MDI key="wavelength">912.090000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="64">
+    <Metadata>
+      <MDI key="wavelength">918.620000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="65">
+    <Metadata>
+      <MDI key="wavelength">925.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="66">
+    <Metadata>
+      <MDI key="wavelength">931.700000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="67">
+    <Metadata>
+      <MDI key="wavelength">938.240000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="68">
+    <Metadata>
+      <MDI key="wavelength">944.770000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="69">
+    <Metadata>
+      <MDI key="wavelength">951.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="70">
+    <Metadata>
+      <MDI key="wavelength">957.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="71">
+    <Metadata>
+      <MDI key="wavelength">964.390000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="72">
+    <Metadata>
+      <MDI key="wavelength">970.930000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="73">
+    <Metadata>
+      <MDI key="wavelength">977.470000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="74">
+    <Metadata>
+      <MDI key="wavelength">984.010000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="75">
+    <Metadata>
+      <MDI key="wavelength">990.550000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="76">
+    <Metadata>
+      <MDI key="wavelength">997.100000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="77">
+    <Metadata>
+      <MDI key="wavelength">1003.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="78">
+    <Metadata>
+      <MDI key="wavelength">1010.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="79">
+    <Metadata>
+      <MDI key="wavelength">1047.200000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="80">
+    <Metadata>
+      <MDI key="wavelength">1053.750000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="81">
+    <Metadata>
+      <MDI key="wavelength">1060.300000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="82">
+    <Metadata>
+      <MDI key="wavelength">1066.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="83">
+    <Metadata>
+      <MDI key="wavelength">1073.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="84">
+    <Metadata>
+      <MDI key="wavelength">1079.960000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="85">
+    <Metadata>
+      <MDI key="wavelength">1086.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="86">
+    <Metadata>
+      <MDI key="wavelength">1093.070000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="87">
+    <Metadata>
+      <MDI key="wavelength">1099.620000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="88">
+    <Metadata>
+      <MDI key="wavelength">1106.170000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="89">
+    <Metadata>
+      <MDI key="wavelength">1112.730000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="90">
+    <Metadata>
+      <MDI key="wavelength">1119.280000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="91">
+    <Metadata>
+      <MDI key="wavelength">1125.840000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="92">
+    <Metadata>
+      <MDI key="wavelength">1132.390000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="93">
+    <Metadata>
+      <MDI key="wavelength">1138.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="94">
+    <Metadata>
+      <MDI key="wavelength">1145.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="95">
+    <Metadata>
+      <MDI key="wavelength">1152.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="96">
+    <Metadata>
+      <MDI key="wavelength">1158.620000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="97">
+    <Metadata>
+      <MDI key="wavelength">1165.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="98">
+    <Metadata>
+      <MDI key="wavelength">1171.730000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="99">
+    <Metadata>
+      <MDI key="wavelength">1178.290000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="100">
+    <Metadata>
+      <MDI key="wavelength">1184.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="101">
+    <Metadata>
+      <MDI key="wavelength">1191.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="102">
+    <Metadata>
+      <MDI key="wavelength">1197.970000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="103">
+    <Metadata>
+      <MDI key="wavelength">1204.530000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="104">
+    <Metadata>
+      <MDI key="wavelength">1211.090000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="105">
+    <Metadata>
+      <MDI key="wavelength">1217.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="106">
+    <Metadata>
+      <MDI key="wavelength">1224.210000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="107">
+    <Metadata>
+      <MDI key="wavelength">1230.770000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="108">
+    <Metadata>
+      <MDI key="wavelength">1237.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="109">
+    <Metadata>
+      <MDI key="wavelength">1243.890000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="110">
+    <Metadata>
+      <MDI key="wavelength">1250.450000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="111">
+    <Metadata>
+      <MDI key="wavelength">1257.010000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="112">
+    <Metadata>
+      <MDI key="wavelength">1263.570000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="113">
+    <Metadata>
+      <MDI key="wavelength">1270.140000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="114">
+    <Metadata>
+      <MDI key="wavelength">1276.700000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="115">
+    <Metadata>
+      <MDI key="wavelength">1283.260000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="116">
+    <Metadata>
+      <MDI key="wavelength">1289.830000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="117">
+    <Metadata>
+      <MDI key="wavelength">1296.390000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="118">
+    <Metadata>
+      <MDI key="wavelength">1302.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="119">
+    <Metadata>
+      <MDI key="wavelength">1309.520000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="120">
+    <Metadata>
+      <MDI key="wavelength">1316.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="121">
+    <Metadata>
+      <MDI key="wavelength">1322.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="122">
+    <Metadata>
+      <MDI key="wavelength">1329.210000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="123">
+    <Metadata>
+      <MDI key="wavelength">1335.780000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="124">
+    <Metadata>
+      <MDI key="wavelength">1342.340000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="125">
+    <Metadata>
+      <MDI key="wavelength">1348.910000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="126">
+    <Metadata>
+      <MDI key="wavelength">1355.480000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="127">
+    <Metadata>
+      <MDI key="wavelength">1362.050000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="128">
+    <Metadata>
+      <MDI key="wavelength">1368.610000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="129">
+    <Metadata>
+      <MDI key="wavelength">1375.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="130">
+    <Metadata>
+      <MDI key="wavelength">1381.750000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="131">
+    <Metadata>
+      <MDI key="wavelength">1388.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="132">
+    <Metadata>
+      <MDI key="wavelength">1394.890000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="133">
+    <Metadata>
+      <MDI key="wavelength">1401.450000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="134">
+    <Metadata>
+      <MDI key="wavelength">1408.020000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="135">
+    <Metadata>
+      <MDI key="wavelength">1414.590000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="136">
+    <Metadata>
+      <MDI key="wavelength">1421.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="137">
+    <Metadata>
+      <MDI key="wavelength">1427.730000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="138">
+    <Metadata>
+      <MDI key="wavelength">1434.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="139">
+    <Metadata>
+      <MDI key="wavelength">1440.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="140">
+    <Metadata>
+      <MDI key="wavelength">1447.450000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="141">
+    <Metadata>
+      <MDI key="wavelength">1454.020000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="142">
+    <Metadata>
+      <MDI key="wavelength">1460.590000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="143">
+    <Metadata>
+      <MDI key="wavelength">1467.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="144">
+    <Metadata>
+      <MDI key="wavelength">1473.740000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="145">
+    <Metadata>
+      <MDI key="wavelength">1480.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="146">
+    <Metadata>
+      <MDI key="wavelength">1486.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="147">
+    <Metadata>
+      <MDI key="wavelength">1493.460000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="148">
+    <Metadata>
+      <MDI key="wavelength">1500.030000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="149">
+    <Metadata>
+      <MDI key="wavelength">1506.610000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="150">
+    <Metadata>
+      <MDI key="wavelength">1513.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="151">
+    <Metadata>
+      <MDI key="wavelength">1519.760000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="152">
+    <Metadata>
+      <MDI key="wavelength">1526.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="153">
+    <Metadata>
+      <MDI key="wavelength">1532.910000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="154">
+    <Metadata>
+      <MDI key="wavelength">1539.480000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="155">
+    <Metadata>
+      <MDI key="wavelength">1546.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="156">
+    <Metadata>
+      <MDI key="wavelength">1552.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="157">
+    <Metadata>
+      <MDI key="wavelength">1559.210000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="158">
+    <Metadata>
+      <MDI key="wavelength">1565.790000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="159">
+    <Metadata>
+      <MDI key="wavelength">1572.370000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="160">
+    <Metadata>
+      <MDI key="wavelength">1578.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="161">
+    <Metadata>
+      <MDI key="wavelength">1585.520000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="162">
+    <Metadata>
+      <MDI key="wavelength">1592.100000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="163">
+    <Metadata>
+      <MDI key="wavelength">1598.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="164">
+    <Metadata>
+      <MDI key="wavelength">1605.260000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="165">
+    <Metadata>
+      <MDI key="wavelength">1611.840000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="166">
+    <Metadata>
+      <MDI key="wavelength">1618.420000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="167">
+    <Metadata>
+      <MDI key="wavelength">1625.000000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="168">
+    <Metadata>
+      <MDI key="wavelength">1631.580000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="169">
+    <Metadata>
+      <MDI key="wavelength">1638.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="170">
+    <Metadata>
+      <MDI key="wavelength">1644.740000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="171">
+    <Metadata>
+      <MDI key="wavelength">1651.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="172">
+    <Metadata>
+      <MDI key="wavelength">1657.910000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="173">
+    <Metadata>
+      <MDI key="wavelength">1664.490000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="174">
+    <Metadata>
+      <MDI key="wavelength">1671.070000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="175">
+    <Metadata>
+      <MDI key="wavelength">1677.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="176">
+    <Metadata>
+      <MDI key="wavelength">1684.240000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="177">
+    <Metadata>
+      <MDI key="wavelength">1690.820000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="178">
+    <Metadata>
+      <MDI key="wavelength">1697.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="179">
+    <Metadata>
+      <MDI key="wavelength">1703.990000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="180">
+    <Metadata>
+      <MDI key="wavelength">1710.580000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="181">
+    <Metadata>
+      <MDI key="wavelength">1717.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="182">
+    <Metadata>
+      <MDI key="wavelength">1723.750000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="183">
+    <Metadata>
+      <MDI key="wavelength">1730.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="184">
+    <Metadata>
+      <MDI key="wavelength">1736.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="185">
+    <Metadata>
+      <MDI key="wavelength">1743.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="186">
+    <Metadata>
+      <MDI key="wavelength">1750.090000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="187">
+    <Metadata>
+      <MDI key="wavelength">1756.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="188">
+    <Metadata>
+      <MDI key="wavelength">1763.270000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="189">
+    <Metadata>
+      <MDI key="wavelength">1769.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="190">
+    <Metadata>
+      <MDI key="wavelength">1776.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="191">
+    <Metadata>
+      <MDI key="wavelength">1783.030000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="192">
+    <Metadata>
+      <MDI key="wavelength">1789.620000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="193">
+    <Metadata>
+      <MDI key="wavelength">1796.210000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="194">
+    <Metadata>
+      <MDI key="wavelength">1802.800000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="195">
+    <Metadata>
+      <MDI key="wavelength">1809.390000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="196">
+    <Metadata>
+      <MDI key="wavelength">1815.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="197">
+    <Metadata>
+      <MDI key="wavelength">1822.570000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="198">
+    <Metadata>
+      <MDI key="wavelength">1829.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="199">
+    <Metadata>
+      <MDI key="wavelength">1835.750000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="200">
+    <Metadata>
+      <MDI key="wavelength">1842.340000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="201">
+    <Metadata>
+      <MDI key="wavelength">1848.930000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="202">
+    <Metadata>
+      <MDI key="wavelength">1855.520000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="203">
+    <Metadata>
+      <MDI key="wavelength">1862.120000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="204">
+    <Metadata>
+      <MDI key="wavelength">1868.710000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="205">
+    <Metadata>
+      <MDI key="wavelength">1875.300000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="206">
+    <Metadata>
+      <MDI key="wavelength">1881.900000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="207">
+    <Metadata>
+      <MDI key="wavelength">1888.490000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="208">
+    <Metadata>
+      <MDI key="wavelength">1895.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="209">
+    <Metadata>
+      <MDI key="wavelength">1901.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="210">
+    <Metadata>
+      <MDI key="wavelength">1908.270000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="211">
+    <Metadata>
+      <MDI key="wavelength">1914.870000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="212">
+    <Metadata>
+      <MDI key="wavelength">1921.460000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="213">
+    <Metadata>
+      <MDI key="wavelength">1928.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="214">
+    <Metadata>
+      <MDI key="wavelength">1934.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="215">
+    <Metadata>
+      <MDI key="wavelength">1941.250000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="216">
+    <Metadata>
+      <MDI key="wavelength">1947.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="217">
+    <Metadata>
+      <MDI key="wavelength">1954.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="218">
+    <Metadata>
+      <MDI key="wavelength">1961.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="219">
+    <Metadata>
+      <MDI key="wavelength">1967.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="220">
+    <Metadata>
+      <MDI key="wavelength">1974.240000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="221">
+    <Metadata>
+      <MDI key="wavelength">1980.840000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="222">
+    <Metadata>
+      <MDI key="wavelength">1987.430000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="223">
+    <Metadata>
+      <MDI key="wavelength">1994.030000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="224">
+    <Metadata>
+      <MDI key="wavelength">2000.630000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="225">
+    <Metadata>
+      <MDI key="wavelength">2007.230000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="226">
+    <Metadata>
+      <MDI key="wavelength">2013.830000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="227">
+    <Metadata>
+      <MDI key="wavelength">2020.430000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="228">
+    <Metadata>
+      <MDI key="wavelength">2027.030000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="229">
+    <Metadata>
+      <MDI key="wavelength">2033.630000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="230">
+    <Metadata>
+      <MDI key="wavelength">2040.240000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="231">
+    <Metadata>
+      <MDI key="wavelength">2046.840000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="232">
+    <Metadata>
+      <MDI key="wavelength">2053.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="233">
+    <Metadata>
+      <MDI key="wavelength">2060.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="234">
+    <Metadata>
+      <MDI key="wavelength">2066.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="235">
+    <Metadata>
+      <MDI key="wavelength">2073.250000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="236">
+    <Metadata>
+      <MDI key="wavelength">2079.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="237">
+    <Metadata>
+      <MDI key="wavelength">2086.450000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="238">
+    <Metadata>
+      <MDI key="wavelength">2093.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="239">
+    <Metadata>
+      <MDI key="wavelength">2099.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="240">
+    <Metadata>
+      <MDI key="wavelength">2106.270000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="241">
+    <Metadata>
+      <MDI key="wavelength">2112.870000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="242">
+    <Metadata>
+      <MDI key="wavelength">2119.480000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="243">
+    <Metadata>
+      <MDI key="wavelength">2126.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="244">
+    <Metadata>
+      <MDI key="wavelength">2132.690000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="245">
+    <Metadata>
+      <MDI key="wavelength">2139.300000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="246">
+    <Metadata>
+      <MDI key="wavelength">2145.900000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="247">
+    <Metadata>
+      <MDI key="wavelength">2152.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="248">
+    <Metadata>
+      <MDI key="wavelength">2159.120000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="249">
+    <Metadata>
+      <MDI key="wavelength">2165.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="250">
+    <Metadata>
+      <MDI key="wavelength">2172.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="251">
+    <Metadata>
+      <MDI key="wavelength">2178.940000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="252">
+    <Metadata>
+      <MDI key="wavelength">2185.550000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="253">
+    <Metadata>
+      <MDI key="wavelength">2192.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="254">
+    <Metadata>
+      <MDI key="wavelength">2198.770000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="255">
+    <Metadata>
+      <MDI key="wavelength">2205.380000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="256">
+    <Metadata>
+      <MDI key="wavelength">2211.990000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="257">
+    <Metadata>
+      <MDI key="wavelength">2218.600000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="258">
+    <Metadata>
+      <MDI key="wavelength">2225.210000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="259">
+    <Metadata>
+      <MDI key="wavelength">2231.820000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="260">
+    <Metadata>
+      <MDI key="wavelength">2238.430000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="261">
+    <Metadata>
+      <MDI key="wavelength">2245.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="262">
+    <Metadata>
+      <MDI key="wavelength">2251.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="263">
+    <Metadata>
+      <MDI key="wavelength">2258.270000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="264">
+    <Metadata>
+      <MDI key="wavelength">2264.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="265">
+    <Metadata>
+      <MDI key="wavelength">2271.490000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="266">
+    <Metadata>
+      <MDI key="wavelength">2278.100000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="267">
+    <Metadata>
+      <MDI key="wavelength">2284.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="268">
+    <Metadata>
+      <MDI key="wavelength">2291.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="269">
+    <Metadata>
+      <MDI key="wavelength">2297.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="270">
+    <Metadata>
+      <MDI key="wavelength">2304.560000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="271">
+    <Metadata>
+      <MDI key="wavelength">2311.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="272">
+    <Metadata>
+      <MDI key="wavelength">2317.790000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="273">
+    <Metadata>
+      <MDI key="wavelength">2324.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="274">
+    <Metadata>
+      <MDI key="wavelength">2331.020000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="275">
+    <Metadata>
+      <MDI key="wavelength">2337.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="276">
+    <Metadata>
+      <MDI key="wavelength">2344.260000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="277">
+    <Metadata>
+      <MDI key="wavelength">2350.870000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="278">
+    <Metadata>
+      <MDI key="wavelength">2357.490000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="279">
+    <Metadata>
+      <MDI key="wavelength">2364.110000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="280">
+    <Metadata>
+      <MDI key="wavelength">2370.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="281">
+    <Metadata>
+      <MDI key="wavelength">2377.340000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="282">
+    <Metadata>
+      <MDI key="wavelength">2383.960000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="283">
+    <Metadata>
+      <MDI key="wavelength">2390.580000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="284">
+    <Metadata>
+      <MDI key="wavelength">2397.200000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="285">
+    <Metadata>
+      <MDI key="wavelength">2403.820000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="286">
+    <Metadata>
+      <MDI key="wavelength">2410.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="287">
+    <Metadata>
+      <MDI key="wavelength">2417.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="288">
+    <Metadata>
+      <MDI key="wavelength">2423.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="289">
+    <Metadata>
+      <MDI key="wavelength">2430.300000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="290">
+    <Metadata>
+      <MDI key="wavelength">2436.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="291">
+    <Metadata>
+      <MDI key="wavelength">2443.540000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="292">
+    <Metadata>
+      <MDI key="wavelength">2450.170000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="293">
+    <Metadata>
+      <MDI key="wavelength">2456.790000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="294">
+    <Metadata>
+      <MDI key="wavelength">2463.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="295">
+    <Metadata>
+      <MDI key="wavelength">2470.030000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="296">
+    <Metadata>
+      <MDI key="wavelength">2476.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="297">
+    <Metadata>
+      <MDI key="wavelength">2483.280000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="298">
+    <Metadata>
+      <MDI key="wavelength">2489.900000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="299">
+    <Metadata>
+      <MDI key="wavelength">2496.530000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="300">
+    <Metadata>
+      <MDI key="wavelength">2503.120000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="301">
+    <Metadata>
+      <MDI key="wavelength">2509.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="302">
+    <Metadata>
+      <MDI key="wavelength">2516.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="303">
+    <Metadata>
+      <MDI key="wavelength">2522.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="304">
+    <Metadata>
+      <MDI key="wavelength">2529.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="305">
+    <Metadata>
+      <MDI key="wavelength">2536.110000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="306">
+    <Metadata>
+      <MDI key="wavelength">2542.710000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="307">
+    <Metadata>
+      <MDI key="wavelength">2549.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="308">
+    <Metadata>
+      <MDI key="wavelength">2555.910000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="309">
+    <Metadata>
+      <MDI key="wavelength">2562.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="310">
+    <Metadata>
+      <MDI key="wavelength">2569.110000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="311">
+    <Metadata>
+      <MDI key="wavelength">2575.710000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="312">
+    <Metadata>
+      <MDI key="wavelength">2582.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="313">
+    <Metadata>
+      <MDI key="wavelength">2588.910000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="314">
+    <Metadata>
+      <MDI key="wavelength">2595.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="315">
+    <Metadata>
+      <MDI key="wavelength">2602.120000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="316">
+    <Metadata>
+      <MDI key="wavelength">2608.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="317">
+    <Metadata>
+      <MDI key="wavelength">2615.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="318">
+    <Metadata>
+      <MDI key="wavelength">2621.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="319">
+    <Metadata>
+      <MDI key="wavelength">2628.530000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="320">
+    <Metadata>
+      <MDI key="wavelength">2635.130000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="321">
+    <Metadata>
+      <MDI key="wavelength">2641.740000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="322">
+    <Metadata>
+      <MDI key="wavelength">2648.340000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="323">
+    <Metadata>
+      <MDI key="wavelength">2654.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="324">
+    <Metadata>
+      <MDI key="wavelength">2800.350000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="325">
+    <Metadata>
+      <MDI key="wavelength">2806.970000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="326">
+    <Metadata>
+      <MDI key="wavelength">2813.580000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="327">
+    <Metadata>
+      <MDI key="wavelength">2820.200000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="328">
+    <Metadata>
+      <MDI key="wavelength">2826.810000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="329">
+    <Metadata>
+      <MDI key="wavelength">2833.430000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="330">
+    <Metadata>
+      <MDI key="wavelength">2840.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="331">
+    <Metadata>
+      <MDI key="wavelength">2846.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="332">
+    <Metadata>
+      <MDI key="wavelength">2853.280000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="333">
+    <Metadata>
+      <MDI key="wavelength">2859.890000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="334">
+    <Metadata>
+      <MDI key="wavelength">2866.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="335">
+    <Metadata>
+      <MDI key="wavelength">2873.130000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="336">
+    <Metadata>
+      <MDI key="wavelength">2879.750000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="337">
+    <Metadata>
+      <MDI key="wavelength">2886.360000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="338">
+    <Metadata>
+      <MDI key="wavelength">2892.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="339">
+    <Metadata>
+      <MDI key="wavelength">2899.600000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="340">
+    <Metadata>
+      <MDI key="wavelength">2906.220000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="341">
+    <Metadata>
+      <MDI key="wavelength">2912.840000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="342">
+    <Metadata>
+      <MDI key="wavelength">2919.460000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="343">
+    <Metadata>
+      <MDI key="wavelength">2926.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="344">
+    <Metadata>
+      <MDI key="wavelength">2932.700000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="345">
+    <Metadata>
+      <MDI key="wavelength">2939.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="346">
+    <Metadata>
+      <MDI key="wavelength">2945.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="347">
+    <Metadata>
+      <MDI key="wavelength">2952.570000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="348">
+    <Metadata>
+      <MDI key="wavelength">2959.190000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="349">
+    <Metadata>
+      <MDI key="wavelength">2965.810000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="350">
+    <Metadata>
+      <MDI key="wavelength">2972.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="351">
+    <Metadata>
+      <MDI key="wavelength">2979.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="352">
+    <Metadata>
+      <MDI key="wavelength">2985.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="353">
+    <Metadata>
+      <MDI key="wavelength">2992.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="354">
+    <Metadata>
+      <MDI key="wavelength">2998.930000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="355">
+    <Metadata>
+      <MDI key="wavelength">3005.560000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="356">
+    <Metadata>
+      <MDI key="wavelength">3012.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="357">
+    <Metadata>
+      <MDI key="wavelength">3018.810000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="358">
+    <Metadata>
+      <MDI key="wavelength">3025.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="359">
+    <Metadata>
+      <MDI key="wavelength">3032.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="360">
+    <Metadata>
+      <MDI key="wavelength">3038.690000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="361">
+    <Metadata>
+      <MDI key="wavelength">3045.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="362">
+    <Metadata>
+      <MDI key="wavelength">3051.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="363">
+    <Metadata>
+      <MDI key="wavelength">3058.570000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="364">
+    <Metadata>
+      <MDI key="wavelength">3065.200000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="365">
+    <Metadata>
+      <MDI key="wavelength">3071.830000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="366">
+    <Metadata>
+      <MDI key="wavelength">3078.460000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="367">
+    <Metadata>
+      <MDI key="wavelength">3085.090000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="368">
+    <Metadata>
+      <MDI key="wavelength">3091.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="369">
+    <Metadata>
+      <MDI key="wavelength">3098.350000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="370">
+    <Metadata>
+      <MDI key="wavelength">3104.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="371">
+    <Metadata>
+      <MDI key="wavelength">3111.610000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="372">
+    <Metadata>
+      <MDI key="wavelength">3118.250000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="373">
+    <Metadata>
+      <MDI key="wavelength">3124.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="374">
+    <Metadata>
+      <MDI key="wavelength">3131.510000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="375">
+    <Metadata>
+      <MDI key="wavelength">3138.140000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="376">
+    <Metadata>
+      <MDI key="wavelength">3144.780000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="377">
+    <Metadata>
+      <MDI key="wavelength">3151.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="378">
+    <Metadata>
+      <MDI key="wavelength">3158.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="379">
+    <Metadata>
+      <MDI key="wavelength">3164.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="380">
+    <Metadata>
+      <MDI key="wavelength">3171.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="381">
+    <Metadata>
+      <MDI key="wavelength">3177.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="382">
+    <Metadata>
+      <MDI key="wavelength">3184.580000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="383">
+    <Metadata>
+      <MDI key="wavelength">3191.220000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="384">
+    <Metadata>
+      <MDI key="wavelength">3197.850000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="385">
+    <Metadata>
+      <MDI key="wavelength">3204.490000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="386">
+    <Metadata>
+      <MDI key="wavelength">3211.130000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="387">
+    <Metadata>
+      <MDI key="wavelength">3217.760000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="388">
+    <Metadata>
+      <MDI key="wavelength">3224.400000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="389">
+    <Metadata>
+      <MDI key="wavelength">3231.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="390">
+    <Metadata>
+      <MDI key="wavelength">3237.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="391">
+    <Metadata>
+      <MDI key="wavelength">3244.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="392">
+    <Metadata>
+      <MDI key="wavelength">3250.960000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="393">
+    <Metadata>
+      <MDI key="wavelength">3257.600000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="394">
+    <Metadata>
+      <MDI key="wavelength">3264.240000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="395">
+    <Metadata>
+      <MDI key="wavelength">3270.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="396">
+    <Metadata>
+      <MDI key="wavelength">3277.520000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="397">
+    <Metadata>
+      <MDI key="wavelength">3284.160000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="398">
+    <Metadata>
+      <MDI key="wavelength">3290.800000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="399">
+    <Metadata>
+      <MDI key="wavelength">3297.440000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="400">
+    <Metadata>
+      <MDI key="wavelength">3304.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="401">
+    <Metadata>
+      <MDI key="wavelength">3310.730000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="402">
+    <Metadata>
+      <MDI key="wavelength">3317.370000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="403">
+    <Metadata>
+      <MDI key="wavelength">3324.010000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="404">
+    <Metadata>
+      <MDI key="wavelength">3330.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="405">
+    <Metadata>
+      <MDI key="wavelength">3337.300000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="406">
+    <Metadata>
+      <MDI key="wavelength">3343.950000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="407">
+    <Metadata>
+      <MDI key="wavelength">3350.590000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="408">
+    <Metadata>
+      <MDI key="wavelength">3357.240000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="409">
+    <Metadata>
+      <MDI key="wavelength">3363.880000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="410">
+    <Metadata>
+      <MDI key="wavelength">3370.530000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="411">
+    <Metadata>
+      <MDI key="wavelength">3377.170000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="412">
+    <Metadata>
+      <MDI key="wavelength">3383.820000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="413">
+    <Metadata>
+      <MDI key="wavelength">3390.470000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="414">
+    <Metadata>
+      <MDI key="wavelength">3397.120000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="415">
+    <Metadata>
+      <MDI key="wavelength">3403.760000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="416">
+    <Metadata>
+      <MDI key="wavelength">3410.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="417">
+    <Metadata>
+      <MDI key="wavelength">3417.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="418">
+    <Metadata>
+      <MDI key="wavelength">3423.710000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="419">
+    <Metadata>
+      <MDI key="wavelength">3430.360000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="420">
+    <Metadata>
+      <MDI key="wavelength">3437.010000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="421">
+    <Metadata>
+      <MDI key="wavelength">3443.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="422">
+    <Metadata>
+      <MDI key="wavelength">3450.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="423">
+    <Metadata>
+      <MDI key="wavelength">3456.960000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="424">
+    <Metadata>
+      <MDI key="wavelength">3463.610000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="425">
+    <Metadata>
+      <MDI key="wavelength">3470.260000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="426">
+    <Metadata>
+      <MDI key="wavelength">3476.920000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="427">
+    <Metadata>
+      <MDI key="wavelength">3483.570000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="428">
+    <Metadata>
+      <MDI key="wavelength">3490.220000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="429">
+    <Metadata>
+      <MDI key="wavelength">3496.870000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="430">
+    <Metadata>
+      <MDI key="wavelength">3503.530000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="431">
+    <Metadata>
+      <MDI key="wavelength">3510.180000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="432">
+    <Metadata>
+      <MDI key="wavelength">3516.840000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="433">
+    <Metadata>
+      <MDI key="wavelength">3523.490000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="434">
+    <Metadata>
+      <MDI key="wavelength">3530.150000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="435">
+    <Metadata>
+      <MDI key="wavelength">3536.800000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="436">
+    <Metadata>
+      <MDI key="wavelength">3543.460000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="437">
+    <Metadata>
+      <MDI key="wavelength">3550.110000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="438">
+    <Metadata>
+      <MDI key="wavelength">3556.770000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="439">
+    <Metadata>
+      <MDI key="wavelength">3563.430000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="440">
+    <Metadata>
+      <MDI key="wavelength">3570.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="441">
+    <Metadata>
+      <MDI key="wavelength">3576.740000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="442">
+    <Metadata>
+      <MDI key="wavelength">3583.400000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="443">
+    <Metadata>
+      <MDI key="wavelength">3590.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="444">
+    <Metadata>
+      <MDI key="wavelength">3596.720000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="445">
+    <Metadata>
+      <MDI key="wavelength">3603.380000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="446">
+    <Metadata>
+      <MDI key="wavelength">3610.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="447">
+    <Metadata>
+      <MDI key="wavelength">3616.700000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="448">
+    <Metadata>
+      <MDI key="wavelength">3623.360000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="449">
+    <Metadata>
+      <MDI key="wavelength">3630.020000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="450">
+    <Metadata>
+      <MDI key="wavelength">3636.680000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="451">
+    <Metadata>
+      <MDI key="wavelength">3643.340000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="452">
+    <Metadata>
+      <MDI key="wavelength">3650.000000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="453">
+    <Metadata>
+      <MDI key="wavelength">3656.670000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="454">
+    <Metadata>
+      <MDI key="wavelength">3663.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="455">
+    <Metadata>
+      <MDI key="wavelength">3669.990000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="456">
+    <Metadata>
+      <MDI key="wavelength">3676.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="457">
+    <Metadata>
+      <MDI key="wavelength">3683.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="458">
+    <Metadata>
+      <MDI key="wavelength">3689.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="459">
+    <Metadata>
+      <MDI key="wavelength">3696.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="460">
+    <Metadata>
+      <MDI key="wavelength">3703.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="461">
+    <Metadata>
+      <MDI key="wavelength">3709.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="462">
+    <Metadata>
+      <MDI key="wavelength">3716.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="463">
+    <Metadata>
+      <MDI key="wavelength">3723.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="464">
+    <Metadata>
+      <MDI key="wavelength">3729.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="465">
+    <Metadata>
+      <MDI key="wavelength">3736.640000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="466">
+    <Metadata>
+      <MDI key="wavelength">3743.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="467">
+    <Metadata>
+      <MDI key="wavelength">3749.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="468">
+    <Metadata>
+      <MDI key="wavelength">3756.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="469">
+    <Metadata>
+      <MDI key="wavelength">3763.310000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="470">
+    <Metadata>
+      <MDI key="wavelength">3769.980000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="471">
+    <Metadata>
+      <MDI key="wavelength">3776.650000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="472">
+    <Metadata>
+      <MDI key="wavelength">3783.320000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="473">
+    <Metadata>
+      <MDI key="wavelength">3789.990000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="474">
+    <Metadata>
+      <MDI key="wavelength">3796.660000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="475">
+    <Metadata>
+      <MDI key="wavelength">3803.330000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="476">
+    <Metadata>
+      <MDI key="wavelength">3810.000000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="477">
+    <Metadata>
+      <MDI key="wavelength">3816.670000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="478">
+    <Metadata>
+      <MDI key="wavelength">3823.350000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="479">
+    <Metadata>
+      <MDI key="wavelength">3830.020000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="480">
+    <Metadata>
+      <MDI key="wavelength">3836.690000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="481">
+    <Metadata>
+      <MDI key="wavelength">3843.360000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="482">
+    <Metadata>
+      <MDI key="wavelength">3850.040000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="483">
+    <Metadata>
+      <MDI key="wavelength">3856.710000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="484">
+    <Metadata>
+      <MDI key="wavelength">3863.390000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="485">
+    <Metadata>
+      <MDI key="wavelength">3870.060000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="486">
+    <Metadata>
+      <MDI key="wavelength">3876.730000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="487">
+    <Metadata>
+      <MDI key="wavelength">3883.410000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="488">
+    <Metadata>
+      <MDI key="wavelength">3890.080000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="489">
+    <Metadata>
+      <MDI key="wavelength">3896.760000</MDI>
+      <MDI key="wavelength_units">Nanometers</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
