@@ -5,15 +5,15 @@ from libpysat.derived.m3 import pipe
 
 def test_onenum_min(m3_img):
     res = pipe.oneum_min(m3_img)
-    np.testing.assert_array_almost_equal(res, np.array([[ 0.998876,  0.997753,  0.996629],
-                                                        [ 0.995506,  0.994383,  0.99326 ],
-                                                        [ 0.992137,  0.991014,  0.989891]]))
+    np.testing.assert_array_almost_equal(res, np.array([[ 0.      , -0.928571, -1.793103],
+                                                        [-2.6     , -3.354839, -4.0625  ],
+                                                        [-4.727273, -5.352941, -5.942857]]))
 
 def test_onenum_sym(m3_img):
     res = pipe.oneum_sym(m3_img)
-    np.testing.assert_array_almost_equal(res, np.array([[-0.980184, -0.980186, -0.980188],
-                                                        [-0.980189, -0.980191, -0.980192],
-                                                        [-0.980194, -0.980196, -0.980197]]))
+    np.testing.assert_array_almost_equal(res, np.array([[-0.071429, -0.075775, -0.080215],
+                                                        [-0.084746, -0.089363, -0.094064],
+                                                        [-0.098845, -0.103703, -0.108634]]))
 
 def test_bd620(m3_img):
     res = pipe.bd620(m3_img)

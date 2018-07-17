@@ -1,1 +1,1 @@
-from . import crism
+from . import crism_algs
