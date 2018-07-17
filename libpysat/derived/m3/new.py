@@ -1,3 +1,4 @@
+import numpy as np
 from libpysat.derived.m3 import pipe
 
 def mustard(data):
@@ -25,8 +26,10 @@ def mustard(data):
      : ndarray
        the processed ndarray
     """
-    red = pipe.bdi1000(data)
-    green = pipe.bdi2000(data)
-    blue = pipe.reflectance4(data)
+    r = pipe.bdi1000(data)
+    g = pipe.bdi2000(data)
+    b = pipe.r2780(data)
 
-    return [red, green, blue]
+    out = np.empty((r.shape[0], r.shape[1], 3))
+
+    return out

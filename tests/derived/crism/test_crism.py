@@ -1,15 +1,15 @@
 import pytest
 import numpy as np
 
-from libpysat.derived.crism import crism
+from libpysat.derived.crism import crism_algs
 
 def test_r770(crism_img):
-    res = crism.r770(crism_img)
+    res = crism_algs.r770(crism_img)
     expected = np.arange(19, 28).reshape(3,3)
     np.testing.assert_array_almost_equal(res, expected)
 
 def test_rbr(crism_img):
-    res = crism.rbr(crism_img)
+    res = crism_algs.rbr(crism_img)
     np.testing.assert_array_almost_equal(res, np.ones((3,3)))
 
 @pytest.mark.parametrize("use_kernels, expected", [
