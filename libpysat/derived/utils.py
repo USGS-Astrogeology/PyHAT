@@ -126,3 +126,5 @@ def get_derived_funcs(package):
     for module in modules:
         if "funcs" not in module[0]:
             derived_funcs = dict(inspect.getmembers(module[1], inspect.isfunction), **derived_funcs)
+
+    return derived_funcs
