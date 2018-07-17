@@ -117,3 +117,12 @@ def line_fit(slope, x, b):
         Y coordinate corresponding to the given x
     '''
     return (slope * x) + b
+
+def get_derived_funcs(package):
+    derived_funcs = {}
+
+    modules = inspect.getmembers(package, inspect.ismodule)
+
+    for module in modules:
+        if "funcs" not in module[0]:
+            derived_funcs = dict(inspect.getmembers(module[1], inspect.isfunction), **derived_funcs)
