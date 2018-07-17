@@ -5,7 +5,7 @@ from plio.io import io_crism as icsm
 import pytest
 
 
-from  . crism_wv import crism_wv
+from  crism_wv import crism_wv
 
 @pytest.fixture
 def crism_img():
