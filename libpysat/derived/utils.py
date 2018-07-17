@@ -110,18 +110,13 @@ def warn_m3(m3_func, *args, **kwargs):
         return m3_func(*args, **kwargs)
     return call_warn
 
-def add_derived_funcs(package):
-
+def get_derived_funcs(package):
     derived_funcs = {}
 
-    for module in dir(package):
-        if module[0: 2] != "__" and "funcs" not in module:
-            new_module = getattr(__import__(package.__name__, fromlist=[module]), module)
-            print(new_module)
-            module_funcs = inspect.getmembers(new_module, inspect.isfunction)
+    modules = inspect.getmembers(package, inspect.ismodule)
 
-            for func in module_funcs:
-                function_name, function = func
-                derived_funcs[function_name] = function
+    for module in modules:
+        if "funcs" not in module[0]:
+            derived_funcs = dict(inspect.getmembers(module[1], inspect.isfunction), **derived_funcs)
 
     return derived_funcs
