@@ -1,6 +1,7 @@
 import numpy as np
 import warnings
-from .import pipe_funcs as pf
+
+from . import pipe_funcs as pf
 
 from .. import utils
 

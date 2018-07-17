@@ -26,14 +26,10 @@ def mustard(data):
      : ndarray
        the processed ndarray
     """
-    size = data.raster_size
-    print(size)
-    out = np.empty((size[1], size[0], 3))
+    r = pipe.bdi1000(data)
+    g = pipe.bdi2000(data)
+    b = pipe.r2780(data)
 
-    out[:,:,0] = pipe.bdi1000(data)
-    out[:,:,1] = pipe.bdi2000(data)
-    out[:,:,2] = pipe.r2780(data)
-
-
+    out = np.empty((r.shape[0], r.shape[1], 3))
 
     return out
