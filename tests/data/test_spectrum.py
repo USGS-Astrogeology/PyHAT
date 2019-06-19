@@ -12,44 +12,45 @@ def basic_spectrum():
                     wavelengths=[2.2, 3.3, 4.4, 5.5])
 
 # Fixtures were fixed according to: https://docs.pytest.org/en/latest/deprecations.html#calling-fixtures-directly
-
+# ---
+@pytest.fixture
 def long_spectrum():
     return Spectrum([1, 1.5, 2, 2.5, 5, 3, 3.5, 7, 4, 4.5, 5],
                     index=np.arange(1,12),
                     wavelengths=np.arange(1,12))
-
+@pytest.fixture
 def metadata_spectrum():
     return Spectrum([1,2,3,4, 'a', 'b', 'c'],
                     index=[2.2, 3.3, 4.4, 5.5, 'foo', 'bar', 'bat'],
                     wavelengths=[2.2, 3.3, 4.4, 5.5],
                     metadata=['foo', 'bar', 'bat'])
-
+@pytest.fixture
 def floatwv_spectrum():
     return Spectrum([1,2,3],
                     index=[1.10001, 2.222222, 3.33300015],
                     wavelengths=[1.10001, 2.222222, 3.33300015])
-
+@pytest.fixture
 def floatwv_metadata_spectrum():
     return Spectrum([1,2,3, 'a', 'b', 'c'],
                     index=[1.10001, 2.222222, 3.33300015, 'foo', 'bar', 'bat'],
                     wavelengths=[1.10001, 2.222222, 3.33300015],
                     metadata=['foo', 'bar', 'bat'])
 
-@pytest.fixture(name="long_spectrum")
-def long_spectrum_fixture():
-    return long_spectrum()
+# @pytest.fixture(name="long_spectrum")
+# def long_spectrum_fixture():
+#     return long_spectrum()
 
-@pytest.fixture(name="metadata_spectrum")
-def metadata_spectrum_fixture():
-    return metadata_spectrum()
-
-@pytest.fixture(name="floatwv_spectrum")
-def floatwv_spectrum_fixture():
-    return floatwv_spectrum()
-
-@pytest.fixture(name="floatwv_metadata_spectrum")
-def floatwv_metadata_spectrum_fixture():
-    return floatwv_metadata_spectrum()
+# @pytest.fixture(name="metadata_spectrum")
+# def metadata_spectrum_fixture():
+#     return metadata_spectrum()
+#
+# @pytest.fixture(name="floatwv_spectrum")
+# def floatwv_spectrum_fixture():
+#     return floatwv_spectrum()
+#
+# @pytest.fixture(name="floatwv_metadata_spectrum")
+# def floatwv_metadata_spectrum_fixture():
+#     return floatwv_metadata_spectrum()
 
 def test_slice_return_spectrum(basic_spectrum):
     assert isinstance(basic_spectrum[1:2], Spectrum)
@@ -89,25 +90,36 @@ def test_unary_operation(basic_spectrum):
 def test_approximate_indexer(basic_spectrum):
     assert basic_spectrum.iloc[basic_spectrum.index.get_loc(2.1, tolerance=0.11, method='nearest')] == 1
 
-@pytest.mark.parametrize("spectrum, tolerance, expected",
-                        [(floatwv_spectrum(), 5, Index([1.10001, 2.22222, 3.33300])),
-                         (floatwv_spectrum(), 1, Index([1.1, 2.2, 3.3])),
-                         (floatwv_metadata_spectrum(), 5, Index([1.10001, 2.22222, 3.33300, 'foo', 'bar', 'bat'])),
-                         (floatwv_metadata_spectrum(), 1, Index([1.1, 2.2, 3.3, 'foo', 'bar', 'bat']))])
-def test_set_tolerance(spectrum, tolerance, expected):
-    spectrum.tolerance = tolerance
-    assert isinstance(spectrum, Spectrum)
-    np.testing.assert_array_equal(spectrum.index, expected)
+@pytest.mark.parametrize("tolerance, expected",
+                        [(5, Index([1.10001, 2.22222, 3.33300, 'foo', 'bar', 'bat'])),
+                         (1, Index([1.1, 2.2, 3.3, 'foo', 'bar', 'bat']))])
+def test_set_metadata_tolerance(floatwv_metadata_spectrum, tolerance, expected):
+    floatwv_metadata_spectrum.tolerance = tolerance
+    assert isinstance(floatwv_metadata_spectrum, Spectrum)
+    np.testing.assert_array_equal(floatwv_metadata_spectrum.index, expected)
+
+@pytest.mark.parametrize("tolerance, expected",
+                        [(5, Index([1.10001, 2.22222, 3.33300])),
+                         (1, Index([1.1, 2.2, 3.3]))])
+def test_set_floatwv_tolerance(floatwv_spectrum, tolerance, expected):
+    floatwv_spectrum.tolerance = tolerance
+    assert isinstance(floatwv_spectrum, Spectrum)
+    np.testing.assert_array_equal(floatwv_spectrum.index, expected)
 
 
-@pytest.mark.parametrize("spectrum, tolerance",
-                        [(floatwv_spectrum(), 'a'),
-                         (floatwv_spectrum(), [1,2,3]),
-                         (floatwv_metadata_spectrum(), np.float64(12.1)),
-                         (floatwv_metadata_spectrum(), np.int64(1))])
-def test_set_bad_tolerance(spectrum, tolerance):
+@pytest.mark.parametrize("tolerance",
+                        [(np.float64(12.1)),
+                         (np.int64(1))])
+def test_set_bad_metadata_tolerance(floatwv_metadata_spectrum, tolerance):
     with pytest.raises(TypeError) as e:
-        spectrum.tolerance = tolerance
+        floatwv_metadata_spectrum.tolerance = tolerance
+
+@pytest.mark.parametrize("tolerance",
+                        [('a'),
+                         ([1,2,3])])
+def test_set_bad_floatwv_tolerance(floatwv_spectrum, tolerance):
+    with pytest.raises(TypeError) as e:
+        floatwv_spectrum.tolerance = tolerance
 
 def test_generic_return(basic_spectrum):
     m = basic_spectrum.take([2, 3])
@@ -117,31 +129,46 @@ def test_generic_return(basic_spectrum):
     m = basic_spectrum.sort_index()
     assert isinstance(m, Spectrum)
 
-@pytest.mark.parametrize("spectrum, func",
-                         [(long_spectrum(), libpyhat.transform.smooth.boxcar),
-                          (long_spectrum(), libpyhat.transform.smooth.gaussian)])
-def test_smoothing_return_type(spectrum, func):
-    ss = spectrum.smooth(func=func)
+@pytest.mark.parametrize("func",
+                         [(libpyhat.transform.smooth.boxcar),
+                          (libpyhat.transform.smooth.gaussian)])
+def test_smoothing_return_type(long_spectrum, func):
+    ss = long_spectrum.smooth(func=func)
     assert isinstance(ss, Spectrum)
 
-@pytest.mark.parametrize("spectrum, func, kwargs",
-                         [(long_spectrum(), libpyhat.transform.continuum.linear, {}),
-                          (long_spectrum(), libpyhat.transform.continuum.regression, {}),
-                          (metadata_spectrum(), libpyhat.transform.continuum.regression, {}),
-                          (long_spectrum(), libpyhat.transform.continuum.polynomial, {'order':1})
+@pytest.mark.parametrize("func, kwargs",
+                         [(libpyhat.transform.continuum.linear, {}),
+                          (libpyhat.transform.continuum.regression, {}),
+                          (libpyhat.transform.continuum.polynomial, {'order':1})
                           ])
-def test_continumm_correction_return_type(spectrum, func, kwargs):
-    cc, denom = spectrum.continuum_correct(func=func, **kwargs)
+def test_continumm_correction_long_spectrum_return_type(long_spectrum, func, kwargs):
+    cc, denom = long_spectrum.continuum_correct(func=func, **kwargs)
     assert isinstance(cc, Spectrum)
     assert isinstance(denom, Spectrum)
 
-@pytest.mark.parametrize("spectrum, func, metadata, expected",
-                         [(long_spectrum(), libpyhat.transform.continuum.linear, True, None),
-                          (long_spectrum(), libpyhat.transform.continuum.regression, False, None),
-                          (metadata_spectrum(), libpyhat.transform.continuum.regression, True, ['foo', 'bar', 'bat']),
-                          (metadata_spectrum(), libpyhat.transform.continuum.regression, False, None)])
-def test_continuum_correction_metadata(spectrum, func, metadata, expected):
-    cc, denom = spectrum.continuum_correct(func=func, preserve_metadata=metadata)
+@pytest.mark.parametrize("func, kwargs",
+                          [(libpyhat.transform.continuum.regression, {})])
+def test_continumm_correction_long_spectrum_return_type(metadata_spectrum, func, kwargs):
+    cc, denom = metadata_spectrum.continuum_correct(func=func, **kwargs)
+    assert isinstance(cc, Spectrum)
+    assert isinstance(denom, Spectrum)
+
+@pytest.mark.parametrize("func, metadata, expected",
+                         [(libpyhat.transform.continuum.linear, True, None),
+                          (libpyhat.transform.continuum.regression, False, None)])
+def test_continuum_correction_long(long_spectrum, func, metadata, expected):
+    cc, denom = long_spectrum.continuum_correct(func=func, preserve_metadata=metadata)
+    if expected is None:
+        assert cc.metadata is expected
+    else:
+        assert cc._metadata_index.tolist() == expected
+
+
+@pytest.mark.parametrize("func, metadata, expected",
+                         [(libpyhat.transform.continuum.regression, True, ['foo', 'bar', 'bat']),
+                          (libpyhat.transform.continuum.regression, False, None)])
+def test_continuum_correction_metadata(metadata_spectrum, func, metadata, expected):
+    cc, denom = metadata_spectrum.continuum_correct(func=func, preserve_metadata=metadata)
     if expected is None:
         assert cc.metadata is expected
     else:
