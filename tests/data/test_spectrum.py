@@ -36,22 +36,6 @@ def floatwv_metadata_spectrum():
                     wavelengths=[1.10001, 2.222222, 3.33300015],
                     metadata=['foo', 'bar', 'bat'])
 
-# @pytest.fixture(name="long_spectrum")
-# def long_spectrum_fixture():
-#     return long_spectrum()
-
-# @pytest.fixture(name="metadata_spectrum")
-# def metadata_spectrum_fixture():
-#     return metadata_spectrum()
-#
-# @pytest.fixture(name="floatwv_spectrum")
-# def floatwv_spectrum_fixture():
-#     return floatwv_spectrum()
-#
-# @pytest.fixture(name="floatwv_metadata_spectrum")
-# def floatwv_metadata_spectrum_fixture():
-#     return floatwv_metadata_spectrum()
-
 def test_slice_return_spectrum(basic_spectrum):
     assert isinstance(basic_spectrum[1:2], Spectrum)
 
