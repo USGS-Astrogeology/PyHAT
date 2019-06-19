@@ -1,10 +1,10 @@
 import os
 import numpy as np
-from plio.io_gdal import GeoDataset
+from plio.io.io_gdal import GeoDataset
 
 from . hcube import HCube
-from . derived import m3
-from . derived.utils import get_derived_funcs
+from .. derived import m3
+from .. derived.utils import get_derived_funcs
 
 import gdal
 

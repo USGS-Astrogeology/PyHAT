@@ -2,8 +2,8 @@ import numpy as np
 import gdal
 
 from plio.utils.indexing import _LocIndexer, _iLocIndexer
-from . transform.continuum import continuum_correction
-from . transform.continuum import polynomial, linear, regression
+from .. transform.continuum import continuum_correction
+from .. transform.continuum import polynomial, linear, regression
 
 
 class HCube(object):
