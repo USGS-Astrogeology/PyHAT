@@ -1,4 +1,4 @@
-from bin.jade import JADE
+from .jade import JADE
 from sklearn.decomposition import PCA, FastICA
 from sklearn.manifold.t_sne import TSNE
 from sklearn.manifold.locally_linear import LocallyLinearEmbedding
