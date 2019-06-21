@@ -35,6 +35,7 @@ class regression:
         self.method = method
         self.outliers = None
         self.ransac = False
+        self.modelkey = None
 
         #print(params)
         if self.method[i] == 'PLS':
