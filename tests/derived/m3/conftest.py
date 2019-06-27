@@ -1,7 +1,7 @@
 from unittest import mock
 
 import numpy as np
-from plio.io import io_moon_minerology_mapper as iomm
+from ...libpyhat.io import io_moon_minerology_mapper as iomm
 import pytest
 
 from .m3_wv import m3_wv

@@ -1,10 +1,10 @@
 from unittest import mock
 
 import numpy as np
-from plio.io import io_crism as icsm
+from libpyhat.io import io_crism as icsm
 import pytest
 
-from  crism_wv import crism_wv
+from crism_wv import crism_wv
 
 @pytest.fixture
 def crism_img():
