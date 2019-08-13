@@ -8,7 +8,7 @@ from libpyhat.transform.baseline_code.mario import Mario
 from libpyhat.transform.baseline_code.median import MedianFilter
 from libpyhat.transform.baseline_code.polyfit import PolyFit
 from libpyhat.transform.baseline_code.rubberband import Rubberband
-from libpyhat.transform.baseline_code.wavelet_spline import wavelet_spline
+
 import numpy as np
 
 # This function applies baseline removal to the data
