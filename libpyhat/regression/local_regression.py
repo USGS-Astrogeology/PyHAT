@@ -8,7 +8,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.model_selection import GroupKFold
 
 class LocalRegression:
-    """This class implements "local" regression. Given a set of training data and a set of unknown data,
+    """This class implements "local" regression.git add libp Given a set of training data and a set of unknown data,
            iterate through each unknown spectrum, find the nearest training spectra, and generate a model.
            Each of these local models is optimized using built-in cross validation methods from scikit."""
     def __init__(self, params, n_neighbors = 250):
