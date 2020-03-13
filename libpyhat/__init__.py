@@ -6,7 +6,7 @@ from libpyhat import transform
 from libpyhat import regression
 from libpyhat import data
 from libpyhat import analytics
-
+from libpyhat import io
 from libpyhat.data.spectra import Spectra
 from libpyhat.data.spectrum import Spectrum
 
