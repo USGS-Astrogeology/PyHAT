@@ -13,7 +13,7 @@ class M3(GeoDataset, HCube):
     """
     An M3 specific reader with the spectral mixin.
     """
-    def __init__(self, file_name, libpyhat_enabled = True):
+    def __init__(self, file_name):
 
         GeoDataset.__init__(self, file_name)
         HCube.__init__(self)
