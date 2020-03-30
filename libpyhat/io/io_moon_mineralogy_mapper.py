@@ -18,8 +18,6 @@ class M3(GeoDataset, HCube):
         GeoDataset.__init__(self, file_name)
         HCube.__init__(self)
 
-        self.derived_funcs = {}
-
         self.derived_funcs = get_derived_funcs(m3)
 
     def __getattr__(self, name):
