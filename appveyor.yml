@@ -47,10 +47,10 @@ on_success:
   - ps:
       echo $env:APPVEYOR_PULL_REQUEST_NUMBER;
       if (-not $env:APPVEYOR_PULL_REQUEST_NUMBER) {
-        echo "Not a PR"
+        echo "Not a PR";
         if ($env:APPVEYOR_REPO_BRANCH -eq "master") {
-            echo "master branch"
+            echo "master branch";
             conda config --set anaconda_upload yes;
-            conda build -c conda-forge -c usgs-astrogeology --python $PYTHON_VERSION --token %CONDA_UPLOAD_TOKEN% RECIPEPATH .
+            conda build --token %CONDA_UPLOAD_TOKEN% --python %PYTHON_VERSION% -c usgs-astrogeology recipe;
           };
       };
