@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-
 import numpy as np
 from pandas import Series
 from scipy import signal
+
+import libpyhat.transform.baseline_code.watrous as watrous
 import numpy
 
 
@@ -26,6 +27,7 @@ def meancenter(df, col, previous_mean=None):
     Returns
     -------
     df : mean-centered data frame
+
     mean_vect : mean spectrum
     """
     if previous_mean is not None:
