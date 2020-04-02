@@ -3,7 +3,6 @@ import numpy as np
 from pandas import Series
 from scipy import signal
 
-import libpyhat.transform.baseline_code.watrous as watrous
 import numpy
 
 
