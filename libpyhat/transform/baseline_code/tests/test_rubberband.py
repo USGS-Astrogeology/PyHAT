@@ -3,18 +3,18 @@ import numpy as np
 
 # First 10 values of a PyHAT File
 bands = np.array([585.149, 585.374, 585.599, 585.824, 586.049, 586.273, 586.498, 586.723, 586.948, 587.173])
-intensities = np.array([76.9, 54.54, 55.03, 41.79, 50, 54.36, 50.75, 74.18, 67.5, 36.96])
+intensities = np.array([823.06, 774.06, 828.06, 828.06, 866.06, 939.06, 1016.06, 1057.06, 940.06,  938.06])
 
 def test_one_iter():
     RB = rubberband.Rubberband(num_iters=1, num_ranges=4)
     baseline = RB._fit_one(bands, intensities)
-    expected = [76.9, 54.54, 48.36242951, 41.79, 41.97067336, 41.75831319, 41.15102343, 40.14887464, 38.75186683, 36.96]
+    expected = np.array([851.36, 791.1749, 811.1866, 831.1982, 853.7419, 876.1854, 898.729, 921.2727, 943.8163, 966.36])
     np.testing.assert_array_almost_equal(baseline, expected)
 
 def test_zero_iter():
     RB = rubberband.Rubberband(num_iters=0, num_ranges=4)
     baseline = RB._fit_one(bands, intensities)
-    expected = [76.9, 54.54, 48.165, 41.79, 40.98440326, 40.18238695, 39.37679021, 38.57119348, 37.76559674, 36.96]
+    expected = np.array([823.06, 774.06, 794.5714, 815.0828, 835.5942, 856.0144, 876.5258, 897.0372, 917.5486, 938.06])
     np.testing.assert_array_almost_equal(baseline, expected)
 
 def test_param_ranges():
