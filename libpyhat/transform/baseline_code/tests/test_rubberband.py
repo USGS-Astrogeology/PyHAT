@@ -9,13 +9,13 @@ def test_one_iter():
     RB = rubberband.Rubberband(num_iters=1, num_ranges=4)
     baseline = RB._fit_one(bands, intensities)
     expected = np.array([851.36, 791.1749, 811.1866, 831.1982, 853.7419, 876.1854, 898.729, 921.2727, 943.8163, 966.36])
-    np.testing.assert_array_almost_equal(baseline, expected)
+    np.testing.assert_array_almost_equal(baseline, expected, decimal=4)
 
 def test_zero_iter():
     RB = rubberband.Rubberband(num_iters=0, num_ranges=4)
     baseline = RB._fit_one(bands, intensities)
     expected = np.array([823.06, 774.06, 794.5714, 815.0828, 835.5942, 856.0144, 876.5258, 897.0372, 917.5486, 938.06])
-    np.testing.assert_array_almost_equal(baseline, expected)
+    np.testing.assert_array_almost_equal(baseline, expected, decimal=4)
 
 def test_param_ranges():
     RB = rubberband.Rubberband(num_iters=0, num_ranges=4)
