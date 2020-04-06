@@ -4,9 +4,6 @@ import numpy as np
 # First 10 values of a PyHAT File
 bands = np.array([585.149, 585.374, 585.599, 585.824, 586.049, 586.273, 586.498, 586.723, 586.948, 587.173])
 intensities = np.array([823.06, 774.06, 828.06, 828.06, 866.06, 939.06, 1016.06, 1057.06, 940.06,  938.06])
-RB = rubberband.Rubberband(num_iters=1, num_ranges=4)
-baseline = RB._fit_one(bands, intensities)
-pass
 
 def test_one_iter():
     RB = rubberband.Rubberband(num_iters=1, num_ranges=4)
