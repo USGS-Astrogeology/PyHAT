@@ -46,7 +46,6 @@ after_success:
   # Code Coverage
   - coveralls
 
-
 deploy:
   provider: script
   cleanup: false
