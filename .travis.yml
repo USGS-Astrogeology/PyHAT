@@ -62,7 +62,6 @@ after_success:
   # - travis-sphinx build --source=docs --nowarn # The sphinx build script
   # - travis-sphinx deploy --branches=master
 
-
 deploy:
   provider: script
   skip_cleanup: true
