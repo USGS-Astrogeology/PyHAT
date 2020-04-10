@@ -17,10 +17,7 @@ class Crism(GeoDataset, HCube):
         GeoDataset.__init__(self, file_name)
         HCube.__init__(self)
 
-        self.derived_funcs = {}
-
-        if libpyhat_enabled:
-            self.derived_funcs = get_derived_funcs(crism)
+        self.derived_funcs = get_derived_funcs(crism)
 
     def __getattr__(self, name):
         try:

@@ -2,7 +2,7 @@
 Algorithm based on Appendix A of
 Starck, J.L., Murtagh, F., 2006. Handbook of Astronomical Data Analysis, 2nd ed. Springer-Verlag.
 
-This is the algorithm used as the basis for ChemCam's denoise and baselien removal as described in
+This is the algorithm used as the basis for ChemCam's denoise and baseline removal as described in
 Wiens, R.C., et al., 2013. Pre-flight calibration and initial data processing for the ChemCam laser-induced breakdown
 spectroscopy instrument on the Mars Science Laboratory rover. Spectrochimica Acta Part B: Atomic Spectroscopy 82, 1–27.
 doi:10.1016/j.sab.2013.02.003

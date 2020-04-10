@@ -21,12 +21,10 @@ configuration:
 
 install:
   - cmd: set PATH="C:\\Miniconda3-x64\\Scripts\\";"C:\\Miniconda3-x64\\";%PATH%
-  - cmd: call %PYTHON%
   - cmd: conda config --set always_yes yes --set changeps1 no
-  - cmd: conda install -n base conda=4.8.2
-  - cmd: conda install conda-build anaconda-client
+  - cmd: conda update -q conda
   - cmd: conda config --set ssl_verify false
-  - cmd: conda env create -f environment.yml -n test_env python=$PYTHON_VERSION
+  - cmd: conda env create -f environment.yml -n test_env python=$env:PYTHON_VERSION
   - cmd: activate test_env
   - cmd: conda install pytest-cov
   # https://pythonhosted.org/CodeChat/appveyor.yml.html
@@ -40,17 +38,17 @@ test_script:
   - cmd: pytest libpyhat/
 
 on_success:
+  # - cmd: coveralls
   - cmd: activate base
   # - cmd: conda config --set anaconda_upload yes
   # - cmd: conda build -c conda-forge -c usgs-astrogeology --token %CONDA_UPLOAD_TOKEN% RECIPEPATH .
   # - cmd: set builddir = conda build recipe --output;
-  - ps:
-      echo $env:APPVEYOR_PULL_REQUEST_NUMBER;
-      if (-not $env:APPVEYOR_PULL_REQUEST_NUMBER) {
-        echo "Not a PR";
-        if ($env:APPVEYOR_REPO_BRANCH -eq "master") {
-            echo "master branch";
-            conda config --set anaconda_upload yes;
-            conda build --token %CONDA_UPLOAD_TOKEN% --python %PYTHON_VERSION% -c usgs-astrogeology recipe;
-          };
+ - ps:
+    if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq "") {
+      if ($env:APPVEYOR_REPO_BRANCH -eq "master") {
+          conda deactivate;
+          conda install conda-build anaconda-client;
+          conda config --set anaconda_upload yes;
+          conda build -c conda-forge -c usgs-astrogeology --python $env:PYTHON_VERSION --token %CONDA_UPLOAD_TOKEN% RECIPE_PATH recipe;
       };
+    };

@@ -65,6 +65,6 @@ after_success:
 deploy:
   provider: script
   skip_cleanup: true
-  script: bash deploy.sh
+  script: bash deployment/deploy.sh $PYTHON_VERSION
   on:
     branch: master
