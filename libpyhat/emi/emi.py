@@ -25,3 +25,4 @@ def emi(data, emi_method, **kwargs):
     indices = np.zeros(spectra.shape[1], dtype=int)
     indices[endmember_indices] = 1
     data[("endmembers", emi_method)] = indices
+    return endmember_indices
