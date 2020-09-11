@@ -54,7 +54,7 @@ def test_band_asymmetry(spectrum, expected_val):
 @pytest.mark.parametrize("expected_val", [(14715.763)]
 )
 def test_run_analytics_band_area(expected_val):
-    spectra = phat.Spectra.from_file(get_path('SP_2C_02_02358_S138_E3586.spc'))
+    spectra = phat.io.io_spectral_profiler.open(get_path('SP_2C_02_02358_S138_E3586.spc'))
     area = analytics.run_analytics(spectra, analytics.band_area)
     assert area.mean() == pytest.approx(expected_val)
 
@@ -63,7 +63,7 @@ def test_run_analytics_band_area(expected_val):
                                                                     909.947)]
 )
 def test_run_analytics_band_minima(expected_wavelengths, expected_values):
-    spectra = phat.Spectra.from_file(get_path('SP_2C_02_02358_S138_E3586.spc'))
+    spectra = phat.io.io_spectral_profiler.open(get_path('SP_2C_02_02358_S138_E3586.spc'))
     minima = analytics.run_analytics(spectra, analytics.band_minima)
     wavelengths = [np.mean(val[0]) for val in minima]
     values = [val[1] for val in minima]
@@ -76,7 +76,7 @@ def test_run_analytics_band_minima(expected_wavelengths, expected_values):
                                                                                      909.947)]
 )
 def test_run_analytics_band_center(expected_center, expected_wavelengths, expected_values):
-    spectra = phat.Spectra.from_file(get_path('SP_2C_02_02358_S138_E3586.spc'))
+    spectra = phat.io.io_spectral_profiler.open(get_path('SP_2C_02_02358_S138_E3586.spc'))
     center, center_fit = analytics.run_analytics(spectra, analytics.band_center)
     wavelengths = [np.mean(val[0]) for val in center]
     values = [np.mean(val[1]) for val in center]
@@ -92,7 +92,7 @@ def test_run_analytics_band_center(expected_center, expected_wavelengths, expect
                                                                                      0.0)]
 )
 def test_run_analytics_band_center_spectrum(expected_center, expected_wavelengths, expected_values):
-    spectra = phat.Spectra.from_file(get_path('SP_2C_02_02358_S138_E3586.spc'))
+    spectra = phat.io.io_spectral_profiler.open(get_path('SP_2C_02_02358_S138_E3586.spc'))
     spectrum = spectra[spectra.columns[1]]
     center, center_fit = analytics.run_analytics(spectrum, analytics.band_center, 512.6, 2587.9)
     assert center_fit.mean() == pytest.approx(expected_center)
@@ -103,7 +103,7 @@ def test_run_analytics_band_center_spectrum(expected_center, expected_wavelength
 @pytest.mark.parametrize("expected_values", [(0.99974371)]
 )
 def test_run_analytics_band_asymmetry_spectrum(expected_values):
-    spectra = phat.Spectra.from_file(get_path('SP_2C_02_02358_S138_E3586.spc'))
+    spectra = phat.io.io_spectral_profiler.open(get_path('SP_2C_02_02358_S138_E3586.spc'))
     spectrum = spectra[spectra.columns[1]]
     asymmetry = analytics.run_analytics(spectrum, analytics.band_asymmetry, 512.6, 2587.9)
     assert asymmetry == pytest.approx(expected_values)
@@ -112,7 +112,7 @@ def test_run_analytics_band_asymmetry_spectrum(expected_values):
 @pytest.mark.parametrize("expected_values", [(35912)]
 )
 def test_run_analytics_band_area_spectrum(expected_values):
-    spectra = phat.Spectra.from_file(get_path('SP_2C_02_02358_S138_E3586.spc'))
+    spectra = phat.io.io_spectral_profiler.open(get_path('SP_2C_02_02358_S138_E3586.spc'))
     spectrum = spectra[spectra.columns[1]]
     asymmetry = analytics.run_analytics(spectrum, analytics.band_area, 512.6, 2587.9)
     assert asymmetry == pytest.approx(expected_values)

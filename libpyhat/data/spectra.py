@@ -1,7 +1,6 @@
 from pandas import DataFrame, Series, to_numeric
 import numpy as np
 
-from . import io
 from .base import PyHatBase
 from .spectrum import Spectrum
 
@@ -101,6 +100,3 @@ class Spectra(PyHatBase, DataFrame):
             self._reindex()
         return result
 
-    @classmethod
-    def from_file(cls, filename, **kwargs):
-        return io.read_file(filename, **kwargs)
