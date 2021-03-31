@@ -45,7 +45,6 @@ def standard_deviation_stretch(array, sigma = 2.0):
     newmin = array_mean - (array_standard_deviation * sigma)
     newmax = array_mean + (array_standard_deviation * sigma)
     array  = np.subtract(array, newmin)
-    print(array)
     array *= 1.0 / (newmax - newmin)
     return array
 
@@ -55,7 +54,7 @@ def inverse_stretch(array):
 
     Parameters
     ----------
-    data : ndarray
+    array : ndarray
            (n,m,p) array
 
     Returns
@@ -67,13 +66,43 @@ def inverse_stretch(array):
     array -= maximum
     return abs(array)
 
+def gethist_cdf(array, num_bins=128):
+    '''
+    This function calculates the cumulative distribution function of a
+    given array and requires that both the input array and the number of
+    bins be provided.
+
+
+
+    Parameters
+    ----------
+    array : ndarray
+           (n,m,p) array
+
+    Returns
+    Returns:
+    ----------
+
+        : cdf
+          A CDF (cumulative distribution function) graph that can be used for plotting.
+
+        : bins
+          The bins of the associated CDF graph
+
+    '''
+    hist, bins = np.histogram(array.flatten(), num_bins, density=False)
+    cdf = hist.cumsum()
+    cdf = cdf ** 0.5
+    cdf = 256 * cdf / cdf[-1] #This needs to have a dtype lookup (16bit would be 2**16-1)
+    return cdf, bins
+
 def histequ_stretch(array):
     """
     Stretch a given ndarray using a histogram
 
     Parameters
     ----------
-    data : ndarray
+    array : ndarray
            (n,m,p) array
 
     Returns
@@ -82,21 +111,7 @@ def histequ_stretch(array):
        the processed ndarray
     """
 
-    def _gethist_cdf(array, num_bins=128):
-        '''
-        This function calculates the cumulative distribution function of a
-        given array and requires that both the input array and the number of
-        bins be provided.
-
-        Returns: cumulative distribution function, bins
-        '''
-        hist, bins = np.histogram(array.flatten(), num_bins, density=False)
-        cdf = hist.cumsum()
-        cdf = cdf ** 0.5
-        cdf = 256 * cdf / cdf[-1] #This needs to have a dtype lookup (16bit would be 2**16-1)
-        return cdf, bins
-
-    cdf, bins = _gethist_cdf(array)
+    cdf, bins = gethist_cdf(array)
     shape = array.shape
     #interpolate
     array = np.interp(array,bins[:-1],cdf)

@@ -1,6 +1,7 @@
 import pytest
 import numpy as np
-
+from libpyhat.examples import get_path
+from libpyhat.pyhat_io.io_moon_mineralogy_mapper import M3
 from libpyhat.derived.m3 import new
 
 def test_mustard(m3_img):
