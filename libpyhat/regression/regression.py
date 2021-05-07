@@ -85,7 +85,7 @@ class regression:
             self.model = GradientBoostingRegressor(**params[i])
 
 
-    def fit(self, x, y, i=0):
+    def fit(self, x, y):
         try:
             self.model.fit(x, y)
             self.goodfit = True
@@ -95,8 +95,11 @@ class regression:
             traceback.print_stack()
             print(e)
 
-    def predict(self, x, i=0):
-        return self.model.predict(x)
+    def predict(self, x, return_std = None):
+        if return_std is not None:  #this allows ARD and BRR to give uncertainties along with predictions
+            return self.model.predict(np.array(x), return_std=return_std)
+        else:
+            return self.model.predict(x)
 
     def calc_Qres_Lev(self, x):
         # calculate spectral residuals
